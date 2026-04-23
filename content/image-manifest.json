@@ -1,0 +1,321 @@
+{
+  "imageDefaults": {
+    "style": "photorealistic, ultra-detailed, commercial product photography",
+    "brandPalette": "ink crimson (#B8142B), warm charcoal (#1A1A1A), press-gold (#D4A017), paper (#FAFAF7)",
+    "composition": "natural, warm, craftspersonship energy — not stock-photo-sterile"
+  },
+  "images": [
+    {
+      "slug": "hero-flagship",
+      "title": "Homepage flagship collage",
+      "aspect": "4:5",
+      "prompt": "Overhead editorial still-life of a printing and promotional workshop: a freshly embroidered Bella+Canvas tee on paper, a stack of crimson-foil business cards held together with a brass clip, a laser-engraved walnut tumbler catching warm window light, a rolled vinyl banner with cyan and magenta corner registration marks, and a set of resin soccer trophies at the edge. 85mm lens, shallow depth of field, gently diffused north-window light, warm paper tabletop with subtle texture, shadows crisp but soft. Composition is asymmetric with generous negative space in the upper-left. Mood is confident craft — industrial meets editorial. Palette of warm charcoals, ink crimson accents, brass and press-gold highlights, against a paper background."
+    },
+    {
+      "slug": "og-default",
+      "title": "Default OG / Twitter share image",
+      "aspect": "1200:630",
+      "prompt": "Editorial banner image for Georgia Print Hub — centered deep-charcoal headline 'Printed. Pressed. Personalized.' with a subtle CMYK offset registration ghost (cyan left, magenta right, yellow below) behind the lettering. Paper-grain background in soft cream. On the right, a short tight collage of a crimson foil business card, a kraft box labeled 'GAPH · Alpharetta', and a small brass award pin. 35mm lens, slight perspective, warm daylight. Composition feels confident, tight, unmistakably print-shop. Commercial poster quality, clean typographic hierarchy."
+    },
+    {
+      "slug": "category-custom-printing",
+      "title": "Custom Printing category hero",
+      "aspect": "4:3",
+      "prompt": "An overhead hero of a printing proof pile: business cards standing in a fan, a freshly trimmed postcard, a brochure half-folded beside a brass ruler, a stack of die-cut vinyl stickers with kiss-cut release liner, a rolled 3x6 vinyl banner peeking into the frame. Warm tungsten spotlight on the business cards, ambient daylight on the rest. 50mm lens. Color palette warm paper, ink crimson on one printed piece, one accent press-gold foil reflection. Composition feels like a working pressroom table mid-morning — confident, editorial, not staged."
+    },
+    {
+      "slug": "category-apparel-headwear",
+      "title": "Apparel & Headwear category hero",
+      "aspect": "4:3",
+      "prompt": "Editorial flat-lay of apparel stacks: a folded heather-grey Bella+Canvas tee with a freshly screen-printed crimson logo visible on the top, a folded navy Port Authority polo with embroidered left-chest mark, a black Richardson 112 trucker cap with a leather patch, a tri-blend hoodie half-folded in sand dune color. Brass snaps, wooden hangers, a frosted plastic bag of size tags, and a roll of wide natural kraft tape at the corner. Overhead 85mm look, soft diffused daylight, a single strong shadow from the hoodie. Warm palette, paper tone, no human figures. Feels like a print shop prep table."
+    },
+    {
+      "slug": "category-corporate-awards",
+      "title": "Corporate Awards category hero",
+      "aspect": "4:3",
+      "prompt": "Low-angle moody hero of a walnut piano-finish plaque catching golden-hour light, a crystal optical diamond tower standing behind it, and an acrylic jewel award to the side. Dark charcoal velvet surface fading to black. Single warm spotlight creating faceted highlights on the crystal, soft reflection on the walnut, subtle press-gold rim light on the acrylic. 50mm lens, f/4. Palette of deep charcoal, warm brass, translucent crystal, single ink-crimson ribbon accent draped over the plaque. Editorial, quiet, dignified — premium corporate recognition."
+    },
+    {
+      "slug": "category-drinkware",
+      "title": "Drinkware category hero",
+      "aspect": "4:3",
+      "prompt": "Three Polar Camel 20oz tumblers in sage green, matte black, and rose gold lined in a gentle arc on a warm paper surface. Each is engraved with a subtle crest that catches light differently. Behind them, a ceramic 11oz mug with a wrap-printed illustration, a slate coaster with engraved monogram, and a brushed stainless water bottle. 85mm lens, natural diffused window light from the left, soft shadows. Palette: warm paper, forest sage, matte black, rose copper, single crimson coffee-stain accent. Feels like a morning styling shoot."
+    },
+    {
+      "slug": "category-photo-gifts",
+      "title": "Photo Gifts category hero",
+      "aspect": "4:3",
+      "prompt": "Joyful mid-air flat-lay of full-color personalized items: an insulated cooler bag with a sublimated photo collage, an aluminum photo keychain with a family picture, a phone case with a pet portrait, a morale patch with bold graphic, all floating on an off-white studio backdrop with tasteful drop shadows suggesting light bounce. Warm soft daylight. Composition is cheerful and graphic, with a touch of magazine-ad polish. Palette is saturated but within a warm-paper frame. No human figures. Commercial product photography."
+    },
+    {
+      "slug": "category-personalized-gifts",
+      "title": "Personalized Gifts category hero",
+      "aspect": "4:3",
+      "prompt": "Warm styled moment: a leatherette journal in rustic brown with engraved monogram, a walnut cutting board with names engraved in a tight serif, a walnut picture frame with a family photo, a small acrylic block with engraved date. Soft pine wood tabletop, linen napkin to the side, vintage brass pen, small bundle of rosemary for scent cue. 50mm lens, window light from upper-left, crisp shadows, warm palette. Mood is gift-ready and intimate, not cold product-stock. Press-gold highlights on the engraving fills."
+    },
+    {
+      "slug": "category-sports-academic-awards",
+      "title": "Sports & Academic Awards category hero",
+      "aspect": "4:3",
+      "prompt": "A dramatic ranked trophy shelf: a 14-inch brass cup on a tiered walnut base front-and-center, three resin soccer figures in graduated heights to one side, a cluster of 2-inch medals on ribbons draped from the shelf edge, and a rolled award ribbon placed at the foot. Stadium-quality warm tungsten rim light, deep charcoal backdrop fading to black. 35mm wide lens, slight hero angle. Palette of brass, walnut, deep charcoal, with ink crimson ribbons. Feels championship-season serious — not cartoonish."
+    },
+    {
+      "slug": "how-it-works-choose",
+      "title": "How it works — step 1 (choose)",
+      "aspect": "4:3",
+      "prompt": "Hands reaching toward a spread of paper swatches and Pantone chips on a warm maple countertop in a printing studio, with a laptop half-visible showing a product grid blurred in the background. Warm daylight, 35mm lens, shallow depth of field. Palette of paper, warm woods, a single crimson swatch in focus. Composition has generous negative space top-right. Editorial, confident, decisive."
+    },
+    {
+      "slug": "how-it-works-customize",
+      "title": "How it works — step 2 (customize)",
+      "aspect": "4:3",
+      "prompt": "Close-up of a designer's monitor showing a garment mockup with design overlay, next to a graphics tablet and stylus, a coffee mug leaving a subtle ring on a paper proof sheet, and brass ruler. Warm desk lamp glow, 50mm lens, tight crop, paper-grain texture. Palette of creamy paper, press-gold reflections on a coffee rim, charcoal screen. Mood: focused craft, not a generic tech-startup desk."
+    },
+    {
+      "slug": "how-it-works-ship",
+      "title": "How it works — step 3 (print & ship)",
+      "aspect": "4:3",
+      "prompt": "Fresh-off-the-press kraft boxes taped with 'GAPH · Alpharetta' branded kraft tape being stacked on a rolling cart, a warehouse door half-open to warm morning light behind. In the foreground, a packing slip peeks from a box flap. 35mm lens, diagonal composition, slight motion hint. Palette of kraft, warm charcoal, paper white, a single press-gold tape stripe on the top box. Industrious, warm, and orderly."
+    },
+    {
+      "slug": "city-alpharetta-printing",
+      "title": "Alpharetta city landing hero",
+      "aspect": "16:9",
+      "prompt": "Golden-hour exterior wide shot of the Avalon shopping district in Alpharetta, GA, with a boutique storefront subtly rebranded as a print-shop open sign. Warm late-afternoon sunlight, long shadows, people walking in the background out of focus. 35mm lens. Palette of warm brick, cream paper, ink-crimson awning accent. Editorial, localized, recognizable as North Atlanta without being on-the-nose."
+    },
+    {
+      "slug": "city-roswell-printing",
+      "title": "Roswell city landing hero",
+      "aspect": "16:9",
+      "prompt": "Warm storefront of a historic Canton Street Roswell brick building with a tidy new printed banner hanging from the awning. Morning sun casting long shadows on the sidewalk. 35mm lens, slight perspective. Palette of red brick, cream paper, press-gold sign accent. Local, inviting, civic."
+    },
+    {
+      "slug": "city-johns-creek-printing",
+      "title": "Johns Creek city landing hero",
+      "aspect": "16:9",
+      "prompt": "A set of freshly printed soccer trophies and medals on a table beside a youth soccer sideline in Johns Creek park. Green field in background, kids jersey color blur. 85mm lens, shallow depth of field. Palette of grass green, paper cream, brass, crimson ribbon. Community-forward, honest."
+    },
+    {
+      "slug": "city-milton-printing",
+      "title": "Milton city landing hero",
+      "aspect": "16:9",
+      "prompt": "Equestrian-adjacent styled shot: a leatherette portfolio and engraved walnut cutting board set against a weathered barn fence with rolling North Georgia hills behind. Golden-hour sidelight, 50mm lens. Palette of warm wood, cream, soft sage, crimson. Tasteful, upscale-rural, Milton-appropriate."
+    },
+    {
+      "slug": "city-cumming-printing",
+      "title": "Cumming city landing hero",
+      "aspect": "16:9",
+      "prompt": "A small-business owner's unboxing moment — a box of printed yard signs and custom tees with the Cumming Forsyth County landscape in soft focus behind a porch railing. 35mm lens. Palette warm paper, crimson, forest green. Welcoming, proud, practical."
+    },
+    {
+      "slug": "city-atlanta-custom-printing",
+      "title": "Atlanta metro landing hero",
+      "aspect": "16:9",
+      "prompt": "Graphic rooftop scene: a stack of custom printed event badges, a rolled retractable banner, and a Bella+Canvas tee with a screen-printed Atlanta skyline laid across the foreground, with the actual Atlanta skyline softly blurred at dusk behind. 35mm lens. Palette of warm twilight blue, paper cream, crimson. Confident, urban, editorial."
+    },
+    {
+      "slug": "product-standard-business-cards",
+      "title": "Standard Business Cards hero",
+      "aspect": "4:3",
+      "prompt": "A crisp fan of 14pt matte business cards in black and crimson, held together with a brass clip, resting on a warm paper surface. Tight macro, 100mm lens, north-window light, shallow depth of field, subtle paper texture. Palette of paper, crimson, ink-black. Product-focused, premium, clean."
+    },
+    {
+      "slug": "product-foil-business-cards",
+      "title": "Foil Business Cards hero",
+      "aspect": "4:3",
+      "prompt": "A single premium 32pt silk business card with gold foil lettering catching a narrow beam of warm light, laid on a matte black surface with a slight offset of a second card underneath. 100mm macro, gentle highlight reflections. Palette of matte black, press-gold, hint of silk cream edge. Luxurious, editorial."
+    },
+    {
+      "slug": "product-tri-fold-brochures",
+      "title": "Tri-Fold Brochures hero",
+      "aspect": "4:3",
+      "prompt": "A tri-fold brochure photographed slightly opened so the three panels cast soft shadows on a warm paper surface, with a pair of brass binder clips beside it and a rolled kraft tube suggesting more in transit. 50mm lens. Palette of paper, warm charcoal, single crimson panel accent. Clean and informative."
+    },
+    {
+      "slug": "product-full-color-flyers",
+      "title": "Full-Color Flyers hero",
+      "aspect": "4:3",
+      "prompt": "An overhead stack of 8.5x11 gloss flyers with vibrant event artwork on top, mildly offset so color edges peek through. Paper grain visible at the edges. Natural daylight. Commercial, snappy, colorful."
+    },
+    {
+      "slug": "product-eddm-postcards",
+      "title": "EDDM Postcards hero",
+      "aspect": "4:3",
+      "prompt": "An oversized 6.5x9 EDDM postcard mid-air with two others tumbling in a casual cascade, captured against a warm cream backdrop. Slight motion blur on the falling cards. 50mm. Palette: paper, ink crimson, single postal-route blue accent."
+    },
+    {
+      "slug": "product-vinyl-banner",
+      "title": "Custom Vinyl Banner hero",
+      "aspect": "4:3",
+      "prompt": "A 3x6 vinyl banner partially unrolled on a matte concrete floor, crisp hem and brass grommets visible, with a roll of nylon tie-down next to it. Slight golden afternoon sidelight, industrial mood. 35mm lens. Palette: warm gray concrete, crimson banner face, brass grommet highlights."
+    },
+    {
+      "slug": "product-yard-signs",
+      "title": "Real Estate Yard Signs hero",
+      "aspect": "4:3",
+      "prompt": "A 24x18 corrugated plastic yard sign staked in a fresh front lawn at golden hour, dew still on the grass blades in the foreground. 85mm, shallow depth of field. Palette warm green, paper, ink crimson, press-gold stake top."
+    },
+    {
+      "slug": "product-kiss-cut-stickers",
+      "title": "Kiss-Cut Stickers hero",
+      "aspect": "4:3",
+      "prompt": "A kiss-cut sticker sheet on a warm paper surface with a couple of stickers peeled halfway to show the backing. Macro 100mm, shallow depth of field, vibrant colors, gentle shadows. Palette paper, crimson, cyan, press-gold."
+    },
+    {
+      "slug": "product-dtf-gangup",
+      "title": "DTF Gang-Up Sheet hero",
+      "aspect": "4:3",
+      "prompt": "A roll of DTF transfer film partially unfurled across a heat press, showing colorful gang-up designs across its width. Warm press lights, slight industrial feel, 35mm lens. Palette warm industrial gray, colorful transfers, paper beneath."
+    },
+    {
+      "slug": "product-retractable-banner",
+      "title": "Retractable Banner Stand hero",
+      "aspect": "4:3",
+      "prompt": "A retractable banner stand upright in a bright event lobby corner, full-color printed graphic visible, a padded carry bag leaning beside it. Soft daylight from a large window, slight vignette. Palette of cream lobby, ink crimson banner, brass accents."
+    },
+    {
+      "slug": "product-bc-3001-tee",
+      "title": "BELLA+CANVAS 3001 Tee hero",
+      "aspect": "4:3",
+      "prompt": "A heather-grey Bella+Canvas 3001 tee folded neatly, photographed overhead with a fresh screen-print of a crimson crest visible on the chest fold. Paper backdrop, natural diffused daylight, subtle shadow. Palette paper, heather grey, ink crimson."
+    },
+    {
+      "slug": "product-comfort-colors-1717",
+      "title": "Comfort Colors 1717 hero",
+      "aspect": "4:3",
+      "prompt": "A pepper-colored Comfort Colors 1717 garment-dyed tee laid flat on a warm beige linen surface with a visible screen-printed artwork in cream ink. Crisp wrinkles catching side light, 50mm, editorial flat lay."
+    },
+    {
+      "slug": "product-port-authority-polo",
+      "title": "Port Authority Polo hero",
+      "aspect": "4:3",
+      "prompt": "A navy Port Authority K500 polo laid flat with a small left-chest embroidered crest in press-gold thread catching window light. Clean paper backdrop, 85mm, subtle fabric texture."
+    },
+    {
+      "slug": "product-gildan-hoodie",
+      "title": "Gildan 18500 Hoodie hero",
+      "aspect": "4:3",
+      "prompt": "A black Gildan 18500 hoodie hung on a wooden hanger against a concrete wall with warm sidelight, with a bold screen-printed logo visible on the chest. 50mm lens, shallow depth of field, moody editorial tone."
+    },
+    {
+      "slug": "product-richardson-112",
+      "title": "Richardson 112 hero",
+      "aspect": "4:3",
+      "prompt": "A Richardson 112 charcoal/black trucker cap with a leather patch branded mark front and center, on a warm wood table with a brass ruler beside it. 100mm macro, crisp texture, warm tungsten fill. Palette charcoal, black mesh, warm walnut."
+    },
+    {
+      "slug": "product-carhartt-ctk87",
+      "title": "Carhartt CTK87 hero",
+      "aspect": "4:3",
+      "prompt": "A heather-grey Carhartt pocket tee hung on a worn metal locker door in a workshop. Directional warm light, 35mm lens, industrial mood. Palette of heather grey, warm steel, ink-crimson pocket flag."
+    },
+    {
+      "slug": "product-pa-tote",
+      "title": "Port Authority Tote hero",
+      "aspect": "4:3",
+      "prompt": "A natural canvas tote with contrast black straps on a paper backdrop, featuring a bold centered crimson screen-print. Slight perspective, 50mm, commercial product look."
+    },
+    {
+      "slug": "product-walnut-plaque",
+      "title": "Walnut Piano Plaque hero",
+      "aspect": "4:3",
+      "prompt": "A walnut piano-finish plaque with engraved brass plate on a deep charcoal velvet surface. Warm tungsten accent light picks out the grain and brass highlights. 100mm macro. Palette of deep charcoal, warm walnut, brass."
+    },
+    {
+      "slug": "product-crystal-tower",
+      "title": "Crystal Diamond Tower hero",
+      "aspect": "4:3",
+      "prompt": "A crystal optical diamond tower on a reflective black surface with dramatic side spotlight creating faceted light refractions and a subtle prism rainbow. 85mm lens. Premium, serious, editorial."
+    },
+    {
+      "slug": "product-acrylic-jewel",
+      "title": "Acrylic Jewel Award hero",
+      "aspect": "4:3",
+      "prompt": "A thick acrylic jewel-cut award with full-color UV-printed artwork embedded behind the front face, catching light across the bevels, on a chromed base. Soft studio light, 85mm. Clean, modern."
+    },
+    {
+      "slug": "product-desk-clock",
+      "title": "Executive Desk Clock hero",
+      "aspect": "4:3",
+      "prompt": "An executive rosewood desk clock with brushed chrome face and engraved plate, on a mahogany desk, paper notebook and brass pen beside it. Warm desk-lamp light. 50mm. Palette rosewood, chrome, cream paper."
+    },
+    {
+      "slug": "product-polar-camel-20oz",
+      "title": "Polar Camel 20oz hero",
+      "aspect": "4:3",
+      "prompt": "Three Polar Camel 20oz tumblers in sage, matte black, and rose gold, each with a laser-engraved crest catching a narrow warm spotlight. Warm paper surface, 85mm, clean composition. Palette sage, black, rose gold, paper."
+    },
+    {
+      "slug": "product-ceramic-mug",
+      "title": "Ceramic 11oz Mug hero",
+      "aspect": "4:3",
+      "prompt": "A white ceramic 11oz mug with a full-color sublimated wrap design, steaming coffee rising slightly. Paper background, warm morning light. 85mm. Composition cozy and inviting."
+    },
+    {
+      "slug": "product-slate-coasters",
+      "title": "Slate Coaster Set hero",
+      "aspect": "4:3",
+      "prompt": "A 4-pack of slate coasters stacked slightly offset on a warm walnut table with a single coaster to the side showing engraved monogram. Close 85mm, natural light. Palette charcoal slate, warm walnut."
+    },
+    {
+      "slug": "product-photo-cooler",
+      "title": "Photo Cooler Bag hero",
+      "aspect": "4:3",
+      "prompt": "A full-color photo cooler bag on a picnic blanket with a few closed drinks beside it, outdoor warm afternoon light. 35mm lens, warm feel. Palette cream blanket, saturated cooler print."
+    },
+    {
+      "slug": "product-photo-keychain",
+      "title": "Photo Keychain hero",
+      "aspect": "4:3",
+      "prompt": "A two-sided aluminum photo keychain with a family portrait, hanging from a leather loop on a paper backdrop. Warm side light, 100mm macro. Palette paper, warm metallic, family-photo colors."
+    },
+    {
+      "slug": "product-custom-patch",
+      "title": "Custom Morale Patch hero",
+      "aspect": "4:3",
+      "prompt": "A stack of morale patches — embroidered and PVC — partially spread across a weathered canvas surface with a roll of hook-and-loop backing nearby. Warm workshop light, 50mm lens. Palette of canvas tan, deep greens and crimsons, black Velcro."
+    },
+    {
+      "slug": "product-leatherette-journal",
+      "title": "Leatherette Journal hero",
+      "aspect": "4:3",
+      "prompt": "A rustic brown leatherette journal with cream engraved monogram open to a blank page, with a brass pen and pressed rosemary sprig alongside. Warm natural daylight, 85mm, editorial still-life."
+    },
+    {
+      "slug": "product-walnut-cutting-board",
+      "title": "Walnut Cutting Board hero",
+      "aspect": "4:3",
+      "prompt": "A solid walnut cutting board with elegant engraved family monogram, on a warm marble countertop with a linen napkin, a halved lemon, and a sprig of thyme. Warm kitchen light, 50mm. Editorial, inviting."
+    },
+    {
+      "slug": "product-personalized-tumbler",
+      "title": "Personalized 20oz Tumbler hero",
+      "aspect": "4:3",
+      "prompt": "A single matte-black Polar Camel 20oz tumbler with a personalized first name engraved in elegant serif, photographed on a warm paper surface beside a small birthday-card envelope. Warm morning side light, 100mm macro. Gift-ready, intimate."
+    },
+    {
+      "slug": "product-resin-soccer",
+      "title": "Resin Soccer Trophy hero",
+      "aspect": "4:3",
+      "prompt": "A resin soccer figure on a weighted black base with brass engraving plate, photographed low-angle against a moody charcoal backdrop with a single warm rim light. 50mm lens, slightly heroic composition. Palette charcoal, brass, hand-painted resin colors."
+    },
+    {
+      "slug": "product-sport-medal",
+      "title": "Sport Medal hero",
+      "aspect": "4:3",
+      "prompt": "A 2-inch die-cast sport medal with a colorful soccer insert hanging from a red-white-blue ribbon, draped over a dark walnut edge. Warm side light, 85mm macro. Palette brass, ribbon reds and blues, walnut."
+    },
+    {
+      "slug": "product-cup-trophy",
+      "title": "Cup Trophy hero",
+      "aspect": "4:3",
+      "prompt": "A 14-inch polished brass cup trophy on a tiered walnut base, photographed against a deep charcoal backdrop with warm tungsten spotlighting the cup rim. 50mm lens, subtle heroic angle. Premium, championship feel."
+    },
+    {
+      "slug": "product-honor-roll-medal",
+      "title": "Honor Roll Medal hero",
+      "aspect": "4:3",
+      "prompt": "A small 2-inch honor roll medal with neat serif text, hanging from a forest-green ribbon on a warm cream paper surface, beside a blackboard chalk arrangement suggesting a classroom. 85mm macro. Academic, warm, earnest."
+    }
+  ]
+}
