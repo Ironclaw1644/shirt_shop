@@ -140,14 +140,14 @@ function Logomark() {
       >
         <rect x="2" y="2" width="36" height="36" rx="8" fill="#1A1A1A" />
         <rect x="6" y="6" width="28" height="28" rx="5" fill="#FAFAF7" />
-        {/* Georgia state silhouette: flat N + Rabun finger, Savannah River diagonal, curved coast, SE tip */}
+        {/* Georgia state silhouette — accurate outline from US Census boundary data (51 vertices) */}
         <path
-          d="M11.5 9.5 L20 9.5 L21.5 7.8 L23.5 7.8 L24.5 9.5 L24.9 9.5 L29.5 17.5 Q30 22 28 25.8 L24 30.8 L11.5 30.8 Z"
+          d="M20.58 7.0 L19.68 8.1 L19.61 8.64 L21.02 9.74 L21.46 9.66 L22.11 10.79 L22.25 11.39 L22.93 12.46 L23.9 13.11 L24.46 14.08 L25.59 14.95 L25.55 15.55 L26.29 16.51 L27.43 17.3 L27.7 18.15 L27.75 19.25 L28.33 19.62 L29.0 21.01 L29.03 21.89 L30.0 22.34 L28.96 24.1 L28.77 25.0 L28.33 25.79 L28.28 26.61 L27.82 26.98 L27.64 29.19 L26.48 28.99 L25.5 28.57 L25.11 28.96 L25.27 29.93 L25.08 30.97 L24.57 31.0 L24.36 29.9 L18.93 29.5 L13.13 29.16 L12.55 27.66 L12.09 26.25 L12.39 24.89 L11.97 23.33 L12.34 22.45 L12.32 21.8 L13.04 21.15 L12.55 20.84 L12.74 20.33 L12.28 19.51 L11.79 18.07 L10.74 11.53 L10.0 7.08 L15.45 7.06 L18.42 7.08 L20.58 7.0 Z"
           fill="#B8142B"
           strokeLinejoin="round"
         />
         {/* Atlanta */}
-        <circle cx="15.5" cy="15.2" r="1.5" fill="#D4A017" />
+        <circle cx="15.16" cy="13.47" r="1.4" fill="#D4A017" />
       </svg>
     </span>
   );

@@ -2,66 +2,39 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
-/**
- * Georgia silhouette path candidates.
- * All drawn in 40x40 viewBox, state occupying roughly x:11-30, y:9-31.
- * Correct aspect ratio: Georgia is ~1.25:1 tall:wide.
- */
-// V13: polished refinement of V7 with cleaner proportions + smoother coast
-const FINAL_PATH =
-  "M11 10 L20 10 L21.5 8.2 L23.8 8.2 L24.8 10 L25.2 10 L29.8 18 Q30.2 22.5 28.2 26 L24.5 30.8 L11 30.8 Z";
+// Accurate Georgia outline derived from US Census state boundaries,
+// simplified to 51 vertices, mapped to 40x40 viewBox with state in x:10-30, y:7-31.
+const GA_PATH =
+  "M20.58 7.0 L19.68 8.1 L19.61 8.64 L21.02 9.74 L21.46 9.66 L22.11 10.79 L22.25 11.39 L22.93 12.46 L23.9 13.11 L24.46 14.08 L25.59 14.95 L25.55 15.55 L26.29 16.51 L27.43 17.3 L27.7 18.15 L27.75 19.25 L28.33 19.62 L29.0 21.01 L29.03 21.89 L30.0 22.34 L28.96 24.1 L28.77 25.0 L28.33 25.79 L28.28 26.61 L27.82 26.98 L27.64 29.19 L26.48 28.99 L25.5 28.57 L25.11 28.96 L25.27 29.93 L25.08 30.97 L24.57 31.0 L24.36 29.9 L18.93 29.5 L13.13 29.16 L12.55 27.66 L12.09 26.25 L12.39 24.89 L11.97 23.33 L12.34 22.45 L12.32 21.8 L13.04 21.15 L12.55 20.84 L12.74 20.33 L12.28 19.51 L11.79 18.07 L10.74 11.53 L10.0 7.08 L15.45 7.06 L18.42 7.08 L20.58 7.0 Z";
 
-const CANDIDATES: { name: string; path: string; atlanta: [number, number] | null }[] = [
-  { name: "final-with-dot", path: FINAL_PATH, atlanta: [15.5, 15.8] },
-  { name: "final-no-dot", path: FINAL_PATH, atlanta: null },
-  // slightly taller / narrower
-  {
-    name: "final-tall",
-    path: "M11.5 9.5 L20 9.5 L21.5 7.8 L23.5 7.8 L24.5 9.5 L24.9 9.5 L29.5 17.5 Q30 22 28 25.8 L24 30.8 L11.5 30.8 Z",
-    atlanta: [15.5, 15.2],
-  },
-];
+const ATLANTA: [number, number] = [15.16, 13.47];
 
-function renderCard(
-  label: string,
-  gaPath: string,
-  atlanta: [number, number] | null,
-  size: number,
-  variant: "header" | "footer",
-): string {
+function render(size: number, variant: "header" | "footer"): string {
   const isHeader = variant === "header";
   const outerFill = isHeader ? "#1A1A1A" : "#FAFAF7";
   const innerFill = isHeader ? "#FAFAF7" : "#1A1A1A";
   const stateFill = isHeader ? "#B8142B" : "#D4A017";
   const dotFill = isHeader ? "#D4A017" : "#B8142B";
-  const dot = atlanta
-    ? `<circle cx="${atlanta[0]}" cy="${atlanta[1]}" r="1.6" fill="${dotFill}" />`
-    : "";
-  return `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="${size}" height="${size}">
-  <rect x="2" y="2" width="36" height="36" rx="8" fill="${outerFill}" />
-  <rect x="6" y="6" width="28" height="28" rx="5" fill="${innerFill}" />
-  <path d="${gaPath}" fill="${stateFill}" stroke-linejoin="round" />
-  ${dot}
-</svg>
-  `.trim();
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="${size}" height="${size}">
+    <rect x="2" y="2" width="36" height="36" rx="8" fill="${outerFill}" />
+    <rect x="6" y="6" width="28" height="28" rx="5" fill="${innerFill}" />
+    <path d="${GA_PATH}" fill="${stateFill}" stroke-linejoin="round" />
+    <circle cx="${ATLANTA[0]}" cy="${ATLANTA[1]}" r="1.4" fill="${dotFill}" />
+  </svg>`;
 }
 
 async function run() {
   const outDir = path.join(process.cwd(), "tmp-logo-preview");
   await fs.mkdir(outDir, { recursive: true });
 
-  for (const c of CANDIDATES) {
-    const largeHeader = renderCard(c.name, c.path, c.atlanta, 400, "header");
-    await sharp(Buffer.from(largeHeader))
+  for (const variant of ["header", "footer"] as const) {
+    await sharp(Buffer.from(render(400, variant)))
       .png()
-      .toFile(path.join(outDir, `${c.name}-header-400.png`));
-
-    const smallHeader = renderCard(c.name, c.path, c.atlanta, 40, "header");
-    await sharp(Buffer.from(smallHeader))
+      .toFile(path.join(outDir, `${variant}-400.png`));
+    await sharp(Buffer.from(render(40, variant)))
       .resize(120, 120, { kernel: "nearest" })
       .png()
-      .toFile(path.join(outDir, `${c.name}-header-40x3.png`));
+      .toFile(path.join(outDir, `${variant}-40x3.png`));
   }
 
   console.log("Wrote", outDir);
