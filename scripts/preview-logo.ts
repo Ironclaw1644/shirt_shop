@@ -13,13 +13,16 @@ function render(size: number, variant: "header" | "footer"): string {
   const isHeader = variant === "header";
   const outerFill = isHeader ? "#1A1A1A" : "#FAFAF7";
   const innerFill = isHeader ? "#FAFAF7" : "#1A1A1A";
-  const stateFill = isHeader ? "#B8142B" : "#D4A017";
+  const strokeColor = isHeader ? "#B8142B" : "#D4A017";
   const dotFill = isHeader ? "#D4A017" : "#B8142B";
+  // Outline-only, shifted down by 1 unit for better optical centering.
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="${size}" height="${size}">
     <rect x="2" y="2" width="36" height="36" rx="8" fill="${outerFill}" />
     <rect x="6" y="6" width="28" height="28" rx="5" fill="${innerFill}" />
-    <path d="${GA_PATH}" fill="${stateFill}" stroke-linejoin="round" />
-    <circle cx="${ATLANTA[0]}" cy="${ATLANTA[1]}" r="1.4" fill="${dotFill}" />
+    <g transform="translate(0 1.5)">
+      <path d="${GA_PATH}" fill="none" stroke="${strokeColor}" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
+      <circle cx="${ATLANTA[0]}" cy="${ATLANTA[1]}" r="1.5" fill="${dotFill}" />
+    </g>
   </svg>`;
 }
 

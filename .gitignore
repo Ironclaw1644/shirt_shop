@@ -8,7 +8,6 @@ build
 .env.*.local
 *.tsbuildinfo
 next-env.d.ts
-/public/images/generated
 /.vercel
 coverage
 .turbo
