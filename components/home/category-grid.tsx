@@ -28,7 +28,7 @@ export function CategoryGrid() {
           </div>
           <p className="md:max-w-sm text-ink-soft leading-relaxed">
             Seven categories. Thousands of SKUs. Every item ships either blank-bulk or fully
-            decorated, with volume pricing that scales to 50,000 units.
+            decorated, with tiered volume pricing that scales as your order grows.
           </p>
         </div>
 

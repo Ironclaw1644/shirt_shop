@@ -29,7 +29,7 @@ export const categories: Category[] = [
     eyebrow: "Press-ready, paper-first",
     tagline: "Cards, signs, banners, booklets — printed right here in Alpharetta.",
     intro:
-      "From 500 business cards to 50,000 flyers, the Georgia Print Hub press runs tight color, crisp stock, and tight turnaround. Pick your paper, upload a proof, approve, and we ship.",
+      "From 500 business cards to bulk flyer runs, the Georgia Print Hub press turns out tight color, crisp stock, and quick turnaround. Pick your paper, upload a proof, approve, and we ship.",
     heroPromptKey: "category:custom-printing",
     accentColor: "crimson",
     decorationMethods: ["offset-print", "digital-print", "foil", "uv-gloss"],

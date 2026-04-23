@@ -84,7 +84,7 @@ export const cityLandings: CityLanding[] = [
     eyebrow: "From the perimeter in",
     intro:
       "Corporate headquarters, event pros, agencies, and national brands choose Georgia Print Hub for large-run decoration and premium recognition. We deliver into every neighborhood inside the perimeter and beyond.",
-    angle: "Volume at speed — 50K EDDM postcards, 10K branded tees, 2K crystal awards.",
+    angle: "Volume at speed — EDDM postcards, branded tees, crystal awards.",
     audienceCopy:
       "Midtown agencies, Buckhead corporate HQs, Westside event pros, and Atlanta-metro municipal teams.",
     image: "/images/generated/city-atlanta-custom-printing.webp",

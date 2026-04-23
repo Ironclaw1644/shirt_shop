@@ -7,7 +7,7 @@ import { Icon } from "@/components/ui/icon";
 export const metadata: Metadata = {
   title: "Request a volume quote",
   description:
-    "Get tier pricing, lead time, and shipping on runs from 500 to 50,000+ units. Response within one business day.",
+    "Get tier pricing, lead time, and shipping on runs from small batches to high-volume orders. Response within one business day.",
 };
 
 export default function QuotePage() {
@@ -25,9 +25,9 @@ export default function QuotePage() {
             </span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-soft leading-relaxed">
-            Whether it&rsquo;s 500 branded polos for a corporate kickoff or 50,000 EDDM postcards for
-            a direct-mail campaign, send us the brief and we&rsquo;ll come back with tier pricing,
-            production schedule, and shipping.
+            Whether it&rsquo;s 500 branded polos for a corporate kickoff or a large EDDM postcard
+            campaign, send us the brief and we&rsquo;ll come back with tier pricing, production
+            schedule, and shipping.
           </p>
         </div>
       </section>
@@ -60,7 +60,7 @@ export default function QuotePage() {
           <div className="rounded-lg border border-ink/10 bg-ink text-paper p-6">
             <p className="font-editorial italic text-accent-300">Reality check</p>
             <p className="mt-2 font-display text-2xl leading-snug">
-              We&rsquo;ve printed single runs of 50,000+ for national brands.
+              We print single runs at every scale — from boutique launches to national brand rollouts.
             </p>
             <p className="mt-3 text-sm text-paper/70">
               Tell us your deadline and we&rsquo;ll tell you the truth about whether it&rsquo;s doable.

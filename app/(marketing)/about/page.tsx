@@ -25,7 +25,7 @@ export default function AboutPage() {
           </p>
           <p className="mt-3 text-lg text-ink-soft leading-relaxed">
             Our shop handles in-house laser engraving, UV printing, DTF transfers, sublimation,
-            embroidery, and screen printing. Single-unit gifts and 50,000-unit production runs
+            embroidery, and screen printing. Single-unit gifts and large production runs
             both fit on our schedule.
           </p>
           <p className="mt-3 text-lg text-ink-soft leading-relaxed">

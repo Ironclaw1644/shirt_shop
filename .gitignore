@@ -13,3 +13,4 @@ next-env.d.ts
 coverage
 .turbo
 .vercel
+tmp-logo-preview/

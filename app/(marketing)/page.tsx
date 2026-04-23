@@ -12,7 +12,7 @@ import { NewsletterInline } from "@/components/home/newsletter-inline";
 export const metadata: Metadata = {
   title: "Custom printing, promo, and apparel in Alpharetta, GA",
   description:
-    "Twenty years printing, promoting, and outfitting Georgia. In-house laser, UV, DTF, sublimation, embroidery, and screen print — from gifts to 50,000-unit runs.",
+    "Twenty years printing, promoting, and outfitting Georgia. In-house laser, UV, DTF, sublimation, embroidery, and screen print — from single gifts to large-volume runs.",
 };
 
 export default function HomePage() {

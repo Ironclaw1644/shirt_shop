@@ -97,7 +97,7 @@ export default async function CategoryOrCityPage({
               Don&rsquo;t see the size run you need?
             </h2>
             <p className="mt-4 text-ink-soft leading-relaxed">
-              Volume runs of 5,000 to 50,000+ units are our everyday work. Tell us
+              High-volume runs are our everyday work. Tell us
               what you need and we&rsquo;ll quote tier pricing, lead time, and shipping —
               usually within one business day.
             </p>

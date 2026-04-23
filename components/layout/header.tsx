@@ -32,7 +32,7 @@ export function SiteHeader() {
       <div className="bg-ink text-paper text-xs">
         <div className="container flex h-8 items-center justify-between">
           <span className="hidden sm:inline font-mono tracking-wide">
-            Alpharetta, GA · 20+ years · Volume runs of 5K / 10K / 50K welcome
+            Alpharetta, GA · 20+ years · Single pieces to high-volume runs
           </span>
           <span className="sm:hidden font-mono tracking-wide">20+ yrs · volume-ready</span>
           <Link
@@ -136,15 +136,29 @@ function Logomark() {
       <svg
         viewBox="0 0 40 40"
         aria-hidden
-        className="h-10 w-10 transition-transform group-hover:-rotate-3"
+        className="h-10 w-10 transform transition-transform duration-300 group-hover:-rotate-6"
       >
         <rect x="2" y="2" width="36" height="36" rx="8" fill="#1A1A1A" />
         <rect x="6" y="6" width="28" height="28" rx="5" fill="#FAFAF7" />
+        {/* Georgia state silhouette */}
         <path
-          d="M13 13h14v3H16v2h9v3h-9v2h11v3H13V13z"
+          d="M9 10 L24 10 L24 8.6 L27 8.6 L27 11 L32 18 Q31.8 23 30.3 26.2 L27 31 L9 31 Z"
           fill="#B8142B"
         />
-        <circle cx="31" cy="9" r="3" fill="#D4A017" />
+        {/* Atlanta dot */}
+        <circle cx="15.5" cy="16" r="1.4" fill="#D4A017" />
+        {/* cream P */}
+        <text
+          x="20"
+          y="26"
+          textAnchor="middle"
+          fontFamily="var(--font-display), ui-sans-serif, system-ui, sans-serif"
+          fontSize="12"
+          fontWeight="900"
+          fill="#FAFAF7"
+        >
+          P
+        </text>
       </svg>
     </span>
   );

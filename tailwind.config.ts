@@ -179,7 +179,7 @@ const config: Config = {
         "ink-cyan": "ink-cyan 1.1s cubic-bezier(.2,.7,.1,1) both",
         "ink-magenta": "ink-magenta 1.1s cubic-bezier(.2,.7,.1,1) both",
         "ink-yellow": "ink-yellow 1.1s cubic-bezier(.2,.7,.1,1) both",
-        marquee: "marquee 40s linear infinite",
+        marquee: "marquee 18s linear infinite",
         "paper-fold": "paper-fold 0.6s cubic-bezier(.2,.9,.2,1) both",
         "wet-ink": "wet-ink 1.4s ease-in-out infinite alternate",
         "accordion-down": "accordion-down 0.2s ease-out",

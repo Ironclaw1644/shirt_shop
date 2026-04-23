@@ -16,7 +16,7 @@ type Api = {
   clear: () => void;
 };
 
-const BASE = 720; // canvas side length in px
+const BASE = 720; // canvas logical (design) side length in px
 
 export function FabricCanvas({
   product,
@@ -30,14 +30,17 @@ export function FabricCanvas({
   onReady: (api: Api) => void;
 }) {
   const ref = React.useRef<HTMLCanvasElement | null>(null);
+  const wrapperRef = React.useRef<HTMLDivElement | null>(null);
   const canvasRef = React.useRef<fabric.Canvas | null>(null);
 
   // Init canvas once
   React.useEffect(() => {
-    if (!ref.current) return;
+    if (!ref.current || !wrapperRef.current) return;
+    let disposed = false;
+    const initial = Math.min(BASE, wrapperRef.current.clientWidth || BASE);
     const canvas = new fabric.Canvas(ref.current, {
-      width: BASE,
-      height: BASE,
+      width: initial,
+      height: initial,
       backgroundColor: "#f6f4ef",
       selection: true,
       preserveObjectStacking: true,
@@ -49,8 +52,9 @@ export function FabricCanvas({
       : null;
     if (bgUrl) {
       fabric.FabricImage.fromURL(bgUrl, { crossOrigin: "anonymous" }).then((img) => {
-        if (!img || !canvasRef.current) return;
-        const scale = Math.min(BASE / (img.width || BASE), BASE / (img.height || BASE));
+        if (disposed || !img || !canvasRef.current) return;
+        const side = canvas.getWidth();
+        const scale = Math.min(side / (img.width || side), side / (img.height || side));
         img.scale(scale);
         img.set({ selectable: false, evented: false, opacity: 0.92 });
         canvas.backgroundImage = img;
@@ -58,16 +62,41 @@ export function FabricCanvas({
       });
     }
 
+    const resize = () => {
+      if (disposed || !wrapperRef.current || !canvasRef.current) return;
+      const w = Math.max(240, Math.min(BASE, wrapperRef.current.clientWidth));
+      const prev = canvas.getWidth();
+      if (Math.abs(prev - w) < 1) return;
+      const ratio = w / prev;
+      canvas.setDimensions({ width: w, height: w });
+      canvas.getObjects().forEach((o) => {
+        o.scaleX = (o.scaleX || 1) * ratio;
+        o.scaleY = (o.scaleY || 1) * ratio;
+        o.left = (o.left || 0) * ratio;
+        o.top = (o.top || 0) * ratio;
+        o.setCoords();
+      });
+      if (canvas.backgroundImage) {
+        const bg = canvas.backgroundImage;
+        bg.scaleX = (bg.scaleX || 1) * ratio;
+        bg.scaleY = (bg.scaleY || 1) * ratio;
+      }
+      canvas.requestRenderAll();
+    };
+    const ro = new ResizeObserver(resize);
+    ro.observe(wrapperRef.current);
+
     drawSafeArea(canvas, product, placement, settings.showSafeArea);
 
     const api: Api = {
       addText: (txt) => {
+        const side = canvas.getWidth();
         const text = new fabric.IText(txt, {
           fontFamily: "Inter Tight",
-          fontSize: 48,
+          fontSize: Math.round(48 * (side / BASE)),
           fill: "#1A1A1A",
-          left: BASE / 2 - 100,
-          top: BASE / 2 - 30,
+          left: side / 2 - 100 * (side / BASE),
+          top: side / 2 - 30 * (side / BASE),
           textAlign: "center",
         });
         canvas.add(text);
@@ -75,12 +104,13 @@ export function FabricCanvas({
       },
       addImage: (url) => {
         fabric.FabricImage.fromURL(url, { crossOrigin: "anonymous" }).then((img) => {
-          if (!img) return;
-          const maxSide = BASE * 0.55;
+          if (disposed || !img) return;
+          const side = canvas.getWidth();
+          const maxSide = side * 0.55;
           const scale = Math.min(maxSide / (img.width || maxSide), maxSide / (img.height || maxSide));
           img.set({
-            left: BASE / 2,
-            top: BASE / 2,
+            left: side / 2,
+            top: side / 2,
             originX: "center",
             originY: "center",
             scaleX: scale,
@@ -122,7 +152,10 @@ export function FabricCanvas({
     onReady(api);
 
     return () => {
+      disposed = true;
+      ro.disconnect();
       canvas.dispose();
+      canvasRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product?.slug]);
@@ -136,8 +169,8 @@ export function FabricCanvas({
 
   return (
     <div className="relative w-full">
-      <div className="mx-auto max-w-[720px]">
-        <canvas ref={ref} className="w-full rounded border border-ink/15 bg-paper shadow-press" />
+      <div ref={wrapperRef} className="mx-auto w-full max-w-[720px]">
+        <canvas ref={ref} className="w-full rounded border border-ink/15 bg-paper shadow-press touch-none" />
       </div>
     </div>
   );
@@ -165,14 +198,15 @@ function drawSafeArea(
     return;
   }
   // Map a 12" reference to 75% of the canvas width for visualization.
-  const pxPerInch = (BASE * 0.75) / 12;
+  const side = canvas.getWidth();
+  const pxPerInch = (side * 0.75) / 12;
   const w = zone.widthIn * pxPerInch;
   const h = zone.heightIn * pxPerInch;
   const rect = new fabric.Rect({
     width: w,
     height: h,
-    left: BASE / 2,
-    top: BASE / 2,
+    left: side / 2,
+    top: side / 2,
     originX: "center",
     originY: "center",
     fill: "rgba(212, 160, 23, 0.08)",

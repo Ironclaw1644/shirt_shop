@@ -61,8 +61,8 @@ export function VolumeCounters() {
             </span>
           </h2>
           <p className="mt-6 max-w-xl text-paper/70 text-lg leading-relaxed">
-            Single orders of 5,000, 10,000, or 50,000+ units are routine here. Multiple presses,
-            multiple decoration lines, and production schedulers that ship to date every time.
+            Large single orders are routine here. Multiple presses, multiple decoration lines,
+            and production schedulers that ship to date every time.
           </p>
         </div>
 

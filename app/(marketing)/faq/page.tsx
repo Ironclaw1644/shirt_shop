@@ -17,7 +17,7 @@ const faqs = [
     a: "Vectors (AI, SVG, PDF) are preferred for screen print, embroidery, engraving, and DTF. High-resolution raster (300dpi at final size) works for sublimation and UV print. We&apos;ll always proof before running the press.",
   },
   {
-    q: "Can you really handle 50,000 units?",
+    q: "Can you handle large-volume orders?",
     a: "Yes. We run large volume every week — EDDM campaigns, national-chain branded apparel, and multi-material corporate recognition programs. Request a quote to get tier pricing.",
   },
   {

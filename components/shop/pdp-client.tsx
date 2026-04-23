@@ -94,22 +94,6 @@ export function PDPClient({
               </Badge>
             )}
           </div>
-          <div className="mt-4 grid grid-cols-4 gap-3">
-            {[0, 1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="relative aspect-square rounded border border-ink/10 bg-paper-warm overflow-hidden"
-              >
-                <Image
-                  src={`/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`}
-                  alt=""
-                  fill
-                  className="object-cover opacity-80 hover:opacity-100 transition-opacity"
-                  sizes="25vw"
-                />
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Info */}

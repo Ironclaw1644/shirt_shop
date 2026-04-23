@@ -29,6 +29,12 @@ type Manifest = {
 const m = manifest as Manifest;
 const OUT_DIR = path.join(process.cwd(), "public", "images", "generated");
 
+function redact(text: string): string {
+  const key = process.env.GOOGLE_API_KEY;
+  if (!key) return text;
+  return text.split(key).join("[REDACTED_GOOGLE_API_KEY]");
+}
+
 const args = process.argv.slice(2);
 const regenerateAll = args.includes("--all");
 const regenerateIdx = args.indexOf("--regenerate");
@@ -82,7 +88,7 @@ async function generateOne(entry: ManifestEntry) {
 
     console.log(`  ✓ wrote ${path.relative(process.cwd(), outPath)} (${mimeType})`);
   } catch (err) {
-    console.error(`  ✕ ${entry.slug}:`, (err as Error).message);
+    console.error(`  ✕ ${entry.slug}:`, redact((err as Error).message));
   }
 }
 
@@ -99,6 +105,7 @@ async function run() {
 }
 
 run().catch((err) => {
-  console.error(err);
+  const msg = err instanceof Error ? err.message : String(err);
+  console.error(redact(msg));
   process.exit(1);
 });

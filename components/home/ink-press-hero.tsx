@@ -9,7 +9,7 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 
 export function InkPressHero() {
   const reduced = useReducedMotion();
-  const title = "Printed. Pressed. Personalized.";
+  const lines = ["Printed.", "Pressed.", "Personalized."];
   return (
     <section className="relative overflow-hidden bg-paper">
       <div className="absolute inset-0 paper-grain opacity-80" aria-hidden />
@@ -21,17 +21,18 @@ export function InkPressHero() {
         <div className="lg:col-span-7 flex flex-col justify-center">
           <Eyebrow tone="crimson">Alpharetta, GA · Est. 2005</Eyebrow>
 
-          <h1 className="heading-display mt-6 text-[11vw] sm:text-[9vw] lg:text-[6rem] xl:text-[7rem] leading-[0.9] text-ink">
-            {reduced ? (
-              title
-            ) : (
-              <StampedHeadline text={title} />
-            )}
+          <h1 className="heading-display mt-6 text-[14vw] sm:text-[10vw] lg:text-[6rem] xl:text-[7rem] leading-[0.95] text-ink break-words">
+            {lines.map((line, i) => (
+              <span key={line} className="block">
+                {reduced ? line : <StampedHeadline text={line} />}
+                {i < lines.length - 1 && " "}
+              </span>
+            ))}
           </h1>
 
           <p className="mt-8 max-w-xl text-lg text-ink-soft leading-relaxed">
             <span className="font-editorial italic text-ink">Twenty years</span> printing, promoting,
-            and outfitting Georgia — from a single engraved gift to <strong>50,000-unit</strong>{" "}
+            and outfitting Georgia — from a single engraved gift to <strong>high-volume</strong>{" "}
             production runs. One shop, every method, and proof-before-print every time.
           </p>
 

@@ -9,7 +9,7 @@ const trustMarks = [
   {
     icon: "boxes-stacked",
     label: "Volume-capable",
-    sub: "5K / 10K / 50K+ orders, routine",
+    sub: "Single pieces to high-volume runs",
   },
   {
     icon: "print",
