@@ -140,25 +140,14 @@ function Logomark() {
       >
         <rect x="2" y="2" width="36" height="36" rx="8" fill="#1A1A1A" />
         <rect x="6" y="6" width="28" height="28" rx="5" fill="#FAFAF7" />
-        {/* Georgia state silhouette */}
+        {/* Georgia state silhouette: flat N + Rabun finger, Savannah River diagonal, curved coast, SE tip */}
         <path
-          d="M9 10 L24 10 L24 8.6 L27 8.6 L27 11 L32 18 Q31.8 23 30.3 26.2 L27 31 L9 31 Z"
+          d="M11.5 9.5 L20 9.5 L21.5 7.8 L23.5 7.8 L24.5 9.5 L24.9 9.5 L29.5 17.5 Q30 22 28 25.8 L24 30.8 L11.5 30.8 Z"
           fill="#B8142B"
+          strokeLinejoin="round"
         />
-        {/* Atlanta dot */}
-        <circle cx="15.5" cy="16" r="1.4" fill="#D4A017" />
-        {/* cream P */}
-        <text
-          x="20"
-          y="26"
-          textAnchor="middle"
-          fontFamily="var(--font-display), ui-sans-serif, system-ui, sans-serif"
-          fontSize="12"
-          fontWeight="900"
-          fill="#FAFAF7"
-        >
-          P
-        </text>
+        {/* Atlanta */}
+        <circle cx="15.5" cy="15.2" r="1.5" fill="#D4A017" />
       </svg>
     </span>
   );
