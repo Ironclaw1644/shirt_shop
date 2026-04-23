@@ -9,19 +9,23 @@ const GA_PATH =
 
 const ATLANTA: [number, number] = [15.16, 13.47];
 
+const STAR_POINTS =
+  "15.16,11.97 15.51,12.985 16.58,13.01 15.73,13.655 16.04,14.68 15.16,14.07 14.28,14.68 14.59,13.655 13.74,13.01 14.81,12.985";
+
 function render(size: number, variant: "header" | "footer"): string {
   const isHeader = variant === "header";
   const outerFill = isHeader ? "#1A1A1A" : "#FAFAF7";
   const innerFill = isHeader ? "#FAFAF7" : "#1A1A1A";
   const strokeColor = isHeader ? "#B8142B" : "#D4A017";
-  const dotFill = isHeader ? "#D4A017" : "#B8142B";
-  // Outline-only, shifted down by 1 unit for better optical centering.
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="${size}" height="${size}">
-    <rect x="2" y="2" width="36" height="36" rx="8" fill="${outerFill}" />
-    <rect x="6" y="6" width="28" height="28" rx="5" fill="${innerFill}" />
-    <g transform="translate(0 1.5)">
-      <path d="${GA_PATH}" fill="none" stroke="${strokeColor}" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
-      <circle cx="${ATLANTA[0]}" cy="${ATLANTA[1]}" r="1.5" fill="${dotFill}" />
+  const starFill = isHeader ? "#D4A017" : "#B8142B";
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 44 44" width="${size}" height="${size}">
+    <g transform="rotate(-6 20 20)">
+      <rect x="2" y="2" width="36" height="36" rx="8" fill="${outerFill}" />
+      <rect x="6" y="6" width="28" height="28" rx="5" fill="${innerFill}" />
+      <g transform="translate(0 1.5)">
+        <path d="${GA_PATH}" fill="none" stroke="${strokeColor}" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" />
+        <polygon points="${STAR_POINTS}" fill="${starFill}" />
+      </g>
     </g>
   </svg>`;
 }

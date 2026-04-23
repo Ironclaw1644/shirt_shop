@@ -136,7 +136,7 @@ function Logomark() {
       <svg
         viewBox="0 0 40 40"
         aria-hidden
-        className="h-10 w-10 transform transition-transform duration-300 group-hover:-rotate-6"
+        className="h-10 w-10 transform -rotate-6 transition-transform duration-300 group-hover:-rotate-12"
       >
         <rect x="2" y="2" width="36" height="36" rx="8" fill="#1A1A1A" />
         <rect x="6" y="6" width="28" height="28" rx="5" fill="#FAFAF7" />
@@ -150,7 +150,11 @@ function Logomark() {
             strokeLinejoin="round"
             strokeLinecap="round"
           />
-          <circle cx="15.16" cy="13.47" r="1.5" fill="#D4A017" />
+          {/* Atlanta — 5-point star, outer radius 1.5 centered at (15.16, 13.47) */}
+          <polygon
+            points="15.16,11.97 15.51,12.985 16.58,13.01 15.73,13.655 16.04,14.68 15.16,14.07 14.28,14.68 14.59,13.655 13.74,13.01 14.81,12.985"
+            fill="#D4A017"
+          />
         </g>
       </svg>
     </span>
