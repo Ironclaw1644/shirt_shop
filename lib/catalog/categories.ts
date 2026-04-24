@@ -1,5 +1,5 @@
 /**
- * Single source of truth for the seven top-level categories, their subcategories,
+ * Single source of truth for the eight top-level categories, their subcategories,
  * and copy used across storefront, navigation, and SEO.
  */
 
@@ -61,6 +61,14 @@ export const categories: Category[] = [
       { slug: "vinyl-lettering", name: "Vinyl Decals & Lettering" },
       { slug: "fat-heads", name: "Fat Heads" },
       { slug: "graduation-yard-signs", name: "Graduation Yard Signs" },
+      { slug: "foam-board-posters", name: "Foam-Mounted Posters" },
+      { slug: "step-and-repeat-banners", name: "Step & Repeat Banners" },
+      { slug: "x-stands", name: "X-Stand Banners" },
+      { slug: "a-frames", name: "A-Frame Sidewalk Signs" },
+      { slug: "table-covers", name: "Table Covers & Throws" },
+      { slug: "tablecloths", name: "Tablecloths" },
+      { slug: "trade-show-backdrops", name: "Trade-Show Backdrops" },
+      { slug: "roll-up-signs", name: "Roll-Up Signs" },
     ],
   },
   {
@@ -92,6 +100,9 @@ export const categories: Category[] = [
       { slug: "bags", name: "Bags & Totes" },
       { slug: "accessories", name: "Accessories" },
       { slug: "personal-protection", name: "Personal Protection" },
+      { slug: "aprons", name: "Aprons" },
+      { slug: "scrubs-lab-coats", name: "Scrubs & Lab Coats" },
+      { slug: "beanies-visors", name: "Beanies & Visors" },
       { slug: "womens", name: "Women's" },
       { slug: "youth", name: "Youth" },
     ],
@@ -116,6 +127,8 @@ export const categories: Category[] = [
       { slug: "desk-pieces", name: "Desk Pieces" },
       { slug: "name-plates", name: "Name Plates" },
       { slug: "office-signage", name: "Office Signage" },
+      { slug: "perpetual-plaques", name: "Perpetual Plaques" },
+      { slug: "gavels", name: "Gavels" },
     ],
   },
   {
@@ -137,6 +150,9 @@ export const categories: Category[] = [
       { slug: "wine-sets", name: "Wine Sets" },
       { slug: "coasters", name: "Coasters" },
       { slug: "bottle-openers", name: "Bottle Openers" },
+      { slug: "growlers", name: "Growlers" },
+      { slug: "shaker-bottles", name: "Shaker Bottles" },
+      { slug: "40oz-tumblers", name: "40oz Tumblers" },
     ],
   },
   {
@@ -177,6 +193,9 @@ export const categories: Category[] = [
       { slug: "acrylic-pieces", name: "Acrylic Pieces" },
       { slug: "glass-pieces", name: "Glass Pieces" },
       { slug: "journals-portfolios", name: "Journals & Portfolios" },
+      { slug: "money-clips", name: "Money Clips" },
+      { slug: "pet-tags", name: "Pet ID Tags" },
+      { slug: "jewelry-stamping", name: "Jewelry Box Engraving & Stamping" },
     ],
   },
   {
@@ -199,6 +218,26 @@ export const categories: Category[] = [
       { slug: "chenille-pins", name: "Chenille Pins" },
       { slug: "dog-tags", name: "Dog Tags" },
       { slug: "academic-awards", name: "Academic Awards" },
+      { slug: "custom-insert-medals", name: "Custom-Insert Medals" },
+    ],
+  },
+  {
+    slug: "bulk-blanks",
+    name: "Bulk Blanks",
+    eyebrow: "Buy what we print on",
+    tagline: "Wholesale tees, tumblers, totes, vinyl, and paper stock — case-priced.",
+    intro:
+      "Skip the markup and buy the blanks themselves — case-priced cotton tees, drinkware by the dozen, blank vinyl rolls, paper stock, and award blanks. We&rsquo;ll print them too if you change your mind.",
+    heroPromptKey: "category:bulk-blanks",
+    accentColor: "gold",
+    decorationMethods: [],
+    subcategories: [
+      { slug: "blank-apparel", name: "Blank Apparel", blurb: "Tees, hoodies, polos, headwear by the case." },
+      { slug: "blank-drinkware", name: "Blank Drinkware", blurb: "Tumblers, mugs, bottles by the dozen." },
+      { slug: "blank-bags-totes", name: "Blank Bags & Totes" },
+      { slug: "blank-vinyl-transfers", name: "Blank Vinyl & Transfer Materials", blurb: "HTV, DTF film, sublimation rolls." },
+      { slug: "blank-paper-stock", name: "Blank Paper Stock", blurb: "Card, text, cover, label." },
+      { slug: "blank-awards-plaques", name: "Blank Awards & Plaques", blurb: "Engraving-ready bases." },
     ],
   },
 ];

@@ -1,4 +1,5 @@
 import type { Category } from "./categories";
+import { importedProducts } from "./imported-products";
 
 export type SampleProduct = {
   slug: string;
@@ -21,11 +22,11 @@ export type SampleProduct = {
 };
 
 /**
- * A representative set of products across the seven categories.
+ * Hand-curated seed products across the original seven categories.
  * Pricing uses publicly referenced placeholder figures — `priceStatus` flags which
  * need operator confirmation. Overlap SKUs (e.g. tumblers) use distinct copy.
  */
-export const sampleProducts: SampleProduct[] = [
+const seedProducts: SampleProduct[] = [
   // ─── Custom Printing ──────────────────────────────────────────────────────
   {
     slug: "standard-business-cards",
@@ -685,6 +686,12 @@ export const sampleProducts: SampleProduct[] = [
     heroPromptKey: "product:honor-roll-medal",
   },
 ];
+
+/**
+ * Full catalog = seed + imported expansion (Phase 3).
+ * `imported-products.ts` is sourced from competitor catalogs; see that file for details.
+ */
+export const sampleProducts: SampleProduct[] = [...seedProducts, ...importedProducts];
 
 export function productBySlug(slug: string): SampleProduct | undefined {
   return sampleProducts.find((p) => p.slug === slug);
