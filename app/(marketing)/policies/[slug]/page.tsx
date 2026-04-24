@@ -28,9 +28,9 @@ const policies: Record<Slug, { title: string; body: string; description: string 
   },
   shipping: {
     title: "Shipping",
-    description: "Shipping zones, rates, and pickup in Alpharetta.",
+    description: "Shipping zones, rates, and local pickup across metro Atlanta.",
     body: `
-<p>Local pickup is free in Alpharetta. Nationwide flat-rate shipping starts at $8.50 for standard items; oversized and freight orders are quoted individually. Rush options available. <!-- CLIENT_FILL: exact shipping zones and flat-rate numbers --></p>
+<p>Local pickup is free across metro Atlanta. Nationwide flat-rate shipping starts at $8.50 for standard items; oversized and freight orders are quoted individually. Rush options available — many jobs ship same-day or in a few hours. <!-- CLIENT_FILL: exact shipping zones and flat-rate numbers --></p>
 `,
   },
 };

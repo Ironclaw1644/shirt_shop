@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "Do you ship nationwide?",
-    a: "Absolutely. Local pickup in Alpharetta, flat-rate shipping to the rest of the US, and we can coordinate freight for oversized orders.",
+    a: "Absolutely. Local pickup is available in metro Atlanta, flat-rate shipping to the rest of the US, and we can coordinate freight for oversized orders.",
   },
   {
     q: "Will I see a proof before the press runs?",

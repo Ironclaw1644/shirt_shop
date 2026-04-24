@@ -10,7 +10,7 @@ import { LocalStrip } from "@/components/home/local-strip";
 import { NewsletterInline } from "@/components/home/newsletter-inline";
 
 export const metadata: Metadata = {
-  title: "Custom printing, promo, and apparel in Alpharetta, GA",
+  title: "Custom printing, promo, apparel, and bulk blanks — locally printed in Georgia",
   description:
     "Twenty years printing, promoting, and outfitting Georgia. In-house laser, UV, DTF, sublimation, embroidery, and screen print — from single gifts to large-volume runs.",
 };

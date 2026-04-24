@@ -21,8 +21,8 @@ export function LocalStrip() {
           Metro Atlanta & North Georgia
         </h2>
         <p className="mt-3 text-ink-soft max-w-2xl mx-auto">
-          Local pickup in Alpharetta. Next-day delivery across the metro. Nationwide flat-rate
-          shipping on stocked items.
+          Local pickup across metro Atlanta. Same-day or few-hour turns on many jobs. Nationwide
+          flat-rate shipping on stocked items.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-2">
           {cities.map((c) => (

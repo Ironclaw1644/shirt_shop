@@ -53,14 +53,14 @@ export function SiteFooter() {
               <span className="font-display text-xl font-bold">Georgia Print Hub</span>
             </div>
             <p className="mt-4 max-w-sm text-paper/80 leading-relaxed">
-              Printing, promoting, and outfitting Alpharetta and the greater Atlanta metro
-              for over 20 years. In-house laser, UV, DTF, sublimation, embroidery, and
-              screen print — from one-off gifts to large production runs.
+              A true one-stop shop, locally printed in Georgia for over 20 years. In-house laser,
+              UV, DTF, sublimation, embroidery, and screen print — from one-off gifts to large
+              production runs. We sell the blanks too: buy in bulk or have us print on them.
             </p>
             <address className="mt-6 not-italic text-paper/80 space-y-1.5 text-sm">
               <div className="flex items-center gap-2">
                 <Icon icon="location-dot" className="text-accent" />
-                <span>Alpharetta, GA · serving North Georgia</span>
+                <span>Locally printed in Georgia · serving metro Atlanta &amp; beyond</span>
               </div>
               {siteConfig.phone && (
                 <div className="flex items-center gap-2">
@@ -141,7 +141,7 @@ export function SiteFooter() {
 
         <div className="mt-12 pt-6 border-t border-paper/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-paper/50">
           <p>
-            © {new Date().getFullYear()} Georgia Print Hub · Alpharetta, GA · All rights reserved
+            © {new Date().getFullYear()} Georgia Print Hub · Locally printed in Georgia · All rights reserved
           </p>
           <p className="font-mono">
             <span className="text-accent">GAPH</span> · Operating since {siteConfig.founded}

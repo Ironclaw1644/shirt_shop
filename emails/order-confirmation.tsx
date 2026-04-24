@@ -40,7 +40,7 @@ export default function OrderConfirmationEmail({
       <CTA href={`${siteConfig.url}/account/orders/${orderId}`}>View order status</CTA>
 
       <Text style={{ marginTop: 18 }}>
-        Questions? Just reply to this email — it goes straight to our orders desk in Alpharetta.
+        Questions? Just reply to this email — it goes straight to our orders desk.
       </Text>
     </Shell>
   );

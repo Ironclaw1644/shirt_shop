@@ -27,7 +27,7 @@ export const categories: Category[] = [
     slug: "custom-printing",
     name: "Custom Printing",
     eyebrow: "Press-ready, paper-first",
-    tagline: "Cards, signs, banners, booklets — printed right here in Alpharetta.",
+    tagline: "Cards, signs, banners, booklets — locally printed in Georgia.",
     intro:
       "From 500 business cards to bulk flyer runs, the Georgia Print Hub press turns out tight color, crisp stock, and quick turnaround. Pick your paper, upload a proof, approve, and we ship.",
     heroPromptKey: "category:custom-printing",

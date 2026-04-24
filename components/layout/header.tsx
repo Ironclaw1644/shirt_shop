@@ -32,9 +32,9 @@ export function SiteHeader() {
       <div className="bg-ink text-paper text-xs">
         <div className="container flex h-8 items-center justify-between">
           <span className="hidden sm:inline font-mono tracking-wide">
-            Alpharetta, GA · 20+ years · Single pieces to high-volume runs
+            Locally printed in Georgia · Same-day &amp; few-hour turns on many jobs
           </span>
-          <span className="sm:hidden font-mono tracking-wide">20+ yrs · volume-ready</span>
+          <span className="sm:hidden font-mono tracking-wide">Made in GA · same-day turns</span>
           <Link
             href="/quote"
             className="underline decoration-accent decoration-2 underline-offset-[3px] hover:text-accent transition-colors"

@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/shop/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Reach the Georgia Print Hub team in Alpharetta, GA.",
+  description: "Reach the Georgia Print Hub team — locally printed in Georgia.",
 };
 
 export default function ContactPage() {
@@ -18,12 +18,14 @@ export default function ContactPage() {
           Let&rsquo;s talk printing.
         </h1>
         <p className="mt-4 text-lg text-ink-soft">
-          Send a note, request a quote, or drop by the Alpharetta shop.
+          Send a note, request a quote, or stop by the shop. We work with schools, churches,
+          non-profits, restaurants, IT companies, doctor&rsquo;s offices, and jewelry shops across
+          metro Atlanta and beyond.
         </p>
 
         <div className="mt-8 space-y-3 text-ink-soft">
           <p className="flex items-center gap-3">
-            <Icon icon="location-dot" className="text-primary" /> Alpharetta, GA — serving North Georgia
+            <Icon icon="location-dot" className="text-primary" /> Locally printed in Georgia — serving metro Atlanta &amp; beyond
           </p>
           {siteConfig.phone && (
             <p className="flex items-center gap-3">
@@ -40,7 +42,7 @@ export default function ContactPage() {
 
         <div className="mt-8 aspect-[4/3] rounded-lg overflow-hidden border border-ink/10 bg-paper-warm">
           <iframe
-            aria-label="Alpharetta map"
+            aria-label="Service area map"
             className="w-full h-full"
             src="https://www.openstreetmap.org/export/embed.html?bbox=-84.378%2C34.057%2C-84.243%2C34.120&layer=mapnik"
           />

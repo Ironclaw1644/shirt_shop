@@ -48,7 +48,7 @@ export async function generateMetadata({
   const cat = getCategory(category);
   if (!cat) return {};
   return {
-    title: `${cat.name} · Custom production in Alpharetta, GA`,
+    title: `${cat.name} · Locally printed in Georgia`,
     description: cat.intro,
     alternates: { canonical: `${siteConfig.url}/${cat.slug}` },
     openGraph: {

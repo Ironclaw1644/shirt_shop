@@ -85,7 +85,7 @@ export function QuoteForm() {
 
       <Field label="What do you need?" error={err.productSummary?.message}>
         <Input
-          placeholder="e.g. 5,000 Bella+Canvas tees, screen-printed front, 2 colors"
+          placeholder="e.g. 5,000 unisex cotton tees, screen-printed front, 2 colors"
           {...form.register("productSummary")}
           required
         />

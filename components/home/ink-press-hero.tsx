@@ -19,7 +19,7 @@ export function InkPressHero() {
       />
       <div className="container relative z-10 grid lg:grid-cols-12 gap-10 pt-16 pb-24 lg:pt-24 lg:pb-32">
         <div className="lg:col-span-7 flex flex-col justify-center">
-          <Eyebrow tone="crimson">Alpharetta, GA · Est. 2005</Eyebrow>
+          <Eyebrow tone="crimson">Locally printed in Georgia · Est. 2005</Eyebrow>
 
           <h1 className="heading-display mt-6 text-[14vw] sm:text-[10vw] lg:text-[6rem] xl:text-[7rem] leading-[0.95] text-ink break-words">
             {lines.map((line, i) => (
@@ -34,6 +34,10 @@ export function InkPressHero() {
             <span className="font-editorial italic text-ink">Twenty years</span> printing, promoting,
             and outfitting Georgia — from a single engraved gift to <strong>high-volume</strong>{" "}
             production runs. One shop, every method, and proof-before-print every time.
+          </p>
+          <p className="mt-3 max-w-xl text-base text-ink-mute leading-relaxed">
+            Schools, churches, non-profits, restaurants, IT companies, doctor&rsquo;s offices,
+            jewelry shops — no job too big or too small.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -110,7 +114,7 @@ function HeroArtwork() {
       </div>
 
       <div className="absolute bottom-10 -left-6 rounded bg-ink text-paper px-4 py-2 font-mono text-[11px] tracking-wider uppercase shadow-stamp-crimson rotate-[-2deg]">
-        <span className="text-accent">GAPH</span> · Alpharetta
+        <span className="text-accent">GAPH</span> · Made in GA
       </div>
     </motion.div>
   );

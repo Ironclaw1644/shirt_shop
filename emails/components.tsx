@@ -44,7 +44,7 @@ export function Shell({
           {children}
           <Hr style={{ borderColor: "#e6e3db", margin: "24px 0" }} />
           <Text style={{ color: emailColors.mute, fontSize: 12, margin: 0 }}>
-            {siteConfig.name} · Alpharetta, GA · {siteConfig.email}
+            {siteConfig.name} · Locally printed in Georgia · {siteConfig.email}
           </Text>
         </Container>
       </Body>

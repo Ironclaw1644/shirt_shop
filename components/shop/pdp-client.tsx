@@ -124,7 +124,7 @@ export function PDPClient({
               <Icon icon="clock" className="text-primary" /> {product.leadTimeDays} day lead
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Icon icon="truck-fast" className="text-primary" /> Ships from Alpharetta
+              <Icon icon="truck-fast" className="text-primary" /> Ships from Georgia
             </span>
           </div>
 
@@ -254,8 +254,8 @@ export function PDPClient({
                 <AccordionContent>
                   <p className="text-ink-soft">
                     Standard lead time {product.leadTimeDays} business days after proof
-                    approval. Pickup in Alpharetta or flat-rate shipping nationwide. Need
-                    rush? Call us.
+                    approval. Local pickup across metro Atlanta or flat-rate shipping
+                    nationwide. Need rush? Many jobs ship same-day or in a few hours — just call.
                   </p>
                 </AccordionContent>
               </AccordionItem>

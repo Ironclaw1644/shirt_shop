@@ -48,12 +48,37 @@ export function ProductFilters({
     onChange(filtered);
   }, [filters, products, onChange]);
 
-  const allBrands = Array.from(
-    new Set(products.map((p) => p.brand).filter(Boolean)),
-  ) as string[];
-  const relevantBrands =
-    category.slug === "apparel-headwear" ? apparelBrands : allBrands;
-  const brandSample = relevantBrands.slice(0, 12);
+  // Count products matching a single filter option in isolation (other filters neutral).
+  // Used to hide options that would yield zero results if selected alone.
+  const viableMethods = React.useMemo(() => {
+    return category.decorationMethods
+      .map((m) => ({
+        value: m,
+        count: products.filter((p) => p.decorationMethods.includes(m)).length,
+      }))
+      .filter((o) => o.count > 0);
+  }, [category.decorationMethods, products]);
+
+  const viableBrands = React.useMemo(() => {
+    const productBrands = new Set(
+      products.map((p) => p.brand).filter(Boolean) as string[],
+    );
+    const candidates =
+      category.slug === "apparel-headwear" ? apparelBrands : Array.from(productBrands);
+    return candidates
+      .filter((b) => productBrands.has(b))
+      .map((b) => ({
+        value: b,
+        count: products.filter((p) => p.brand === b).length,
+      }))
+      .filter((o) => o.count > 0);
+  }, [category.slug, products]);
+
+  const viableTiers = React.useMemo(() => {
+    return [25, 100, 500, 1000, 5000, 10000]
+      .map((t) => ({ value: t, count: products.filter((p) => p.minQty <= t).length }))
+      .filter((o) => o.count > 0);
+  }, [products]);
 
   const toggleSet = (key: "brands" | "methods", value: string) => {
     setFilters((f) => {
@@ -79,75 +104,78 @@ export function ProductFilters({
         </label>
       </div>
 
-      <div>
-        <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink-soft mb-3">
-          Decoration method
-        </h3>
-        <div className="space-y-2">
-          {category.decorationMethods.map((m) => (
-            <label key={m} className="flex items-center gap-2 cursor-pointer">
-              <Checkbox
-                checked={filters.methods.has(m)}
-                onCheckedChange={() => toggleSet("methods", m)}
-              />
-              <span className="text-sm capitalize text-ink-soft">
-                {m.replace(/-/g, " ")}
-              </span>
-            </label>
-          ))}
+      {viableMethods.length > 0 && (
+        <div>
+          <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink-soft mb-3">
+            Decoration method
+          </h3>
+          <div className="space-y-2">
+            {viableMethods.map(({ value, count }) => (
+              <label key={value} className="flex items-center gap-2 cursor-pointer">
+                <Checkbox
+                  checked={filters.methods.has(value)}
+                  onCheckedChange={() => toggleSet("methods", value)}
+                />
+                <span className="text-sm capitalize text-ink-soft">
+                  {value.replace(/-/g, " ")}{" "}
+                  <span className="text-ink-mute font-mono">({count})</span>
+                </span>
+              </label>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {brandSample.length > 0 && (
+      {viableBrands.length > 0 && (
         <div>
           <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink-soft mb-3">
             Brand
           </h3>
           <div className="space-y-2 max-h-64 overflow-y-auto pr-2">
-            {brandSample.map((b) => (
-              <label key={b} className="flex items-center gap-2 cursor-pointer">
+            {viableBrands.map(({ value, count }) => (
+              <label key={value} className="flex items-center gap-2 cursor-pointer">
                 <Checkbox
-                  checked={filters.brands.has(b)}
-                  onCheckedChange={() => toggleSet("brands", b)}
+                  checked={filters.brands.has(value)}
+                  onCheckedChange={() => toggleSet("brands", value)}
                 />
-                <span className="text-sm text-ink-soft">{b}</span>
+                <span className="text-sm text-ink-soft">
+                  {value} <span className="text-ink-mute font-mono">({count})</span>
+                </span>
               </label>
             ))}
-            {relevantBrands.length > brandSample.length && (
-              <p className="text-xs text-ink-mute">
-                + {relevantBrands.length - brandSample.length} more brands
-              </p>
-            )}
           </div>
         </div>
       )}
 
-      <div>
-        <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink-soft mb-3">
-          Quantity
-        </h3>
-        <div className="grid grid-cols-2 gap-2">
-          {[25, 100, 500, 1000, 5000, 10000].map((tier) => (
-            <button
-              key={tier}
-              type="button"
-              onClick={() =>
-                setFilters((f) => ({
-                  ...f,
-                  minQty: f.minQty === tier ? undefined : tier,
-                }))
-              }
-              className={`rounded border py-2 text-xs font-mono font-medium transition-colors ${
-                filters.minQty === tier
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-ink/15 text-ink-soft hover:border-primary/40"
-              }`}
-            >
-              {tier.toLocaleString()}+
-            </button>
-          ))}
+      {viableTiers.length > 0 && (
+        <div>
+          <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink-soft mb-3">
+            Quantity
+          </h3>
+          <div className="grid grid-cols-2 gap-2">
+            {viableTiers.map(({ value: tier, count }) => (
+              <button
+                key={tier}
+                type="button"
+                onClick={() =>
+                  setFilters((f) => ({
+                    ...f,
+                    minQty: f.minQty === tier ? undefined : tier,
+                  }))
+                }
+                className={`rounded border py-2 text-xs font-mono font-medium transition-colors ${
+                  filters.minQty === tier
+                    ? "border-primary bg-primary/10 text-primary"
+                    : "border-ink/15 text-ink-soft hover:border-primary/40"
+                }`}
+                title={`${count} matching products`}
+              >
+                {tier.toLocaleString()}+
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <button
         type="button"

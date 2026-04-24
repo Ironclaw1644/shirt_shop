@@ -34,7 +34,7 @@ export async function generateMetadata({
   return {
     title: `${sub.name} · ${cat.name}`,
     description:
-      sub.blurb ?? `Shop ${sub.name.toLowerCase()} in ${cat.name.toLowerCase()}, printed in Alpharetta, GA.`,
+      sub.blurb ?? `Shop ${sub.name.toLowerCase()} in ${cat.name.toLowerCase()} — locally printed in Georgia.`,
     alternates: { canonical: `${siteConfig.url}/${cat.slug}/${sub.slug}` },
   };
 }

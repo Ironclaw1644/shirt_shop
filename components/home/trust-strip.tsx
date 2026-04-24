@@ -4,12 +4,12 @@ const trustMarks = [
   {
     icon: "calendar-days",
     label: "Est. 2005",
-    sub: "20+ years in Alpharetta",
+    sub: "20+ years, locally printed in Georgia",
   },
   {
-    icon: "boxes-stacked",
-    label: "Volume-capable",
-    sub: "Single pieces to high-volume runs",
+    icon: "shop",
+    label: "One-stop shop",
+    sub: "Print + bulk blanks · we sell what we print on",
   },
   {
     icon: "print",
@@ -17,9 +17,9 @@ const trustMarks = [
     sub: "Laser · UV · DTF · sublimation · embroidery · screen",
   },
   {
-    icon: "thumbs-up",
-    label: "Proof before print",
-    sub: "Zero surprises on the press",
+    icon: "bolt",
+    label: "Same-day turns",
+    sub: "Few-hour rush available on many jobs",
   },
 ];
 

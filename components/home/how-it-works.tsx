@@ -23,7 +23,7 @@ const steps = [
     number: "03",
     title: "We print, pack, ship",
     body:
-      "Production in Alpharetta, packed, and out the door. Local pickup available; nationwide flat-rate shipping on standard items.",
+      "Locally printed in Georgia, packed, and out the door — many jobs same-day or in a few hours. Local pickup across metro Atlanta; nationwide flat-rate shipping on standard items.",
     art: "how-it-works-ship",
   },
 ];

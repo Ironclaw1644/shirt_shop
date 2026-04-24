@@ -15,7 +15,7 @@
       "slug": "og-default",
       "title": "Default OG / Twitter share image",
       "aspect": "1200:630",
-      "prompt": "Editorial banner image for Georgia Print Hub — centered deep-charcoal headline 'Printed. Pressed. Personalized.' with a subtle CMYK offset registration ghost (cyan left, magenta right, yellow below) behind the lettering. Paper-grain background in soft cream. On the right, a short tight collage of a crimson foil business card, a kraft box labeled 'GAPH · Alpharetta', and a small brass award pin. 35mm lens, slight perspective, warm daylight. Composition feels confident, tight, unmistakably print-shop. Commercial poster quality, clean typographic hierarchy."
+      "prompt": "Editorial banner image for Georgia Print Hub — centered deep-charcoal headline 'Printed. Pressed. Personalized.' with a subtle CMYK offset registration ghost (cyan left, magenta right, yellow below) behind the lettering. Paper-grain background in soft cream. On the right, a short tight collage of a crimson foil business card, a kraft box labeled 'GAPH · Made in GA', and a small brass award pin. 35mm lens, slight perspective, warm daylight. Composition feels confident, tight, unmistakably print-shop. Commercial poster quality, clean typographic hierarchy."
     },
     {
       "slug": "category-custom-printing",
@@ -75,7 +75,7 @@
       "slug": "how-it-works-ship",
       "title": "How it works — step 3 (print & ship)",
       "aspect": "4:3",
-      "prompt": "Fresh-off-the-press kraft boxes taped with 'GAPH · Alpharetta' branded kraft tape being stacked on a rolling cart, a warehouse door half-open to warm morning light behind. In the foreground, a packing slip peeks from a box flap. 35mm lens, diagonal composition, slight motion hint. Palette of kraft, warm charcoal, paper white, a single press-gold tape stripe on the top box. Industrious, warm, and orderly."
+      "prompt": "Fresh-off-the-press kraft boxes taped with 'GAPH · Made in GA' branded kraft tape being stacked on a rolling cart, a warehouse door half-open to warm morning light behind. In the foreground, a packing slip peeks from a box flap. 35mm lens, diagonal composition, slight motion hint. Palette of kraft, warm charcoal, paper white, a single press-gold tape stripe on the top box. Industrious, warm, and orderly."
     },
     {
       "slug": "city-alpharetta-printing",
@@ -204,10 +204,10 @@
       "prompt": "A Richardson 112 charcoal/black trucker cap with a leather patch branded mark front and center, on a warm wood table with a brass ruler beside it. 100mm macro, crisp texture, warm tungsten fill. Palette charcoal, black mesh, warm walnut."
     },
     {
-      "slug": "product-carhartt-ctk87",
-      "title": "Carhartt CTK87 hero",
+      "slug": "product-heavyweight-workwear-pocket-tee",
+      "title": "Heavyweight Workwear Pocket Tee hero",
       "aspect": "4:3",
-      "prompt": "A heather-grey Carhartt pocket tee hung on a worn metal locker door in a workshop. Directional warm light, 35mm lens, industrial mood. Palette of heather grey, warm steel, ink-crimson pocket flag."
+      "prompt": "A heather-grey heavyweight workwear pocket tee — generic spec, no visible branding or logos — hung on a worn metal locker door in a workshop. Directional warm light, 35mm lens, industrial mood. Palette of heather grey, warm steel, ink-crimson pocket flag. No text or branded labels visible."
     },
     {
       "slug": "product-pa-tote",

@@ -32,7 +32,7 @@ export default async function SearchPage({
           <input
             name="q"
             defaultValue={q}
-            placeholder="Business cards, Bella+Canvas, trophies…"
+            placeholder="Business cards, banners, trophies, blank tees…"
             className="w-full rounded border border-ink/15 bg-white px-4 py-3 focus:border-primary focus:outline-none"
           />
         </form>

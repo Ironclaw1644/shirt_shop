@@ -1,9 +1,10 @@
 export const siteConfig = {
   name: "Georgia Print Hub",
   shortName: "GAPH",
+  locationLabel: "Georgia",
   tagline: "Printing, promo, and apparel for Georgia.",
   description:
-    "Custom printing, promotional products, apparel, corporate awards, and personalized gifts. Alpharetta, GA — serving metro Atlanta and North Georgia for over 20 years.",
+    "Custom printing, promotional products, apparel, corporate awards, personalized gifts, and bulk blanks — locally printed in Georgia for over 20 years.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://gaprinthub.com",
   domain: "gaprinthub.com",
   // CLIENT_FILL: final NAP (name-address-phone) details below
