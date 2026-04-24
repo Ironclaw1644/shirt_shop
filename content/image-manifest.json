@@ -322,6 +322,672 @@
       "title": "Honor Roll Medal hero",
       "aspect": "4:3",
       "prompt": "A small 2-inch honor roll medal with neat serif text, hanging from a forest-green ribbon on a warm cream paper surface, beside a blackboard chalk arrangement suggesting a classroom. 85mm macro. Academic, warm, earnest."
+    },
+    {
+      "slug": "product-foam-mounted-poster",
+      "title": "Foam-Mounted Poster hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Foam-Mounted Poster\" — 3/16\" foam-core mounted poster — print and trim to any size. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-step-and-repeat-banner",
+      "title": "Step & Repeat Backdrop Banner hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Step & Repeat Backdrop Banner\" — Red-carpet event backdrop — vinyl or fabric, full-color logo repeat. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-x-stand-banner",
+      "title": "X-Stand Banner hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"X-Stand Banner\" — 24×63 lightweight X-frame banner — two-minute setup. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-roll-up-banner-sign",
+      "title": "Roll-Up Banner Sign hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Roll-Up Banner Sign\" — 33×80 retractable roll-up — stows in its own base. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-a-frame-sign",
+      "title": "A-Frame Sidewalk Sign hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"A-Frame Sidewalk Sign\" — Heavy-duty plastic A-frame with double-sided printed inserts. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-table-cover",
+      "title": "Printed Table Cover hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Printed Table Cover\" — 6ft or 8ft fitted table throw — full-color polyester, dye-sub. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-tradeshow-backdrop",
+      "title": "Tension-Fabric Trade-Show Backdrop hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Tension-Fabric Trade-Show Backdrop\" — 10ft pillowcase backdrop — wrinkle-free fabric on aluminum frame. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-heavy-business-cards",
+      "title": "Heavy 32pt Business Cards hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Heavy 32pt Business Cards\" — Premium 32pt cardstock with painted edge options. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-linen-business-cards",
+      "title": "Linen-Finish Business Cards hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Linen-Finish Business Cards\" — Subtle linen texture — 100lb cover, full color. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-silk-laminated-business-cards",
+      "title": "Silk-Laminated Business Cards hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Silk-Laminated Business Cards\" — Soft-touch silk lamination — luxe finish, durable surface. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-bi-fold-menu",
+      "title": "Bi-Fold Restaurant Menu hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Bi-Fold Restaurant Menu\" — 100lb gloss text or 14pt cover — laminated optional. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-take-out-menus",
+      "title": "Take-Out Menus hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Take-Out Menus\" — Unfolded full-color take-out menus on light text stock. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-carbonless-2part",
+      "title": "2-Part Carbonless Forms hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"2-Part Carbonless Forms\" — White/canary 2-part NCR forms — padded or booked. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-carbonless-3part",
+      "title": "3-Part Carbonless Forms hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"3-Part Carbonless Forms\" — White/canary/pink 3-part — for invoices and POs. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-feather-flag-single",
+      "title": "Feather Flag (Single-Sided) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Feather Flag (Single-Sided)\" — 11.5ft outdoor feather flag with ground stake or cross base. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-magnet-calendar",
+      "title": "Refrigerator Magnet Calendar hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Refrigerator Magnet Calendar\" — Full-year magnet calendar — real-estate and restaurant favorite. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-car-door-magnet-pair",
+      "title": "Car Door Magnet Pair hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Car Door Magnet Pair\" — Heavy-duty 30mil car magnets — sold in pairs. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-table-tents",
+      "title": "Table Tents hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Table Tents\" — Folded restaurant table-top tents — full color, 14pt cover. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-door-hangers",
+      "title": "Door Hangers hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Door Hangers\" — Die-cut door hangers — perfect for canvassing routes. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-holiday-cards",
+      "title": "Holiday Greeting Cards hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Holiday Greeting Cards\" — Folded 5×7 holiday cards with envelopes — foil optional. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-address-labels",
+      "title": "Address Label Rolls hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Address Label Rolls\" — Self-adhesive address labels — printed on rolls or sheets. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-vinyl-lettering",
+      "title": "Storefront Vinyl Lettering hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Storefront Vinyl Lettering\" — Cut-vinyl lettering for windows, vehicles, and walls. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-fat-head-graduation",
+      "title": "Graduation Fat Head hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Graduation Fat Head\" — Oversized cardboard cutout — graduation parties, sports events. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-graduation-yard-sign",
+      "title": "Graduation Yard Sign hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Graduation Yard Sign\" — 18×24 corrugated yard sign — name, photo, school colors. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-uv-dtf-transfer",
+      "title": "Custom UV DTF Transfer hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom UV DTF Transfer\" — Apply to glass, metal, plastic — no heat press needed. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-tri-blend-tee",
+      "title": "Tri-Blend Crew Tee hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Tri-Blend Crew Tee\" — Soft tri-blend cotton/poly/rayon — wears like a vintage favorite. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-long-sleeve-tee",
+      "title": "Long Sleeve Tee hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Long Sleeve Tee\" — Heavyweight long-sleeve cotton — fall/winter staple. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-performance-polo",
+      "title": "Performance Polo hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Performance Polo\" — Moisture-wicking performance polo — corporate-uniform ready. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-easy-care-polo",
+      "title": "Easy-Care Cotton/Poly Polo hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Easy-Care Cotton/Poly Polo\" — Wrinkle-resistant cotton/poly blend — wash and wear. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-quarter-zip-pullover",
+      "title": "Quarter-Zip Performance Pullover hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Quarter-Zip Performance Pullover\" — Lightweight 1/4-zip — corporate teams and golf events. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-fleece-jacket",
+      "title": "Full-Zip Fleece Jacket hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Full-Zip Fleece Jacket\" — Mid-weight anti-pill fleece — soft hand, durable wear. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-soft-shell-jacket",
+      "title": "Soft Shell Jacket hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Soft Shell Jacket\" — Wind- and water-resistant soft shell — corporate-jacket favorite. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-puffer-vest",
+      "title": "Insulated Puffer Vest hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Insulated Puffer Vest\" — Lightweight insulated vest — fall/winter corporate gifting. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-oxford-shirt",
+      "title": "Easy-Care Oxford Dress Shirt hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Easy-Care Oxford Dress Shirt\" — Wrinkle-resistant oxford — corporate-uniform classic. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-denim-shirt",
+      "title": "Denim Work Shirt hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Denim Work Shirt\" — Stonewashed denim long-sleeve — workwear with a clean drape. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-flex-fit-cap",
+      "title": "Flex-Fit Cap hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Flex-Fit Cap\" — Stretch-fit flex cap — clean structured silhouette. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-knit-beanie",
+      "title": "Knit Beanie with Cuff hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Knit Beanie with Cuff\" — Acrylic ribbed beanie — embroidered or patch-applied logo. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-sun-visor",
+      "title": "Sport Sun Visor hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Sport Sun Visor\" — Performance visor — golf days, summer events. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-drawstring-backpack",
+      "title": "Drawstring Cinch Backpack hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Drawstring Cinch Backpack\" — Lightweight cinch backpack — schools, conferences, swag bags. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-laptop-backpack",
+      "title": "Laptop Commuter Backpack hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Laptop Commuter Backpack\" — Padded 15\" laptop sleeve — corporate gift staple. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-duffel-bag",
+      "title": "Sport Duffel Bag hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Sport Duffel Bag\" — 20\" team duffel — embroidered or screen-printed logo panel. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-chef-apron",
+      "title": "Bib Apron hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Bib Apron\" — Heavy twill chef apron — restaurants, bakeries, baristas. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-scrub-top",
+      "title": "Performance Scrub Top hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Performance Scrub Top\" — Anti-microbial scrub top — clinics, dental, vet, doctor's offices. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-lab-coat",
+      "title": "Long Lab Coat hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Long Lab Coat\" — Classic 41\" lab coat — embroidered name + credentials. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-hi-vis-vest",
+      "title": "Hi-Vis Safety Vest (ANSI Class 2) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Hi-Vis Safety Vest (ANSI Class 2)\" — ANSI Class 2 hi-vis vest — heat-transfer logo, hook-and-loop closure. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-rosewood-piano-plaque",
+      "title": "Rosewood Piano-Finish Plaque hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Rosewood Piano-Finish Plaque\" — Lustrous rosewood piano finish — engraved brass plate. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-leatherette-plaque",
+      "title": "Leatherette Plaque hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette Plaque\" — Modern leatherette-on-MDF plaque — laser engraves cream. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-perpetual-plaque",
+      "title": "Perpetual Recognition Plaque hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Perpetual Recognition Plaque\" — Wall-mounted perpetual plaque with annual add-on plates. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-crystal-pillar",
+      "title": "Crystal Pillar Award hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Crystal Pillar Award\" — Optical-crystal pillar — sand-etched front face. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-crystal-flame",
+      "title": "Crystal Flame Award hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Crystal Flame Award\" — Sculpted crystal flame on a black base — annual top performer. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-art-glass-sculpture",
+      "title": "Hand-Blown Art Glass Sculpture hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Hand-Blown Art Glass Sculpture\" — One-of-a-kind blown-glass piece — premium leadership awards. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-eagle-sculpture",
+      "title": "Eagle Sculpture Award hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Eagle Sculpture Award\" — Cast eagle on a marble base — leadership and excellence. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-star-acrylic-award",
+      "title": "Star Acrylic Award hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Star Acrylic Award\" — 1\" thick star-cut acrylic — full-color UV print. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-wall-clock-award",
+      "title": "Engraved Wall Clock hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Engraved Wall Clock\" — Round walnut wall clock — engraved center recognition. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-engraved-gavel",
+      "title": "Engraved Gavel Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Engraved Gavel Set\" — Walnut gavel and sound block — engraved brass plate. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-name-plate-desk",
+      "title": "Engraved Desk Name Plate hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Engraved Desk Name Plate\" — Walnut or rosewood name plate — engraved with title. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-polar-camel-30oz",
+      "title": "Polar Camel 30oz Vacuum Tumbler hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Polar Camel 30oz Vacuum Tumbler\" — Larger 30oz double-wall stainless — laser engraves silver. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-polar-camel-10oz",
+      "title": "Polar Camel 10oz Lowball hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Polar Camel 10oz Lowball\" — Compact 10oz powder-coated lowball — wedding favor classic. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-polar-camel-22oz-skinny",
+      "title": "Polar Camel 22oz Skinny Tumbler hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Polar Camel 22oz Skinny Tumbler\" — Slim 22oz skinny — fits in cup holders, holds your coffee all morning. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-polar-camel-40oz",
+      "title": "Polar Camel 40oz Travel Tumbler hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Polar Camel 40oz Travel Tumbler\" — Massive 40oz with handle and straw lid — keeps ice all day. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-water-bottle-32oz",
+      "title": "32oz Stainless Water Bottle hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"32oz Stainless Water Bottle\" — Vacuum-insulated 32oz water bottle — gym, hike, classroom. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-travel-mug-16oz",
+      "title": "16oz Travel Mug hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"16oz Travel Mug\" — Insulated 16oz travel mug with flip-lid — commute-ready. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-wine-tumbler-12oz",
+      "title": "12oz Stemless Wine Tumbler hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"12oz Stemless Wine Tumbler\" — Insulated stemless wine tumbler — engraved monogram or date. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-leatherette-flask-set",
+      "title": "Leatherette Flask Gift Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette Flask Gift Set\" — 6oz leatherette-wrapped flask + 4 shot cups + funnel — gift box. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-growler-64oz",
+      "title": "64oz Stainless Growler hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"64oz Stainless Growler\" — Big-batch growler — brewery, taproom, beer-club gift. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-shaker-bottle-26oz",
+      "title": "26oz Protein Shaker Bottle hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"26oz Protein Shaker Bottle\" — BPA-free shaker with whisk ball — gym promo favorite. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-leatherette-coasters",
+      "title": "Leatherette Coaster Set (6-pack) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette Coaster Set (6-pack)\" — Six leatherette coasters with holder — laser engraved. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-leatherette-opener",
+      "title": "Leatherette-Handled Bottle Opener hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette-Handled Bottle Opener\" — Stainless opener with leatherette grip — engravable handle. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-photo-slate",
+      "title": "Photo Slate hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Photo Slate\" — Natural-edge slate panel — sublimated full-color photo. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-metal-photo-panel",
+      "title": "Metal Photo Panel hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Metal Photo Panel\" — Aluminum photo panel — vibrant, scratch-resistant. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-phone-case-custom",
+      "title": "Custom Phone Case hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Phone Case\" — Sublimated full-color phone case for current iPhone & Galaxy models. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-pet-bandana",
+      "title": "Custom Pet Bandana hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Pet Bandana\" — Sublimated cotton bandana — pets, brand mascots, events. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-pet-bowl",
+      "title": "Custom Pet Bowl hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Pet Bowl\" — Stainless pet bowl with engraved name and photo accent. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-license-plate",
+      "title": "Custom Front License Plate hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Front License Plate\" — Aluminum front license plate — full-color sublimated. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-leatherette-portfolio",
+      "title": "Leatherette Zippered Portfolio hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette Zippered Portfolio\" — Premium zippered leatherette portfolio — cream engrave, refillable pad. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-leatherette-wallet",
+      "title": "Leatherette Bifold Wallet hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette Bifold Wallet\" — Slim leatherette bifold — engraved monogram or initials. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-money-clip",
+      "title": "Engraved Stainless Money Clip hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Engraved Stainless Money Clip\" — Brushed stainless money clip — engraved monogram. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-pet-id-tag",
+      "title": "Stainless Pet ID Tag hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Stainless Pet ID Tag\" — Engraved stainless pet tag — name, address, phone. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-jewelry-stamping",
+      "title": "Precious-Metal Stamping Service hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Precious-Metal Stamping Service\" — Bring your inventory — we laser-stamp gold, silver, platinum. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-wood-photo-frame",
+      "title": "Solid-Wood Photo Frame hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Solid-Wood Photo Frame\" — Walnut or maple frame — engraved presentation panel. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-engraved-ornament",
+      "title": "Engraved Holiday Ornament hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Engraved Holiday Ornament\" — Wood, slate, or acrylic ornament — name, year, photo. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-acrylic-block",
+      "title": "Engraved Acrylic Block hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Engraved Acrylic Block\" — Solid acrylic block — sub-surface laser engraving. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-cigar-bar-set",
+      "title": "Cigar & Bar Gift Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Cigar & Bar Gift Set\" — Cigar holder + cutter + tray — leatherette case, engraved. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-resin-baseball",
+      "title": "Resin Baseball Trophy hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Resin Baseball Trophy\" — Hand-painted resin batter — youth-league favorite. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-resin-basketball",
+      "title": "Resin Basketball Trophy hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Resin Basketball Trophy\" — Hand-painted basketball figure — every-player or MVP. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-resin-football",
+      "title": "Resin Football Trophy hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Resin Football Trophy\" — Football figure on a weighted base — leagues, banquets, pop-warner. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-resin-cheer",
+      "title": "Resin Cheer / Gymnastics Trophy hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Resin Cheer / Gymnastics Trophy\" — Detailed cheer figure — competition-season favorite. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-metal-cup-trophy",
+      "title": "Metal Cup Trophy hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Metal Cup Trophy\" — Polished metal cup on tiered base — championship presentation. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-plastic-cup-trophy",
+      "title": "Plastic Cup Trophy hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Plastic Cup Trophy\" — Lightweight plastic cup — youth budget-friendly. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-insert-holder-medal",
+      "title": "Custom-Insert Holder Medal hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom-Insert Holder Medal\" — Die-cast medal with swappable 2-inch full-color insert. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-place-medal-set",
+      "title": "Gold/Silver/Bronze Place Medal Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Gold/Silver/Bronze Place Medal Set\" — Standard place-medal set for tournament podiums. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-victory-torch-medal",
+      "title": "Victory Torch Medal hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Victory Torch Medal\" — Classic torch medal — 2-inch, ribbon included. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-championship-ring",
+      "title": "Championship Ring hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Championship Ring\" — Custom championship ring — team logo, year, name engraved. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-chenille-letter-pin",
+      "title": "Chenille Letter Pin hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Chenille Letter Pin\" — Classic letterman pin — sports & academic recognition. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-satin-ribbon",
+      "title": "Satin Award Ribbon hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Satin Award Ribbon\" — Foil-stamped satin award ribbon — quick-turn. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-stainless-dog-tag",
+      "title": "Stainless Sport Dog Tag hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Stainless Sport Dog Tag\" — Stainless dog-tag necklace — engraved sport, year, school. Stadium-quality warm tungsten lighting against a deep charcoal backdrop, low hero angle, brass / walnut / ribbon palette. Championship-season serious — not cartoonish. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-cotton-tees-case",
+      "title": "Blank Cotton Tees — Case (72 ct) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Cotton Tees — Case (72 ct)\" — 72 unisex 100% cotton tees — case-priced, your size run. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-hoodies-case",
+      "title": "Blank Fleece Hoodies — Case (24 ct) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Fleece Hoodies — Case (24 ct)\" — 24 mid-weight pullover hoodies — case-priced. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-polos-dozen",
+      "title": "Blank Pique Polos — Dozen hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Pique Polos — Dozen\" — 12 cotton-poly pique polos — by-the-dozen pricing. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-truckers-dozen",
+      "title": "Blank Trucker Caps — Dozen hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Trucker Caps — Dozen\" — 12 structured snapback truckers — your colorway. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-polar-camel-case",
+      "title": "Blank Polar Camel Tumblers — Case (24 ct) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Polar Camel Tumblers — Case (24 ct)\" — Case of 24 powder-coated 20oz tumblers — single colorway. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-ceramic-mugs-case",
+      "title": "Blank White Ceramic Mugs — Case (36 ct) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank White Ceramic Mugs — Case (36 ct)\" — 36 sublimation-ready 11oz white mugs. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-canvas-totes-dozen",
+      "title": "Blank Canvas Totes — Dozen hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Canvas Totes — Dozen\" — 12 natural-canvas totes — dozen pricing for bulk distribution. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-htv-roll-15in",
+      "title": "Heat-Transfer Vinyl Roll (15\" × 5yd) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Heat-Transfer Vinyl Roll (15\" × 5yd)\" — PU heat-transfer vinyl roll — 15\" wide × 5 yards. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-dtf-film-roll",
+      "title": "DTF Transfer Film Roll (24\" × 100m) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"DTF Transfer Film Roll (24\" × 100m)\" — Cold-peel DTF film — 24\" wide × 100 meters. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-sublimation-paper",
+      "title": "Sublimation Paper (8.5×11, 100ct) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Sublimation Paper (8.5×11, 100ct)\" — Tacky-back sublimation paper — pack of 100 sheets. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-cardstock-100lb",
+      "title": "Blank 100lb Cover Cardstock hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank 100lb Cover Cardstock\" — Sheet packs of 100lb cover — matte, gloss, or uncoated. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-label-sheets",
+      "title": "Blank Label Sheets hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Label Sheets\" — Adhesive label sheets — full sheet or die-cut. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-leatherette-sheet",
+      "title": "Blank Leatherette Engraving Sheet hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Leatherette Engraving Sheet\" — 12×24 leatherette sheets — engrave-ready. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-plaque-base",
+      "title": "Blank Wood Plaque Base hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Wood Plaque Base\" — Walnut or rosewood plaque blanks — engrave or apply your own plate. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-acrylic-block",
+      "title": "Blank Acrylic Trophy Block hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Acrylic Trophy Block\" — Solid acrylic blocks — engraving-ready trophy blanks. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
     }
   ]
 }

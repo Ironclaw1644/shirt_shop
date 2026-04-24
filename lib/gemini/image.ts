@@ -53,6 +53,55 @@ export async function generateImage(input: GenerateImageInput): Promise<Generate
     contents: [{ role: "user", parts: [{ text: expandedPrompt }] }],
   });
 
+  return extractImageFromResponse(response, expandedPrompt);
+}
+
+export type GenerateImageFromReferenceInput = GenerateImageInput & {
+  /** HTTPS URL of a reference photo to alter (passed as inline image to Gemini). */
+  referenceImageUrl: string;
+};
+
+/**
+ * Generate an image using a reference photo as the visual basis. Useful when
+ * a real branded item photo is preferable to a hallucinated look-alike — the
+ * model alters materials/lighting/background per the prompt while preserving
+ * the silhouette of the reference.
+ */
+export async function generateImageFromReference(
+  input: GenerateImageFromReferenceInput,
+): Promise<GeneratedImage> {
+  const promptWithGuidance = `${input.prompt.trim()}\n\nUse the attached reference photo as the visual basis for the product. Alter materials, lighting, background, and any branding/text per the description. Do not reproduce visible logos or trademark text from the reference — produce a brand-safe variant.`;
+  const expandedPrompt = composePrompt({ ...input, prompt: promptWithGuidance });
+
+  const res = await fetch(input.referenceImageUrl);
+  if (!res.ok) {
+    throw new Error(`Reference image fetch failed: ${res.status} ${res.statusText}`);
+  }
+  const refMime = res.headers.get("content-type") ?? "image/jpeg";
+  const refBytes = Buffer.from(await res.arrayBuffer());
+  const refBase64 = refBytes.toString("base64");
+
+  const ai = getGeminiClient();
+  const response = await ai.models.generateContent({
+    model: NANO_BANANA_MODEL,
+    contents: [
+      {
+        role: "user",
+        parts: [
+          { inlineData: { mimeType: refMime, data: refBase64 } },
+          { text: expandedPrompt },
+        ],
+      },
+    ],
+  });
+
+  return extractImageFromResponse(response, expandedPrompt);
+}
+
+function extractImageFromResponse(
+  response: { candidates?: Array<{ content?: { parts?: Array<unknown> } }> },
+  expandedPrompt: string,
+): GeneratedImage {
   const candidates = response.candidates ?? [];
   for (const cand of candidates) {
     for (const part of cand.content?.parts ?? []) {
@@ -67,7 +116,6 @@ export async function generateImage(input: GenerateImageInput): Promise<Generate
       }
     }
   }
-
   throw new Error("Nano Banana returned no image data");
 }
 

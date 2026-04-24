@@ -2,17 +2,21 @@
  * scripts/generate-images.ts
  *
  * Reads content/image-manifest.json and generates WebP assets into
- * public/images/generated/. Optionally regenerates a single slug:
- *   npm run generate:images                # generate missing
- *   npm run generate:images -- --all       # regenerate all
- *   npm run generate:images -- --regenerate hero-flagship
+ * public/images/generated/.
+ *
+ *   npm run generate:images                            # generate missing
+ *   npm run generate:images -- --all                   # regenerate all
+ *   npm run generate:images -- --regenerate <slug>     # regenerate one
+ *   npm run generate:images -- --filter <prefix>       # only slugs starting with prefix
+ *   npm run generate:images -- --regenerate <slug> --reference <url>
+ *                                                      # alter a real reference photo
  */
 import "dotenv/config";
 import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 import manifest from "../content/image-manifest.json";
-import { generateImage } from "../lib/gemini/image";
+import { generateImage, generateImageFromReference } from "../lib/gemini/image";
 
 type ManifestEntry = {
   slug: string;
@@ -39,6 +43,10 @@ const args = process.argv.slice(2);
 const regenerateAll = args.includes("--all");
 const regenerateIdx = args.indexOf("--regenerate");
 const regenerateSlug = regenerateIdx >= 0 ? args[regenerateIdx + 1] : null;
+const filterIdx = args.indexOf("--filter");
+const filterPrefix = filterIdx >= 0 ? args[filterIdx + 1] : null;
+const referenceIdx = args.indexOf("--reference");
+const referenceUrl = referenceIdx >= 0 ? args[referenceIdx + 1] : null;
 
 async function ensureDir() {
   await fs.mkdir(OUT_DIR, { recursive: true });
@@ -65,14 +73,22 @@ async function generateOne(entry: ManifestEntry) {
     return;
   }
 
-  console.log(`→ generating ${entry.slug} (${entry.aspect})…`);
+  console.log(`→ generating ${entry.slug} (${entry.aspect})${referenceUrl ? " [ref]" : ""}…`);
   try {
-    const { base64, mimeType } = await generateImage({
-      prompt: entry.prompt,
-      aspect: entry.aspect,
-      brandPalette: m.imageDefaults.brandPalette,
-      style: m.imageDefaults.style,
-    });
+    const { base64, mimeType } = referenceUrl && regenerateSlug === entry.slug
+      ? await generateImageFromReference({
+          referenceImageUrl: referenceUrl,
+          prompt: entry.prompt,
+          aspect: entry.aspect,
+          brandPalette: m.imageDefaults.brandPalette,
+          style: m.imageDefaults.style,
+        })
+      : await generateImage({
+          prompt: entry.prompt,
+          aspect: entry.aspect,
+          brandPalette: m.imageDefaults.brandPalette,
+          style: m.imageDefaults.style,
+        });
     const buf = Buffer.from(base64, "base64");
     const pipeline = sharp(buf);
 
@@ -98,7 +114,13 @@ async function run() {
     console.error("GOOGLE_API_KEY missing in env — aborting.");
     process.exit(1);
   }
-  for (const entry of m.images) {
+  const entries = filterPrefix
+    ? m.images.filter((e) => e.slug.startsWith(filterPrefix))
+    : m.images;
+  if (filterPrefix) {
+    console.log(`Filter "${filterPrefix}" matched ${entries.length} of ${m.images.length} entries.`);
+  }
+  for (const entry of entries) {
     await generateOne(entry);
   }
   console.log("Done.");
