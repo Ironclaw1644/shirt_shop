@@ -28,10 +28,10 @@ export async function POST(req: Request) {
     const buf = Buffer.from(m[2], "base64");
     const path = `designs/${user.id}/${Date.now()}.png`;
     const { error: upErr } = await svc.storage
-      .from("artwork")
+      .from("gaph-artwork")
       .upload(path, buf, { contentType: m[1], upsert: true });
     if (!upErr) {
-      const { data } = await svc.storage.from("artwork").createSignedUrl(path, 60 * 60 * 24 * 7);
+      const { data } = await svc.storage.from("gaph-artwork").createSignedUrl(path, 60 * 60 * 24 * 7);
       previewUrl = data?.signedUrl ?? null;
     }
   }

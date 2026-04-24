@@ -13,3 +13,4 @@ coverage
 .turbo
 .vercel
 tmp-logo-preview/
+supabase/.temp/

@@ -8,6 +8,7 @@ export async function updateSession(req: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_URL ?? "http://localhost",
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "anon-key",
     {
+      db: { schema: "gaph" },
       cookies: {
         getAll() {
           return req.cookies.getAll();

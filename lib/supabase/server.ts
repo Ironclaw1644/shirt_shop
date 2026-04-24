@@ -9,6 +9,7 @@ export async function getSupabaseServerClient() {
     process.env.NEXT_PUBLIC_SUPABASE_URL ?? "http://localhost",
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "anon-key",
     {
+      db: { schema: "gaph" },
       cookies: {
         getAll() {
           return cookieStore.getAll();
@@ -35,6 +36,6 @@ export function getSupabaseServiceRoleClient() {
   return createSupabaseClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY,
-    { auth: { persistSession: false } },
+    { auth: { persistSession: false }, db: { schema: "gaph" } },
   );
 }

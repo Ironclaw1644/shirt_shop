@@ -49,12 +49,12 @@ export async function POST(req: Request) {
     const service = getSupabaseServiceRoleClient();
     const filePath = `generated/${parsed.data.slug}-${Date.now()}.webp`;
     const { error: upErr } = await service.storage
-      .from("generated")
+      .from("gaph-generated")
       .upload(filePath, webp, { contentType: "image/webp", upsert: true });
 
     if (upErr) throw upErr;
 
-    const { data: publicUrl } = service.storage.from("generated").getPublicUrl(filePath);
+    const { data: publicUrl } = service.storage.from("gaph-generated").getPublicUrl(filePath);
 
     await service.from("media_assets").insert({
       url: publicUrl.publicUrl,
