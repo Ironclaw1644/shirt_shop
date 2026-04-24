@@ -8,7 +8,7 @@ type Item = {
   unit_price_cents: number;
 };
 
-export default function OrderConfirmationEmail({
+export default function OrderReceivedEmail({
   orderId,
   totalCents,
   items,
@@ -18,9 +18,12 @@ export default function OrderConfirmationEmail({
   items: Item[];
 }) {
   return (
-    <Shell preview={`Order #${orderId.slice(0, 8)} received — we'll send your proof shortly`}>
-      <Heading style={{ fontSize: 22, margin: "0 0 12px" }}>Your order is in the press.</Heading>
-      <Text>Thanks for ordering with {siteConfig.name}. We have your details and will follow up with a digital proof for every decorated item before production begins.</Text>
+    <Shell preview={`Order #${orderId.slice(0, 8)} received — invoice coming soon`}>
+      <Heading style={{ fontSize: 22, margin: "0 0 12px" }}>Order received.</Heading>
+      <Text>
+        Thanks for ordering with {siteConfig.name}. We have your details and will follow up with
+        an itemized invoice and a digital proof for every decorated item before production begins.
+      </Text>
 
       <Section style={{ background: "#FAFAF7", padding: 16, borderRadius: 6, margin: "20px 0" }}>
         <Text style={{ margin: 0, fontWeight: 600 }}>Order #{orderId.slice(0, 8)}</Text>
@@ -32,8 +35,9 @@ export default function OrderConfirmationEmail({
             </span>
           </Text>
         ))}
-        <Text style={{ margin: "12px 0 0", fontWeight: 700, fontSize: 16 }}>
-          Total ${ (totalCents / 100).toFixed(2) }
+        <Text style={{ margin: "12px 0 0", fontSize: 14, color: "#6B6A65" }}>
+          Estimated subtotal ${(totalCents / 100).toFixed(2)} · final invoice will include tax,
+          shipping, and any decoration adjustments.
         </Text>
       </Section>
 

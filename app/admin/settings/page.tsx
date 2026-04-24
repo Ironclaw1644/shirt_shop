@@ -11,7 +11,6 @@ export default async function AdminSettings() {
 
   const integrations = [
     { label: "Supabase", ok: !!process.env.NEXT_PUBLIC_SUPABASE_URL },
-    { label: "Stripe", ok: !!process.env.STRIPE_SECRET_KEY },
     { label: "Resend", ok: !!process.env.RESEND_API_KEY },
     { label: "Google Gemini", ok: !!process.env.GOOGLE_API_KEY },
   ];

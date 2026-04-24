@@ -3,7 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { Badge } from "@/components/ui/badge";
 import { formatMoneyCents } from "@/lib/utils/money";
-import { updateOrderStatus } from "./actions";
+import { updateOrderStatus, emailInvoice } from "./actions";
 
 const statusOrder = ["received","in_proof","approved","in_production","shipped","delivered","cancelled"];
 
@@ -101,12 +101,22 @@ export default async function AdminOrderDetail({ params }: { params: Promise<{ i
             <div className="flex justify-between"><span className="text-ink-mute">Tax</span><span className="font-mono">{formatMoneyCents(order.tax_cents)}</span></div>
             <div className="flex justify-between font-bold pt-2 border-t border-ink/10"><span>Total</span><span className="font-mono">{formatMoneyCents(order.total_cents)}</span></div>
           </div>
-          {order.stripe_payment_intent && (
-            <div className="rounded-lg border border-ink/10 bg-white p-5 text-xs">
-              <p className="text-ink-mute">Stripe PaymentIntent</p>
-              <p className="font-mono break-all">{order.stripe_payment_intent}</p>
-            </div>
-          )}
+          <form action={emailInvoice} className="rounded-lg border border-ink/10 bg-white p-5">
+            <p className="font-display font-bold text-sm">Send invoice</p>
+            <p className="mt-1 text-xs text-ink-mute">
+              Emails {order.email} an itemized invoice for the totals shown above.
+            </p>
+            <input type="hidden" name="id" value={order.id} />
+            <textarea
+              name="notes"
+              rows={3}
+              placeholder="Optional notes (payment method, due date, etc.)"
+              className="mt-3 w-full rounded border border-ink/15 bg-white px-2 py-1 text-xs"
+            />
+            <button className="mt-3 h-9 w-full rounded bg-primary text-white text-sm font-medium">
+              Email invoice
+            </button>
+          </form>
         </aside>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { STRIPE_ENABLED, getStripe } from "@/lib/stripe/server";
 import { getSupabaseServiceRoleClient } from "@/lib/supabase/server";
+import { sendOrderReceivedEmail } from "@/lib/resend/send";
 
 const itemSchema = z.object({
   productSlug: z.string(),
@@ -53,7 +53,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  // insert items
   const itemsInsert = items.map((i) => ({
     order_id: order.id,
     title_snapshot: i.title,
@@ -63,32 +62,16 @@ export async function POST(req: Request) {
   }));
   await service.from("order_items").insert(itemsInsert);
 
-  if (!STRIPE_ENABLED) {
-    return NextResponse.json({
-      disabled: true,
-      orderId: order.id,
-      message:
-        "Stripe keys not configured. Order recorded; checkout will activate when STRIPE_SECRET_KEY is set.",
-    });
-  }
+  await sendOrderReceivedEmail({
+    email,
+    orderId: order.id,
+    totalCents: total,
+    items: items.map((i) => ({
+      title_snapshot: i.title,
+      quantity: i.quantity,
+      unit_price_cents: i.unitPriceCents,
+    })),
+  }).catch(() => null);
 
-  try {
-    const stripe = getStripe();
-    const intent = await stripe.paymentIntents.create({
-      amount: total,
-      currency: "usd",
-      automatic_payment_methods: { enabled: true },
-      receipt_email: email,
-      metadata: { order_id: order.id },
-    });
-
-    await service
-      .from("orders")
-      .update({ stripe_payment_intent: intent.id })
-      .eq("id", order.id);
-
-    return NextResponse.json({ clientSecret: intent.client_secret, orderId: order.id });
-  } catch (err) {
-    return NextResponse.json({ error: (err as Error).message }, { status: 500 });
-  }
+  return NextResponse.json({ orderId: order.id });
 }

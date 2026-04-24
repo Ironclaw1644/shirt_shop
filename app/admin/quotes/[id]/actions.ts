@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
-import { STRIPE_ENABLED, getStripe } from "@/lib/stripe/server";
 import { sendQuoteReplyEmail } from "@/lib/resend/send";
 
 export async function replyToQuote(formData: FormData) {
@@ -66,31 +65,10 @@ export async function convertQuoteToOrder(formData: FormData) {
 
   if (!order) throw new Error("Failed to create order");
 
-  let paymentLinkUrl: string | undefined;
-  if (STRIPE_ENABLED) {
-    try {
-      const stripe = getStripe();
-      const price = await stripe.prices.create({
-        unit_amount: quoted_price_cents,
-        currency: "usd",
-        product_data: { name: `GAPH Quote ${id.slice(0, 8)}` },
-      });
-      const link = await stripe.paymentLinks.create({
-        line_items: [{ price: price.id, quantity: 1 }],
-        metadata: { order_id: order.id, quote_id: id },
-      });
-      paymentLinkUrl = link.url;
-      await supa.from("orders").update({ stripe_checkout_session: link.id }).eq("id", order.id);
-    } catch (err) {
-      console.error("Stripe payment link failed:", err);
-    }
-  }
-
   await supa
     .from("quote_requests")
     .update({
       status: "accepted",
-      stripe_payment_link: paymentLinkUrl ?? null,
       updated_at: new Date().toISOString(),
     })
     .eq("id", id);

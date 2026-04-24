@@ -127,8 +127,8 @@ export default function CartPage() {
               </Link>
             </Button>
             <p className="mt-4 text-xs text-ink-mute">
-              Checkout uses Stripe&rsquo;s Payment Element (cards, Apple Pay, Google Pay, Link).
-              All jobs require proof approval before production.
+              No payment is collected at checkout — we&rsquo;ll email an itemized invoice once
+              we&rsquo;ve reviewed your order. All jobs require proof approval before production.
             </p>
           </aside>
         </div>

@@ -14,7 +14,6 @@
     "generate:images": "tsx scripts/generate-images.ts",
     "generate:images:one": "tsx scripts/generate-images.ts --regenerate",
     "db:seed": "tsx scripts/seed.ts",
-    "stripe:listen": "bash scripts/stripe-listen.sh",
     "test": "vitest run"
   },
   "dependencies": {
@@ -45,8 +44,6 @@
     "@radix-ui/react-tooltip": "^1.1.6",
     "@react-email/components": "^0.0.34",
     "@react-email/render": "^1.0.4",
-    "@stripe/react-stripe-js": "^3.1.1",
-    "@stripe/stripe-js": "^5.5.0",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.47.11",
     "@tanstack/react-query": "^5.64.1",
@@ -70,7 +67,6 @@
     "resend": "^4.0.1",
     "sharp": "^0.33.5",
     "sonner": "^1.7.1",
-    "stripe": "^17.5.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.19.2",

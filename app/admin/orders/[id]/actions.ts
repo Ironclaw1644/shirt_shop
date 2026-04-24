@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { sendInvoiceForOrder } from "@/lib/orders/sendInvoice";
 import type { OrderStatus } from "@/types/supabase";
 
 const statuses = [
@@ -23,5 +24,17 @@ export async function updateOrderStatus(formData: FormData) {
     .update({ status: parsed.data.status as OrderStatus, updated_at: new Date().toISOString() })
     .eq("id", parsed.data.id);
   if (error) throw error;
+  revalidatePath(`/admin/orders/${parsed.data.id}`);
+}
+
+const invoiceSchema = z.object({
+  id: z.string().uuid(),
+  notes: z.string().optional(),
+});
+
+export async function emailInvoice(formData: FormData) {
+  const parsed = invoiceSchema.safeParse(Object.fromEntries(formData));
+  if (!parsed.success) throw new Error("Invalid payload");
+  await sendInvoiceForOrder(parsed.data.id, parsed.data.notes || undefined);
   revalidatePath(`/admin/orders/${parsed.data.id}`);
 }

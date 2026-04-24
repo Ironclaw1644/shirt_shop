@@ -47,6 +47,18 @@ export default async function OrderDetailPage({
         <Badge variant="paper">{order.status.replace(/_/g, " ")}</Badge>
       </div>
 
+      {order.status === "received" && (
+        <div className="rounded-lg border border-primary/20 bg-primary/5 p-5">
+          <p className="font-display text-lg font-bold text-ink">
+            Order received. We&rsquo;ll email an invoice and a proof shortly.
+          </p>
+          <p className="mt-1 text-sm text-ink-soft">
+            Our team is reviewing your order. You&rsquo;ll get an itemized invoice in your inbox
+            and a digital proof to approve before any press runs.
+          </p>
+        </div>
+      )}
+
       <ol className="flex flex-wrap items-center gap-2 text-xs font-medium">
         {statusOrder.map((step, i) => (
           <li

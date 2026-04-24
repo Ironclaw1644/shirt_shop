@@ -15,7 +15,7 @@ export default async function AdminQuotesList() {
     <div>
       <AdminPageHeader
         title="Quote requests"
-        subtitle="Reply with tier pricing, then convert an accepted quote into an order + Stripe payment link."
+        subtitle="Reply with tier pricing, then convert an accepted quote into an order. Email the invoice from the order page."
       />
       <div className="p-6 sm:p-8">
         <div className="rounded-lg border border-ink/10 bg-white overflow-hidden">

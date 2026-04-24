@@ -1,6 +1,7 @@
 import "server-only";
 import { render } from "@react-email/render";
-import OrderConfirmationEmail from "@/emails/order-confirmation";
+import OrderReceivedEmail from "@/emails/order-received";
+import InvoiceEmail from "@/emails/invoice";
 import ProofReadyEmail from "@/emails/proof-ready";
 import OrderShippedEmail from "@/emails/order-shipped";
 import QuoteReceivedEmail from "@/emails/quote-received";
@@ -29,7 +30,7 @@ async function send(
   });
 }
 
-export async function sendOrderConfirmationEmail(args: {
+export async function sendOrderReceivedEmail(args: {
   email: string;
   orderId: string;
   totalCents: number;
@@ -37,11 +38,36 @@ export async function sendOrderConfirmationEmail(args: {
 }) {
   return send(
     args.email,
-    `Your Georgia Print Hub order — #${args.orderId.slice(0, 8)}`,
-    <OrderConfirmationEmail
+    `Order received — #${args.orderId.slice(0, 8)} · invoice coming soon`,
+    <OrderReceivedEmail
       orderId={args.orderId}
       totalCents={args.totalCents}
       items={args.items}
+    />,
+  );
+}
+
+export async function sendInvoiceEmail(args: {
+  email: string;
+  orderId: string;
+  totalCents: number;
+  subtotalCents: number;
+  shippingCents: number;
+  taxCents: number;
+  items: { title_snapshot: string; quantity: number; unit_price_cents: number }[];
+  notes?: string;
+}) {
+  return send(
+    args.email,
+    `Invoice — order #${args.orderId.slice(0, 8)}`,
+    <InvoiceEmail
+      orderId={args.orderId}
+      totalCents={args.totalCents}
+      subtotalCents={args.subtotalCents}
+      shippingCents={args.shippingCents}
+      taxCents={args.taxCents}
+      items={args.items}
+      notes={args.notes}
     />,
   );
 }
