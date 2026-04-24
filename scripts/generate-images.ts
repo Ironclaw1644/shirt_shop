@@ -11,7 +11,10 @@
  *   npm run generate:images -- --regenerate <slug> --reference <url>
  *                                                      # alter a real reference photo
  */
-import "dotenv/config";
+import dotenv from "dotenv";
+// Match Next.js convention: load .env.local first (overrides), then .env.
+dotenv.config({ path: ".env.local" });
+dotenv.config();
 import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";

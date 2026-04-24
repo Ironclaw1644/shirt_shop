@@ -4,7 +4,9 @@
  *
  *   npx tsx scripts/generate-manifest-entries.ts
  */
-import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
+dotenv.config();
 import fs from "node:fs/promises";
 import path from "node:path";
 import { importedProducts } from "../lib/catalog/imported-products";
