@@ -1,6 +1,6 @@
 # Georgia Print Hub (GAPH)
 
-Production-grade e-commerce for a custom printing, promotional products, apparel, awards, and personalized-gifts shop based in Alpharetta, GA. Seven consolidated storefronts in one site:
+Production-grade e-commerce for a custom printing, promotional products, apparel, awards, personalized-gifts, and bulk-blanks shop — locally printed in Georgia. Eight consolidated storefronts in one site:
 
 1. Custom Printing
 2. Apparel & Headwear (blank + decorated, faceted by brand)
@@ -9,8 +9,11 @@ Production-grade e-commerce for a custom printing, promotional products, apparel
 5. Custom Color Photo Gifts
 6. Personalized Gifts
 7. Sports & Academic Awards
+8. Bulk Blanks (buy what we print on)
 
-Built with **Next.js 15 (App Router) + React 19 + TypeScript**, styled with **Tailwind + shadcn primitives + hand-rolled signature animations**. Backend on **Supabase** (Postgres + RLS + Auth + Storage). Payments via **Stripe** (embedded Payment Element + webhooks). Email via **Resend** (transactional + newsletter). In-browser Designer built on **Fabric.js 6**. Product + marketing imagery generated with **Google Gemini Nano Banana 2** (`gemini-2.5-flash-image`).
+Built with **Next.js 15 (App Router) + React 19 + TypeScript**, styled with **Tailwind + shadcn primitives + hand-rolled signature animations**. Backend on **Supabase** (Postgres + RLS + Auth + Storage). Email via **Resend** (transactional + newsletter). In-browser Designer built on **Fabric.js 6**. Product + marketing imagery generated with **Google Gemini Nano Banana 2** (`gemini-2.5-flash-image`).
+
+Checkout is invoice-based for v1: customers create an account, place an order, and receive an "order received, invoice coming soon" confirmation. Admin emails an itemized invoice from the order page. The prior Stripe Payment Element implementation is preserved on the `feature/stripe-checkout` branch (tag `pre-stripe-removal`) for future reactivation.
 
 ## Quickstart
 
@@ -20,7 +23,7 @@ cp .env.example .env.local  # fill in as keys arrive; everything is already wire
 npm run dev                 # http://localhost:3000
 ```
 
-The app runs locally without any live credentials — checkout falls back to “order recorded; we’ll invoice manually” until Stripe keys land, and email calls no-op until `RESEND_API_KEY` is set.
+The app runs locally without any live credentials — checkout records orders without payment and email calls no-op until `RESEND_API_KEY` is set.
 
 ## Environment
 
@@ -29,9 +32,8 @@ See `.env.example`. Key variables:
 | Variable | Purpose |
 | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Client + SSR auth |
-| `SUPABASE_SERVICE_ROLE_KEY` | Seed scripts + webhook handlers |
-| `STRIPE_SECRET_KEY` / `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` / `STRIPE_WEBHOOK_SECRET` | Payments |
-| `RESEND_API_KEY` / `RESEND_FROM_EMAIL` / `RESEND_ADMIN_EMAIL` | Transactional + newsletter email |
+| `SUPABASE_SERVICE_ROLE_KEY` | Seed scripts + admin handlers |
+| `RESEND_API_KEY` / `RESEND_FROM_EMAIL` / `RESEND_ADMIN_EMAIL` | Transactional + newsletter email + admin invoice button |
 | `GOOGLE_API_KEY` | Gemini image generation |
 | `NEXT_PUBLIC_SITE_URL` | Canonical URLs + email templates |
 
@@ -42,19 +44,20 @@ See `.env.example`. Key variables:
 1. Create a Supabase project → copy the URL, anon key, service role key into `.env.local`.
 2. Install the CLI (`brew install supabase/tap/supabase`) and link: `supabase link --project-ref <ref>`.
 3. Apply the schema: `supabase db push` (or paste `supabase/migrations/0001_init.sql` into the SQL editor).
-4. Seed data: `npm run db:seed` — loads 7 categories + all subcategories + ~40 representative products with tier pricing.
+4. Seed data: `npm run db:seed` — loads 8 categories + all subcategories + the seed products (additional ~120 SKUs are static in `lib/catalog/imported-products.ts`).
 5. Storage buckets are created by the migration (`artwork`, `proofs`, `generated`, `product-images`). Tighten bucket-level policies in the Supabase dashboard as needed.
 
-### 2. Stripe
+### 2. Checkout (invoice-based v1)
 
-Checkout is production-ready and runs in a graceful fallback mode until keys are set.
+Customers create an account, place an order, and receive an "Order received — invoice coming soon" confirmation. No payment is collected at checkout.
 
-When keys arrive:
+To send an invoice:
 
-1. Paste `sk_test_...` + `pk_test_...` into `.env.local`.
-2. Run the Stripe CLI listener: `npm run stripe:listen` (requires `stripe login`).
-3. Copy the printed `whsec_...` into `STRIPE_WEBHOOK_SECRET` and restart the dev server.
-4. The webhook route is `POST /api/stripe/webhook`. It updates order status + fires the Resend confirmation.
+1. Open the order at `/admin/orders/[id]`.
+2. Optionally add notes (payment method, due date) in the sidebar form.
+3. Click **Email invoice** — `emails/invoice.tsx` renders an itemized invoice with subtotal/shipping/tax/total and ships via Resend.
+
+Reactivating Stripe later: see branch `feature/stripe-checkout` (tag `pre-stripe-removal`) for the prior Payment Element + webhook implementation.
 
 ### 3. Resend
 
@@ -70,7 +73,10 @@ Already wired with the provided key.
 - `npm run generate:images` — generate any missing hero/category/product/city images from `content/image-manifest.json` into `public/images/generated/`.
 - `npm run generate:images -- --all` — regenerate every image.
 - `npm run generate:images -- --regenerate <slug>` — regenerate just one.
-- Admins can also generate images live from `/admin/products/[id]` → “Generate imagery”.
+- `npm run generate:images -- --filter <prefix>` — only slugs starting with the prefix (e.g. `--filter product-blank-`).
+- `npm run generate:images -- --regenerate <slug> --reference <url>` — alter a real reference photo via Nano Banana 2 (image-to-image). Use when the rare branded item needs a real-photo basis instead of a generated look-alike.
+- `npx tsx scripts/generate-manifest-entries.ts` — append manifest entries for any imported products that don't have one yet (idempotent).
+- Admins can also generate images live from `/admin/products/[id]` → "Generate imagery".
 
 Prompt writing discipline (baked into the script):
 
@@ -79,23 +85,23 @@ Prompt writing discipline (baked into the script):
 ## Surface map
 
 ```
-/                                    # homepage (ink-press hero + 7-tile grid + counters + how-it-works)
+/                                    # homepage (ink-press hero + 8-tile grid + counters + how-it-works)
 /:category                           # category landing — every top-level slug (and every city slug)
 /:category/:subcategory              # subcategory grid
 /product/:slug                       # PDP with dual CTAs + tier pricing + decoration picker
 /designer                            # Fabric.js customizer (product + placement query-stringed in)
 /cart                                # standalone cart (drawer also available everywhere)
-/checkout                            # Stripe Payment Element
+/checkout                            # email-only invoice flow ("order received, invoice coming soon")
 /quote                               # volume quote flow
 /search                              # catalog keyword search
-/alpharetta-printing …               # 6 city landings: Alpharetta, Roswell, Johns Creek, Milton, Cumming, Atlanta
+/alpharetta-printing …               # 6 city SEO landings: Alpharetta, Roswell, Johns Creek, Milton, Cumming, Atlanta
 /about, /contact, /faq               # static pages
 /policies/{privacy,terms,returns,shipping}
 /auth/{sign-in,sign-up,callback,sign-out}
 /account                             # customer area — orders, proofs, designs, addresses, profile
 /admin                               # admin back-end (protected by role=admin|staff)
-  /admin/orders                      # list, detail, status transitions, refund hook points
-  /admin/quotes                      # inbox + reply + convert-to-order (Stripe Payment Link)
+  /admin/orders                      # list, detail, status transitions, "Email invoice" button
+  /admin/quotes                      # inbox + reply + convert-to-order (then email invoice from order page)
   /admin/products                    # CRUD + Nano Banana generate panel
   /admin/customers                   # list, detail, order history
   /admin/newsletter                  # subscribers, campaigns (draft + Resend broadcast hook)
@@ -144,7 +150,6 @@ npm run test          # vitest unit tests (see scripts dir)
 
 - **Frontend**: Vercel — link the repo, set all env vars in the project settings.
 - **Backend**: Supabase — `supabase db push` to apply migrations.
-- **Webhooks**: add `https://<your-domain>/api/stripe/webhook` to the Stripe dashboard and copy its signing secret into `STRIPE_WEBHOOK_SECRET`.
 - **Domain**: point `gaprinthub.com` at Vercel, enable Vercel DNS, verify via Resend.
 
 ## Open items (tracked in `DECISIONS.md`)
