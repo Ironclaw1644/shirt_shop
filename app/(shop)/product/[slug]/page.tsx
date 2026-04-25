@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { createClient } from "@supabase/supabase-js";
 import { getCategory } from "@/lib/catalog/categories";
 import { dbToSampleProduct, PRODUCT_SELECT, type DbProductRow } from "@/lib/catalog/from-db";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
@@ -12,10 +13,14 @@ import { siteConfig } from "@/lib/site-config";
 type Params = { slug: string };
 
 export async function generateStaticParams() {
-  // Build-time fetch of slugs from the DB. If env isn't configured (e.g. during a
-  // local lint), fall back to empty so pages render on demand.
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return [];
-  const supa = await getSupabaseServerClient();
+  // Cookie-free client — generateStaticParams runs at build with no request.
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !key) return [];
+  const supa = createClient(url, key, {
+    auth: { persistSession: false },
+    db: { schema: "gaph" },
+  });
   const { data } = await supa.from("products").select("slug").eq("status", "active");
   return (data ?? []).map((p) => ({ slug: p.slug }));
 }
