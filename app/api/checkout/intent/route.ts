@@ -83,5 +83,17 @@ export async function POST(req: Request) {
     }),
   ]);
 
+  try {
+    await service.from("site_activity").insert({
+      event_type: "order_created",
+      path: "/checkout",
+      user_id: null,
+      session_id: null,
+      metadata: { orderId: order.id, totalCents: total, email } as never,
+    });
+  } catch {
+    // best-effort
+  }
+
   return NextResponse.json({ orderId: order.id });
 }

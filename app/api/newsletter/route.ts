@@ -45,5 +45,17 @@ export async function POST(req: Request) {
     confirmUrl,
   }).catch(() => null);
 
+  try {
+    await svc.from("site_activity").insert({
+      event_type: "newsletter_signup",
+      path: "/api/newsletter",
+      user_id: null,
+      session_id: null,
+      metadata: { email: parsed.data.email } as never,
+    });
+  } catch {
+    // best-effort
+  }
+
   return NextResponse.json({ ok: true });
 }

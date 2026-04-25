@@ -3,7 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { Badge } from "@/components/ui/badge";
 import { formatMoneyCents } from "@/lib/utils/money";
-import { updateOrderStatus, emailInvoice } from "./actions";
+import { updateOrderStatus, emailInvoice, postOrderMessage } from "./actions";
 
 const statusOrder = ["received","in_proof","approved","in_production","shipped","delivered","cancelled"];
 
@@ -72,20 +72,47 @@ export default async function AdminOrderDetail({ params }: { params: Promise<{ i
               Conversation
             </h2>
             <ul className="divide-y divide-ink/10 max-h-96 overflow-y-auto">
-              {((order.order_messages ?? []) as Array<{ id: string; author_role: string; created_at: string; body: string }>).map((m) => (
-                <li key={m.id} className="px-5 py-4">
-                  <p className="text-xs uppercase tracking-widest text-ink-mute">
-                    {m.author_role} · {new Date(m.created_at).toLocaleString()}
-                  </p>
-                  <p className="mt-1 text-sm text-ink-soft whitespace-pre-wrap">{m.body}</p>
-                </li>
-              ))}
+              {((order.order_messages ?? []) as Array<{ id: string; author_role: string; created_at: string; body: string }>).map((m) => {
+                const isAdmin = m.author_role === "admin" || m.author_role === "staff";
+                return (
+                  <li
+                    key={m.id}
+                    className={`px-5 py-4 ${
+                      isAdmin
+                        ? "border-l-4 border-l-primary bg-primary/5"
+                        : "bg-paper-warm/40"
+                    }`}
+                  >
+                    <p className="text-xs uppercase tracking-widest text-ink-mute">
+                      {isAdmin ? "You" : "Customer"} · {new Date(m.created_at).toLocaleString()}
+                    </p>
+                    <p className="mt-1 text-sm text-ink-soft whitespace-pre-wrap">{m.body}</p>
+                  </li>
+                );
+              })}
               {(!order.order_messages || order.order_messages.length === 0) && (
                 <li className="px-5 py-10 text-center text-ink-mute text-sm">
                   No messages yet.
                 </li>
               )}
             </ul>
+            <form action={postOrderMessage} className="border-t border-ink/10 px-5 py-4 bg-paper-warm/30 space-y-2">
+              <input type="hidden" name="id" value={order.id} />
+              <label htmlFor="reply-body" className="block text-xs font-mono uppercase tracking-widest text-ink-mute">
+                Reply to customer
+              </label>
+              <textarea
+                id="reply-body"
+                name="body"
+                rows={3}
+                required
+                placeholder="Type your reply…"
+                className="w-full rounded border border-ink/15 bg-white px-3 py-2 text-sm focus:border-primary focus:outline-none"
+              />
+              <button className="h-9 rounded bg-primary text-white px-4 text-sm font-medium hover:bg-primary-700 transition-colors">
+                Post reply
+              </button>
+            </form>
           </section>
         </div>
 

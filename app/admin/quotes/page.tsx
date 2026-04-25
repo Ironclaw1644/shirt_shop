@@ -4,13 +4,25 @@ import { AdminPageHeader } from "@/components/admin/page-header";
 import { Badge } from "@/components/ui/badge";
 import { formatQuantity } from "@/lib/utils/money";
 
-export default async function AdminQuotesList() {
+export default async function AdminQuotesList({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  const sp = await searchParams;
   const supa = await getSupabaseServerClient();
-  const { data: quotes } = await supa
+  let query = supa
     .from("quote_requests")
     .select("id, email, full_name, company, est_quantity, status, created_at")
     .order("created_at", { ascending: false })
     .limit(200);
+  if (sp.status) {
+    const statuses = sp.status.split(",").map((s) => s.trim()).filter(Boolean);
+    if (statuses.length > 0) {
+      query = query.in("status", statuses as never);
+    }
+  }
+  const { data: quotes } = await query;
   return (
     <div>
       <AdminPageHeader

@@ -1,23 +1,53 @@
-import Link from "next/link";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/page-header";
-import { Badge } from "@/components/ui/badge";
-import { formatMoneyCents } from "@/lib/utils/money";
+import { OrdersTable } from "./_orders-table";
+
+function rangeStartIso(range: string | undefined): string | null {
+  if (!range || range === "all") return null;
+  const now = Date.now();
+  const day = 24 * 60 * 60 * 1000;
+  if (range === "today") return new Date(new Date().setHours(0, 0, 0, 0)).toISOString();
+  if (range === "7d") return new Date(now - 7 * day).toISOString();
+  if (range === "30d") return new Date(now - 30 * day).toISOString();
+  return null;
+}
+
+const SORT_FIELDS = new Set(["created_at", "total_cents"]);
+
+type SP = {
+  status?: string;
+  q?: string;
+  range?: string;
+  min_total?: string;
+  max_total?: string;
+  sort?: string;
+  dir?: string;
+};
 
 export default async function AdminOrdersList({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string; q?: string }>;
+  searchParams: Promise<SP>;
 }) {
   const sp = await searchParams;
   const supa = await getSupabaseServerClient();
+
+  const sortField = SORT_FIELDS.has(sp.sort ?? "") ? sp.sort! : "created_at";
+  const dir: "asc" | "desc" = sp.dir === "asc" ? "asc" : "desc";
+
   let query = supa
     .from("orders")
     .select("id, email, total_cents, status, created_at")
-    .order("created_at", { ascending: false })
-    .limit(100);
+    .order(sortField, { ascending: dir === "asc" })
+    .limit(200);
   if (sp.status) query = query.eq("status", sp.status as never);
   if (sp.q) query = query.ilike("email", `%${sp.q}%`);
+  const since = rangeStartIso(sp.range);
+  if (since) query = query.gte("created_at", since);
+  const minCents = sp.min_total ? Math.round(parseFloat(sp.min_total) * 100) : null;
+  const maxCents = sp.max_total ? Math.round(parseFloat(sp.max_total) * 100) : null;
+  if (minCents != null && Number.isFinite(minCents)) query = query.gte("total_cents", minCents);
+  if (maxCents != null && Number.isFinite(maxCents)) query = query.lte("total_cents", maxCents);
 
   const { data: orders } = await query;
 
@@ -25,17 +55,17 @@ export default async function AdminOrdersList({
     <div>
       <AdminPageHeader
         title="Orders"
-        subtitle="Every order flows through this queue — review proofs, update status, process refunds."
+        subtitle="Search, filter, multi-select to bulk-update status or email invoices."
       />
 
-      <div className="p-4 sm:p-6 lg:p-8">
-        <form method="get" className="flex flex-wrap gap-2 sm:gap-3 mb-5">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-5">
+        <form method="get" className="flex flex-wrap gap-2 sm:gap-3">
           <input
             id="admin-search"
             name="q"
             defaultValue={sp.q ?? ""}
             placeholder="Search email…"
-            className="h-10 w-full sm:w-80 min-w-0 flex-1 sm:flex-none rounded border border-ink/15 bg-white px-3 text-sm focus:border-primary focus:outline-none"
+            className="h-10 w-full sm:w-64 min-w-0 flex-1 sm:flex-none rounded border border-ink/15 bg-white px-3 text-sm focus:border-primary focus:outline-none"
           />
           <select
             name="status"
@@ -47,46 +77,41 @@ export default async function AdminOrdersList({
               <option key={s} value={s}>{s.replace(/_/g, " ")}</option>
             ))}
           </select>
+          <select
+            name="range"
+            defaultValue={sp.range ?? "all"}
+            className="h-10 rounded border border-ink/15 bg-white px-2 text-sm"
+          >
+            <option value="all">All time</option>
+            <option value="today">Today</option>
+            <option value="7d">Last 7 days</option>
+            <option value="30d">Last 30 days</option>
+          </select>
+          <input
+            name="min_total"
+            type="number"
+            min="0"
+            step="1"
+            placeholder="Min $"
+            defaultValue={sp.min_total ?? ""}
+            className="h-10 w-24 rounded border border-ink/15 bg-white px-2 text-sm"
+          />
+          <input
+            name="max_total"
+            type="number"
+            min="0"
+            step="1"
+            placeholder="Max $"
+            defaultValue={sp.max_total ?? ""}
+            className="h-10 w-24 rounded border border-ink/15 bg-white px-2 text-sm"
+          />
+          {/* preserve sort across filter submits */}
+          {sp.sort && <input type="hidden" name="sort" value={sp.sort} />}
+          {sp.dir && <input type="hidden" name="dir" value={sp.dir} />}
           <button className="h-10 rounded bg-ink text-paper px-4 text-sm">Filter</button>
         </form>
 
-        <div className="rounded-lg border border-ink/10 bg-white overflow-x-auto">
-          <table className="w-full min-w-[640px] text-sm">
-            <thead className="bg-paper-warm text-xs uppercase tracking-wider text-ink-mute">
-              <tr>
-                <th className="text-left px-4 py-3">Order</th>
-                <th className="text-left px-4 py-3">Customer</th>
-                <th className="text-left px-4 py-3">Placed</th>
-                <th className="text-left px-4 py-3">Status</th>
-                <th className="text-right px-4 py-3">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {(orders ?? []).map((o) => (
-                <tr key={o.id} className="border-t border-ink/10 hover:bg-paper-warm transition-colors">
-                  <td className="px-4 py-3">
-                    <Link href={`/admin/orders/${o.id}`} className="font-display font-semibold text-primary hover:underline">
-                      #{o.id.slice(0, 8).toUpperCase()}
-                    </Link>
-                  </td>
-                  <td className="px-4 py-3">{o.email}</td>
-                  <td className="px-4 py-3 text-ink-mute">
-                    {new Date(o.created_at).toLocaleString()}
-                  </td>
-                  <td className="px-4 py-3"><Badge variant="paper">{o.status.replace(/_/g, " ")}</Badge></td>
-                  <td className="px-4 py-3 text-right font-mono">{formatMoneyCents(o.total_cents)}</td>
-                </tr>
-              ))}
-              {(!orders || orders.length === 0) && (
-                <tr>
-                  <td colSpan={5} className="px-4 py-10 text-center text-ink-mute">
-                    No orders.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+        <OrdersTable rows={orders ?? []} sort={sortField} dir={dir} />
       </div>
     </div>
   );

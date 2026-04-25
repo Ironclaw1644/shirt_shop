@@ -49,13 +49,25 @@ export default async function AdminDashboard() {
             label="30-day revenue"
             value={formatMoneyCents(thirtyDayRevenue)}
             icon="dollar-sign"
+            href="/admin/orders?range=30d"
           />
-          <StatCard label="New orders" value={String(recentOrders?.length ?? 0)} icon="bag-shopping" />
-          <StatCard label="Open quotes" value={String(openQuotes?.length ?? 0)} icon="paper-plane" />
+          <StatCard
+            label="New orders"
+            value={String(recentOrders?.length ?? 0)}
+            icon="bag-shopping"
+            href="/admin/orders?range=30d"
+          />
+          <StatCard
+            label="Open quotes"
+            value={String(openQuotes?.length ?? 0)}
+            icon="paper-plane"
+            href="/admin/quotes?status=new,in_progress"
+          />
           <StatCard
             label="New subscribers"
             value={String(newSubs?.length ?? 0)}
             icon="envelope-open-text"
+            href="/admin/newsletter"
           />
         </div>
 
@@ -132,14 +144,31 @@ export default async function AdminDashboard() {
   );
 }
 
-function StatCard({ label, value, icon }: { label: string; value: string; icon: string }) {
+function StatCard({
+  label,
+  value,
+  icon,
+  href,
+}: {
+  label: string;
+  value: string;
+  icon: string;
+  href: string;
+}) {
   return (
-    <div className="rounded-lg border border-ink/10 bg-white p-5 shadow-press">
+    <Link
+      href={href}
+      className="group relative rounded-lg border border-ink/10 bg-white p-5 shadow-press hover:border-primary hover:-translate-y-0.5 transition-all"
+    >
       <div className="flex items-center justify-between">
         <p className="text-xs font-mono uppercase tracking-widest text-ink-mute">{label}</p>
         <Icon icon={icon as never} className="text-primary" />
       </div>
       <p className="mt-3 font-display text-3xl font-black text-ink">{value}</p>
-    </div>
+      <Icon
+        icon="arrow-right"
+        className="absolute right-4 bottom-4 text-ink-mute opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all"
+      />
+    </Link>
   );
 }

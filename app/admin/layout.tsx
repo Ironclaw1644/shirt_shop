@@ -15,7 +15,6 @@ const nav: { href: string; label: string; icon: string }[] = [
   { href: "/admin/customers", label: "Customers", icon: "users" },
   { href: "/admin/newsletter", label: "Newsletter", icon: "envelope-open-text" },
   { href: "/admin/activity", label: "Site activity", icon: "bolt" },
-  { href: "/admin/content", label: "Content", icon: "brush" },
   { href: "/admin/settings", label: "Settings", icon: "shield-halved" },
   { href: "/admin/users", label: "Users & roles", icon: "user" },
   { href: "/admin/audit", label: "Audit log", icon: "circle-info" },

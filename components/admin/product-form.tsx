@@ -7,24 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
 import { Icon } from "@/components/ui/icon";
 import { saveProduct, type ProductPayload } from "@/app/admin/products/actions";
 
 type CategoryOpt = { id: string; slug: string; name: string; parent_id: string | null };
 
-type PlacementZone = { key: string; label: string; widthIn: number; heightIn: number };
-
 type Tier = { id?: string; min_qty: number; max_qty: number | null; unit_price_cents: number };
-
-type Variant = {
-  id?: string;
-  sku: string;
-  options: Record<string, string>;
-  price_cents: number | null;
-  inventory_tracked: boolean;
-  stock_qty: number;
-};
 
 type ProductInput = {
   id?: string;
@@ -43,18 +31,9 @@ type ProductInput = {
   category_id: string | null;
   subcategory_id: string | null;
   images: string[];
-  placement_zones: PlacementZone[];
   options: Record<string, string[]>;
   seo_meta: Record<string, unknown>;
   price_tiers?: { id: string; min_qty: number; max_qty: number | null; unit_price_cents: number }[];
-  product_variants?: {
-    id: string;
-    sku: string;
-    options: Record<string, string>;
-    price_cents: number | null;
-    inventory_tracked: boolean;
-    stock_qty: number;
-  }[];
 };
 
 export function ProductForm({
@@ -79,25 +58,14 @@ export function ProductForm({
     product?.decoration_methods ?? [],
   );
   const [images, setImages] = React.useState<string[]>(product?.images ?? []);
-  const [placementZones, setPlacementZones] = React.useState<PlacementZone[]>(
-    product?.placement_zones ?? [],
-  );
   const [optionsState, setOptionsState] = React.useState<Record<string, string[]>>(
     product?.options ?? {},
   );
-  const seo = (product?.seo_meta ?? {}) as Record<string, string>;
-  const [seoTitle, setSeoTitle] = React.useState<string>(String(seo.title ?? ""));
-  const [seoDescription, setSeoDescription] = React.useState<string>(String(seo.description ?? ""));
-  const [seoOgImage, setSeoOgImage] = React.useState<string>(String(seo.og_image ?? ""));
   const [tiers, setTiers] = React.useState<Tier[]>(
     (product?.price_tiers ?? []).map((t) => ({ ...t })),
   );
-  const [variants, setVariants] = React.useState<Variant[]>(
-    (product?.product_variants ?? []).map((v) => ({ ...v })),
-  );
 
   React.useEffect(() => {
-    // If parent category changes and current sub doesn't belong to it, clear it.
     if (subcategoryId) {
       const sub = categories.find((c) => c.id === subcategoryId);
       if (!sub || sub.parent_id !== categoryId) setSubcategoryId("");
@@ -110,18 +78,9 @@ export function ProductForm({
     const fd = new FormData(e.currentTarget);
     setLoading(true);
 
-    const heroSeo = (product?.seo_meta?.heroPromptKey as string | undefined) ?? undefined;
-    const seoMeta: Record<string, unknown> = {
-      ...(heroSeo ? { heroPromptKey: heroSeo } : {}),
-      ...(seoTitle ? { title: seoTitle } : {}),
-      ...(seoDescription ? { description: seoDescription } : {}),
-      ...(seoOgImage ? { og_image: seoOgImage } : {}),
-    };
-
     const basePriceUsd = fd.get("base_price") as string;
     const payload: ProductPayload = {
       title: String(fd.get("title") ?? ""),
-      slug: String(fd.get("slug") ?? ""),
       short_description: (fd.get("short_description") as string) || null,
       description: (fd.get("description") as string) || null,
       base_price_cents: basePriceUsd ? Math.round(parseFloat(basePriceUsd) * 100) : null,
@@ -135,11 +94,9 @@ export function ProductForm({
       category_id: categoryId || null,
       subcategory_id: subcategoryId || null,
       images: images.filter(Boolean),
-      placement_zones: placementZones,
       options: optionsState,
-      seo_meta: seoMeta,
       tiers: tiers.map(({ id, ...rest }) => (id ? { id, ...rest } : rest)),
-      variants: variants.map(({ id, ...rest }) => (id ? { id, ...rest } : rest)),
+      existing_seo_meta: product?.seo_meta,
     };
 
     try {
@@ -157,14 +114,16 @@ export function ProductForm({
   return (
     <form onSubmit={onSubmit} className="space-y-5">
       <Section title="Basics">
-        <Two>
-          <Field label="Title" name="title" defaultValue={product?.title ?? ""} required />
-          <Field label="Slug" name="slug" defaultValue={product?.slug ?? ""} required />
-        </Two>
+        <Field label="Title" name="title" defaultValue={product?.title ?? ""} required />
         <Field label="Short description" name="short_description" defaultValue={product?.short_description ?? ""} />
         <div>
           <Label className="block mb-1">Description</Label>
-          <Textarea rows={5} name="description" defaultValue={product?.description ?? ""} />
+          <Textarea
+            rows={8}
+            name="description"
+            placeholder="Materials, decoration notes, sizing details, anything customers should know."
+            defaultValue={product?.description ?? ""}
+          />
         </div>
       </Section>
 
@@ -259,143 +218,88 @@ export function ProductForm({
         </div>
       </Section>
 
-      <Section title="Decoration & placement">
+      <Section title="Decoration methods">
         <ChipList
-          label="Decoration methods"
+          label="Methods (e.g. screen-print, embroidery)"
           values={decorationMethods}
           onChange={setDecorationMethods}
-          placeholder="e.g. screen-print"
+          placeholder="Type and press Enter"
         />
-        <div className="space-y-2">
-          <Label>Placement zones</Label>
-          {placementZones.map((z, i) => (
-            <div key={i} className="grid grid-cols-[1fr,1fr,90px,90px,40px] gap-2 items-center">
-              <Input value={z.key} placeholder="key" onChange={(e) => updateAt(setPlacementZones, i, { ...z, key: e.target.value })} />
-              <Input value={z.label} placeholder="Label" onChange={(e) => updateAt(setPlacementZones, i, { ...z, label: e.target.value })} />
-              <Input type="number" step="0.01" min="0" value={z.widthIn} onChange={(e) => updateAt(setPlacementZones, i, { ...z, widthIn: Number(e.target.value) })} />
-              <Input type="number" step="0.01" min="0" value={z.heightIn} onChange={(e) => updateAt(setPlacementZones, i, { ...z, heightIn: Number(e.target.value) })} />
-              <RemoveBtn onClick={() => removeAt(setPlacementZones, i)} />
-            </div>
-          ))}
-          <Button type="button" variant="outline" size="sm" onClick={() => setPlacementZones([...placementZones, { key: "", label: "", widthIn: 0, heightIn: 0 }])}>
-            <Icon icon="circle-plus" /> Add zone
-          </Button>
-        </div>
       </Section>
 
       <Section title="Options (size, color, etc.)">
-        {Object.entries(optionsState).map(([key, vals]) => (
-          <div key={key} className="grid grid-cols-[180px,1fr,40px] gap-2 items-center">
-            <Input
-              defaultValue={key}
-              placeholder="Option key"
-              onBlur={(e) => {
-                const newKey = e.target.value.trim();
-                if (!newKey || newKey === key) return;
-                setOptionsState((s) => {
-                  const { [key]: oldVals, ...rest } = s;
-                  return { ...rest, [newKey]: oldVals };
-                });
-              }}
-            />
-            <Input
-              value={vals.join(", ")}
-              placeholder="Comma-separated values"
-              onChange={(e) =>
-                setOptionsState((s) => ({
-                  ...s,
-                  [key]: e.target.value.split(",").map((v) => v.trim()).filter(Boolean),
-                }))
-              }
-            />
-            <RemoveBtn
-              onClick={() =>
-                setOptionsState((s) => {
-                  const { [key]: _, ...rest } = s;
-                  return rest;
-                })
-              }
-            />
-          </div>
-        ))}
+        <p className="text-xs text-ink-mute">
+          Each option appears as a dropdown on the product page (e.g. <code>Size</code> → <code>S, M, L, XL</code>).
+        </p>
+        <div className="space-y-2">
+          {Object.entries(optionsState).map(([key, vals]) => (
+            <div key={key} className="grid grid-cols-1 sm:grid-cols-[180px,1fr,40px] gap-2 items-stretch sm:items-center">
+              <Input
+                defaultValue={key}
+                placeholder="Option name (e.g. Size)"
+                onBlur={(e) => {
+                  const newKey = e.target.value.trim();
+                  if (!newKey || newKey === key) return;
+                  setOptionsState((s) => {
+                    const { [key]: oldVals, ...rest } = s;
+                    return { ...rest, [newKey]: oldVals };
+                  });
+                }}
+              />
+              <Input
+                value={vals.join(", ")}
+                placeholder="Comma-separated values (e.g. S, M, L, XL)"
+                onChange={(e) =>
+                  setOptionsState((s) => ({
+                    ...s,
+                    [key]: e.target.value.split(",").map((v) => v.trim()).filter(Boolean),
+                  }))
+                }
+              />
+              <RemoveBtn
+                onClick={() =>
+                  setOptionsState((s) => {
+                    const { [key]: _, ...rest } = s;
+                    return rest;
+                  })
+                }
+              />
+            </div>
+          ))}
+        </div>
         <Button
           type="button"
           variant="outline"
           size="sm"
-          onClick={() => setOptionsState((s) => ({ ...s, [`option_${Object.keys(s).length + 1}`]: [] }))}
+          onClick={() =>
+            setOptionsState((s) => ({ ...s, [`Option ${Object.keys(s).length + 1}`]: [] }))
+          }
         >
           <Icon icon="circle-plus" /> Add option
         </Button>
       </Section>
 
-      <Section title="Images">
-        {images.map((url, i) => (
-          <div key={i} className="grid grid-cols-[1fr,40px,40px,40px] gap-2 items-center">
-            <Input value={url} onChange={(e) => updateAt(setImages, i, e.target.value)} />
-            <Button type="button" variant="ghost" size="sm" disabled={i === 0} onClick={() => moveAt(setImages, i, -1)}>
-              <Icon icon="arrow-up" />
-            </Button>
-            <Button type="button" variant="ghost" size="sm" disabled={i === images.length - 1} onClick={() => moveAt(setImages, i, 1)}>
-              <Icon icon="arrow-down" />
-            </Button>
-            <RemoveBtn onClick={() => removeAt(setImages, i)} />
-          </div>
-        ))}
-        <Button type="button" variant="outline" size="sm" onClick={() => setImages([...images, ""])}>
-          <Icon icon="circle-plus" /> Add image URL
-        </Button>
-      </Section>
+      <ImagesSection
+        images={images}
+        setImages={setImages}
+        slug={product?.slug ?? null}
+      />
 
       <Section title="Price tiers">
-        <p className="text-xs text-ink-mute mb-1">Volume breaks. min_qty inclusive; max_qty inclusive (or blank for ∞).</p>
-        {tiers.map((t, i) => (
-          <div key={i} className="grid grid-cols-[1fr,1fr,1fr,40px] gap-2 items-center">
-            <Input type="number" min="1" value={t.min_qty} placeholder="min qty" onChange={(e) => updateAt(setTiers, i, { ...t, min_qty: Number(e.target.value) })} />
-            <Input type="number" min="1" value={t.max_qty ?? ""} placeholder="max qty (blank = ∞)" onChange={(e) => updateAt(setTiers, i, { ...t, max_qty: e.target.value ? Number(e.target.value) : null })} />
-            <Input type="number" step="1" min="0" value={t.unit_price_cents} placeholder="unit price (cents)" onChange={(e) => updateAt(setTiers, i, { ...t, unit_price_cents: Number(e.target.value) })} />
-            <RemoveBtn onClick={() => removeAt(setTiers, i)} />
-          </div>
-        ))}
+        <p className="text-xs text-ink-mute">Volume breaks. min_qty inclusive; max_qty inclusive (or blank for ∞).</p>
+        <div className="space-y-2">
+          {tiers.map((t, i) => (
+            <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr,1fr,1fr,40px] gap-2 items-stretch sm:items-center">
+              <Input type="number" min="1" value={t.min_qty} placeholder="min qty" onChange={(e) => updateAt(setTiers, i, { ...t, min_qty: Number(e.target.value) })} />
+              <Input type="number" min="1" value={t.max_qty ?? ""} placeholder="max qty (blank = ∞)" onChange={(e) => updateAt(setTiers, i, { ...t, max_qty: e.target.value ? Number(e.target.value) : null })} />
+              <Input type="number" step="1" min="0" value={t.unit_price_cents} placeholder="unit price (cents)" onChange={(e) => updateAt(setTiers, i, { ...t, unit_price_cents: Number(e.target.value) })} />
+              <RemoveBtn onClick={() => removeAt(setTiers, i)} />
+            </div>
+          ))}
+        </div>
         <Button type="button" variant="outline" size="sm" onClick={() => setTiers([...tiers, { min_qty: 1, max_qty: null, unit_price_cents: 0 }])}>
           <Icon icon="circle-plus" /> Add tier
         </Button>
-      </Section>
-
-      <Section title="Variants">
-        <p className="text-xs text-ink-mute mb-1">SKU + options snapshot (e.g. {`{"size":"M","color":"Black"}`}). Stock + price optional.</p>
-        {variants.map((v, i) => (
-          <div key={i} className="grid grid-cols-[1fr,1.5fr,100px,90px,90px,40px] gap-2 items-center">
-            <Input value={v.sku} placeholder="SKU" onChange={(e) => updateAt(setVariants, i, { ...v, sku: e.target.value })} />
-            <Input
-              value={JSON.stringify(v.options)}
-              placeholder='{"size":"M"}'
-              onChange={(e) => {
-                try {
-                  const parsed = JSON.parse(e.target.value || "{}");
-                  updateAt(setVariants, i, { ...v, options: parsed });
-                } catch {
-                  // leave invalid input alone; user keeps editing
-                }
-              }}
-            />
-            <Input type="number" min="0" value={v.price_cents ?? ""} placeholder="price ¢" onChange={(e) => updateAt(setVariants, i, { ...v, price_cents: e.target.value ? Number(e.target.value) : null })} />
-            <Input type="number" min="0" value={v.stock_qty} onChange={(e) => updateAt(setVariants, i, { ...v, stock_qty: Number(e.target.value) })} />
-            <Switch checked={v.inventory_tracked} onCheckedChange={(checked) => updateAt(setVariants, i, { ...v, inventory_tracked: !!checked })} />
-            <RemoveBtn onClick={() => removeAt(setVariants, i)} />
-          </div>
-        ))}
-        <Button type="button" variant="outline" size="sm" onClick={() => setVariants([...variants, { sku: "", options: {}, price_cents: null, inventory_tracked: false, stock_qty: 0 }])}>
-          <Icon icon="circle-plus" /> Add variant
-        </Button>
-      </Section>
-
-      <Section title="SEO">
-        <Field label="Title" name="seo_title" value={seoTitle} onChange={(e) => setSeoTitle(e.target.value)} />
-        <div>
-          <Label className="block mb-1">Description</Label>
-          <Textarea rows={3} value={seoDescription} onChange={(e) => setSeoDescription(e.target.value)} />
-        </div>
-        <Field label="OG image URL" name="seo_og_image" value={seoOgImage} onChange={(e) => setSeoOgImage(e.target.value)} />
       </Section>
 
       <Button type="submit" disabled={loading}>
@@ -405,9 +309,99 @@ export function ProductForm({
   );
 }
 
+function ImagesSection({
+  images,
+  setImages,
+  slug,
+}: {
+  images: string[];
+  setImages: React.Dispatch<React.SetStateAction<string[]>>;
+  slug: string | null;
+}) {
+  const [uploading, setUploading] = React.useState(false);
+
+  async function handleFile(file: File) {
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      if (slug) fd.append("slug", slug);
+      const res = await fetch("/api/admin/products/upload-image", {
+        method: "POST",
+        body: fd,
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) throw new Error(data.error ?? "Upload failed");
+      setImages((arr) => [...arr, data.url]);
+      toast.success("Image uploaded");
+    } catch (err) {
+      toast.error("Upload failed", { description: (err as Error).message });
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  return (
+    <Section title="Images">
+      <p className="text-xs text-ink-mute">
+        First image is used as the hero + Open Graph preview. Drag uploads not supported yet — use the picker.
+      </p>
+
+      <label className="block">
+        <span className="flex items-center gap-2 justify-center w-full rounded border-2 border-dashed border-ink/15 bg-paper-warm px-3 py-5 text-sm text-ink-mute hover:border-primary hover:text-primary cursor-pointer transition-colors">
+          <Icon icon="cloud-arrow-up" />
+          {uploading ? "Uploading…" : "Upload image (PNG · JPG · WEBP, ≤8MB)"}
+        </span>
+        <input
+          type="file"
+          className="sr-only"
+          accept="image/png,image/jpeg,image/webp"
+          disabled={uploading}
+          onChange={(e) => {
+            const f = e.target.files?.[0];
+            if (f) handleFile(f);
+            e.currentTarget.value = "";
+          }}
+        />
+      </label>
+
+      {images.length > 0 && (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mt-3">
+          {images.map((url, i) => (
+            <div
+              key={`${url}-${i}`}
+              className="relative rounded-lg border border-ink/15 bg-white overflow-hidden"
+            >
+              <div className="relative aspect-square bg-paper-warm">
+                {/* Public URL — use plain img to avoid Next.js domain config */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={url} alt="" className="w-full h-full object-cover" />
+                {i === 0 && (
+                  <span className="absolute top-1.5 left-1.5 inline-flex items-center rounded bg-primary text-white px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-widest shadow-stamp">
+                    Hero
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center justify-between gap-1 p-1.5 border-t border-ink/10 bg-white">
+                <Button type="button" variant="ghost" size="sm" disabled={i === 0} onClick={() => moveAt(setImages, i, -1)} aria-label="Move up">
+                  <Icon icon="arrow-left" />
+                </Button>
+                <Button type="button" variant="ghost" size="sm" disabled={i === images.length - 1} onClick={() => moveAt(setImages, i, 1)} aria-label="Move down">
+                  <Icon icon="arrow-right" />
+                </Button>
+                <RemoveBtn onClick={() => removeAt(setImages, i)} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </Section>
+  );
+}
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-lg border border-ink/10 bg-white p-6 space-y-3">
+    <section className="rounded-lg border border-ink/10 bg-white p-4 sm:p-6 space-y-3">
       <h3 className="font-display text-base font-bold">{title}</h3>
       {children}
     </section>
@@ -430,7 +424,7 @@ function Field({ label, ...props }: React.InputHTMLAttributes<HTMLInputElement> 
 function RemoveBtn({ onClick }: { onClick: () => void }) {
   return (
     <Button type="button" variant="ghost" size="sm" onClick={onClick} aria-label="Remove">
-      <Icon icon="trash" />
+      <Icon icon="xmark" />
     </Button>
   );
 }

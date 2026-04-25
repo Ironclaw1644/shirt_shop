@@ -41,5 +41,21 @@ export async function POST(req: Request) {
     quantity: parsed.data.estQuantity,
   }).catch(() => null);
 
+  try {
+    await service.from("site_activity").insert({
+      event_type: "quote_submitted",
+      path: "/quote",
+      user_id: null,
+      session_id: null,
+      metadata: {
+        quoteId: data.id,
+        productSummary: parsed.data.productSummary,
+        estQuantity: parsed.data.estQuantity,
+      } as never,
+    });
+  } catch {
+    // best-effort
+  }
+
   return NextResponse.json({ ok: true, id: data.id });
 }
