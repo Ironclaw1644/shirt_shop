@@ -10,7 +10,10 @@ dotenv.config();
 import fs from "node:fs/promises";
 import path from "node:path";
 import { importedProducts } from "../lib/catalog/imported-products";
+import { importedProductsBatch2 } from "../lib/catalog/imported-products-batch-2";
 import type { SampleProduct } from "../lib/catalog/sample-products";
+
+const allImported: SampleProduct[] = [...importedProducts, ...importedProductsBatch2];
 
 type ManifestEntry = {
   slug: string;
@@ -70,7 +73,7 @@ async function main() {
 
   const existing = new Set(manifest.images.map((e) => e.slug));
   const additions: ManifestEntry[] = [];
-  for (const p of importedProducts) {
+  for (const p of allImported) {
     const entry = entryForProduct(p);
     if (existing.has(entry.slug)) continue;
     additions.push(entry);

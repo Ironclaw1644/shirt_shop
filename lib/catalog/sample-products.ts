@@ -1,5 +1,6 @@
 import type { Category } from "./categories";
 import { importedProducts } from "./imported-products";
+import { importedProductsBatch2 } from "./imported-products-batch-2";
 
 export type SampleProduct = {
   slug: string;
@@ -688,10 +689,14 @@ const seedProducts: SampleProduct[] = [
 ];
 
 /**
- * Full catalog = seed + imported expansion (Phase 3).
- * `imported-products.ts` is sourced from competitor catalogs; see that file for details.
+ * Full catalog = seed + imported expansion batches (Phase 3 + continuation).
+ * Imported batches are sourced from competitor catalogs; see each file for details.
  */
-export const sampleProducts: SampleProduct[] = [...seedProducts, ...importedProducts];
+export const sampleProducts: SampleProduct[] = [
+  ...seedProducts,
+  ...importedProducts,
+  ...importedProductsBatch2,
+];
 
 export function productBySlug(slug: string): SampleProduct | undefined {
   return sampleProducts.find((p) => p.slug === slug);
