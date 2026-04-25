@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSupabaseServiceRoleClient } from "@/lib/supabase/server";
-import { sendOrderReceivedEmail } from "@/lib/resend/send";
+import { sendOrderReceivedEmail, sendAdminNewOrderEmail } from "@/lib/resend/send";
 
 const itemSchema = z.object({
   productSlug: z.string(),
@@ -62,16 +62,26 @@ export async function POST(req: Request) {
   }));
   await service.from("order_items").insert(itemsInsert);
 
-  await sendOrderReceivedEmail({
-    email,
-    orderId: order.id,
-    totalCents: total,
-    items: items.map((i) => ({
-      title_snapshot: i.title,
-      quantity: i.quantity,
-      unit_price_cents: i.unitPriceCents,
-    })),
-  }).catch(() => null);
+  const itemsForEmail = items.map((i) => ({
+    title_snapshot: i.title,
+    quantity: i.quantity,
+    unit_price_cents: i.unitPriceCents,
+  }));
+
+  await Promise.allSettled([
+    sendOrderReceivedEmail({
+      email,
+      orderId: order.id,
+      totalCents: total,
+      items: itemsForEmail,
+    }),
+    sendAdminNewOrderEmail({
+      orderId: order.id,
+      customerEmail: email,
+      totalCents: total,
+      items: itemsForEmail,
+    }),
+  ]);
 
   return NextResponse.json({ orderId: order.id });
 }

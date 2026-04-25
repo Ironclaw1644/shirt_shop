@@ -1,6 +1,7 @@
 import "server-only";
 import { render } from "@react-email/render";
 import OrderReceivedEmail from "@/emails/order-received";
+import AdminNewOrderEmail from "@/emails/admin-new-order";
 import InvoiceEmail from "@/emails/invoice";
 import ProofReadyEmail from "@/emails/proof-ready";
 import OrderShippedEmail from "@/emails/order-shipped";
@@ -44,6 +45,25 @@ export async function sendOrderReceivedEmail(args: {
       totalCents={args.totalCents}
       items={args.items}
     />,
+  );
+}
+
+export async function sendAdminNewOrderEmail(args: {
+  orderId: string;
+  customerEmail: string;
+  totalCents: number;
+  items: { title_snapshot: string; quantity: number; unit_price_cents: number }[];
+}) {
+  return send(
+    ADMIN_EMAIL,
+    `[GAPH] New order #${args.orderId.slice(0, 8)} — ${args.customerEmail}`,
+    <AdminNewOrderEmail
+      orderId={args.orderId}
+      customerEmail={args.customerEmail}
+      totalCents={args.totalCents}
+      items={args.items}
+    />,
+    { replyTo: args.customerEmail },
   );
 }
 
