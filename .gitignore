@@ -15,3 +15,7 @@ coverage
 tmp-logo-preview/
 supabase/.temp/
 .env*.local
+
+# any .env.* file (covers .env.production-seed and similar)
+.env.*
+!.env.example
