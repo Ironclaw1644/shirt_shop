@@ -22,7 +22,7 @@ export default async function AdminCustomerDetail({ params }: { params: Promise<
         title={profile.full_name ?? profile.email}
         subtitle={`${profile.email}${profile.company ? ` · ${profile.company}` : ""}`}
       />
-      <div className="p-6 sm:p-8 space-y-6">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6">
         <div className="rounded-lg border border-ink/10 bg-white p-5 text-sm flex flex-wrap gap-x-6 gap-y-2">
           <span><span className="text-ink-mute">Phone:</span> {profile.phone ?? "—"}</span>
           <span><span className="text-ink-mute">Role:</span> {profile.role}</span>

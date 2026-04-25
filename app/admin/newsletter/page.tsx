@@ -34,7 +34,7 @@ export default async function AdminNewsletter() {
           </Button>
         }
       />
-      <div className="p-6 sm:p-8 grid lg:grid-cols-2 gap-6">
+      <div className="p-4 sm:p-6 lg:p-8 grid lg:grid-cols-2 gap-6">
         <section className="rounded-lg border border-ink/10 bg-white overflow-hidden">
           <h2 className="font-display text-lg font-bold px-5 py-4 border-b border-ink/10">
             Subscribers

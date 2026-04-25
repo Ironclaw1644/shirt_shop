@@ -54,7 +54,7 @@ export default async function AdminSettings() {
   return (
     <div>
       <AdminPageHeader title="Settings" subtitle="Business info, shipping, tax, and feature flags." />
-      <form action={updateSettings} className="p-6 sm:p-8 space-y-8 max-w-3xl">
+      <form action={updateSettings} className="p-4 sm:p-6 lg:p-8 space-y-8 max-w-3xl">
         <Section title="Business">
           <Two>
             <Field name="business_name" label="Business name" defaultValue={s(biz, "name")} />

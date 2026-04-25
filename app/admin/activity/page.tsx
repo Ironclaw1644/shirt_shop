@@ -17,7 +17,7 @@ export default async function AdminActivity() {
         title="Site activity"
         subtitle="Anonymous pageviews, contact submissions, and conversion events. Updates on refresh."
       />
-      <div className="p-6 sm:p-8 grid gap-6 lg:grid-cols-[1fr,360px]">
+      <div className="p-4 sm:p-6 lg:p-8 grid gap-6 lg:grid-cols-[1fr,360px]">
         <section className="rounded-lg border border-ink/10 bg-white overflow-hidden">
           <h2 className="font-display text-lg font-bold px-5 py-4 border-b border-ink/10">
             Recent events

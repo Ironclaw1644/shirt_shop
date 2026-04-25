@@ -14,7 +14,7 @@ export default function AdminContent() {
   return (
     <div>
       <AdminPageHeader title="Content" subtitle="Edit homepage blocks, banners, and city landing copy." />
-      <div className="p-6 sm:p-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="p-4 sm:p-6 lg:p-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {blocks.map((b) => (
           <Link
             key={b.key}

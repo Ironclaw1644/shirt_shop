@@ -15,7 +15,7 @@ export default async function NewProductPage() {
         title="New product"
         subtitle="Set core details now. Tiers, variants, and imagery are editable below."
       />
-      <div className="p-6 sm:p-8 max-w-3xl">
+      <div className="p-4 sm:p-6 lg:p-8 max-w-3xl">
         <ProductForm mode="create" categories={categories ?? []} />
       </div>
     </div>

@@ -25,7 +25,7 @@ export default async function AdminQuoteDetail({ params }: { params: Promise<{ i
         subtitle={`${quote.email} · ${quote.company ?? "Individual"} · received ${new Date(quote.created_at).toLocaleString()}`}
         actions={<Badge variant="paper">{quote.status}</Badge>}
       />
-      <div className="p-6 sm:p-8 grid gap-6 lg:grid-cols-2">
+      <div className="p-4 sm:p-6 lg:p-8 grid gap-6 lg:grid-cols-2">
         <section className="rounded-lg border border-ink/10 bg-white p-5 space-y-2 text-sm">
           <p className="font-display font-bold text-lg">Details</p>
           <p><span className="text-ink-mute">Est. quantity: </span>{quote.est_quantity ?? "—"}</p>

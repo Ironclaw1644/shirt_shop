@@ -12,9 +12,9 @@ export default async function AdminCustomersList() {
   return (
     <div>
       <AdminPageHeader title="Customers" subtitle="Every signed-in customer with their tags and company." />
-      <div className="p-6 sm:p-8">
-        <div className="rounded-lg border border-ink/10 bg-white overflow-hidden">
-          <table className="w-full text-sm">
+      <div className="p-4 sm:p-6 lg:p-8">
+        <div className="rounded-lg border border-ink/10 bg-white overflow-x-auto">
+          <table className="w-full min-w-[640px] text-sm">
             <thead className="bg-paper-warm text-xs uppercase tracking-wider text-ink-mute">
               <tr>
                 <th className="text-left px-4 py-3">Name</th>

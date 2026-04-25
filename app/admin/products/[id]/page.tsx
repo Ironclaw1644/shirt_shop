@@ -28,7 +28,7 @@ export default async function AdminProductEdit({ params }: { params: Promise<{ i
         subtitle={`/${product.slug}`}
         actions={<Badge variant={product.status === "active" ? "success" : "paper"}>{product.status}</Badge>}
       />
-      <div className="p-6 sm:p-8 grid gap-6 lg:grid-cols-[1fr,360px]">
+      <div className="p-4 sm:p-6 lg:p-8 grid gap-6 lg:grid-cols-[1fr,360px]">
         <ProductForm mode="edit" product={product as never} categories={categories ?? []} />
         <aside className="space-y-4 lg:sticky lg:top-6 self-start">
           <GenerateImagePanel slug={product.slug} />

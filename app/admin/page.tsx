@@ -43,7 +43,7 @@ export default async function AdminDashboard() {
         subtitle="Last 30 days of revenue, orders, and open work."
       />
 
-      <div className="p-6 sm:p-8 space-y-8">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard
             label="30-day revenue"

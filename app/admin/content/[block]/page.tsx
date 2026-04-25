@@ -8,7 +8,7 @@ export default async function ContentBlockEditor({ params }: { params: Promise<{
         title={`Edit "${block}"`}
         subtitle="This block is stored in the settings.content JSON. Wire custom field editors here per block as needed."
       />
-      <div className="p-6 sm:p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         <div className="rounded-lg border border-dashed border-ink/20 bg-paper-warm p-10 text-center">
           <p className="font-display text-lg font-semibold">Block-specific editor TBD</p>
           <p className="mt-1 text-sm text-ink-mute">
