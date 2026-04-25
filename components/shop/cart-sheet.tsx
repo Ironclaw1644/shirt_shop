@@ -13,11 +13,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { useCart } from "@/lib/store/cart";
+import { useCartHydrated } from "@/lib/store/use-hydrated";
 import { formatMoneyCents, formatQuantity } from "@/lib/utils/money";
 import { cn } from "@/lib/utils/cn";
 
 export function CartSheetTrigger() {
+  const hydrated = useCartHydrated();
   const count = useCart((s) => s.count());
+  const showCount = hydrated && count > 0;
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -27,7 +30,7 @@ export function CartSheetTrigger() {
           className="relative inline-flex h-10 w-10 items-center justify-center rounded text-ink hover:bg-surface transition-colors"
         >
           <Icon icon="bag-shopping" />
-          {count > 0 && (
+          {showCount && (
             <span className="absolute -right-0.5 -top-0.5 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-primary px-1 font-mono text-[10px] font-bold text-white shadow-press">
               {count}
             </span>
@@ -93,7 +96,7 @@ function CartPanel() {
                         type="button"
                         aria-label="Decrease"
                         onClick={() => updateQty(i.id, i.quantity - 1)}
-                        className="h-7 w-7 rounded border border-ink/15 hover:border-primary"
+                        className="h-8 w-8 rounded border border-ink/15 hover:border-primary"
                       >
                         −
                       </button>
@@ -102,7 +105,7 @@ function CartPanel() {
                         type="button"
                         aria-label="Increase"
                         onClick={() => updateQty(i.id, i.quantity + 1)}
-                        className="h-7 w-7 rounded border border-ink/15 hover:border-primary"
+                        className="h-8 w-8 rounded border border-ink/15 hover:border-primary"
                       >
                         +
                       </button>

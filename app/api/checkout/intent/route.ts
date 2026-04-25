@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getSupabaseServiceRoleClient } from "@/lib/supabase/server";
+import { getSupabaseServerClient, getSupabaseServiceRoleClient } from "@/lib/supabase/server";
 import { sendOrderReceivedEmail, sendAdminNewOrderEmail } from "@/lib/resend/send";
 
 const itemSchema = z.object({
@@ -35,10 +35,16 @@ export async function POST(req: Request) {
   const subtotal = items.reduce((s, i) => s + i.unitPriceCents * i.quantity, 0);
   const total = subtotal + shippingCents + taxCents;
 
+  const userClient = await getSupabaseServerClient();
+  const {
+    data: { user },
+  } = await userClient.auth.getUser();
+
   const service = getSupabaseServiceRoleClient();
   const { data: order, error } = await service
     .from("orders")
     .insert({
+      user_id: user?.id ?? null,
       email,
       status: "received",
       subtotal_cents: subtotal,

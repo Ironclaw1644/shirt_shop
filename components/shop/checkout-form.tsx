@@ -37,14 +37,6 @@ export function CheckoutForm() {
     }
   }
 
-  if (items.length === 0) {
-    return (
-      <div className="rounded-lg border border-dashed border-ink/20 bg-paper-warm p-10 text-center">
-        <p className="font-display text-lg font-semibold">Cart is empty.</p>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-4 rounded-lg border border-ink/10 bg-white p-6 shadow-press">
       <div>

@@ -17,40 +17,42 @@ export function PricingTable({
         </span>
         <Icon icon="boxes-stacked" className="text-accent" />
       </div>
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="text-left text-ink-mute text-xs uppercase tracking-wider">
-            <th className="px-4 py-2 font-medium">Quantity</th>
-            <th className="px-4 py-2 font-medium text-right">Unit price</th>
-            <th className="px-4 py-2 font-medium text-right">You save</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tiers.map((tier, idx) => {
-            const basePrice = tiers[0].unitCents;
-            const savings = basePrice - tier.unitCents;
-            const savingsPct = Math.round((savings / basePrice) * 100);
-            const next = tiers[idx + 1];
-            const rangeLabel = next
-              ? `${formatQuantity(tier.minQty)}–${formatQuantity(next.minQty - 1)}`
-              : `${formatQuantity(tier.minQty)}+`;
-            return (
-              <tr
-                key={tier.minQty}
-                className="border-t border-ink/10 odd:bg-white/40"
-              >
-                <td className="px-4 py-2.5 font-mono">{rangeLabel}</td>
-                <td className="px-4 py-2.5 text-right font-semibold">
-                  {formatMoneyCents(tier.unitCents)}
-                </td>
-                <td className="px-4 py-2.5 text-right text-primary font-medium">
-                  {idx === 0 ? "—" : `${savingsPct}%`}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[360px] text-sm">
+          <thead>
+            <tr className="text-left text-ink-mute text-xs uppercase tracking-wider">
+              <th className="px-4 py-2 font-medium">Quantity</th>
+              <th className="px-4 py-2 font-medium text-right">Unit price</th>
+              <th className="px-4 py-2 font-medium text-right">You save</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tiers.map((tier, idx) => {
+              const basePrice = tiers[0].unitCents;
+              const savings = basePrice - tier.unitCents;
+              const savingsPct = Math.round((savings / basePrice) * 100);
+              const next = tiers[idx + 1];
+              const rangeLabel = next
+                ? `${formatQuantity(tier.minQty)}–${formatQuantity(next.minQty - 1)}`
+                : `${formatQuantity(tier.minQty)}+`;
+              return (
+                <tr
+                  key={tier.minQty}
+                  className="border-t border-ink/10 odd:bg-white/40"
+                >
+                  <td className="px-4 py-2.5 font-mono whitespace-nowrap">{rangeLabel}</td>
+                  <td className="px-4 py-2.5 text-right font-semibold whitespace-nowrap">
+                    {formatMoneyCents(tier.unitCents)}
+                  </td>
+                  <td className="px-4 py-2.5 text-right text-primary font-medium whitespace-nowrap">
+                    {idx === 0 ? "—" : `${savingsPct}%`}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
       <p className="px-4 py-3 text-xs text-ink-mute bg-white/50 border-t border-ink/10">
         Minimum order {formatQuantity(minQty)}. Volume past 10,000 units? Request a direct quote for
         maxed-out discount.

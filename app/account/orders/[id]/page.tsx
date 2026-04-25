@@ -37,9 +37,9 @@ export default async function OrderDetailPage({
 
   return (
     <div className="space-y-8">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="heading-display text-3xl">Order #{order.id.slice(0, 8).toUpperCase()}</h1>
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="min-w-0">
+          <h1 className="heading-display text-2xl sm:text-3xl break-words">Order #{order.id.slice(0, 8).toUpperCase()}</h1>
           <p className="text-sm text-ink-mute">
             Placed {new Date(order.created_at).toLocaleString()}
           </p>
@@ -78,16 +78,16 @@ export default async function OrderDetailPage({
         <h2 className="font-display text-xl font-bold mb-3">Items</h2>
         <div className="rounded-lg border border-ink/10 bg-card divide-y divide-ink/10">
           {((order.order_items ?? []) as Array<{ id: string; title_snapshot: string; decoration: unknown; quantity: number; unit_price_cents: number }>).map((i) => (
-            <div key={i.id} className="p-4 flex items-center justify-between">
-              <div>
-                <p className="font-display font-semibold text-ink">{i.title_snapshot}</p>
+            <div key={i.id} className="p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div className="min-w-0">
+                <p className="font-display font-semibold text-ink break-words">{i.title_snapshot}</p>
                 {i.decoration ? (
-                  <p className="text-sm text-ink-mute">
+                  <p className="text-sm text-ink-mute break-words">
                     Decoration: {JSON.stringify(i.decoration)}
                   </p>
                 ) : null}
               </div>
-              <div className="text-right">
+              <div className="sm:text-right shrink-0">
                 <p className="font-mono">{i.quantity} × {formatMoneyCents(i.unit_price_cents)}</p>
                 <p className="font-display font-bold">
                   {formatMoneyCents(i.unit_price_cents * i.quantity)}

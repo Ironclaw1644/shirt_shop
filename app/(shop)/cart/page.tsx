@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { useCart } from "@/lib/store/cart";
+import { useCartHydrated } from "@/lib/store/use-hydrated";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { formatMoneyCents, formatQuantity } from "@/lib/utils/money";
 import { Breadcrumbs } from "@/components/shop/breadcrumbs";
 
 export default function CartPage() {
+  const hydrated = useCartHydrated();
   const items = useCart((s) => s.items);
   const remove = useCart((s) => s.remove);
   const updateQty = useCart((s) => s.updateQty);
@@ -18,8 +20,10 @@ export default function CartPage() {
       <Breadcrumbs crumbs={[{ label: "Shop", href: "/" }, { label: "Cart" }]} />
       <h1 className="heading-display mt-6 text-4xl sm:text-5xl">Your cart</h1>
 
-      {items.length === 0 ? (
-        <div className="mt-10 rounded-lg border border-dashed border-ink/20 bg-paper-warm p-12 text-center max-w-xl mx-auto">
+      {!hydrated ? (
+        <div className="mt-10 min-h-[40vh]" />
+      ) : items.length === 0 ? (
+        <div className="mt-10 rounded-lg border border-dashed border-ink/20 bg-paper-warm p-6 sm:p-12 text-center max-w-xl mx-auto">
           <Icon icon="bag-shopping" className="text-3xl text-ink-mute" />
           <p className="mt-3 font-display font-semibold">Your cart is empty.</p>
           <p className="mt-1 text-sm text-ink-mute">
@@ -33,8 +37,8 @@ export default function CartPage() {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1fr,360px]">
           <ul className="divide-y divide-ink/10 rounded-lg border border-ink/10 bg-white">
             {items.map((i) => (
-              <li key={i.id} className="p-4 sm:p-6 flex gap-4">
-                <div className="h-24 w-24 shrink-0 rounded overflow-hidden bg-surface border border-ink/10">
+              <li key={i.id} className="p-4 sm:p-6 flex gap-3 sm:gap-4">
+                <div className="h-20 w-20 sm:h-24 sm:w-24 shrink-0 rounded overflow-hidden bg-surface border border-ink/10">
                   {i.image && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={i.image} alt="" className="h-full w-full object-cover" />
@@ -43,7 +47,7 @@ export default function CartPage() {
                 <div className="flex-1 min-w-0">
                   <Link
                     href={`/product/${i.productSlug}`}
-                    className="font-display font-semibold text-lg text-ink hover:text-primary"
+                    className="font-display font-semibold text-base sm:text-lg text-ink hover:text-primary line-clamp-2"
                   >
                     {i.title}
                   </Link>
@@ -53,11 +57,11 @@ export default function CartPage() {
                       Decoration: {i.decoration.method}
                     </p>
                   )}
-                  <div className="mt-3 flex items-center gap-4">
+                  <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 sm:gap-x-4">
                     <div className="flex items-center gap-1.5">
                       <button
                         onClick={() => updateQty(i.id, i.quantity - 1)}
-                        className="h-8 w-8 rounded border border-ink/15 hover:border-primary"
+                        className="h-9 w-9 rounded border border-ink/15 hover:border-primary"
                       >
                         −
                       </button>
@@ -66,11 +70,11 @@ export default function CartPage() {
                         min={1}
                         value={i.quantity}
                         onChange={(e) => updateQty(i.id, parseInt(e.target.value) || 1)}
-                        className="w-16 h-8 text-center border border-ink/15 rounded font-mono"
+                        className="w-14 h-9 text-center border border-ink/15 rounded font-mono"
                       />
                       <button
                         onClick={() => updateQty(i.id, i.quantity + 1)}
-                        className="h-8 w-8 rounded border border-ink/15 hover:border-primary"
+                        className="h-9 w-9 rounded border border-ink/15 hover:border-primary"
                       >
                         +
                       </button>
@@ -83,11 +87,11 @@ export default function CartPage() {
                     </button>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="font-display font-bold text-lg">
+                <div className="text-right shrink-0">
+                  <div className="font-display font-bold text-base sm:text-lg">
                     {formatMoneyCents(i.unitPriceCents * i.quantity)}
                   </div>
-                  <div className="text-xs text-ink-mute">
+                  <div className="text-xs text-ink-mute whitespace-nowrap">
                     {formatMoneyCents(i.unitPriceCents)} × {formatQuantity(i.quantity)}
                   </div>
                 </div>
