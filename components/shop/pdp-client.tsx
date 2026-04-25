@@ -122,7 +122,7 @@ export function PDPClient({
               <Icon icon="boxes-stacked" className="text-primary" /> Min {formatQuantity(product.minQty)}
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Icon icon="clock" className="text-primary" /> {product.leadTimeDays} day lead
+              <Icon icon="clock" className="text-primary" /> 1-7 day lead
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Icon icon="truck-fast" className="text-primary" /> Ships from Georgia
@@ -256,9 +256,9 @@ export function PDPClient({
                 <AccordionTrigger>Turnaround & shipping</AccordionTrigger>
                 <AccordionContent>
                   <p className="text-ink-soft">
-                    Standard lead time {product.leadTimeDays} business days after proof
-                    approval. Local pickup across metro Atlanta or flat-rate shipping
-                    nationwide. Need rush? Many jobs ship same-day or in a few hours — just call.
+                    Standard lead time 1-7 business days after proof approval. Local
+                    pickup across metro Atlanta or flat-rate shipping nationwide. Need
+                    rush? Many jobs ship same-day or in a few hours — just call.
                   </p>
                 </AccordionContent>
               </AccordionItem>

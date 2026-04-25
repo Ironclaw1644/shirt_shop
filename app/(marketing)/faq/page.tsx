@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "How fast can you turn my order?",
-    a: "Standard lead time varies by product — we list each item&apos;s lead time on the product page. Rush jobs are possible; call or email and we&apos;ll work it into the schedule.",
+    a: "Standard lead time is 1-7 business days after proof approval. Rush jobs are possible — call or email and we&apos;ll work it into the schedule.",
   },
   {
     q: "What artwork do you need?",

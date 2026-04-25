@@ -30,6 +30,30 @@ function pickOne<T>(v: T | T[] | null | undefined): T | null {
   return v ?? null;
 }
 
+// Normalize legacy lead-time phrasing in DB descriptions to the canonical
+// "1-7 business days" promise. Cheap regex pass — covers known seeded copy
+// (e.g. "Ships in 2–3 business days", "Ships in three business days",
+// "Ships in a week", "engraving in 3 days") without requiring a re-seed.
+function normalizeLeadTimeCopy(text: string): string {
+  if (!text) return text;
+  const NUM_WORD = "(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)";
+  return text
+    .replace(
+      new RegExp(
+        `\\bShips in (?:a (?:week|few days)|[0-9]+(?:[-–][0-9]+)?(?: business)? days?|${NUM_WORD}(?: business)? days?)\\b`,
+        "gi",
+      ),
+      "Ships in 1-7 business days",
+    )
+    .replace(
+      new RegExp(
+        `\\b(engraving|printing|production) in (?:[0-9]+(?:[-–][0-9]+)?|${NUM_WORD}) days?\\b`,
+        "gi",
+      ),
+      "$1 in 1-7 business days",
+    );
+}
+
 function deriveHeroPromptKey(row: DbProductRow): string {
   const seoKey = row.seo_meta?.heroPromptKey;
   if (typeof seoKey === "string" && seoKey.length) return seoKey;
@@ -53,8 +77,8 @@ export function dbToSampleProduct(row: DbProductRow): SampleProduct {
       ? subcategory.slug.replace(/^[^-]+--/, "")
       : undefined,
     title: row.title,
-    shortDescription: row.short_description ?? "",
-    description: row.description ?? "",
+    shortDescription: normalizeLeadTimeCopy(row.short_description ?? ""),
+    description: normalizeLeadTimeCopy(row.description ?? ""),
     basePriceCents: row.base_price_cents,
     priceStatus: row.price_status,
     minQty: row.min_qty,

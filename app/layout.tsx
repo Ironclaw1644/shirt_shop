@@ -1,6 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import { fontDisplay, fontEditorial, fontMono, fontSans } from "./fonts";
+import {
+  fontDisplay,
+  fontEditorial,
+  fontMono,
+  fontSans,
+  designerFontVariables,
+} from "./fonts";
 import { Providers } from "./providers";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils/cn";
@@ -88,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         fontDisplay.variable,
         fontEditorial.variable,
         fontMono.variable,
+        ...designerFontVariables,
       )}
     >
       <body className="min-h-screen bg-paper text-ink antialiased">
