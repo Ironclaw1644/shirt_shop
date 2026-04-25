@@ -1588,6 +1588,384 @@
       "title": "Blank Medal Blanks — Box (100 ct) hero",
       "aspect": "4:3",
       "prompt": "Photograph of \"Blank Medal Blanks — Box (100 ct)\" — Box of 100 blank die-cast medals — engrave-ready. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-recycled-cotton-tote",
+      "title": "Recycled Cotton Tote hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Recycled Cotton Tote\" — 100% recycled-cotton tote — eco-event giveaway. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-bamboo-pen",
+      "title": "Bamboo Eco Pen hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Bamboo Eco Pen\" — Bamboo-barrel pen — sustainable promo pen alternative. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-wheat-straw-notebook",
+      "title": "Wheat-Straw Notebook hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Wheat-Straw Notebook\" — Wheat-straw composite cover notebook — sustainable swag. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-bamboo-utensil-set",
+      "title": "Bamboo Travel Utensil Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Bamboo Travel Utensil Set\" — Fork/knife/spoon/chopsticks in a leatherette pouch. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-metal-straws-set",
+      "title": "Stainless Straw Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Stainless Straw Set\" — Set of 4 stainless straws + cleaning brush in pouch. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-rpet-backpack",
+      "title": "Recycled (rPET) Backpack hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Recycled (rPET) Backpack\" — Backpack made from recycled plastic bottles. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-hand-sanitizer-bottle",
+      "title": "Hand Sanitizer Bottle hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Hand Sanitizer Bottle\" — 1oz hand sanitizer with imprinted label. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-first-aid-kit-mini",
+      "title": "Mini First Aid Kit hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Mini First Aid Kit\" — Pocket first-aid kit — branded zippered case. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-lip-balm-promo",
+      "title": "Imprinted Lip Balm hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Imprinted Lip Balm\" — SPF 15 lip balm — full-color label. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-sunscreen-tube",
+      "title": "SPF 30 Sunscreen Tube hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"SPF 30 Sunscreen Tube\" — 1oz SPF 30 sunscreen — branded label. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-fabric-face-mask",
+      "title": "Reusable Fabric Face Mask hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Reusable Fabric Face Mask\" — 3-layer cotton/poly mask — sublimated full-color. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-work-gloves",
+      "title": "Work Gloves hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Work Gloves\" — Synthetic-leather work gloves — light construction. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-hard-hat",
+      "title": "ANSI Hard Hat hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"ANSI Hard Hat\" — Type 1 Class E ANSI hard hat — UV-printed logo. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-camp-chair-folding",
+      "title": "Folding Camp Chair hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Folding Camp Chair\" — Standard folding camp chair with carry bag. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-stadium-blanket",
+      "title": "Stadium Blanket hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Stadium Blanket\" — Sherpa-lined stadium blanket — game-day favorite. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-beach-towel-printed",
+      "title": "Sublimated Beach Towel hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Sublimated Beach Towel\" — 30×60 beach towel — full-color sublimation print. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-outdoor-umbrella",
+      "title": "Auto-Open Folding Umbrella hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Auto-Open Folding Umbrella\" — Compact auto-open umbrella — solid imprint. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-soft-cooler-tote",
+      "title": "Soft-Sided Cooler Tote hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Soft-Sided Cooler Tote\" — Insulated soft cooler — picnic and tailgate. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-earbuds-bluetooth",
+      "title": "Bluetooth Earbuds Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Bluetooth Earbuds Set\" — Wireless earbuds with charging case — engraved. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-webcam-cover",
+      "title": "Sliding Webcam Cover hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Sliding Webcam Cover\" — Slim sliding webcam cover — privacy giveaway. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-laptop-sleeve-printed",
+      "title": "Custom Laptop Sleeve hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Laptop Sleeve\" — 13/15/16 inch laptop sleeve — full-color sublimated. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blue-light-glasses",
+      "title": "Blue-Light Glasses with Case hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blue-Light Glasses with Case\" — Computer glasses + leatherette case — engraved case. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-phone-popgrip-leatherette",
+      "title": "Leatherette Phone Pop-Grip hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette Phone Pop-Grip\" — Pop-out phone grip with leatherette panel — engraved. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-wireless-mouse",
+      "title": "Wireless Mouse hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Wireless Mouse\" — Bluetooth wireless mouse — UV-printed top panel. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-branded-pencil",
+      "title": "Imprinted #2 Pencil hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Imprinted #2 Pencil\" — Standard #2 pencils — bulk-printed for schools. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-highlighter-printed",
+      "title": "Imprinted Highlighter hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Imprinted Highlighter\" — Standard chisel-tip highlighter — single-color logo. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-permanent-marker-printed",
+      "title": "Imprinted Permanent Marker hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Imprinted Permanent Marker\" — Industrial permanent marker — single-color barrel imprint. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-writing-gift-set",
+      "title": "Pen + Pencil Gift Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Pen + Pencil Gift Set\" — Matched pen + pencil in engraved leatherette case. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-letterhead",
+      "title": "Custom Letterhead hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Letterhead\" — 70lb premium letterhead — full-color or two-color. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-envelope-printed",
+      "title": "Custom Printed Envelope hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Printed Envelope\" — #10 business envelopes — printed return address. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-wall-calendar",
+      "title": "Custom Wall Calendar hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Wall Calendar\" — 12-month wall calendar — custom photos and dates. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-desk-calendar",
+      "title": "Custom Desk Calendar hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Desk Calendar\" — Easel-back desk calendar — month-per-page. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-appointment-cards",
+      "title": "Appointment Cards hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Appointment Cards\" — Standard 3.5×2 business-card-sized appointment slips. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-tickets-numbered",
+      "title": "Numbered Event Tickets hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Numbered Event Tickets\" — Sequentially numbered raffle / event tickets. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-binder-printed",
+      "title": "Custom 3-Ring Binder hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom 3-Ring Binder\" — Vinyl-clad 3-ring binder with custom-printed cover. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-clipboard-printed",
+      "title": "Custom Clipboard hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Clipboard\" — Hardboard clipboard with full-color sublimated face. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-memo-board-magnetic",
+      "title": "Magnetic Memo Board hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Magnetic Memo Board\" — Engraved magnetic memo board for kitchen or office. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-womens-dress-tee",
+      "title": "Women's Dress Tee hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Women's Dress Tee\" — Tailored woven tee — boutique apparel. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-womens-tank",
+      "title": "Women's Racerback Tank hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Women's Racerback Tank\" — Lightweight racerback tank — gym & yoga. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-womens-leggings",
+      "title": "Women's Performance Leggings hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Women's Performance Leggings\" — Full-length performance leggings — sublimated panel. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-youth-jersey",
+      "title": "Youth Sport Jersey hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Youth Sport Jersey\" — Sublimated youth jersey — team-name & number. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-kids-bib-sublimated",
+      "title": "Sublimated Kids' Bib hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Sublimated Kids' Bib\" — Soft fabric bib with full-color sublimated face. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-athletic-shorts-women",
+      "title": "Women's Athletic Shorts hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Women's Athletic Shorts\" — Performance shorts cut for women — team and gym. Garment laid flat or hung on a wooden hanger against a paper or concrete backdrop, soft diffused daylight, 50–85mm lens, generic blank garment with no visible logos or trademark text. Editorial wardrobe mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-photo-canvas-print",
+      "title": "Photo Canvas Wall Print hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Photo Canvas Wall Print\" — Wrapped canvas wall print — gallery quality. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-photo-mug-collage",
+      "title": "Photo Collage Mug hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Photo Collage Mug\" — 11oz mug — multi-photo collage wrap design. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-ornament-photo",
+      "title": "Photo Ornament hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Photo Ornament\" — Aluminum or wood ornament with sublimated photo. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-playing-cards-photo",
+      "title": "Custom Photo Playing Cards hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Custom Photo Playing Cards\" — Standard deck of playing cards — custom back design. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-photo-mousepad-collage",
+      "title": "Photo Collage Mouse Pad hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Photo Collage Mouse Pad\" — Mouse pad with multi-photo sublimated collage. Bright, joyful, full-color personalization on a clean paper or white studio backdrop, soft daylight, 50mm lens. Commercial product photography, no real human faces or trademark text. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-crystal-globe-award",
+      "title": "Crystal Globe Award hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Crystal Globe Award\" — Optical crystal globe on a black base — global achievement. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-crystal-cube-award",
+      "title": "Sub-Surface Crystal Cube hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Sub-Surface Crystal Cube\" — 3D laser-engraved crystal cube — sub-surface depth. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-diamond-glass-award",
+      "title": "Diamond Glass Award hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Diamond Glass Award\" — Diamond-cut glass on a black base — modern recognition. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-chrome-pen-set",
+      "title": "Chrome Pen Set on Marble Base hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Chrome Pen Set on Marble Base\" — Two-pen desk set on a marble base — engraved. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-letter-opener-engraved",
+      "title": "Engraved Letter Opener hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Engraved Letter Opener\" — Stainless letter opener — engraved handle. Dramatic moody lighting against a deep charcoal velvet or matte black surface, single warm tungsten spotlight, brass / walnut / crystal palette. Premium, dignified, magazine-spread quality. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-leatherette-coaster-square-set",
+      "title": "Leatherette Square Coaster Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette Square Coaster Set\" — 4-pack square leatherette coasters in a holder. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-leatherette-jewelry-box",
+      "title": "Leatherette Jewelry Box hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette Jewelry Box\" — Leatherette jewelry box with mirrored lid — engraved. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-leatherette-recipe-binder",
+      "title": "Leatherette Recipe Binder hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Leatherette Recipe Binder\" — Recipe binder with engraved leatherette cover. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-wood-keepsake-box",
+      "title": "Wood Keepsake Box hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Wood Keepsake Box\" — Walnut keepsake box with engraved lid — heirloom gift. Warm intimate setting — paper, linen, or warm wood surface — with engraved cream-on-leatherette or warm walnut grain. Generic non-branded item. Gift-ready, magazine still-life mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-rocks-glass-engraved",
+      "title": "Engraved Rocks Glass Set hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Engraved Rocks Glass Set\" — Heavy-base whiskey rocks glasses — set of 2 or 4. Warm window light, paper or warm wood surface, 85mm lens, subtle engraved or printed accent visible. Generic non-branded vessel. Cozy editorial mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-aprons-dozen",
+      "title": "Blank Bib Aprons — Dozen hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Bib Aprons — Dozen\" — 12 heavy twill bib aprons — dozen pricing. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-koozies-bulk",
+      "title": "Blank Neoprene Koozies — Box (100 ct) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Neoprene Koozies — Box (100 ct)\" — Box of 100 blank neoprene can coolers — single colorway. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-sublimation-mugs-case",
+      "title": "Blank Sublimation Mugs — Case (36 ct) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Sublimation Mugs — Case (36 ct)\" — 36 white sublimation-coated 11oz mugs. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-lanyards-bulk",
+      "title": "Blank Lanyards — Box (100 ct) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Lanyards — Box (100 ct)\" — Box of 100 blank polyester lanyards — solid color. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-blank-medal-ribbons",
+      "title": "Blank Neck Ribbons — Pack (100 ct) hero",
+      "aspect": "4:3",
+      "prompt": "Photograph of \"Blank Neck Ribbons — Pack (100 ct)\" — 100 blank neck ribbons — pair with medal blanks. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
     }
   ]
 }

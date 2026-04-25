@@ -1,6 +1,7 @@
 import type { Category } from "./categories";
 import { importedProducts } from "./imported-products";
 import { importedProductsBatch2 } from "./imported-products-batch-2";
+import { importedProductsBatch3 } from "./imported-products-batch-3";
 
 export type SampleProduct = {
   slug: string;
@@ -696,6 +697,7 @@ export const sampleProducts: SampleProduct[] = [
   ...seedProducts,
   ...importedProducts,
   ...importedProductsBatch2,
+  ...importedProductsBatch3,
 ];
 
 export function productBySlug(slug: string): SampleProduct | undefined {

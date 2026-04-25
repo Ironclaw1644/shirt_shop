@@ -11,9 +11,14 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { importedProducts } from "../lib/catalog/imported-products";
 import { importedProductsBatch2 } from "../lib/catalog/imported-products-batch-2";
+import { importedProductsBatch3 } from "../lib/catalog/imported-products-batch-3";
 import type { SampleProduct } from "../lib/catalog/sample-products";
 
-const allImported: SampleProduct[] = [...importedProducts, ...importedProductsBatch2];
+const allImported: SampleProduct[] = [
+  ...importedProducts,
+  ...importedProductsBatch2,
+  ...importedProductsBatch3,
+];
 
 type ManifestEntry = {
   slug: string;
