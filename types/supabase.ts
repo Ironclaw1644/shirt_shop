@@ -26,7 +26,7 @@ export type ProofStatus = "pending" | "approved" | "changes_requested";
 export type QuoteStatus = "new" | "in_progress" | "quoted" | "accepted" | "closed";
 
 export type Database = {
-  public: {
+  gaph: {
     Tables: {
       profiles: RowTable<{
         id: string;

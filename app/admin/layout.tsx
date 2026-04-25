@@ -4,6 +4,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { Icon } from "@/components/ui/icon";
 import type { IconName } from "@/components/ui/icon";
 import { AdminKeyboardShortcuts } from "@/components/admin/keyboard-shortcuts";
+import { Logomark } from "@/components/brand/logomark";
 
 const nav: { href: string; label: string; icon: string }[] = [
   { href: "/admin", label: "Dashboard", icon: "home" },
@@ -14,7 +15,6 @@ const nav: { href: string; label: string; icon: string }[] = [
   { href: "/admin/newsletter", label: "Newsletter", icon: "envelope-open-text" },
   { href: "/admin/activity", label: "Site activity", icon: "bolt" },
   { href: "/admin/content", label: "Content", icon: "brush" },
-  { href: "/admin/media", label: "Media library", icon: "image" },
   { href: "/admin/settings", label: "Settings", icon: "shield-halved" },
   { href: "/admin/users", label: "Users & roles", icon: "user" },
   { href: "/admin/audit", label: "Audit log", icon: "circle-info" },
@@ -41,13 +41,16 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       <div className="grid lg:grid-cols-[260px,1fr] min-h-screen">
         <aside className="border-r border-ink/10 bg-ink text-paper">
           <div className="px-5 py-6 border-b border-paper/10">
-            <Link href="/" className="flex items-center gap-2">
-              <svg viewBox="0 0 40 40" aria-hidden className="h-8 w-8">
-                <rect x="2" y="2" width="36" height="36" rx="8" fill="#FAFAF7" />
-                <rect x="6" y="6" width="28" height="28" rx="5" fill="#1A1A1A" />
-                <path d="M13 13h14v3H16v2h9v3h-9v2h11v3H13V13z" fill="#D4A017" />
-              </svg>
-              <span className="font-display text-lg font-bold">GAPH Admin</span>
+            <Link href="/" className="flex items-center gap-3">
+              <Logomark tone="dark" size={36} />
+              <span>
+                <span className="block font-display text-base font-bold leading-tight">
+                  Georgia Print Hub
+                </span>
+                <span className="block text-[10px] font-mono uppercase tracking-[0.18em] text-accent">
+                  Admin
+                </span>
+              </span>
             </Link>
           </div>
           <nav className="p-3 space-y-0.5 text-sm" aria-label="Admin">

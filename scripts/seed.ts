@@ -19,7 +19,10 @@ if (!url || !key) {
   process.exit(1);
 }
 
-const supabase = createClient<Database>(url, key, { auth: { persistSession: false } });
+const supabase = createClient<Database>(url, key, {
+  auth: { persistSession: false },
+  db: { schema: "gaph" },
+});
 
 async function seedCategories() {
   const topLevel: Record<string, string> = {};

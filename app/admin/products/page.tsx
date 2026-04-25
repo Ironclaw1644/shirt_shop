@@ -61,7 +61,7 @@ export default async function AdminProductsList() {
                 </tr>
               ))}
               {(!products || products.length === 0) && (
-                <tr><td colSpan={5} className="px-4 py-10 text-center text-ink-mute">No products yet — run `npm run db:seed`.</td></tr>
+                <tr><td colSpan={5} className="px-4 py-10 text-center text-ink-mute">No products yet — create one with the New product button above.</td></tr>
               )}
             </tbody>
           </table>

@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { categories, getCategory } from "@/lib/catalog/categories";
-import { productsInCategory } from "@/lib/catalog/sample-products";
+import { dbToSampleProduct, PRODUCT_SELECT, type DbProductRow } from "@/lib/catalog/from-db";
+import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { cityLandings, getCityLanding } from "@/lib/seo/cities";
 import { CategoryHero } from "@/components/shop/category-hero";
 import { CategoryClient } from "@/components/shop/category-client";
@@ -72,7 +73,24 @@ export default async function CategoryOrCityPage({
 
   const cat = getCategory(category);
   if (!cat) return notFound();
-  const products = productsInCategory(cat.slug);
+
+  const supa = await getSupabaseServerClient();
+  const { data: catRow } = await supa
+    .from("categories")
+    .select("id")
+    .eq("slug", cat.slug)
+    .maybeSingle();
+
+  let products: ReturnType<typeof dbToSampleProduct>[] = [];
+  if (catRow?.id) {
+    const { data: rows } = await supa
+      .from("products")
+      .select(PRODUCT_SELECT)
+      .eq("category_id", catRow.id)
+      .eq("status", "active")
+      .order("title", { ascending: true });
+    products = (rows ?? []).map((r) => dbToSampleProduct(r as unknown as DbProductRow));
+  }
 
   return (
     <>

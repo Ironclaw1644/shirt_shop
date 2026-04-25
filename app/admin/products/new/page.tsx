@@ -1,15 +1,22 @@
+import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { ProductForm } from "@/components/admin/product-form";
 
-export default function NewProductPage() {
+export default async function NewProductPage() {
+  const supa = await getSupabaseServerClient();
+  const { data: categories } = await supa
+    .from("categories")
+    .select("id, slug, name, parent_id")
+    .order("sort_order", { ascending: true });
+
   return (
     <div>
       <AdminPageHeader
         title="New product"
-        subtitle="Set core details now, then add variants, tiers, and generated imagery from the product page."
+        subtitle="Set core details now. Tiers, variants, and imagery are editable below."
       />
       <div className="p-6 sm:p-8 max-w-3xl">
-        <ProductForm mode="create" />
+        <ProductForm mode="create" categories={categories ?? []} />
       </div>
     </div>
   );

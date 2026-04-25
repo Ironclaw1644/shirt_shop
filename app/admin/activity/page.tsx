@@ -15,7 +15,7 @@ export default async function AdminActivity() {
     <div>
       <AdminPageHeader
         title="Site activity"
-        subtitle="Live stream of anonymous page views, searches, and conversion funnel events."
+        subtitle="Anonymous pageviews, contact submissions, and conversion events. Updates on refresh."
       />
       <div className="p-6 sm:p-8 grid gap-6 lg:grid-cols-[1fr,360px]">
         <section className="rounded-lg border border-ink/10 bg-white overflow-hidden">

@@ -44,5 +44,34 @@ export async function updateSession(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Pageview beacon — fire-and-forget; one row per request, no client polling.
+  // Skip API/admin/auth and any non-GET, plus next-internal noise.
+  if (
+    req.method === "GET" &&
+    !pathname.startsWith("/api/") &&
+    !pathname.startsWith("/admin") &&
+    !pathname.startsWith("/auth/") &&
+    !pathname.startsWith("/_next")
+  ) {
+    const sessionCookie =
+      req.cookies.get("sb-session-id")?.value ??
+      req.cookies.get("sb-access-token")?.value?.slice(-12) ??
+      null;
+    Promise.resolve(
+      supabase
+        .from("site_activity")
+        .insert({
+          event_type: "pageview",
+          path: pathname,
+          user_id: user?.id ?? null,
+          session_id: sessionCookie,
+          metadata: {
+            referer: req.headers.get("referer") ?? null,
+            ua: req.headers.get("user-agent")?.slice(0, 200) ?? null,
+          },
+        }),
+    ).catch(() => undefined);
+  }
+
   return response;
 }

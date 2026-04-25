@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import {
-  productBySlug,
-  sampleProducts,
-  productsInCategory,
-} from "@/lib/catalog/sample-products";
 import { getCategory } from "@/lib/catalog/categories";
+import { dbToSampleProduct, PRODUCT_SELECT, type DbProductRow } from "@/lib/catalog/from-db";
+import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { Breadcrumbs } from "@/components/shop/breadcrumbs";
 import { PDPClient } from "@/components/shop/pdp-client";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -15,7 +12,22 @@ import { siteConfig } from "@/lib/site-config";
 type Params = { slug: string };
 
 export async function generateStaticParams() {
-  return sampleProducts.map((p) => ({ slug: p.slug }));
+  // Build-time fetch of slugs from the DB. If env isn't configured (e.g. during a
+  // local lint), fall back to empty so pages render on demand.
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return [];
+  const supa = await getSupabaseServerClient();
+  const { data } = await supa.from("products").select("slug").eq("status", "active");
+  return (data ?? []).map((p) => ({ slug: p.slug }));
+}
+
+async function fetchProduct(slug: string) {
+  const supa = await getSupabaseServerClient();
+  const { data } = await supa
+    .from("products")
+    .select(PRODUCT_SELECT)
+    .eq("slug", slug)
+    .maybeSingle();
+  return data ? dbToSampleProduct(data as unknown as DbProductRow) : null;
 }
 
 export async function generateMetadata({
@@ -24,7 +36,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const p = productBySlug(slug);
+  const p = await fetchProduct(slug);
   if (!p) return {};
   return {
     title: p.title,
@@ -40,11 +52,25 @@ export async function generateMetadata({
 
 export default async function ProductPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const p = productBySlug(slug);
+  const p = await fetchProduct(slug);
   if (!p) return notFound();
   const cat = getCategory(p.categorySlug);
 
-  const upsells = productsInCategory(p.categorySlug).filter((x) => x.slug !== p.slug);
+  const supa = await getSupabaseServerClient();
+  const { data: catRow } = cat
+    ? await supa.from("categories").select("id").eq("slug", cat.slug).maybeSingle()
+    : { data: null };
+  let upsells: ReturnType<typeof dbToSampleProduct>[] = [];
+  if (catRow?.id) {
+    const { data: rows } = await supa
+      .from("products")
+      .select(PRODUCT_SELECT)
+      .eq("category_id", catRow.id)
+      .eq("status", "active")
+      .neq("slug", slug)
+      .limit(8);
+    upsells = (rows ?? []).map((r) => dbToSampleProduct(r as unknown as DbProductRow));
+  }
 
   return (
     <>
