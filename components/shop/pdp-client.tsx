@@ -43,10 +43,6 @@ export function PDPClient({
   const isQuotePriced = product.priceStatus === "quote" || !product.basePriceCents;
 
   function addToCart() {
-    if (isQuotePriced) {
-      router.push(`/quote?product=${product.slug}`);
-      return;
-    }
     const id = `${product.slug}-${Object.values(options).join("-")}-${decoration ?? "blank"}-${Date.now()}`;
     addItem({
       id,
@@ -214,20 +210,14 @@ export function PDPClient({
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {isQuotePriced ? (
-                <Button asChild size="lg">
-                  <Link href={`/quote?product=${product.slug}`}>
-                    <Icon icon="bolt" /> Request quote
-                  </Link>
-                </Button>
-              ) : (
-                <Button size="lg" onClick={addToCart}>
-                  <Icon icon="bag-shopping" /> Add to cart
+              <Button size="lg" onClick={addToCart}>
+                <Icon icon="bag-shopping" /> Add to cart
+                {!isQuotePriced && (
                   <span className="ml-1 font-mono text-sm opacity-80">
                     {formatMoneyCents(unitPriceCents * quantity)}
                   </span>
-                </Button>
-              )}
+                )}
+              </Button>
               {mode === "decorated" ? (
                 <Button size="lg" variant="secondary" onClick={goDesigner}>
                   <Icon icon="magic-wand-sparkles" /> Open Designer
