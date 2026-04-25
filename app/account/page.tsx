@@ -25,7 +25,7 @@ export default async function AccountHome() {
     <div className="space-y-8">
       <div>
         <Eyebrow tone="crimson">Your account</Eyebrow>
-        <h1 className="heading-display mt-2 text-4xl">Welcome back.</h1>
+        <h1 className="heading-display mt-2 text-3xl sm:text-4xl">Welcome back.</h1>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -79,7 +79,7 @@ export default async function AccountHome() {
         </div>
 
         {!orders || orders.length === 0 ? (
-          <div className="rounded-lg border border-dashed border-ink/20 bg-paper-warm p-10 text-center">
+          <div className="rounded-lg border border-dashed border-ink/20 bg-paper-warm p-6 sm:p-10 text-center">
             <p className="text-ink-mute">You have no orders yet.</p>
             <Button asChild className="mt-3">
               <Link href="/">Browse the catalog</Link>
@@ -91,9 +91,9 @@ export default async function AccountHome() {
               <Link
                 href={`/account/orders/${o.id}`}
                 key={o.id}
-                className="flex items-center justify-between px-4 py-4 hover:bg-surface transition-colors"
+                className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 py-4 hover:bg-surface transition-colors"
               >
-                <div>
+                <div className="min-w-0">
                   <p className="font-display font-semibold text-ink">
                     Order #{o.id.slice(0, 8).toUpperCase()}
                   </p>
@@ -101,12 +101,12 @@ export default async function AccountHome() {
                     {new Date(o.created_at).toLocaleDateString()}
                   </p>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 sm:gap-4 ml-auto">
                   <Badge variant="paper">{o.status.replace(/_/g, " ")}</Badge>
-                  <span className="font-mono font-semibold">
+                  <span className="font-mono font-semibold whitespace-nowrap">
                     {formatMoneyCents(o.total_cents)}
                   </span>
-                  <Icon icon="arrow-right" className="text-ink-mute" />
+                  <Icon icon="arrow-right" className="text-ink-mute hidden sm:inline" />
                 </div>
               </Link>
             ))}

@@ -20,7 +20,7 @@ export default async function OrdersListPage() {
   return (
     <div>
       <Eyebrow tone="ink">Orders</Eyebrow>
-      <h1 className="heading-display mt-2 text-4xl">Your orders</h1>
+      <h1 className="heading-display mt-2 text-3xl sm:text-4xl">Your orders</h1>
 
       <div className="mt-8 rounded-lg border border-ink/10 bg-card overflow-hidden">
         <div className="overflow-x-auto">

@@ -3,6 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/badge";
 import { Icon } from "@/components/ui/icon";
 import { formatMoneyCents } from "@/lib/utils/money";
+import { ClearCartOnMount } from "@/components/shop/clear-cart-on-mount";
 
 const statusOrder = [
   "received",
@@ -15,10 +16,13 @@ const statusOrder = [
 
 export default async function OrderDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ placed?: string }>;
 }) {
   const { id } = await params;
+  const { placed } = await searchParams;
   const supa = await getSupabaseServerClient();
   const {
     data: { user },
@@ -37,6 +41,7 @@ export default async function OrderDetailPage({
 
   return (
     <div className="space-y-8">
+      {placed === "1" && <ClearCartOnMount />}
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
           <h1 className="heading-display text-2xl sm:text-3xl break-words">Order #{order.id.slice(0, 8).toUpperCase()}</h1>

@@ -20,11 +20,11 @@ export default async function DesignsPage() {
   return (
     <div>
       <Eyebrow tone="crimson">Saved designs</Eyebrow>
-      <h1 className="heading-display mt-2 text-4xl">Designs</h1>
+      <h1 className="heading-display mt-2 text-3xl sm:text-4xl">Designs</h1>
 
       <div className="mt-8">
         {!designs || designs.length === 0 ? (
-          <div className="rounded-lg border border-dashed border-ink/20 bg-paper-warm p-12 text-center">
+          <div className="rounded-lg border border-dashed border-ink/20 bg-paper-warm p-6 sm:p-12 text-center">
             <Icon icon="feather" className="text-3xl text-ink-mute" />
             <p className="mt-3 font-display font-semibold">No saved designs yet.</p>
             <p className="mt-1 text-sm text-ink-mute">

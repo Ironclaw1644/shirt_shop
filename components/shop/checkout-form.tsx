@@ -11,7 +11,6 @@ import { formatMoneyCents } from "@/lib/utils/money";
 export function CheckoutForm() {
   const items = useCart((s) => s.items);
   const subtotal = useCart((s) => s.subtotalCents());
-  const clearCart = useCart((s) => s.clear);
   const router = useRouter();
   const [email, setEmail] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -29,8 +28,7 @@ export function CheckoutForm() {
       if (!res.ok || !data.orderId) {
         throw new Error(data.error ?? "Unable to place order");
       }
-      clearCart();
-      router.push(`/account/orders/${data.orderId}`);
+      router.push(`/account/orders/${data.orderId}?placed=1`);
     } catch (err) {
       toast.error("Something went wrong", { description: (err as Error).message });
       setLoading(false);

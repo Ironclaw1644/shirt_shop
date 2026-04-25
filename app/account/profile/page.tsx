@@ -21,9 +21,9 @@ export default async function ProfilePage() {
   return (
     <div>
       <Eyebrow tone="ink">Profile</Eyebrow>
-      <h1 className="heading-display mt-2 text-4xl">Your details</h1>
+      <h1 className="heading-display mt-2 text-3xl sm:text-4xl">Your details</h1>
 
-      <form action={updateProfile} className="mt-8 max-w-lg rounded-lg border border-ink/10 bg-card p-6 space-y-4 shadow-press">
+      <form action={updateProfile} className="mt-8 max-w-lg rounded-lg border border-ink/10 bg-card p-4 sm:p-6 space-y-4 shadow-press">
         <div>
           <Label className="block mb-1">Full name</Label>
           <Input name="full_name" defaultValue={profile?.full_name ?? ""} />

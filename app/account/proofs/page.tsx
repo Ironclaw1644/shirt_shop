@@ -19,10 +19,10 @@ export default async function ProofsPage() {
   return (
     <div>
       <Eyebrow tone="crimson">Digital proofs</Eyebrow>
-      <h1 className="heading-display mt-2 text-4xl">Your proofs</h1>
+      <h1 className="heading-display mt-2 text-3xl sm:text-4xl">Your proofs</h1>
 
       {!proofs || proofs.length === 0 ? (
-        <div className="mt-8 rounded-lg border border-dashed border-ink/20 bg-paper-warm p-10 text-center">
+        <div className="mt-8 rounded-lg border border-dashed border-ink/20 bg-paper-warm p-6 sm:p-10 text-center">
           <Icon icon="image" className="text-3xl text-ink-mute" />
           <p className="mt-3 text-ink-mute">
             No proofs yet. When your order reaches the proof stage, they&rsquo;ll appear here.
