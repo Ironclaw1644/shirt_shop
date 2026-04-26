@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils/cn";
+import { ColorChip, HexInput } from "./color-controls";
 import type { SampleProduct } from "@/lib/catalog/sample-products";
 import type { DesignerSettings } from "./designer-client";
 
@@ -148,33 +149,24 @@ export function DesignerToolbar(props: {
         <h3 className="font-display text-xs font-bold uppercase tracking-wider text-ink-mute mb-2">
           Color
         </h3>
-        <div className="flex items-center gap-2">
-          <input
-            type="color"
-            aria-label="Pick color"
-            value={props.fillColor}
-            onChange={(e) => props.onFillChange(e.target.value)}
-            className="h-8 w-10 rounded border border-ink/15 cursor-pointer"
-          />
-          <span className="font-mono text-xs text-ink-mute">{props.fillColor.toUpperCase()}</span>
-        </div>
+        <HexInput
+          value={props.fillColor}
+          onChange={props.onFillChange}
+          ariaLabel="Pick text color"
+        />
         <div className="mt-2 grid grid-cols-8 gap-1">
           {PRESET_COLORS.map((c) => (
-            <button
+            <ColorChip
               key={c}
-              type="button"
+              hex={c}
+              selected={props.fillColor.toLowerCase() === c.toLowerCase()}
               onClick={() => props.onFillChange(c)}
-              className={cn(
-                "h-6 w-full rounded border",
-                props.fillColor.toLowerCase() === c.toLowerCase()
-                  ? "border-ink ring-1 ring-ink"
-                  : "border-ink/15",
-              )}
-              style={{ backgroundColor: c }}
-              aria-label={`Color ${c}`}
             />
           ))}
         </div>
+        <p className="mt-2 text-[11px] text-ink-mute">
+          Type a hex, click a preset, or drag a swatch onto the canvas.
+        </p>
       </section>
 
       <section>

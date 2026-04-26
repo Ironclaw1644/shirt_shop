@@ -30,7 +30,7 @@ async function loadFont(family: string, sizePx: number): Promise<void> {
  */
 export async function rasterizeText(el: TextRasterInput): Promise<RasterResult> {
   const { content, fontFamily, fontSize, fillColor } = el;
-  const sizePx = Math.max(12, Math.round(fontSize * 2)); // 2x density for crisp rendering
+  const sizePx = Math.max(12, Math.round(fontSize * 3)); // 3x density: gives the GPU headroom under the depth-warp shader and on 3x-DPR screens
   await loadFont(fontFamily, sizePx);
 
   const measureCanvas = document.createElement("canvas");

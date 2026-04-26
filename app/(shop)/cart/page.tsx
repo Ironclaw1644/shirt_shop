@@ -52,10 +52,44 @@ export default function CartPage() {
                     {i.title}
                   </Link>
                   {i.variant && <p className="text-sm text-ink-mute">{i.variant}</p>}
-                  {i.decoration?.method && (
+                  {i.decorations?.[0]?.method && (
                     <p className="text-sm text-accent-700 font-medium mt-1">
-                      Decoration: {i.decoration.method}
+                      Decoration: {i.decorations[0].method}
+                      {i.decorations.length > 1 && (
+                        <span className="text-ink-mute">
+                          {" "}
+                          ·{" "}
+                          {i.decorations
+                            .map((d) => d.viewLabel ?? d.placement)
+                            .filter(Boolean)
+                            .join(" + ")}
+                        </span>
+                      )}
                     </p>
+                  )}
+                  {(i.decorations?.length ?? 0) > 1 && (
+                    <ul className="mt-2 flex flex-wrap gap-2">
+                      {i.decorations!.map((d) =>
+                        d.proofUrl ? (
+                          <li
+                            key={`${d.viewKey ?? d.placement ?? Math.random()}`}
+                            className="flex flex-col items-center"
+                          >
+                            <span className="h-12 w-12 rounded border border-ink/10 overflow-hidden bg-surface">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={d.proofUrl}
+                                alt={d.viewLabel ?? d.viewKey ?? "Proof"}
+                                className="h-full w-full object-cover"
+                              />
+                            </span>
+                            <span className="mt-1 text-[10px] text-ink-mute">
+                              {d.viewLabel ?? d.viewKey ?? d.placement}
+                            </span>
+                          </li>
+                        ) : null,
+                      )}
+                    </ul>
                   )}
                   <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 sm:gap-x-4">
                     <div className="flex items-center gap-1.5">

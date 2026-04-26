@@ -4,9 +4,10 @@ import * as React from "react";
 import { Icon } from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useMockup2DStore } from "@/lib/mockup/store";
+import { useMockup2DStore, selectActiveElements } from "@/lib/mockup/store";
 import type { ImageElement2D, TextElement2D } from "@/lib/mockup/types";
 import { DESIGNER_FONTS } from "./designer-toolbar";
+import { ColorChip, HexInput } from "./color-controls";
 import { cn } from "@/lib/utils/cn";
 
 const PRESET_COLORS = [
@@ -22,7 +23,7 @@ const PRESET_COLORS = [
 
 export function Inspector2D() {
   const selectedId = useMockup2DStore((s) => s.selectedId);
-  const elements = useMockup2DStore((s) => s.elements);
+  const elements = useMockup2DStore(selectActiveElements);
   const updateElement = useMockup2DStore((s) => s.updateElement);
   const updateAnchor = useMockup2DStore((s) => s.updateAnchor);
   const remove = useMockup2DStore((s) => s.remove);
@@ -179,30 +180,18 @@ function TextControls({
 
       <section className="space-y-2">
         <label className="block text-xs font-medium text-ink-soft">Color</label>
-        <div className="flex items-center gap-2">
-          <input
-            type="color"
-            aria-label="Pick color"
-            value={element.fillColor}
-            onChange={(e) => onChange({ fillColor: e.target.value })}
-            className="h-8 w-10 rounded border border-ink/15 cursor-pointer"
-          />
-          <span className="font-mono text-xs text-ink-mute">{element.fillColor.toUpperCase()}</span>
-        </div>
+        <HexInput
+          value={element.fillColor}
+          onChange={(hex) => onChange({ fillColor: hex })}
+          ariaLabel="Pick text color"
+        />
         <div className="grid grid-cols-8 gap-1">
           {PRESET_COLORS.map((c) => (
-            <button
+            <ColorChip
               key={c}
-              type="button"
+              hex={c}
+              selected={element.fillColor.toLowerCase() === c.toLowerCase()}
               onClick={() => onChange({ fillColor: c })}
-              className={cn(
-                "h-6 w-full rounded border",
-                element.fillColor.toLowerCase() === c.toLowerCase()
-                  ? "border-ink ring-1 ring-ink"
-                  : "border-ink/15",
-              )}
-              style={{ backgroundColor: c }}
-              aria-label={`Color ${c}`}
             />
           ))}
         </div>

@@ -3,6 +3,18 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+export type Decoration = {
+  method: string;
+  placement?: string;
+  /** View on the garment this decoration prints on (e.g. "front", "back"). */
+  viewKey?: string;
+  /** Human label for the side, used in cart UI. */
+  viewLabel?: string;
+  designId?: string;
+  proofUrl?: string;
+  artworkFileUrl?: string;
+};
+
 export type CartItem = {
   id: string;
   productSlug: string;
@@ -11,13 +23,8 @@ export type CartItem = {
   unitPriceCents: number;
   quantity: number;
   image?: string;
-  decoration?: {
-    method: string;
-    placement?: string;
-    designId?: string;
-    proofUrl?: string;
-    artworkFileUrl?: string;
-  };
+  /** Per-side decorations. Single-side items use a one-element array. */
+  decorations?: Decoration[];
   leadTimeDays?: number;
 };
 
@@ -30,6 +37,22 @@ type CartState = {
   subtotalCents: () => number;
   count: () => number;
 };
+
+type LegacyCartItem = Omit<CartItem, "decorations"> & {
+  decoration?: Decoration;
+};
+
+function migrateItem(raw: LegacyCartItem | CartItem): CartItem {
+  if ("decorations" in raw && Array.isArray(raw.decorations)) {
+    return raw as CartItem;
+  }
+  const legacy = raw as LegacyCartItem;
+  if (legacy.decoration) {
+    const { decoration, ...rest } = legacy;
+    return { ...rest, decorations: [decoration] };
+  }
+  return raw as CartItem;
+}
 
 export const useCart = create<CartState>()(
   persist(
@@ -61,6 +84,20 @@ export const useCart = create<CartState>()(
         get().items.reduce((sum, i) => sum + i.unitPriceCents * i.quantity, 0),
       count: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
     }),
-    { name: "gaph-cart" },
+    {
+      name: "gaph-cart",
+      version: 2,
+      migrate: (state, fromVersion) => {
+        if (!state || typeof state !== "object") return state as CartState;
+        if (fromVersion < 2) {
+          const s = state as { items?: Array<LegacyCartItem | CartItem> };
+          return {
+            ...(state as object),
+            items: (s.items ?? []).map(migrateItem),
+          } as CartState;
+        }
+        return state as CartState;
+      },
+    },
   ),
 );

@@ -3,19 +3,23 @@ import { z } from "zod";
 import { getSupabaseServerClient, getSupabaseServiceRoleClient } from "@/lib/supabase/server";
 import { sendOrderReceivedEmail, sendAdminNewOrderEmail } from "@/lib/resend/send";
 
+const decorationSchema = z.object({
+  method: z.string(),
+  placement: z.string().optional(),
+  viewKey: z.string().optional(),
+  viewLabel: z.string().optional(),
+  designId: z.string().optional(),
+  proofUrl: z.string().optional(),
+  artworkFileUrl: z.string().optional(),
+});
+
 const itemSchema = z.object({
   productSlug: z.string(),
   title: z.string(),
   variant: z.string().optional(),
   unitPriceCents: z.number().int().min(0),
   quantity: z.number().int().min(1),
-  decoration: z
-    .object({
-      method: z.string(),
-      placement: z.string().optional(),
-      designId: z.string().optional(),
-    })
-    .optional(),
+  decorations: z.array(decorationSchema).optional(),
 });
 
 const schema = z.object({
@@ -64,7 +68,8 @@ export async function POST(req: Request) {
     title_snapshot: i.title,
     quantity: i.quantity,
     unit_price_cents: i.unitPriceCents,
-    decoration: (i.decoration ?? null) as never,
+    // Multi-side decorations stored as an array in the JSON column.
+    decoration: (i.decorations ?? null) as never,
   }));
   await service.from("order_items").insert(itemsInsert);
 

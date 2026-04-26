@@ -103,6 +103,17 @@ export async function createMockupRenderer(
   const gl = canvas.getContext("webgl2", { antialias: true, premultipliedAlpha: false });
   if (!gl) throw new Error("WebGL2 not supported");
 
+  // Anisotropic filtering on the design texture sharpens glyph edges where
+  // the depth-gradient shader warps UVs along cloth folds. Standard pattern;
+  // also used in the 3D decal pipeline (decal.tsx).
+  const anisoExt =
+    (gl.getExtension("EXT_texture_filter_anisotropic") as
+      | { TEXTURE_MAX_ANISOTROPY_EXT: number; MAX_TEXTURE_MAX_ANISOTROPY_EXT: number }
+      | null) ?? null;
+  const maxAniso = anisoExt
+    ? Math.min(16, gl.getParameter(anisoExt.MAX_TEXTURE_MAX_ANISOTROPY_EXT) as number)
+    : 0;
+
   const vs = compileShader(gl, gl.VERTEX_SHADER, VERTEX_SHADER);
   const fs = compileShader(gl, gl.FRAGMENT_SHADER, FRAGMENT_SHADER);
   const program = linkProgram(gl, vs, fs);
@@ -203,6 +214,9 @@ export async function createMockupRenderer(
     gl!.texParameteri(gl!.TEXTURE_2D, gl!.TEXTURE_MAG_FILTER, gl!.LINEAR);
     gl!.texParameteri(gl!.TEXTURE_2D, gl!.TEXTURE_WRAP_S, gl!.CLAMP_TO_EDGE);
     gl!.texParameteri(gl!.TEXTURE_2D, gl!.TEXTURE_WRAP_T, gl!.CLAMP_TO_EDGE);
+    if (anisoExt && maxAniso > 1) {
+      gl!.texParameterf(gl!.TEXTURE_2D, anisoExt.TEXTURE_MAX_ANISOTROPY_EXT, maxAniso);
+    }
   }
   uploadDesign();
 
@@ -261,7 +275,8 @@ export async function createMockupRenderer(
   }
 
   function resize() {
-    const dpr = Math.min(window.devicePixelRatio ?? 1, 2);
+    // Cap at 3 so 3x-DPR phones (modern iPhones) get their native pixel grid.
+    const dpr = Math.min(window.devicePixelRatio ?? 1, 3);
     const w = Math.max(1, Math.floor(canvas.clientWidth * dpr));
     const h = Math.max(1, Math.floor(canvas.clientHeight * dpr));
     if (canvas.width !== w || canvas.height !== h) {

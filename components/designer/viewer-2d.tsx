@@ -1,19 +1,27 @@
 "use client";
 
 import * as React from "react";
-import { useMockup2DStore } from "@/lib/mockup/store";
+import { useMockup2DStore, selectActiveElements } from "@/lib/mockup/store";
 import { composeDesignCanvas, pixelsPerInch } from "@/lib/mockup/compose-design";
 import { createMockupRenderer, type MockupRenderer } from "@/lib/mockup/render";
 import { loadZoneSampler, pointerToUV, type ZoneSampler } from "@/lib/mockup/coords";
+import { hexFromDrop } from "./color-controls";
+import { COLOR_DRAG_TYPE } from "@/lib/utils/hex-color";
 import type { SampleProduct } from "@/lib/catalog/sample-products";
 
-const DESIGN_CANVAS_RESOLUTION = 1024;
+const DESIGN_CANVAS_RESOLUTION = 2048;
 
 export type Viewer2DApi = {
   /** Snapshot the current photoreal mockup as a PNG data URL. */
   exportPNG: () => string | null;
   /** Get the underlying canvas element. */
   getCanvas: () => HTMLCanvasElement | null;
+  /**
+   * Resolves once the renderer has finished initializing for the given view
+   * (textures loaded, RAF ticking). Used by the multi-view save flow to
+   * switch views and wait before exporting each proof.
+   */
+  awaitReadyForView: (viewKey: string, timeoutMs?: number) => Promise<boolean>;
 };
 
 type Handle = {
@@ -37,19 +45,26 @@ export function Viewer2D({
   product: SampleProduct;
   apiRef?: React.MutableRefObject<Viewer2DApi | null>;
 }) {
-  const elements = useMockup2DStore((s) => s.elements);
+  const elements = useMockup2DStore(selectActiveElements);
   const selectedId = useMockup2DStore((s) => s.selectedId);
   const select = useMockup2DStore((s) => s.select);
   const updateAnchor = useMockup2DStore((s) => s.updateAnchor);
   const garmentColor = useMockup2DStore((s) => s.garmentColor);
+  const setGarmentColor = useMockup2DStore((s) => s.setGarmentColor);
+  const setElementFillColor = useMockup2DStore((s) => s.setElementFillColor);
   const activeZoneKey = useMockup2DStore((s) => s.activeZoneKey);
   const activeViewKey = useMockup2DStore((s) => s.activeViewKey);
   const zones = useMockup2DStore((s) => s.zones);
+  const [dropActive, setDropActive] = React.useState(false);
 
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const wrapperRef = React.useRef<HTMLDivElement | null>(null);
   const rendererRef = React.useRef<MockupRenderer | null>(null);
   const zoneSamplersRef = React.useRef<Record<string, ZoneSampler>>({});
+  /** Set to the currently-ready view key once init completes; null while loading. */
+  const readyForViewRef = React.useRef<string | null>(null);
+  /** Set to true once the design canvas for the active elements has been composed at least once. */
+  const designReadyRef = React.useRef<boolean>(false);
 
   const view = product.mockup2D?.views.find((v) => v.key === activeViewKey)
     ?? product.mockup2D?.views[0];
@@ -73,6 +88,7 @@ export function Viewer2D({
       }
       rendererRef.current = r;
       r.setDispStrength(view.dispStrength ?? 0.012);
+      readyForViewRef.current = view.key;
       const tick = () => {
         r.render();
         raf = requestAnimationFrame(tick);
@@ -97,6 +113,7 @@ export function Viewer2D({
       ro.disconnect();
       rendererRef.current?.dispose();
       rendererRef.current = null;
+      readyForViewRef.current = null;
       zoneSamplersRef.current = {};
     };
   }, [view?.photoUrl, view?.dispUrl, view?.lightUrl, view?.colorUrl, view]);
@@ -112,6 +129,7 @@ export function Viewer2D({
   // Recompose design canvas whenever elements change.
   React.useEffect(() => {
     let cancelled = false;
+    designReadyRef.current = false;
     (async () => {
       const c = await composeDesignCanvas(
         elements,
@@ -120,6 +138,7 @@ export function Viewer2D({
       );
       if (cancelled) return;
       rendererRef.current?.setDesignCanvas(c);
+      designReadyRef.current = true;
     })();
     return () => {
       cancelled = true;
@@ -139,6 +158,18 @@ export function Viewer2D({
         } catch {
           return null;
         }
+      },
+      awaitReadyForView: async (viewKey, timeoutMs = 5000) => {
+        const start = Date.now();
+        while (
+          (readyForViewRef.current !== viewKey || !designReadyRef.current) &&
+          Date.now() - start < timeoutMs
+        ) {
+          await new Promise((r) => setTimeout(r, 50));
+        }
+        // Give the RAF tick one more frame to actually paint the new state.
+        await new Promise((r) => requestAnimationFrame(() => r(null)));
+        return readyForViewRef.current === viewKey && designReadyRef.current;
       },
     };
     return () => {
@@ -231,6 +262,56 @@ export function Viewer2D({
     (e.currentTarget as HTMLCanvasElement).releasePointerCapture?.(e.pointerId);
   }, []);
 
+  const isColorDrag = (e: React.DragEvent<HTMLDivElement>) =>
+    e.dataTransfer.types.includes(COLOR_DRAG_TYPE) ||
+    e.dataTransfer.types.includes("text/plain");
+
+  const onColorDragOver = React.useCallback(
+    (e: React.DragEvent<HTMLDivElement>) => {
+      if (!isColorDrag(e)) return;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "copy";
+      setDropActive(true);
+    },
+    [],
+  );
+
+  const onColorDragLeave = React.useCallback(() => setDropActive(false), []);
+
+  const onColorDrop = React.useCallback(
+    (e: React.DragEvent<HTMLDivElement>) => {
+      if (!isColorDrag(e)) return;
+      e.preventDefault();
+      setDropActive(false);
+      const hex = hexFromDrop(e);
+      if (!hex || !canvasRef.current) return;
+      const uv = pointerToUV(canvasRef.current, e.clientX, e.clientY);
+      // Hit-test the same way as pointerdown so the user can aim drops
+      // at a specific text element.
+      for (let i = elements.length - 1; i >= 0; i--) {
+        const el = elements[i];
+        const halfW = el.anchor.widthIn / 28 / 2;
+        const halfH = el.anchor.heightIn / 28 / 2;
+        if (
+          uv.u >= el.anchor.x - halfW &&
+          uv.u <= el.anchor.x + halfW &&
+          uv.v >= el.anchor.y - halfH &&
+          uv.v <= el.anchor.y + halfH
+        ) {
+          if (el.type === "text") {
+            setElementFillColor(el.id, hex);
+            return;
+          }
+          // Image elements keep their source colors — fall through to
+          // recolor the shirt body so the user always gets feedback.
+          break;
+        }
+      }
+      setGarmentColor(hex);
+    },
+    [elements, setElementFillColor, setGarmentColor],
+  );
+
   // ─── Handle overlays for the selected element ────────────────────────────
 
   const selected = elements.find((el) => el.id === selectedId) ?? null;
@@ -302,7 +383,12 @@ export function Viewer2D({
   return (
     <div
       ref={wrapperRef}
-      className="relative w-full aspect-square rounded-lg border border-ink/10 bg-paper-warm overflow-hidden touch-none select-none"
+      className={`relative w-full aspect-square rounded-lg border bg-paper-warm overflow-hidden touch-none select-none transition-colors ${
+        dropActive ? "border-primary border-2 border-dashed" : "border-ink/10"
+      }`}
+      onDragOver={onColorDragOver}
+      onDragLeave={onColorDragLeave}
+      onDrop={onColorDrop}
     >
       <canvas
         ref={canvasRef}

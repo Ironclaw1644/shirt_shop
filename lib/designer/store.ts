@@ -12,12 +12,15 @@ type DesignerState = {
   elements: DesignElement[];
   selectedId: string | null;
   cameraView: CameraView;
+  /** Hex color tinting the 3D shirt material. */
+  shirtColor: string;
 };
 
 type DesignerActions = {
-  init: (args: { productSlug: string; zones: PlacementZone[] }) => void;
+  init: (args: { productSlug: string; zones: PlacementZone[]; defaultShirtColor?: string }) => void;
   setActiveZone: (key: string) => void;
   setCameraView: (view: CameraView) => void;
+  setShirtColor: (hex: string) => void;
   addText: (input: { content: string; fontFamily: string; fontSize: number; fillColor: string }) => string;
   addImage: (input: { src: string; naturalWidth: number; naturalHeight: number }) => string;
   updateElement: (id: string, patch: Partial<TextElement> | Partial<ImageElement>) => void;
@@ -63,8 +66,9 @@ export const useDesignerStore = create<DesignerStore>()(
       elements: [],
       selectedId: null,
       cameraView: "front",
+      shirtColor: "#d1d5db",
 
-      init: ({ productSlug, zones }) =>
+      init: ({ productSlug, zones, defaultShirtColor }) =>
         set({
           productSlug,
           zones,
@@ -72,10 +76,12 @@ export const useDesignerStore = create<DesignerStore>()(
           elements: [],
           selectedId: null,
           cameraView: "front",
+          shirtColor: defaultShirtColor ?? "#d1d5db",
         }),
 
       setActiveZone: (key) => set({ activeZoneKey: key }),
       setCameraView: (view) => set({ cameraView: view }),
+      setShirtColor: (hex) => set({ shirtColor: hex }),
 
       addText: ({ content, fontFamily, fontSize, fillColor }) => {
         const { activeZoneKey, zones } = get();

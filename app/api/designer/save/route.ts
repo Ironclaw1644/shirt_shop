@@ -2,12 +2,25 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSupabaseServerClient, getSupabaseServiceRoleClient } from "@/lib/supabase/server";
 
+const proofSchema = z.object({
+  viewKey: z.string(),
+  viewLabel: z.string().optional(),
+  dataUrl: z.string().startsWith("data:image/"),
+});
+
 const schema = z.object({
   productSlug: z.string().optional(),
   designJson: z.unknown(),
+  /** Single-view legacy field — kept for the Fabric fallback designer. */
   previewDataUrl: z.string().startsWith("data:image/").nullable().optional(),
   /** Flat composite of all decals at print resolution — for production. */
   artworkPngDataUrl: z.string().startsWith("data:image/").nullable().optional(),
+  /**
+   * Multi-view proofs — one per side that has a design (front, back, sleeve).
+   * The first entry is treated as the primary preview if `previewDataUrl` is
+   * not provided.
+   */
+  proofs: z.array(proofSchema).optional(),
   name: z.string().optional(),
 });
 
@@ -42,8 +55,22 @@ export async function POST(req: Request) {
   const svc = getSupabaseServiceRoleClient();
   const ts = Date.now();
 
-  let previewUrl: string | null = null;
-  if (parsed.data.previewDataUrl) {
+  // Upload per-view proofs first; whichever uploads the active or first view
+  // becomes the row's primary preview_url.
+  const proofUrls: Array<{ viewKey: string; viewLabel?: string; previewUrl: string | null }> = [];
+  if (parsed.data.proofs?.length) {
+    for (const p of parsed.data.proofs) {
+      const url = await uploadDataUrl(
+        svc,
+        p.dataUrl,
+        `designs/${user.id}/${ts}-${p.viewKey}.png`,
+      );
+      proofUrls.push({ viewKey: p.viewKey, viewLabel: p.viewLabel, previewUrl: url });
+    }
+  }
+
+  let previewUrl: string | null = proofUrls[0]?.previewUrl ?? null;
+  if (!previewUrl && parsed.data.previewDataUrl) {
     previewUrl = await uploadDataUrl(svc, parsed.data.previewDataUrl, `designs/${user.id}/${ts}.png`);
   }
 
@@ -66,12 +93,19 @@ export async function POST(req: Request) {
     productId = p?.id ?? null;
   }
 
+  // Stash the per-view proof URLs alongside the design JSON so the saved
+  // designs page and cart line can render each side later.
+  const designJsonWithProofs =
+    parsed.data.designJson && typeof parsed.data.designJson === "object"
+      ? { ...(parsed.data.designJson as object), proofsByView: proofUrls }
+      : parsed.data.designJson;
+
   const { data, error } = await svc
     .from("customer_designs")
     .insert({
       user_id: user.id,
       product_id: productId,
-      design_json: parsed.data.designJson as never,
+      design_json: designJsonWithProofs as never,
       preview_url: previewUrl,
       name: parsed.data.name ?? null,
     })
@@ -79,5 +113,10 @@ export async function POST(req: Request) {
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ id: data.id, previewUrl, artworkUrl });
+  return NextResponse.json({
+    id: data.id,
+    previewUrl,
+    artworkUrl,
+    proofs: proofUrls,
+  });
 }

@@ -8,6 +8,8 @@ import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import { ShirtMesh } from "./shirt-mesh";
 import { DecalLayer } from "./decal-layer";
 import { useDesignerStore } from "@/lib/designer/store";
+import { hexFromDrop } from "./color-controls";
+import { COLOR_DRAG_TYPE } from "@/lib/utils/hex-color";
 import type { CameraView } from "@/lib/designer/types";
 import type { SampleProduct } from "@/lib/catalog/sample-products";
 
@@ -61,7 +63,7 @@ function Scene({
   const [mesh, setMesh] = React.useState<THREE.Mesh | null>(null);
   const inchesPerUnit = product.model3D?.inchesPerUnit ?? 1;
   const distance = product.model3D?.cameraDistance ?? 60;
-  const color = product.model3D?.defaultColor ?? "#d1d5db";
+  const shirtColor = useDesignerStore((s) => s.shirtColor);
 
   const { gl } = useThree();
   React.useEffect(() => {
@@ -76,7 +78,7 @@ function Scene({
       <Environment preset="studio" environmentIntensity={0.4} />
       <ShirtMesh
         ref={meshRef}
-        color={color}
+        color={shirtColor}
         onMeshReady={(m) => setMesh(m)}
       />
       <DecalLayer targetMesh={mesh} inchesPerUnit={inchesPerUnit} />
@@ -124,11 +126,36 @@ export function Viewer3D({
     };
   }, [apiRef]);
 
+  const setShirtColor = useDesignerStore((s) => s.setShirtColor);
+  const [dropActive, setDropActive] = React.useState(false);
+
+  const isColorDrag = (e: React.DragEvent<HTMLDivElement>) =>
+    e.dataTransfer.types.includes(COLOR_DRAG_TYPE) ||
+    e.dataTransfer.types.includes("text/plain");
+
   // Suspend orbit when an element is being dragged would be nicer; for
   // now we rely on event.stopPropagation in the Decal pointer handlers
   // to prevent OrbitControls from grabbing the input.
   return (
-    <div className="relative w-full aspect-square rounded-lg border border-ink/10 bg-paper-warm overflow-hidden">
+    <div
+      className={`relative w-full aspect-square rounded-lg border bg-paper-warm overflow-hidden transition-colors ${
+        dropActive ? "border-primary border-2 border-dashed" : "border-ink/10"
+      }`}
+      onDragOver={(e) => {
+        if (!isColorDrag(e)) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "copy";
+        setDropActive(true);
+      }}
+      onDragLeave={() => setDropActive(false)}
+      onDrop={(e) => {
+        if (!isColorDrag(e)) return;
+        e.preventDefault();
+        setDropActive(false);
+        const hex = hexFromDrop(e);
+        if (hex) setShirtColor(hex);
+      }}
+    >
       <Canvas
         shadows
         dpr={[1, 2]}

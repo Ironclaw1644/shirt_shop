@@ -8,7 +8,9 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils/cn";
 import { useDesignerStore, useDesignerHistory } from "@/lib/designer/store";
 import { loadImage } from "@/lib/designer/rasterize";
+import { ColorChip, HexInput } from "./color-controls";
 import type { CameraView } from "@/lib/designer/types";
+import type { SampleProduct } from "@/lib/catalog/sample-products";
 
 const CAMERA_VIEWS: { key: CameraView; label: string }[] = [
   { key: "front", label: "Front" },
@@ -17,16 +19,25 @@ const CAMERA_VIEWS: { key: CameraView; label: string }[] = [
   { key: "right", label: "Right" },
 ];
 
-export function Toolbar3D({ defaultFontFamily = "Inter Tight" }: { defaultFontFamily?: string }) {
+export function Toolbar3D({
+  product,
+  defaultFontFamily = "Inter Tight",
+}: {
+  product?: SampleProduct;
+  defaultFontFamily?: string;
+}) {
   const zones = useDesignerStore((s) => s.zones);
   const activeZoneKey = useDesignerStore((s) => s.activeZoneKey);
   const setActiveZone = useDesignerStore((s) => s.setActiveZone);
   const cameraView = useDesignerStore((s) => s.cameraView);
   const setCameraView = useDesignerStore((s) => s.setCameraView);
+  const shirtColor = useDesignerStore((s) => s.shirtColor);
+  const setShirtColor = useDesignerStore((s) => s.setShirtColor);
   const addText = useDesignerStore((s) => s.addText);
   const addImage = useDesignerStore((s) => s.addImage);
   const clear = useDesignerStore((s) => s.clear);
   const elements = useDesignerStore((s) => s.elements);
+  const colorPresets = product?.mockup2D?.colorPresets ?? [];
 
   const history = useDesignerHistory();
   const [historyState, setHistoryState] = React.useState({
@@ -100,6 +111,33 @@ export function Toolbar3D({ defaultFontFamily = "Inter Tight" }: { defaultFontFa
         </div>
         <p className="mt-2 text-[11px] text-ink-mute">
           Selecting a zone places new elements there. Drag elements on the model to move them.
+        </p>
+      </section>
+
+      <section>
+        <h3 className="font-display text-xs font-bold uppercase tracking-wider text-ink-mute mb-2">
+          Garment color
+        </h3>
+        <HexInput
+          value={shirtColor}
+          onChange={setShirtColor}
+          ariaLabel="Pick garment color"
+        />
+        {colorPresets.length > 0 && (
+          <div className="mt-2 grid grid-cols-7 gap-1">
+            {colorPresets.map((c) => (
+              <ColorChip
+                key={c.hex}
+                hex={c.hex}
+                selected={shirtColor.toLowerCase() === c.hex.toLowerCase()}
+                ariaLabel={c.label}
+                onClick={() => setShirtColor(c.hex)}
+              />
+            ))}
+          </div>
+        )}
+        <p className="mt-2 text-[11px] text-ink-mute">
+          Type a hex, click a preset, or drag a swatch onto the model.
         </p>
       </section>
 

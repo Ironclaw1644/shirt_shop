@@ -85,8 +85,10 @@ void main() {
   // Print zone: fades the design at the boundary of the active zone.
   float zoneAlpha = texture(uZone, vUv).r;
 
-  // Composite design over the recolored garment, masked by zone & alpha.
-  float a = design.a * zoneAlpha;
+  // Composite design over the recolored garment, masked by zone & alpha
+  // AND the garment silhouette so designs never bleed onto the background
+  // when an element extends past the active zone or shirt edge.
+  float a = design.a * zoneAlpha * colorMask;
   vec3 composite = mix(base, designShaded, a);
 
   // Optional dashed zone outline for visual reference while empty.

@@ -84,10 +84,17 @@ function CartPanel() {
                     {i.title}
                   </Link>
                   {i.variant && <p className="text-xs text-ink-mute">{i.variant}</p>}
-                  {i.decoration?.method && (
+                  {i.decorations?.[0]?.method && (
                     <p className="text-xs text-accent-700 font-medium mt-1">
-                      {i.decoration.method}
-                      {i.decoration.placement && ` · ${i.decoration.placement}`}
+                      {i.decorations[0].method}
+                      {i.decorations.length > 1
+                        ? ` · ${i.decorations
+                            .map((d) => d.viewLabel ?? d.placement)
+                            .filter(Boolean)
+                            .join(" + ")}`
+                        : i.decorations[0].placement
+                          ? ` · ${i.decorations[0].placement}`
+                          : ""}
                     </p>
                   )}
                   <div className="mt-2 flex items-center justify-between">

@@ -19,6 +19,8 @@ import type { Viewer3DApi } from "./viewer-3d";
 import { useMockup2DStore } from "@/lib/mockup/store";
 import { exportFlatArtwork2D } from "@/lib/mockup/export-flat";
 import type { Viewer2DApi } from "./viewer-2d";
+import { hexFromDrop } from "./color-controls";
+import { COLOR_DRAG_TYPE } from "@/lib/utils/hex-color";
 
 const FabricCanvas = dynamic(() => import("./fabric-canvas").then((m) => m.FabricCanvas), {
   ssr: false,
@@ -99,9 +101,12 @@ function DesignerClient2DMockup({
   const router = useRouter();
   const addCartItem = useCart((s) => s.add);
   const init = useMockup2DStore((s) => s.init);
-  const elements = useMockup2DStore((s) => s.elements);
+  const elementsByView = useMockup2DStore((s) => s.elementsByView);
+  const views = useMockup2DStore((s) => s.views);
   const zones = useMockup2DStore((s) => s.zones);
   const activeZoneKey = useMockup2DStore((s) => s.activeZoneKey);
+  const activeViewKey = useMockup2DStore((s) => s.activeViewKey);
+  const setActiveView = useMockup2DStore((s) => s.setActiveView);
   const viewerApiRef = React.useRef<Viewer2DApi | null>(null);
   const [saving, setSaving] = React.useState(false);
 
@@ -114,22 +119,53 @@ function DesignerClient2DMockup({
     });
   }, [init, product.slug, product.placementZones, product.mockup2D]);
 
+  /** Render each non-empty view to a PNG data URL. Single-view fallback included. */
+  async function captureProofs(): Promise<
+    Array<{ viewKey: string; viewLabel: string; dataUrl: string }>
+  > {
+    const viewKeys = views
+      .filter((v) => (elementsByView[v.key] ?? []).length > 0)
+      .map((v) => v.key);
+    // No view has any elements → fall back to whatever the active view shows.
+    if (viewKeys.length === 0) {
+      const dataUrl = viewerApiRef.current?.exportPNG() ?? null;
+      const v = views.find((v) => v.key === activeViewKey) ?? views[0];
+      if (!dataUrl || !v) return [];
+      return [{ viewKey: v.key, viewLabel: v.label, dataUrl }];
+    }
+
+    const out: Array<{ viewKey: string; viewLabel: string; dataUrl: string }> = [];
+    const saved = activeViewKey;
+    for (const key of viewKeys) {
+      if (key !== activeViewKey) setActiveView(key);
+      const ok = await viewerApiRef.current?.awaitReadyForView(key);
+      if (!ok) continue;
+      const dataUrl = viewerApiRef.current?.exportPNG();
+      const v = views.find((v) => v.key === key);
+      if (dataUrl && v) out.push({ viewKey: key, viewLabel: v.label, dataUrl });
+    }
+    if (saved && saved !== activeViewKey) setActiveView(saved);
+    return out;
+  }
+
   async function saveDesign(): Promise<{
     id?: string;
-    previewUrl?: string;
+    primaryPreviewUrl?: string;
     artworkUrl?: string;
+    proofs: Array<{ viewKey: string; viewLabel?: string; previewUrl?: string }>;
   } | null> {
     setSaving(true);
     try {
-      const previewDataUrl = viewerApiRef.current?.exportPNG() ?? null;
-      const artworkPngDataUrl = await exportFlatArtwork2D(elements, zones);
+      const proofs = await captureProofs();
+      const allElements = views.flatMap((v) => elementsByView[v.key] ?? []);
+      const artworkPngDataUrl = await exportFlatArtwork2D(allElements, zones);
       const res = await fetch("/api/designer/save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           productSlug: product.slug,
-          designJson: { kind: "mockup2d", elements, activeZoneKey },
-          previewDataUrl,
+          designJson: { kind: "mockup2d", elementsByView, activeZoneKey },
+          proofs,
           artworkPngDataUrl,
         }),
       });
@@ -138,25 +174,39 @@ function DesignerClient2DMockup({
           id: string;
           previewUrl?: string | null;
           artworkUrl?: string | null;
+          proofs?: Array<{ viewKey: string; viewLabel?: string; previewUrl: string | null }>;
         };
+        const serverProofs = data.proofs ?? [];
+        // Keep client-side fallbacks for any view the server failed to upload.
+        const merged = proofs.map((p, i) => ({
+          viewKey: p.viewKey,
+          viewLabel: p.viewLabel,
+          previewUrl: serverProofs[i]?.previewUrl ?? p.dataUrl,
+        }));
         return {
           id: data.id,
-          previewUrl: data.previewUrl ?? previewDataUrl ?? undefined,
+          primaryPreviewUrl: data.previewUrl ?? merged[0]?.previewUrl,
           artworkUrl: data.artworkUrl ?? artworkPngDataUrl ?? undefined,
+          proofs: merged,
         };
       }
       if (res.status === 401) {
         try {
           localStorage.setItem(
             `gaph-design-2dmockup-${product.slug}`,
-            JSON.stringify({ elements, previewDataUrl, artworkPngDataUrl }),
+            JSON.stringify({ elementsByView, proofs, artworkPngDataUrl }),
           );
         } catch {
           /* noop */
         }
         return {
-          previewUrl: previewDataUrl ?? undefined,
+          primaryPreviewUrl: proofs[0]?.dataUrl,
           artworkUrl: artworkPngDataUrl ?? undefined,
+          proofs: proofs.map((p) => ({
+            viewKey: p.viewKey,
+            viewLabel: p.viewLabel,
+            previewUrl: p.dataUrl,
+          })),
         };
       }
       throw new Error(`Save failed: ${res.status}`);
@@ -195,25 +245,41 @@ function DesignerClient2DMockup({
     }
     const qty = Number(initial.qty) || product.minQty;
     const method = initial.method ?? product.decorationMethods[0] ?? "custom";
-    const placement = activeZoneKey ?? product.placementZones?.[0]?.key ?? "";
-    const id = `${product.slug}-${placement}-${method}-${Date.now()}`;
+    const fallbackPlacement = activeZoneKey ?? product.placementZones?.[0]?.key ?? "";
+    const labelParts = result.proofs.length
+      ? result.proofs.map((p) => p.viewLabel ?? p.viewKey)
+      : [fallbackPlacement];
+    const id = `${product.slug}-${labelParts.join("-")}-${method}-${Date.now()}`;
+    const decorations = result.proofs.length
+      ? result.proofs.map((p) => ({
+          method,
+          placement: fallbackPlacement,
+          viewKey: p.viewKey,
+          viewLabel: p.viewLabel,
+          designId: result.id,
+          proofUrl: p.previewUrl,
+          artworkFileUrl: result.artworkUrl,
+        }))
+      : [
+          {
+            method,
+            placement: fallbackPlacement,
+            designId: result.id,
+            proofUrl: result.primaryPreviewUrl,
+            artworkFileUrl: result.artworkUrl,
+          },
+        ];
     addCartItem({
       id,
       productSlug: product.slug,
       title: product.title,
-      variant: `Custom · ${placement}`,
+      variant: `Custom · ${labelParts.join(" + ")}`,
       unitPriceCents: unitPriceFor(product, qty),
       quantity: qty,
       image:
-        result.previewUrl ??
+        result.primaryPreviewUrl ??
         `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`,
-      decoration: {
-        method,
-        placement,
-        designId: result.id,
-        proofUrl: result.previewUrl,
-        artworkFileUrl: result.artworkUrl,
-      },
+      decorations,
       leadTimeDays: product.leadTimeDays,
     });
     toast.success("Added to cart", {
@@ -284,8 +350,12 @@ function DesignerClient3D({
   const [saving, setSaving] = React.useState(false);
 
   React.useEffect(() => {
-    init({ productSlug: product.slug, zones: product.placementZones ?? [] });
-  }, [init, product.slug, product.placementZones]);
+    init({
+      productSlug: product.slug,
+      zones: product.placementZones ?? [],
+      defaultShirtColor: product.model3D?.defaultColor,
+    });
+  }, [init, product.slug, product.placementZones, product.model3D?.defaultColor]);
 
   async function saveDesign(): Promise<{
     id?: string;
@@ -381,13 +451,15 @@ function DesignerClient3D({
       image:
         result.previewUrl ??
         `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`,
-      decoration: {
-        method,
-        placement,
-        designId: result.id,
-        proofUrl: result.previewUrl,
-        artworkFileUrl: result.artworkUrl,
-      },
+      decorations: [
+        {
+          method,
+          placement,
+          designId: result.id,
+          proofUrl: result.previewUrl,
+          artworkFileUrl: result.artworkUrl,
+        },
+      ],
       leadTimeDays: product.leadTimeDays,
     });
     toast.success("Added to cart", {
@@ -429,7 +501,7 @@ function DesignerClient3D({
       </div>
 
       <div className="grid lg:grid-cols-[300px,1fr,300px] gap-6">
-        <Toolbar3D />
+        <Toolbar3D product={product} />
         <div className="space-y-4">
           <Viewer3D product={product} apiRef={viewerApiRef} />
         </div>
@@ -593,12 +665,14 @@ function DesignerClient2D({
       image:
         result.previewUrl ??
         `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`,
-      decoration: {
-        method,
-        placement,
-        designId: result.id,
-        proofUrl: result.previewUrl,
-      },
+      decorations: [
+        {
+          method,
+          placement,
+          designId: result.id,
+          proofUrl: result.previewUrl,
+        },
+      ],
       leadTimeDays: product.leadTimeDays,
     });
     toast.success("Added to cart", {
@@ -662,7 +736,25 @@ function DesignerClient2D({
           onClear={() => canvasApi?.clear()}
         />
 
-        <div className="rounded-lg border border-ink/10 bg-paper-warm p-4 sm:p-6">
+        <div
+          className="rounded-lg border border-ink/10 bg-paper-warm p-4 sm:p-6"
+          onDragOver={(e) => {
+            if (
+              e.dataTransfer.types.includes(COLOR_DRAG_TYPE) ||
+              e.dataTransfer.types.includes("text/plain")
+            ) {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "copy";
+            }
+          }}
+          onDrop={(e) => {
+            const hex = hexFromDrop(e);
+            if (!hex) return;
+            e.preventDefault();
+            setFillColor(hex);
+            canvasApi?.applyFillToActive(hex);
+          }}
+        >
           <FabricCanvas
             product={product}
             placement={placement}

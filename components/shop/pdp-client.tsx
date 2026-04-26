@@ -55,8 +55,8 @@ export function PDPClient({
       quantity,
       image: `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`,
       leadTimeDays: product.leadTimeDays,
-      decoration: decoration
-        ? { method: decoration }
+      decorations: decoration
+        ? [{ method: decoration }]
         : undefined,
     });
     toast.success("Added to cart", {
