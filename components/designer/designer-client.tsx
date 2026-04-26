@@ -16,6 +16,9 @@ import type { CanvasApi } from "./fabric-canvas";
 import { useDesignerStore } from "@/lib/designer/store";
 import { exportFlatArtwork } from "@/lib/designer/export-flat";
 import type { Viewer3DApi } from "./viewer-3d";
+import { useMockup2DStore } from "@/lib/mockup/store";
+import { exportFlatArtwork2D } from "@/lib/mockup/export-flat";
+import type { Viewer2DApi } from "./viewer-2d";
 
 const FabricCanvas = dynamic(() => import("./fabric-canvas").then((m) => m.FabricCanvas), {
   ssr: false,
@@ -41,6 +44,18 @@ const Inspector3D = dynamic(() => import("./inspector-3d").then((m) => m.Inspect
   ssr: false,
 });
 
+const Viewer2D = dynamic(() => import("./viewer-2d").then((m) => m.Viewer2D), {
+  ssr: false,
+  loading: () => (
+    <div className="aspect-square w-full rounded-lg bg-paper-warm animate-pulse flex items-center justify-center text-ink-mute text-sm">
+      Loading mockup…
+    </div>
+  ),
+});
+
+const Toolbar2D = dynamic(() => import("./toolbar-2d").then((m) => m.Toolbar2D), { ssr: false });
+const Inspector2D = dynamic(() => import("./inspector-2d").then((m) => m.Inspector2D), { ssr: false });
+
 export type DesignerSettings = {
   unit: "in" | "cm";
   showSafeArea: boolean;
@@ -62,12 +77,192 @@ export function DesignerClient({
   initial: { product?: string; method?: string; qty?: string };
 }) {
   const product = initial.product ? productBySlug(initial.product) : undefined;
-  const is3D = !!product?.model3D;
 
-  if (is3D && product) {
+  if (product?.mockup2D) {
+    return <DesignerClient2DMockup product={product} initial={initial} />;
+  }
+  if (product?.model3D) {
     return <DesignerClient3D product={product} initial={initial} />;
   }
   return <DesignerClient2D initial={initial} />;
+}
+
+// ─── 2D photoreal mockup variant ───────────────────────────────────────────
+
+function DesignerClient2DMockup({
+  product,
+  initial,
+}: {
+  product: SampleProduct;
+  initial: { product?: string; method?: string; qty?: string };
+}) {
+  const router = useRouter();
+  const addCartItem = useCart((s) => s.add);
+  const init = useMockup2DStore((s) => s.init);
+  const elements = useMockup2DStore((s) => s.elements);
+  const zones = useMockup2DStore((s) => s.zones);
+  const activeZoneKey = useMockup2DStore((s) => s.activeZoneKey);
+  const viewerApiRef = React.useRef<Viewer2DApi | null>(null);
+  const [saving, setSaving] = React.useState(false);
+
+  React.useEffect(() => {
+    init({
+      productSlug: product.slug,
+      zones: product.placementZones ?? [],
+      views: product.mockup2D?.views ?? [],
+      defaultGarmentColor: product.mockup2D?.defaultGarmentColor,
+    });
+  }, [init, product.slug, product.placementZones, product.mockup2D]);
+
+  async function saveDesign(): Promise<{
+    id?: string;
+    previewUrl?: string;
+    artworkUrl?: string;
+  } | null> {
+    setSaving(true);
+    try {
+      const previewDataUrl = viewerApiRef.current?.exportPNG() ?? null;
+      const artworkPngDataUrl = await exportFlatArtwork2D(elements, zones);
+      const res = await fetch("/api/designer/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productSlug: product.slug,
+          designJson: { kind: "mockup2d", elements, activeZoneKey },
+          previewDataUrl,
+          artworkPngDataUrl,
+        }),
+      });
+      if (res.ok) {
+        const data = (await res.json()) as {
+          id: string;
+          previewUrl?: string | null;
+          artworkUrl?: string | null;
+        };
+        return {
+          id: data.id,
+          previewUrl: data.previewUrl ?? previewDataUrl ?? undefined,
+          artworkUrl: data.artworkUrl ?? artworkPngDataUrl ?? undefined,
+        };
+      }
+      if (res.status === 401) {
+        try {
+          localStorage.setItem(
+            `gaph-design-2dmockup-${product.slug}`,
+            JSON.stringify({ elements, previewDataUrl, artworkPngDataUrl }),
+          );
+        } catch {
+          /* noop */
+        }
+        return {
+          previewUrl: previewDataUrl ?? undefined,
+          artworkUrl: artworkPngDataUrl ?? undefined,
+        };
+      }
+      throw new Error(`Save failed: ${res.status}`);
+    } catch (err) {
+      console.error("saveDesign error", err);
+      return null;
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function onSaveClick() {
+    const result = await saveDesign();
+    if (!result) {
+      toast.error("Couldn't save design", { description: "Please try again." });
+      return;
+    }
+    if (result.id) {
+      toast.success("Design saved", {
+        description: "Find it under Account → Designs.",
+        action: { label: "View", onClick: () => router.push("/account/designs") },
+      });
+    } else {
+      toast.info("Saved on this device", {
+        description: "Sign in to save designs to your account permanently.",
+        action: { label: "Sign in", onClick: () => router.push("/auth/sign-in") },
+      });
+    }
+  }
+
+  async function onAddToCart() {
+    const result = await saveDesign();
+    if (!result) {
+      toast.error("Couldn't save design", { description: "Please try again." });
+      return;
+    }
+    const qty = Number(initial.qty) || product.minQty;
+    const method = initial.method ?? product.decorationMethods[0] ?? "custom";
+    const placement = activeZoneKey ?? product.placementZones?.[0]?.key ?? "";
+    const id = `${product.slug}-${placement}-${method}-${Date.now()}`;
+    addCartItem({
+      id,
+      productSlug: product.slug,
+      title: product.title,
+      variant: `Custom · ${placement}`,
+      unitPriceCents: unitPriceFor(product, qty),
+      quantity: qty,
+      image:
+        result.previewUrl ??
+        `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`,
+      decoration: {
+        method,
+        placement,
+        designId: result.id,
+        proofUrl: result.previewUrl,
+        artworkFileUrl: result.artworkUrl,
+      },
+      leadTimeDays: product.leadTimeDays,
+    });
+    toast.success("Added to cart", {
+      description: `${qty} × ${product.title}`,
+      action: { label: "View cart", onClick: () => router.push("/cart") },
+    });
+    router.push("/cart");
+  }
+
+  return (
+    <div className="container py-8">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+        <div>
+          <Eyebrow tone="crimson">Designer · Photoreal Preview</Eyebrow>
+          <h1 className="heading-display text-3xl sm:text-4xl">
+            {product.title}
+            {initial.method && (
+              <span className="text-ink-mute font-normal text-xl"> · {initial.method}</span>
+            )}
+          </h1>
+          <p className="text-ink-mute text-sm mt-1">
+            Add elements, drag them on the garment, change the color — what you see is how
+            it&apos;ll look. Production prints from the flat artwork file we save alongside.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="outline" size="md" onClick={onSaveClick} disabled={saving}>
+            <Icon icon="cloud-arrow-up" /> {saving ? "Saving…" : "Save design"}
+          </Button>
+          <Button size="md" onClick={onAddToCart} disabled={saving}>
+            <Icon icon="bag-shopping" /> Add to cart
+          </Button>
+          <Button asChild size="md" variant="ghost">
+            <Link href={`/product/${product.slug}`}>
+              <Icon icon="arrow-left" /> Back to product
+            </Link>
+          </Button>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-[300px,1fr,300px] gap-6">
+        <Toolbar2D product={product} />
+        <div className="space-y-4">
+          <Viewer2D product={product} apiRef={viewerApiRef} />
+        </div>
+        <Inspector2D />
+      </div>
+    </div>
+  );
 }
 
 // ─── 3D variant ────────────────────────────────────────────────────────────

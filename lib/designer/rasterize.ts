@@ -1,5 +1,10 @@
 import type { ImageElement, TextElement } from "./types";
 
+/** Minimal shape needed to rasterize text (works for both 2D and 3D element types). */
+export type TextRasterInput = Pick<TextElement, "content" | "fontFamily" | "fontSize" | "fillColor">;
+/** Minimal shape needed to rasterize an image. */
+export type ImageRasterInput = Pick<ImageElement, "src">;
+
 export type RasterResult = {
   canvas: HTMLCanvasElement;
   /** Width-to-height ratio of the rasterized content (used to scale the decal). */
@@ -23,7 +28,7 @@ async function loadFont(family: string, sizePx: number): Promise<void> {
  * Rasterize text to a transparent canvas sized snugly around the glyphs.
  * Returns the canvas and its width:height ratio for decal sizing.
  */
-export async function rasterizeText(el: TextElement): Promise<RasterResult> {
+export async function rasterizeText(el: TextRasterInput): Promise<RasterResult> {
   const { content, fontFamily, fontSize, fillColor } = el;
   const sizePx = Math.max(12, Math.round(fontSize * 2)); // 2x density for crisp rendering
   await loadFont(fontFamily, sizePx);
@@ -58,7 +63,7 @@ export async function rasterizeText(el: TextElement): Promise<RasterResult> {
   return { canvas, aspect: canvas.width / canvas.height };
 }
 
-export async function rasterizeImage(el: ImageElement): Promise<RasterResult> {
+export async function rasterizeImage(el: ImageRasterInput): Promise<RasterResult> {
   const img = await loadImage(el.src);
   const canvas = document.createElement("canvas");
   canvas.width = img.naturalWidth;

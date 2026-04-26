@@ -17,6 +17,17 @@ export type PlacementAnchor3D = {
   maxSizeIn: number;
 };
 
+export type PlacementAnchor2D = {
+  /** Center of the print zone in normalized photo UV coords (0..1, top-left origin). */
+  centerXY: [number, number];
+  /** Zone width as a fraction of photo width. */
+  widthPct: number;
+  /** Zone height as a fraction of photo height. */
+  heightPct: number;
+  /** Optional in-plane rotation of the zone in radians (0 for upright). */
+  rotation?: number;
+};
+
 export type PlacementZone = {
   key: string;
   label: string;
@@ -24,6 +35,37 @@ export type PlacementZone = {
   heightIn: number;
   /** Optional 3D anchor — present only on products with a model3D. */
   anchor3D?: PlacementAnchor3D;
+  /** Optional 2D anchor — present on products with a mockup2D. */
+  anchor2D?: PlacementAnchor2D;
+};
+
+export type Mockup2DView = {
+  /** View key — typically 'front', 'back', or 'sleeve'. */
+  key: string;
+  label: string;
+  /** Public URL of the studio photo. */
+  photoUrl: string;
+  /** Public URL of the displacement map (grayscale PNG). */
+  dispUrl: string;
+  /** Public URL of the lighting/shadow map (grayscale PNG, mid-gray = neutral). */
+  lightUrl: string;
+  /** Public URL of the garment color mask (grayscale PNG, white = recolorable area). */
+  colorUrl: string;
+  /** Map from zone key → public URL of the zone mask PNG. */
+  zoneMasks: Record<string, string>;
+  /**
+   * Strength of the displacement warp applied to the design, as a fraction
+   * of photo width. Default 0.012. Tune higher for visible cloth folds.
+   */
+  dispStrength?: number;
+};
+
+export type Product2DMockup = {
+  views: Mockup2DView[];
+  /** Default garment color in hex; falls back to white. */
+  defaultGarmentColor?: string;
+  /** Optional named color presets (label → hex). Falls back to product.options.Color. */
+  colorPresets?: Array<{ label: string; hex: string }>;
 };
 
 export type Product3DModel = {
@@ -57,6 +99,8 @@ export type SampleProduct = {
   badges?: string[];
   /** Optional 3D model metadata — when set, the designer renders the 3D viewer. */
   model3D?: Product3DModel;
+  /** Optional 2D photo-mockup bundle — when set, the designer uses photoreal 2D wrap. */
+  mockup2D?: Product2DMockup;
 };
 
 /**
@@ -283,6 +327,7 @@ const seedProducts: SampleProduct[] = [
           up: [0, 1, 0],
           maxSizeIn: 4.5,
         },
+        anchor2D: { centerXY: [0.36, 0.34], widthPct: 0.12, heightPct: 0.12 },
       },
       {
         key: "full-front",
@@ -295,6 +340,7 @@ const seedProducts: SampleProduct[] = [
           up: [0, 1, 0],
           maxSizeIn: 14,
         },
+        anchor2D: { centerXY: [0.5, 0.55], widthPct: 0.42, heightPct: 0.5 },
       },
       {
         key: "full-back",
@@ -334,6 +380,33 @@ const seedProducts: SampleProduct[] = [
       cameraDistance: 60,
       inchesPerUnit: 1,
       defaultColor: "#d1d5db",
+    },
+    mockup2D: {
+      defaultGarmentColor: "#ffffff",
+      colorPresets: [
+        { label: "White", hex: "#ffffff" },
+        { label: "Black", hex: "#1a1a1a" },
+        { label: "Heather Grey", hex: "#9aa0a6" },
+        { label: "Navy", hex: "#1f2a44" },
+        { label: "Red", hex: "#b8142b" },
+        { label: "Kelly", hex: "#0e7a3a" },
+        { label: "Sand Dune", hex: "#c8b58c" },
+      ],
+      views: [
+        {
+          key: "front",
+          label: "Front",
+          photoUrl: "/mockups/bella-canvas-3001-tee/front/photo.jpg",
+          dispUrl: "/mockups/bella-canvas-3001-tee/front/disp.png",
+          lightUrl: "/mockups/bella-canvas-3001-tee/front/light.png",
+          colorUrl: "/mockups/bella-canvas-3001-tee/front/color.png",
+          zoneMasks: {
+            "left-chest": "/mockups/bella-canvas-3001-tee/front/zone-left-chest.png",
+            "full-front": "/mockups/bella-canvas-3001-tee/front/zone-full-front.png",
+          },
+          dispStrength: 0.012,
+        },
+      ],
     },
   },
   {

@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p *)",
+      "Bash(lsof -i *)",
+      "Bash(jq *)",
+      "Bash(rm -rf /tmp/*)",
+      "Bash(rm -f /tmp/*)",
+      "Bash(kill *)",
+      "Bash(wait *)",
+      "Bash(curl -s *)",
+      "Bash(curl -sL *)",
+      "Bash(curl -sI *)",
+      "Bash(curl -sf *)",
+      "Bash(curl -I *)",
+      "Bash(npx tsc --noEmit*)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run lint)",
+      "Bash(npm run build)",
+      "Bash(vercel ls *)",
+      "Bash(vercel inspect *)",
+      "Bash(vercel domains ls)",
+      "Bash(vercel env ls *)",
+      "Bash(gh pr *)",
+      "Bash(gh issue *)",
+      "Bash(gh run *)",
+      "Bash(gh repo view *)"
+    ]
+  }
+}
