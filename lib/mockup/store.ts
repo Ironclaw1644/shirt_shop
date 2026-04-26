@@ -98,9 +98,18 @@ function fitImageToZone(
   return { ...base, widthIn, heightIn };
 }
 
+/**
+ * Stable empty-array reference for views with no elements yet.
+ * Critical: returning `[]` literal each call would make `useSyncExternalStore`
+ * see a fresh snapshot every render and infinite-loop the component.
+ */
+const EMPTY_ELEMENTS: readonly DesignElement2D[] = Object.freeze([]);
+
 /** Selector helper: the elements visible on the active view. */
-export const selectActiveElements = (s: Mockup2DState): DesignElement2D[] =>
-  s.activeViewKey ? s.elementsByView[s.activeViewKey] ?? [] : [];
+export const selectActiveElements = (s: Mockup2DState): DesignElement2D[] => {
+  if (!s.activeViewKey) return EMPTY_ELEMENTS as DesignElement2D[];
+  return (s.elementsByView[s.activeViewKey] ?? EMPTY_ELEMENTS) as DesignElement2D[];
+};
 
 export const useMockup2DStore = create<Mockup2DStore>()(
   temporal(
