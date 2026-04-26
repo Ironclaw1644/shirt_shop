@@ -9,6 +9,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import {
   faArrowRight,
   faArrowLeft,
+  faArrowRotateLeft,
+  faArrowRotateRight,
   faBagShopping,
   faBars,
   faBolt,
@@ -58,6 +60,7 @@ import {
   faStar,
   faTag,
   faThumbsUp,
+  faTrashCan,
   faTrophy,
   faTruckFast,
   faUser,
@@ -71,6 +74,8 @@ config.autoAddCss = false;
 library.add(
   faArrowRight,
   faArrowLeft,
+  faArrowRotateLeft,
+  faArrowRotateRight,
   faBagShopping,
   faBars,
   faBolt,
@@ -120,6 +125,7 @@ library.add(
   faStar,
   faTag,
   faThumbsUp,
+  faTrashCan,
   faTrophy,
   faTruckFast,
   faUser,

@@ -5,9 +5,29 @@ import { getSupabaseServerClient, getSupabaseServiceRoleClient } from "@/lib/sup
 const schema = z.object({
   productSlug: z.string().optional(),
   designJson: z.unknown(),
-  previewDataUrl: z.string().startsWith("data:image/"),
+  previewDataUrl: z.string().startsWith("data:image/").nullable().optional(),
+  /** Flat composite of all decals at print resolution — for production. */
+  artworkPngDataUrl: z.string().startsWith("data:image/").nullable().optional(),
   name: z.string().optional(),
 });
+
+async function uploadDataUrl(
+  svc: ReturnType<typeof getSupabaseServiceRoleClient>,
+  dataUrl: string,
+  path: string,
+): Promise<string | null> {
+  const m = dataUrl.match(/^data:(.+?);base64,(.+)$/);
+  if (!m) return null;
+  const buf = Buffer.from(m[2], "base64");
+  const { error: upErr } = await svc.storage
+    .from("gaph-artwork")
+    .upload(path, buf, { contentType: m[1], upsert: true });
+  if (upErr) return null;
+  const { data } = await svc.storage
+    .from("gaph-artwork")
+    .createSignedUrl(path, 60 * 60 * 24 * 7);
+  return data?.signedUrl ?? null;
+}
 
 export async function POST(req: Request) {
   const supa = await getSupabaseServerClient();
@@ -20,26 +40,29 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
 
   const svc = getSupabaseServiceRoleClient();
+  const ts = Date.now();
 
-  // extract base64 image
-  const m = parsed.data.previewDataUrl.match(/^data:(.+?);base64,(.+)$/);
   let previewUrl: string | null = null;
-  if (m) {
-    const buf = Buffer.from(m[2], "base64");
-    const path = `designs/${user.id}/${Date.now()}.png`;
-    const { error: upErr } = await svc.storage
-      .from("gaph-artwork")
-      .upload(path, buf, { contentType: m[1], upsert: true });
-    if (!upErr) {
-      const { data } = await svc.storage.from("gaph-artwork").createSignedUrl(path, 60 * 60 * 24 * 7);
-      previewUrl = data?.signedUrl ?? null;
-    }
+  if (parsed.data.previewDataUrl) {
+    previewUrl = await uploadDataUrl(svc, parsed.data.previewDataUrl, `designs/${user.id}/${ts}.png`);
   }
 
-  // resolve product_id if provided
+  let artworkUrl: string | null = null;
+  if (parsed.data.artworkPngDataUrl) {
+    artworkUrl = await uploadDataUrl(
+      svc,
+      parsed.data.artworkPngDataUrl,
+      `artwork/${user.id}/${ts}.png`,
+    );
+  }
+
   let productId: string | null = null;
   if (parsed.data.productSlug) {
-    const { data: p } = await supa.from("products").select("id").eq("slug", parsed.data.productSlug).maybeSingle();
+    const { data: p } = await supa
+      .from("products")
+      .select("id")
+      .eq("slug", parsed.data.productSlug)
+      .maybeSingle();
     productId = p?.id ?? null;
   }
 
@@ -56,5 +79,5 @@ export async function POST(req: Request) {
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ id: data.id, previewUrl });
+  return NextResponse.json({ id: data.id, previewUrl, artworkUrl });
 }

@@ -4,6 +4,39 @@ import { importedProductsBatch2 } from "./imported-products-batch-2";
 import { importedProductsBatch3 } from "./imported-products-batch-3";
 import { importedProductsBatch4 } from "./imported-products-batch-4";
 
+export type Vec3 = [number, number, number];
+
+export type PlacementAnchor3D = {
+  /** World-space position on the model where the decal centers. */
+  position: Vec3;
+  /** Outward surface normal at that position (decal projects along -normal). */
+  normal: Vec3;
+  /** Up direction for decal orientation (e.g. [0,1,0] for chest, [0,0,1] for sleeve). */
+  up: Vec3;
+  /** Largest decal edge allowed at this zone, in inches (clamps user resize). */
+  maxSizeIn: number;
+};
+
+export type PlacementZone = {
+  key: string;
+  label: string;
+  widthIn: number;
+  heightIn: number;
+  /** Optional 3D anchor — present only on products with a model3D. */
+  anchor3D?: PlacementAnchor3D;
+};
+
+export type Product3DModel = {
+  /** Optional GLB to load. If absent, the viewer uses the procedural tee mesh. */
+  url?: string;
+  /** Camera distance from origin in model units. */
+  cameraDistance: number;
+  /** Inches → world-units factor (the procedural tee is built so 1in ≈ 0.04 units). */
+  inchesPerUnit: number;
+  /** Default base color for the garment material. */
+  defaultColor?: string;
+};
+
 export type SampleProduct = {
   slug: string;
   categorySlug: Category["slug"];
@@ -16,12 +49,14 @@ export type SampleProduct = {
   minQty: number;
   leadTimeDays: number;
   decorationMethods: string[];
-  placementZones?: { key: string; label: string; widthIn: number; heightIn: number }[];
+  placementZones?: PlacementZone[];
   options?: Record<string, string[]>;
   brand?: string;
   heroPromptKey: string;
   tierBreaks?: { minQty: number; unitCents: number }[];
   badges?: string[];
+  /** Optional 3D model metadata — when set, the designer renders the 3D viewer. */
+  model3D?: Product3DModel;
 };
 
 /**
@@ -237,10 +272,54 @@ const seedProducts: SampleProduct[] = [
       Color: ["White", "Black", "Heather Grey", "Navy", "Red", "Kelly", "Sand Dune"],
     },
     placementZones: [
-      { key: "left-chest", label: "Left Chest", widthIn: 3.5, heightIn: 3.5 },
-      { key: "full-front", label: "Full Front", widthIn: 12, heightIn: 14 },
-      { key: "full-back", label: "Full Back", widthIn: 12, heightIn: 14 },
-      { key: "sleeve", label: "Sleeve", widthIn: 3, heightIn: 3 },
+      {
+        key: "left-chest",
+        label: "Left Chest",
+        widthIn: 3.5,
+        heightIn: 3.5,
+        anchor3D: {
+          position: [-4, 6, 0.4],
+          normal: [0, 0, 1],
+          up: [0, 1, 0],
+          maxSizeIn: 4.5,
+        },
+      },
+      {
+        key: "full-front",
+        label: "Full Front",
+        widthIn: 12,
+        heightIn: 14,
+        anchor3D: {
+          position: [0, 0, 0.4],
+          normal: [0, 0, 1],
+          up: [0, 1, 0],
+          maxSizeIn: 14,
+        },
+      },
+      {
+        key: "full-back",
+        label: "Full Back",
+        widthIn: 12,
+        heightIn: 14,
+        anchor3D: {
+          position: [0, 0, -0.4],
+          normal: [0, 0, -1],
+          up: [0, 1, 0],
+          maxSizeIn: 14,
+        },
+      },
+      {
+        key: "sleeve",
+        label: "Sleeve",
+        widthIn: 3,
+        heightIn: 3,
+        anchor3D: {
+          position: [12, 5, 0.4],
+          normal: [0, 0, 1],
+          up: [0, 1, 0],
+          maxSizeIn: 4,
+        },
+      },
     ],
     tierBreaks: [
       { minQty: 12, unitCents: 1299 },
@@ -251,6 +330,11 @@ const seedProducts: SampleProduct[] = [
     ],
     heroPromptKey: "product:bc-3001-tee",
     badges: ["Bulk Favorite"],
+    model3D: {
+      cameraDistance: 60,
+      inchesPerUnit: 1,
+      defaultColor: "#d1d5db",
+    },
   },
   {
     slug: "comfort-colors-1717",

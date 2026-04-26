@@ -13,12 +13,32 @@ import type { SampleProduct } from "@/lib/catalog/sample-products";
 import { useCart } from "@/lib/store/cart";
 import { DesignerToolbar } from "./designer-toolbar";
 import type { CanvasApi } from "./fabric-canvas";
+import { useDesignerStore } from "@/lib/designer/store";
+import { exportFlatArtwork } from "@/lib/designer/export-flat";
+import type { Viewer3DApi } from "./viewer-3d";
 
 const FabricCanvas = dynamic(() => import("./fabric-canvas").then((m) => m.FabricCanvas), {
   ssr: false,
   loading: () => (
     <div className="aspect-square w-full rounded-lg bg-paper-warm animate-pulse" />
   ),
+});
+
+const Viewer3D = dynamic(() => import("./viewer-3d").then((m) => m.Viewer3D), {
+  ssr: false,
+  loading: () => (
+    <div className="aspect-square w-full rounded-lg bg-paper-warm animate-pulse flex items-center justify-center text-ink-mute text-sm">
+      Loading 3D viewer…
+    </div>
+  ),
+});
+
+const Toolbar3D = dynamic(() => import("./toolbar-3d").then((m) => m.Toolbar3D), {
+  ssr: false,
+});
+
+const Inspector3D = dynamic(() => import("./inspector-3d").then((m) => m.Inspector3D), {
+  ssr: false,
 });
 
 export type DesignerSettings = {
@@ -37,6 +57,196 @@ function unitPriceFor(product: SampleProduct, qty: number): number {
 }
 
 export function DesignerClient({
+  initial,
+}: {
+  initial: { product?: string; method?: string; qty?: string };
+}) {
+  const product = initial.product ? productBySlug(initial.product) : undefined;
+  const is3D = !!product?.model3D;
+
+  if (is3D && product) {
+    return <DesignerClient3D product={product} initial={initial} />;
+  }
+  return <DesignerClient2D initial={initial} />;
+}
+
+// ─── 3D variant ────────────────────────────────────────────────────────────
+
+function DesignerClient3D({
+  product,
+  initial,
+}: {
+  product: SampleProduct;
+  initial: { product?: string; method?: string; qty?: string };
+}) {
+  const router = useRouter();
+  const addCartItem = useCart((s) => s.add);
+  const init = useDesignerStore((s) => s.init);
+  const elements = useDesignerStore((s) => s.elements);
+  const zones = useDesignerStore((s) => s.zones);
+  const activeZoneKey = useDesignerStore((s) => s.activeZoneKey);
+  const viewerApiRef = React.useRef<Viewer3DApi | null>(null);
+  const [saving, setSaving] = React.useState(false);
+
+  React.useEffect(() => {
+    init({ productSlug: product.slug, zones: product.placementZones ?? [] });
+  }, [init, product.slug, product.placementZones]);
+
+  async function saveDesign(): Promise<{
+    id?: string;
+    previewUrl?: string;
+    artworkUrl?: string;
+  } | null> {
+    setSaving(true);
+    try {
+      const previewDataUrl = viewerApiRef.current?.exportPNG() ?? null;
+      const artworkPngDataUrl = await exportFlatArtwork(elements, zones);
+      const designElements = elements;
+      const res = await fetch("/api/designer/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productSlug: product.slug,
+          designJson: { kind: "3d", elements: designElements, activeZoneKey },
+          previewDataUrl,
+          artworkPngDataUrl,
+        }),
+      });
+      if (res.ok) {
+        const data = (await res.json()) as {
+          id: string;
+          previewUrl?: string | null;
+          artworkUrl?: string | null;
+        };
+        return {
+          id: data.id,
+          previewUrl: data.previewUrl ?? previewDataUrl ?? undefined,
+          artworkUrl: data.artworkUrl ?? artworkPngDataUrl ?? undefined,
+        };
+      }
+      if (res.status === 401) {
+        try {
+          localStorage.setItem(
+            `gaph-design-3d-${product.slug}`,
+            JSON.stringify({ designElements, previewDataUrl, artworkPngDataUrl }),
+          );
+        } catch {
+          /* noop */
+        }
+        return {
+          previewUrl: previewDataUrl ?? undefined,
+          artworkUrl: artworkPngDataUrl ?? undefined,
+        };
+      }
+      throw new Error(`Save failed: ${res.status}`);
+    } catch (err) {
+      console.error("saveDesign error", err);
+      return null;
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function onSaveClick() {
+    const result = await saveDesign();
+    if (!result) {
+      toast.error("Couldn't save design", { description: "Please try again." });
+      return;
+    }
+    if (result.id) {
+      toast.success("Design saved", {
+        description: "Find it under Account → Designs.",
+        action: { label: "View", onClick: () => router.push("/account/designs") },
+      });
+    } else {
+      toast.info("Saved on this device", {
+        description: "Sign in to save designs to your account permanently.",
+        action: { label: "Sign in", onClick: () => router.push("/auth/sign-in") },
+      });
+    }
+  }
+
+  async function onAddToCart() {
+    const result = await saveDesign();
+    if (!result) {
+      toast.error("Couldn't save design", { description: "Please try again." });
+      return;
+    }
+    const qty = Number(initial.qty) || product.minQty;
+    const method = initial.method ?? product.decorationMethods[0] ?? "custom";
+    const placement = activeZoneKey ?? product.placementZones?.[0]?.key ?? "";
+    const id = `${product.slug}-${placement}-${method}-${Date.now()}`;
+    addCartItem({
+      id,
+      productSlug: product.slug,
+      title: product.title,
+      variant: `Custom · ${placement}`,
+      unitPriceCents: unitPriceFor(product, qty),
+      quantity: qty,
+      image:
+        result.previewUrl ??
+        `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`,
+      decoration: {
+        method,
+        placement,
+        designId: result.id,
+        proofUrl: result.previewUrl,
+        artworkFileUrl: result.artworkUrl,
+      },
+      leadTimeDays: product.leadTimeDays,
+    });
+    toast.success("Added to cart", {
+      description: `${qty} × ${product.title}`,
+      action: { label: "View cart", onClick: () => router.push("/cart") },
+    });
+    router.push("/cart");
+  }
+
+  return (
+    <div className="container py-8">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+        <div>
+          <Eyebrow tone="crimson">Designer · 3D Preview</Eyebrow>
+          <h1 className="heading-display text-3xl sm:text-4xl">
+            {product.title}
+            {initial.method && (
+              <span className="text-ink-mute font-normal text-xl"> · {initial.method}</span>
+            )}
+          </h1>
+          <p className="text-ink-mute text-sm mt-1">
+            Add elements, drag them on the model, and rotate to preview from every angle.
+            Production receives the flat artwork file.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="outline" size="md" onClick={onSaveClick} disabled={saving}>
+            <Icon icon="cloud-arrow-up" /> {saving ? "Saving…" : "Save design"}
+          </Button>
+          <Button size="md" onClick={onAddToCart} disabled={saving}>
+            <Icon icon="bag-shopping" /> Add to cart
+          </Button>
+          <Button asChild size="md" variant="ghost">
+            <Link href={`/product/${product.slug}`}>
+              <Icon icon="arrow-left" /> Back to product
+            </Link>
+          </Button>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-[300px,1fr,300px] gap-6">
+        <Toolbar3D />
+        <div className="space-y-4">
+          <Viewer3D product={product} apiRef={viewerApiRef} />
+        </div>
+        <Inspector3D />
+      </div>
+    </div>
+  );
+}
+
+// ─── 2D fallback (existing Fabric path, unchanged behavior) ────────────────
+
+function DesignerClient2D({
   initial,
 }: {
   initial: { product?: string; method?: string; qty?: string };
@@ -63,7 +273,6 @@ export function DesignerClient({
   const onFontChange = React.useCallback(
     (family: string) => {
       setFont(family);
-      // Apply to current selection (if any). Safe to call even when no text is selected.
       void canvasApi?.applyFontToActive(family);
     },
     [canvasApi],
@@ -128,7 +337,6 @@ export function DesignerClient({
         return { id: data.id, previewUrl: data.previewUrl ?? undefined };
       }
       if (res.status === 401) {
-        // Unauthenticated: stash locally and prompt sign-in
         localStorage.setItem(
           `gaph-design-${product?.slug ?? "generic"}`,
           JSON.stringify({ design, preview }),
@@ -144,7 +352,7 @@ export function DesignerClient({
           JSON.stringify({ design, preview }),
         );
       } catch {
-        // localStorage may be full or disabled — give up silently
+        /* noop */
       }
       return { previewUrl: preview };
     } finally {
