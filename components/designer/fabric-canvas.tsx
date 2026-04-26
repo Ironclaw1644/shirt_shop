@@ -267,11 +267,11 @@ export function FabricCanvas({
 
   return (
     <div className="relative w-full">
-      <div ref={wrapperRef} className="mx-auto w-full max-w-[720px]">
-        <canvas
-          ref={ref}
-          className="w-full rounded border border-ink/15 bg-paper shadow-press touch-none"
-        />
+      <div
+        ref={wrapperRef}
+        className="mx-auto w-full max-w-[720px] rounded border border-ink/15 shadow-press overflow-hidden bg-[#f6f4ef]"
+      >
+        <canvas ref={ref} className="block touch-none" />
       </div>
     </div>
   );
