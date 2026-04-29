@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useCart } from "@/lib/store/cart";
@@ -65,16 +64,6 @@ export function CheckoutForm() {
           </>
         )}
       </Button>
-
-      <p className="text-center text-xs text-ink-mute">
-        Already have an account?{" "}
-        <Link
-          href="/auth/sign-in?next=/checkout"
-          className="underline hover:text-primary"
-        >
-          Sign in
-        </Link>
-      </p>
 
       <p className="text-sm text-ink-mute text-center">
         Estimated total{" "}
