@@ -10,10 +10,12 @@ type Item = {
 
 export default function OrderReceivedEmail({
   orderId,
+  token,
   totalCents,
   items,
 }: {
   orderId: string;
+  token: string;
   totalCents: number;
   items: Item[];
 }) {
@@ -41,7 +43,7 @@ export default function OrderReceivedEmail({
         </Text>
       </Section>
 
-      <CTA href={`${siteConfig.url}/account/orders/${orderId}`}>View order status</CTA>
+      <CTA href={`${siteConfig.url}/order/${orderId}?t=${encodeURIComponent(token)}`}>View order status</CTA>
 
       <Text style={{ marginTop: 18 }}>
         Questions? Just reply to this email — it goes straight to our orders desk.

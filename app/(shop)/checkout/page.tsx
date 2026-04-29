@@ -1,9 +1,7 @@
-import { redirect } from "next/navigation";
 import { Breadcrumbs } from "@/components/shop/breadcrumbs";
 import { CheckoutForm } from "@/components/shop/checkout-form";
 import { CheckoutSummary } from "@/components/shop/checkout-summary";
 import { CheckoutGate } from "@/components/shop/checkout-gate";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,13 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export default async function CheckoutPage() {
-  const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
-  if (!user) redirect("/auth/sign-in?next=/checkout");
-
+export default function CheckoutPage() {
   return (
     <div className="container py-12 max-w-6xl">
       <Breadcrumbs crumbs={[{ label: "Cart", href: "/cart" }, { label: "Checkout" }]} />

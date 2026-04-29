@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSupabaseServerClient, getSupabaseServiceRoleClient } from "@/lib/supabase/server";
 import { sendOrderReceivedEmail, sendAdminNewOrderEmail } from "@/lib/resend/send";
+import { signOrderToken } from "@/lib/orders/token";
 
 const decorationSchema = z.object({
   method: z.string(),
@@ -63,6 +64,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
+  const token = signOrderToken(order.id);
+
   const itemsInsert = items.map((i) => ({
     order_id: order.id,
     title_snapshot: i.title,
@@ -83,6 +86,7 @@ export async function POST(req: Request) {
     sendOrderReceivedEmail({
       email,
       orderId: order.id,
+      token,
       totalCents: total,
       items: itemsForEmail,
     }),
@@ -106,5 +110,5 @@ export async function POST(req: Request) {
     // best-effort
   }
 
-  return NextResponse.json({ orderId: order.id });
+  return NextResponse.json({ orderId: order.id, token });
 }

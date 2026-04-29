@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useCart } from "@/lib/store/cart";
@@ -25,10 +26,12 @@ export function CheckoutForm() {
         body: JSON.stringify({ email, items, shippingCents: 0, taxCents: 0 }),
       });
       const data = await res.json();
-      if (!res.ok || !data.orderId) {
+      if (!res.ok || !data.orderId || !data.token) {
         throw new Error(data.error ?? "Unable to place order");
       }
-      router.push(`/account/orders/${data.orderId}?placed=1`);
+      router.push(
+        `/order/${data.orderId}?t=${encodeURIComponent(data.token)}&placed=1`,
+      );
     } catch (err) {
       toast.error("Something went wrong", { description: (err as Error).message });
       setLoading(false);
@@ -51,7 +54,7 @@ export function CheckoutForm() {
           className="w-full rounded border-2 border-ink/15 px-3 py-2 focus:border-primary focus:outline-none"
         />
         <p className="mt-1 text-xs text-ink-mute">
-          We&rsquo;ll send your order confirmation and an invoice here.
+          We&rsquo;ll send your order confirmation and an invoice here. No account needed.
         </p>
       </div>
 
@@ -62,6 +65,16 @@ export function CheckoutForm() {
           </>
         )}
       </Button>
+
+      <p className="text-center text-xs text-ink-mute">
+        Already have an account?{" "}
+        <Link
+          href="/auth/sign-in?next=/checkout"
+          className="underline hover:text-primary"
+        >
+          Sign in
+        </Link>
+      </p>
 
       <p className="text-sm text-ink-mute text-center">
         Estimated total{" "}

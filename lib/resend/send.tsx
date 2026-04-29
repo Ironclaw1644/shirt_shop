@@ -34,6 +34,7 @@ async function send(
 export async function sendOrderReceivedEmail(args: {
   email: string;
   orderId: string;
+  token: string;
   totalCents: number;
   items: { title_snapshot: string; quantity: number; unit_price_cents: number }[];
 }) {
@@ -42,6 +43,7 @@ export async function sendOrderReceivedEmail(args: {
     `Order received — #${args.orderId.slice(0, 8)} · invoice coming soon`,
     <OrderReceivedEmail
       orderId={args.orderId}
+      token={args.token}
       totalCents={args.totalCents}
       items={args.items}
     />,
