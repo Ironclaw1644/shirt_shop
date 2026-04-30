@@ -92,7 +92,6 @@ export function PDPClient({
             {product.categorySlug.replace(/-/g, " ")}
           </div>
           <h1 className="mt-2 heading-display text-4xl sm:text-5xl text-ink">{product.title}</h1>
-          <p className="mt-3 text-lg text-ink-soft">{product.shortDescription}</p>
 
           <div className="mt-6 flex items-baseline gap-3">
             <span className="font-display text-4xl font-black text-ink">
@@ -215,10 +214,19 @@ export function PDPClient({
               <AccordionItem value="overview" className="px-4 border-b-0">
                 <AccordionTrigger>Overview</AccordionTrigger>
                 <AccordionContent>
-                  <div className="space-y-3 text-ink-soft">
-                    {product.description.split(/\n+/).map((para, i) => (
-                      <p key={i}>{para}</p>
-                    ))}
+                  <div className="space-y-4 text-ink-soft">
+                    {product.description.split(/\n+/).map((para, i) => {
+                      const m = para.match(/^\*\*(.+?)\*\*\s*[—:-]?\s*(.*)$/s);
+                      if (m) {
+                        return (
+                          <div key={i}>
+                            <p className="font-display font-semibold text-ink">{m[1]}</p>
+                            <p className="mt-1">{m[2]}</p>
+                          </div>
+                        );
+                      }
+                      return <p key={i}>{para}</p>;
+                    })}
                   </div>
                 </AccordionContent>
               </AccordionItem>

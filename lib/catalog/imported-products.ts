@@ -191,16 +191,17 @@ export const importedProducts: SampleProduct[] = [
     title: "Take-Out Menus",
     shortDescription: "Take-out menus printed on premium paper — smudge- and crease-resistant for repeat handling.",
     description:
-      "Take-out menus printed on premium paper stock, finished to resist smudges and creases through real-world handling. Available in 8.5x11 or 11x17, gloss or matte, and flat or folded — the format flexibility lets you match your menu's density and how it actually travels.\n\nBuilt for easy reading at a glance: full-color printing keeps food photography sharp, bold headlines cut through clutter, and clearly grouped sections (appetizers, mains, sides, drinks) help customers find what they want fast. Layouts can carry your branding throughout — header, footer, side rails — without sacrificing legibility.\n\nDesigned for the way modern restaurants reach customers: in-store handouts at the counter, inserts in delivery bags, mailers to local households, pickup add-ons. A daily-use menu built to hold up for restaurants, cafés, food trucks, and delivery brands looking to drive takeout and repeat orders.",
-    basePriceCents: 10000,
+      "**Premium paper, real-world durability** — Printed on premium paper stock with a finish that resists smudges and creases through repeat handling. Built to look fresh after dozens of trips through customer hands, delivery bags, and back-of-house chaos.\n\n**Sized to fit your menu** — Choose 8.5x11 for a focused single-page layout, or step up to 11x17 when you need room for a fuller spread. Available flat or folded depending on how you want it to travel.\n\n**Easy to read at a glance** — Full-color printing keeps food photography sharp, bold headlines pull customers in, and clearly grouped sections (appetizers, mains, sides, drinks) help them find what they want fast.\n\n**Designed for how you reach customers** — In-store handouts at the counter, inserts in delivery bags, mailers to local households, add-ons for pickup orders. A daily-use menu built for restaurants, cafés, food trucks, and delivery brands looking to drive takeout and repeat orders.",
+    basePriceCents: 200,
     priceStatus: "confirmed",
-    minQty: 250,
+    minQty: 1,
     leadTimeDays: 4,
     decorationMethods: ["digital-print", "offset-print"],
     options: {
       Size: ["8.5x11", "11x17"],
     },
     tierBreaks: [
+      { minQty: 1, unitCents: 200 },
       { minQty: 250, unitCents: 40 },
       { minQty: 500, unitCents: 22 },
       { minQty: 1000, unitCents: 14 },
