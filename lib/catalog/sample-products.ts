@@ -311,6 +311,281 @@ const seedProducts: SampleProduct[] = [
     ],
     heroPromptKey: "product:yard-signs",
   },
+  {
+    slug: "foil-business-cards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "business-cards",
+    title: "Foil Business Cards",
+    shortDescription: "Heavy 100lb cards with metallic foil accents — gold, silver, copper, holographic, and more.",
+    description:
+      "**Premium foil finishes** — Choose from gold, silver, copper, holographic, pink metallic, bright blue, or red foil to make your name pop. Foil is applied on the front side for a luxe metallic accent that catches the light.\n\n" +
+      "**Heavy 100lb cardstock** — Printed on premium 100lb gloss stock. Heavier than standard cards with a substantial in-hand feel that backs up the foil treatment.\n\n" +
+      "**Square or rounded corners** — Standard square corners for a classic editorial look, or rounded corners for a softer modern profile that wears in better in pockets.\n\n" +
+      "**Built for high-end first impressions** — Perfect for creative professionals, luxury brands, real estate agents, and anyone whose card needs to stand out at networking events and across-the-table introductions.",
+    basePriceCents: 200,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "foil"],
+    options: {
+      Size: ["3.5 x 2"],
+      "Paper Type": ["Heavy 100lb Gloss"],
+      "Printing Sides": ["One Side", "Two Side"],
+      "Foil Color": ["Silver", "Red", "Bright Blue", "Copper", "Holographic", "Pink Metallic", "Gold"],
+      Corners: ["Square Corners", "Round Corners"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 200 },
+      { minQty: 500, unitCents: 20 },
+      { minQty: 1000, unitCents: 13 },
+      { minQty: 2500, unitCents: 9 },
+    ],
+    badges: ["Premium"],
+    heroPromptKey: "product:foil-business-cards",
+  },
+  {
+    slug: "silk-laminated-business-cards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "business-cards",
+    title: "Silk Laminated Business Cards",
+    shortDescription: "Silky-smooth laminated cards on heavy 100lb stock — water and tear resistant.",
+    description:
+      "**Silk-smooth touch** — Soft silky-matte lamination across both faces gives an unmistakable luxury hand-feel. Stands out the moment your card lands in another hand.\n\n" +
+      "**Heavy 100lb stock** — Printed on premium 100lb cardstock for substantial weight and durability. The lamination adds a protective layer that resists water, tearing, and smudging through years of wallet wear.\n\n" +
+      "**Optional premium accents** — Add spot UV, embossing, or foil accents to elevate critical elements like logos and names.\n\n" +
+      "**Built for high-end brands** — Architects, designers, premium real-estate agents, hospitality groups, and luxury retail — anywhere first-impression material matters.",
+    basePriceCents: 1500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: ["digital-print", "lamination"],
+    options: {
+      Size: ["3.5 x 2"],
+      "Paper Type": ["Sturdy 100lb"],
+      "Printing Sides": ["Single Sided", "Double Sided"],
+      Corners: ["Square Corners", "Round Corners"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1500 },
+      { minQty: 500, unitCents: 13 },
+      { minQty: 1000, unitCents: 9 },
+      { minQty: 2500, unitCents: 7 },
+    ],
+    heroPromptKey: "product:silk-laminated-business-cards",
+  },
+  {
+    slug: "vinyl-banners",
+    categorySlug: "custom-printing",
+    subcategorySlug: "banners",
+    title: "Custom Vinyl Banners",
+    shortDescription: "Heavy 13oz vinyl banners — fade-resistant outdoor-rated for up to 5 years.",
+    description:
+      "**Built for outdoor** — Printed on heavy 13oz scrim-reinforced vinyl with fade-resistant inks. Rated for up to 5 years of outdoor exposure; withstands wind, rain, and sun without compromising color.\n\n" +
+      "**Sized to your space** — Standard sizes 3×5, 3×6, 3×8, 4×8, 5×10 plus custom dimensions on request. Pick what fits your message and the wall, fence, or pole you're hanging it on.\n\n" +
+      "**Three material grades** — Matte 13oz scrim-reinforced vinyl for non-glare display, gloss 13oz for high-impact color, or economy 8oz polypropylene for short-term indoor use.\n\n" +
+      "**Hardware ready** — Hemmed edges and brass grommets at the corners come standard for easy hanging. Pole-pocket and reinforced-edge options available for stand-alone displays and frame mounting.",
+    basePriceCents: 4500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 3,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["3' x 5'", "3' x 6'", "3' x 8'", "4' x 8'", "5' x 10'", "Custom Size"],
+      "Banner Type": [
+        "Matte 13 oz. Scrim-Reinforced Vinyl",
+        "Gloss 13 oz. Scrim-Reinforced Vinyl",
+        "Economy 8 oz. Polypropylene",
+      ],
+      "Printing Sides": ["One Side", "Two Side"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 4500 },
+      { minQty: 5, unitCents: 3500 },
+      { minQty: 10, unitCents: 3000 },
+    ],
+    heroPromptKey: "product:vinyl-banners",
+  },
+  {
+    slug: "fabric-banners",
+    categorySlug: "custom-printing",
+    subcategorySlug: "banners",
+    title: "Fabric Banners",
+    shortDescription: "Wrinkle-resistant tension-cloth banners — washable and travel-friendly.",
+    description:
+      "**Wrinkle-resistant tension cloth** — Printed on premium polyester tension fabric with a smooth wrinkle-resistant finish. Rolls and folds without creasing — easy to ship, store, and re-deploy.\n\n" +
+      "**Reusable and washable** — Fade-resistant inks survive machine washing, so you can bring the banner back to fresh color season after season.\n\n" +
+      "**Hardware-ready hemming** — Choose grommets with bravo tabs, top-and-bottom pole pockets, top-only pole pockets, or no hemming for fully custom mounting.\n\n" +
+      "**Indoor and outdoor** — Suitable for trade shows, retail displays, event backdrops, and outdoor mounting. Lightweight construction makes setup and teardown a one-person job.",
+    basePriceCents: 5500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "dye-sublimation"],
+    options: {
+      Size: ["Custom Size"],
+      Material: ["Wrinkle Resistant Tension Cloth Fabric"],
+      Finishing: [
+        "Grommet With Bravo Tab",
+        "Pole Pockets (Top & Bottom)",
+        "Pole Pockets (Top Only)",
+        "No Hem & No Grommets",
+      ],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 5500 },
+      { minQty: 5, unitCents: 4500 },
+      { minQty: 10, unitCents: 4000 },
+    ],
+    heroPromptKey: "product:fabric-banners",
+  },
+  {
+    slug: "retractable-banner-stand",
+    categorySlug: "custom-printing",
+    subcategorySlug: "banner-stands",
+    title: "Retractable Banner Stand",
+    shortDescription: "33×78 retractable banner stand with portable aluminum base — sets up in seconds.",
+    description:
+      "**Pull-up display** — Premium 33-inch wide by 78-inch tall retractable banner. The graphic rolls up cleanly into the base for transport and pulls up in seconds at the destination.\n\n" +
+      "**Pick your stand grade** — Banner-only for replacement, standard aluminum stand, heavy-duty for daily use, extra-sturdy for trade shows, or bamboo wooden stand for premium retail displays.\n\n" +
+      "**Tear-resistant graphic** — Printed on durable matte vinyl with high-resolution full-color graphics. Built to handle repeated rolling without creasing or fading.\n\n" +
+      "**Travel ready** — Lightweight aluminum base with carry bag. Sets up in under a minute. Perfect for trade shows, conferences, retail displays, marketing events, and corporate promotions.",
+    basePriceCents: 12500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print"],
+    options: {
+      Type: [
+        "Banner Only",
+        "Banner & Standard Stand",
+        "Banner & Heavy Duty Stand",
+        "Banner & Extra Sturdy Stand",
+        "Banner & Bamboo Wooden Stand",
+      ],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 12500 },
+      { minQty: 3, unitCents: 11500 },
+      { minQty: 5, unitCents: 10500 },
+    ],
+    heroPromptKey: "product:retractable-banner-stand",
+  },
+  {
+    slug: "foam-board-posters",
+    categorySlug: "custom-printing",
+    subcategorySlug: "foam-board-posters",
+    title: "Foam Board Posters",
+    shortDescription: "High-resolution posters mounted on rigid foam core — lightweight and warp-resistant.",
+    description:
+      "**Rigid display, lightweight** — Mounted on high-quality foam core that resists bending and warping. The lightweight rigid panel stands up on an easel, hangs from a wall, or fits a frame.\n\n" +
+      "**Custom sizes** — Order to your exact dimensions in feet. We trim each panel clean to spec.\n\n" +
+      "**Choose your finish** — Matte for soft non-glare display in high-light environments, or gloss for vivid color punch under spot lighting.\n\n" +
+      "**White or black core** — White foam core matches a clean modern look; black foam core gives a sharp framed-edge effect for trade shows and gallery installs.",
+    basePriceCents: 3500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print", "mounting"],
+    options: {
+      Size: ["Custom Size"],
+      "Poster Finishing": ["Matte Finish", "Gloss Finish"],
+      "Foam Board Type": ["White Board", "Black Board"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 3500 },
+      { minQty: 5, unitCents: 3000 },
+      { minQty: 10, unitCents: 2500 },
+    ],
+    heroPromptKey: "product:foam-board-posters",
+  },
+  {
+    slug: "full-color-notepads",
+    categorySlug: "custom-printing",
+    subcategorySlug: "note-pads",
+    title: "Full-Color Notepads",
+    shortDescription: "Padded full-color notepads on 70lb paper with chipboard back.",
+    description:
+      "**Premium writing paper** — 70lb paper with smooth ink lay-down for clean writing without smudging or bleed-through. Each pad has a sturdy chipboard back for stable writing on the go.\n\n" +
+      "**Padded edge binding** — 50 sheets per pad, glue-bound for clean tear-off and reliable durability across the life of the pad.\n\n" +
+      "**Three sizes** — Compact 4.25 × 5.5 for desk-side notes, classic 5.5 × 8.5 for general use, or full-size 8.5 × 11 for meetings and project planning.\n\n" +
+      "**Branded keepsake** — Full-color custom printing on the top sheet, visible across the whole pad stack. Perfect for corporate branding, promotional giveaways, conference handouts, and office stationery.",
+    basePriceCents: 700,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["4.25 x 5.5", "5.5 x 8.5", "8.5 x 11"],
+      "Pads per Pack": ["4", "8", "16", "32"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 700 },
+      { minQty: 4, unitCents: 500 },
+      { minQty: 8, unitCents: 400 },
+      { minQty: 16, unitCents: 300 },
+      { minQty: 32, unitCents: 250 },
+    ],
+    heroPromptKey: "product:full-color-notepads",
+  },
+  {
+    slug: "magnet-calendars",
+    categorySlug: "custom-printing",
+    subcategorySlug: "magnet-calendars",
+    title: "Magnet Calendars",
+    shortDescription: "Branded magnet calendars sized for refrigerators and office boards — daily-visibility marketing.",
+    description:
+      "**365-day visibility** — Full-color magnet calendar designed to live on refrigerators, file cabinets, and office boards for a full year of brand exposure. Daily-glance reminders for clients.\n\n" +
+      "**Multiple sizes** — Pick from 3×4, 4×6, 4×9, 5×7, or 6×9 inch depending on your design density and how prominent you want the magnet on its surface.\n\n" +
+      "**Direct-mail compatible** — Sized for standard mailers; works as a holiday postcard or open-house giveaway and a year-round branded keepsake at the same time.\n\n" +
+      "**Built for relationship marketing** — Real estate agents, financial planners, doctors' offices, and local service businesses use these for client retention and referral generation.",
+    basePriceCents: 200,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ['3" x 4"', '4" x 6"', '4" x 9"', '5" x 7"', '6" x 9"'],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 200 },
+      { minQty: 250, unitCents: 50 },
+      { minQty: 500, unitCents: 35 },
+      { minQty: 1000, unitCents: 25 },
+      { minQty: 2000, unitCents: 18 },
+      { minQty: 5000, unitCents: 14 },
+    ],
+    heroPromptKey: "product:magnet-calendars",
+  },
+  {
+    slug: "table-tents",
+    categorySlug: "custom-printing",
+    subcategorySlug: "table-tents",
+    title: "Table Tents",
+    shortDescription: "Freestanding 5×7 table tents — premium cardstock with double-sided printing.",
+    description:
+      "**Eye-level promotion** — Freestanding table tent designed to sit on tables, counters, and shelves at customer eye level. Front and back sides for maximum exposure from any angle.\n\n" +
+      "**Premium cardstock** — Printed on heavy cardstock with optional gloss, matte, or UV coating that resists spills, oil, and repeated handling in restaurant and event environments.\n\n" +
+      "**5×7 standard size** — Compact enough to fit comfortably on dining tables without crowding place settings; tall enough to be seen across the room.\n\n" +
+      "**Built for hospitality** — Restaurant specials, café menus, hotel info cards, conference table directions, retail promos. Self-standing — no easel or holder needed.",
+    basePriceCents: 300,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ['5" x 7"'],
+      Sides: ["Front Only", "Front and Back"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 300 },
+      { minQty: 25, unitCents: 150 },
+      { minQty: 50, unitCents: 120 },
+      { minQty: 100, unitCents: 95 },
+      { minQty: 250, unitCents: 75 },
+      { minQty: 500, unitCents: 60 },
+    ],
+    heroPromptKey: "product:table-tents",
+  },
 ];
 
 export const sampleProducts: SampleProduct[] = seedProducts;

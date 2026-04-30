@@ -2583,6 +2583,69 @@
       "title": "Blank Trophy Figures — Box (24 ct) hero",
       "aspect": "4:3",
       "prompt": "Photograph of \"Blank Trophy Figures — Box (24 ct)\" — 24 blank resin sport figures — assemble custom trophies. Warehouse-table flat-lay of WHOLESALE BLANK goods — no printed graphics, no logos, no text on any item. Stack or row arrangement on a kraft, paper, or concrete surface. Warm overhead daylight, 35mm lens. Wholesale-supply mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+    },
+    {
+      "slug": "product-foil-business-cards",
+      "title": "Foil Business Cards hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/2023-04-14_17-03-42_FP-Cal-BC-Rectangle-Silver-final_09481015202411.png",
+      "prompt": "Stack of business cards with metallic foil accents. Keep the source photo's composition, lighting, paper texture, foil reflection, and camera angle exactly as shown. Change only two things: (1) the surface beneath the cards — replace with a clean cream studio paper background (#FAFAF7), no concrete/wood/props; (2) the printed card design — fictional brand 'AURELIA & CO.' in clean elegant serif, primary accent warm crimson (#B8142B), foil treatment stays metallic and reflective. All printed copy must be real, legible English (sample: 'James Mercer · Creative Director · james@aurelia.co · 404-555-0142'). Do not invent garbled words, no real trademarks."
+    },
+    {
+      "slug": "product-silk-laminated-business-cards",
+      "title": "Silk Laminated Business Cards hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/bc-matte-laminated_11575115202312_10471215202411.png",
+      "prompt": "Stack of silk-laminated business cards. Keep the source photo's composition, silky matte lamination texture, paper edge, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — replace with a clean cream studio paper background (#FAFAF7), no concrete/wood/props; (2) the printed card design — fictional brand 'MERIDIAN ARCHITECTS', primary accent warm crimson (#B8142B). All printed copy must be real, legible English (sample: 'Lena Park · Principal Architect · lena@meridianarch.studio · 404-555-0167'). Do not invent garbled words, no real trademarks."
+    },
+    {
+      "slug": "product-vinyl-banners",
+      "title": "Custom Vinyl Banners hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/banner-printing_04151006202412.jpg",
+      "prompt": "Vinyl banner. Keep the source photo's composition, banner material, hemming, brass grommets, lighting, and camera angle exactly as shown. Change only two things: (1) the surface/background — replace with a clean cream studio paper background (#FAFAF7), no scenery/grass/concrete; (2) the printed banner design — fictional message in bold sans-serif, primary accent warm crimson (#B8142B). All printed copy must be real, legible English (sample: 'GRAND OPENING SATURDAY · 10AM-6PM · 1247 PEACHTREE ST'). Do not invent garbled words, no real trademarks."
+    },
+    {
+      "slug": "product-fabric-banners",
+      "title": "Fabric Banners hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/fabric-banner_04581009202412_04581309202412.jpg",
+      "prompt": "Fabric banner. Keep the source photo's composition, fabric texture (wrinkle-resistant tension cloth), hardware (grommets/pole pockets), lighting, and camera angle exactly as shown. Change only two things: (1) the surface/background — replace with a clean cream studio paper background (#FAFAF7), no scenery/props; (2) the printed banner design — fictional brand 'NORTHRIDGE OUTFITTERS', primary accent warm crimson (#B8142B). All printed copy must be real, legible English (sample: 'NORTHRIDGE OUTFITTERS · TRAIL · CAMP · CLIMB · EST 2018'). Do not invent garbled words, no real trademarks."
+    },
+    {
+      "slug": "product-retractable-banner-stand",
+      "title": "Retractable Banner Stand hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/RetractableBanners_copy_700_10265404202412.png",
+      "prompt": "Retractable banner stand displayed upright with full graphic visible. Keep the source photo's composition, stand hardware (aluminum base), retractable mechanism, banner material, lighting, and camera angle exactly as shown. Change only two things: (1) the surface/background — replace with a clean cream studio paper background (#FAFAF7), no floor/walls/scenery; (2) the printed banner graphic — fictional brand 'WESTBROOK CONSULTING', primary accent warm crimson (#B8142B). All printed text real legible English (sample: 'WESTBROOK · STRATEGIC GROWTH PARTNERS · WESTBROOKCONSULTING.COM'). Do not invent garbled words, no real trademarks."
+    },
+    {
+      "slug": "product-foam-board-posters",
+      "title": "Foam Board Posters hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/H1bb644bf46a74f0a959c0af57ded0744Q_jpg_720x720q50_05211511202412.jpg",
+      "prompt": "Foam board mounted poster. Keep the source photo's composition, foam core thickness, panel edge, lighting, and camera angle exactly as shown. Change only two things: (1) the surface/background — replace with a clean cream studio paper background (#FAFAF7), no scenery/props; (2) the printed poster design — clean modern title card with fictional event name, primary accent warm crimson (#B8142B). All printed text real legible English (sample: 'PIEDMONT GALLERY · SPRING 2026 EXHIBITION · OPENS APRIL 12'). Do not invent garbled words, no real trademarks."
+    },
+    {
+      "slug": "product-full-color-notepads",
+      "title": "Full-Color Notepads hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Notepads_Personal_A_05181902202412.jpg",
+      "prompt": "Stack of notepads with chipboard back visible. Keep the source photo's composition, paper stack, padded edge, chipboard back, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no props; (2) the printed top-sheet design — fictional brand 'OAKWOOD STUDIO' header in clean serif, primary accent warm crimson (#B8142B), simple ruled writing area below. All printed text real legible English. Do not invent garbled words, no real trademarks."
+    },
+    {
+      "slug": "product-magnet-calendars",
+      "title": "Magnet Calendars hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/magnet-postcards_02002316202509.jpg",
+      "prompt": "Magnet calendar. Keep the source photo's composition, magnet edges, paper texture, lighting, and camera angle exactly as shown. Change only two things: (1) the surface/background — clean cream studio paper background (#FAFAF7), no fridge/wood/props; (2) the printed calendar design — fictional brand 'PIEDMONT REALTY' top header, year 2026, monthly grid below with real legible English month names (JANUARY, FEBRUARY... DECEMBER), primary accent warm crimson (#B8142B). All printed text real legible English. Do not invent garbled words, no real trademarks."
+    },
+    {
+      "slug": "product-table-tents",
+      "title": "Table Tents hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Table_Tents_Marketing_Materials_A_10492605202412.jpg",
+      "prompt": "Table tent standing freely on a flat surface. Keep the source photo's composition, fold structure, paper texture, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no table props/silverware/dishes; (2) the printed design — fictional restaurant 'BISTRO ON MAIN', primary accent warm crimson (#B8142B), specials promo headline. All printed text real legible English (sample: 'BISTRO ON MAIN · TODAY\\'S SPECIAL · CHEF\\'S SHORT RIB · $24'). Do not invent garbled words, no real trademarks."
     }
   ]
 }

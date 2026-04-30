@@ -108,12 +108,27 @@ async function generateOne(entry: ManifestEntry) {
     const buf = Buffer.from(base64, "base64");
     const pipeline = sharp(buf);
 
-    // resize to reasonable max width while keeping aspect
-    const targetWidth = entry.aspect.startsWith("16:") || entry.aspect.includes("1200") ? 1600 : 1400;
-    await pipeline
-      .resize({ width: targetWidth, withoutEnlargement: true })
-      .webp({ quality: 86 })
-      .toFile(outPath);
+    // For product-* entries: pad to exact 4:3 (1400x1050) with cream backdrop so
+    // the PDP gallery (aspect-[4/3] container) doesn't letterbox. Cream matches
+    // the page bg-paper-warm. Non-product entries use the legacy resize logic.
+    const isProduct = entry.slug.startsWith("product-");
+    if (isProduct) {
+      await pipeline
+        .resize({
+          width: 1400,
+          height: 1050,
+          fit: "contain",
+          background: { r: 250, g: 250, b: 247 },
+        })
+        .webp({ quality: 92 })
+        .toFile(outPath);
+    } else {
+      const targetWidth = entry.aspect.startsWith("16:") || entry.aspect.includes("1200") ? 1600 : 1400;
+      await pipeline
+        .resize({ width: targetWidth, withoutEnlargement: true })
+        .webp({ quality: 86 })
+        .toFile(outPath);
+    }
 
     const promptLogPath = path.join(OUT_DIR, `${entry.slug}.prompt.txt`);
     await fs.writeFile(promptLogPath, entry.prompt, "utf8");
