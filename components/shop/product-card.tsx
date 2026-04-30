@@ -18,7 +18,7 @@ export function ProductCard({ product }: { product: SampleProduct }) {
           alt={product.title}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-105"
-          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+          sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
         />
         {product.badges?.[0] && (
           <Badge variant="crimson" className="absolute top-3 left-3 shadow-press">

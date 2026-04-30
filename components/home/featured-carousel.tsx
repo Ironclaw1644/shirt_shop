@@ -68,7 +68,7 @@ export function FeaturedCarousel() {
                   alt={p.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="300px"
+                  sizes="(min-width: 640px) 300px, 260px"
                 />
                 {p.badges?.length ? (
                   <Badge variant="crimson" className="absolute top-3 left-3">

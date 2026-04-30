@@ -104,7 +104,7 @@ function HeroArtwork() {
           fill
           className="object-cover"
           priority
-          sizes="(min-width: 1024px) 40vw, 80vw"
+          sizes="(min-width: 1024px) 40vw, 100vw"
         />
       </div>
 
