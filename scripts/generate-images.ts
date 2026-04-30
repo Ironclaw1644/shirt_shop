@@ -119,8 +119,9 @@ async function generateOne(entry: ManifestEntry) {
           height: 1050,
           fit: "contain",
           background: { r: 250, g: 250, b: 247 },
+          kernel: "lanczos3",
         })
-        .webp({ quality: 92 })
+        .webp({ quality: 95, effort: 6 })
         .toFile(outPath);
     } else {
       const targetWidth = entry.aspect.startsWith("16:") || entry.aspect.includes("1200") ? 1600 : 1400;
