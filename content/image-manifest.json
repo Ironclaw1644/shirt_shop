@@ -457,9 +457,10 @@
     },
     {
       "slug": "product-vinyl-lettering",
-      "title": "Storefront Vinyl Lettering hero",
+      "title": "Vinyl Decals & Lettering hero",
       "aspect": "4:3",
-      "prompt": "Photograph of \"Storefront Vinyl Lettering\" — Cut-vinyl lettering for windows, vehicles, and walls. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/custom-logo-labels-car-vehicle-white-lettering-vinyl-decals-stickers-abc2000.png",
+      "prompt": "Sheet of die-cut vinyl decals and lettering. Keep the source photo's composition, vinyl texture, transfer-mask layout, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no vehicle/window/props; (2) the printed designs — fictional brand 'WESTBROOK & CO' lettering with simple geometric monograms or icons in warm crimson (#B8142B), black, and white vinyl. Any text must be real, legible English (sample: 'WESTBROOK', 'EST 2024'). No real trademarks, no garbled text."
     },
     {
       "slug": "product-fat-head-graduation",
@@ -2689,6 +2690,62 @@
       "title": "Custom Paper Coasters hero",
       "aspect": "4:3",
       "prompt": "Photorealistic catalog product photo of a stack of round paper coasters on a soft cream studio paper backdrop (#FAFAF7). 4-inch round shapes, 5-6 stacked with slight fan showing thick absorbent paperboard edges. Top coaster displays fictional brewery 'TWIN OAKS BREWING CO.' in clean sans-serif logotype at center, with a simple hop or barley illustration in warm crimson (#B8142B). Heavy pulpboard texture visible at the stack edge. Soft natural window lighting from upper-left, gentle shadow under stack. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-mesh-banners",
+      "title": "Mesh Banners hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/mesh-banner-printing-700x700_04583509202412.jpg",
+      "prompt": "Mesh perforated vinyl banner. Keep the source photo's composition, mesh perforated texture, banner material, lighting, and camera angle exactly as shown. Change only two things: (1) the surface/background — clean cream studio paper background (#FAFAF7), no scenery/fence/props; (2) the printed banner design — fictional message in bold sans-serif, primary accent warm crimson (#B8142B). All printed text real legible English (sample: 'NORTHRIDGE OUTDOOR · TRAILS · MAPS · GEAR · NORTHRIDGEOUTDOOR.COM'). No real trademarks, no garbled text."
+    },
+    {
+      "slug": "product-tabletop-banner-stand",
+      "title": "Tabletop Banner Stand hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a compact tabletop banner stand on a soft cream studio paper backdrop (#FAFAF7). Stand is approximately 11 inches wide by 17 inches tall with a small aluminum tabletop base. The banner displays fictional brand 'AURORA HEALTH GROUP' in clean serif at top, simple medical cross icon in warm crimson (#B8142B), tagline 'Compassionate Care, Trusted Doctors' below in charcoal sans-serif. Soft natural window lighting from upper-left, gentle shadow at the base. Sharp focus across the banner graphic. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-x-frame-banner-stand",
+      "title": "X-Frame Banner Stand hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of an X-frame banner stand on a soft cream studio paper backdrop (#FAFAF7). Stand is 24 inches wide by 63 inches tall with a collapsible X-shaped aluminum frame visible behind the banner. The banner displays fictional brand 'PIEDMONT WEALTH ADVISORS' in elegant serif headline, simple geometric monogram in warm crimson (#B8142B), tagline 'Plan Today. Live Tomorrow.' below in charcoal. Soft natural window lighting from upper-left, gentle shadow under the stand. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-real-estate-yard-signs",
+      "title": "Real Estate Yard Signs hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Yard-Sign-3-2_05181425202506.jpg",
+      "prompt": "Real estate yard sign on a metal stake. Keep the source photo's composition, sign material, stake hardware, lighting, and camera angle exactly as shown. Change only two things: (1) the surface/background — clean cream studio paper background (#FAFAF7), no grass/yard/scenery; (2) the printed sign design — fictional brokerage 'PIEDMONT REALTY' in classic serif headline, fictional agent 'SARAH BENNETT · 404-555-0182' below, simple geometric house icon, primary accent warm crimson (#B8142B). All printed text real legible English. No real trademarks, no garbled text."
+    },
+    {
+      "slug": "product-a-frame-sidewalk-signs",
+      "title": "A-Frame Sidewalk Signs hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of an A-frame sidewalk sign on a soft cream studio paper backdrop (#FAFAF7). Sign is 24 inches wide by 36 inches tall, white plastic A-frame with two printed faces visible at a slight three-quarter angle. The visible face displays fictional restaurant 'BISTRO ON MAIN' in elegant serif headline, today's special 'CHEF\\'S SHORT RIB · $24' in warm crimson (#B8142B), tagline 'Open Daily 11am-10pm' in charcoal sans-serif. Soft natural window lighting from upper-left, gentle shadow under the base. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-adhesive-window-decals",
+      "title": "Adhesive Window Decals hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a die-cut adhesive vinyl window decal lying flat on a soft cream studio paper backdrop (#FAFAF7). Decal is approximately 12 inches wide showing a fictional shop's hours-of-operation graphic: 'NORTHSIDE COFFEE' brand at top in clean sans-serif, 'OPEN' header in warm crimson (#B8142B), hours list 'Mon-Fri 6am-7pm · Sat-Sun 7am-5pm' below. White vinyl visible at the edge with a slight peel-away corner showing the adhesive backing paper. Soft natural window lighting from upper-left, gentle shadow. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-see-through-window-decals",
+      "title": "See-Through Window Decals hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a see-through perforated vinyl window decal lying flat on a soft cream studio paper backdrop (#FAFAF7). Decal is approximately 18 inches wide showing the characteristic perforated pattern (small dots) across its surface. Print displays fictional brand 'OAKWOOD GYM · STRENGTH STARTS HERE' in bold sans-serif, simple geometric icon in warm crimson (#B8142B). The perforations are clearly visible across the printed area, demonstrating the see-through nature. Soft natural window lighting from upper-left, gentle shadow. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-feather-flags",
+      "title": "Feather Flags hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a tall feather-shaped flag on a vertical pole, displayed on a soft cream studio paper backdrop (#FAFAF7). Flag is approximately 11 feet tall (visible portion) with the characteristic curved feather/teardrop shape. Flag displays fictional brand 'TWIN OAKS BREWING' in vertical bold serif, simple hop illustration in warm crimson (#B8142B). The fabric shows a slight gentle curve as if a soft breeze is catching it. Soft natural window lighting from upper-left, gentle shadow under the base. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-fabric-popup-banners",
+      "title": "Fabric Pop-Up Banners hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a fabric pop-up trade-show banner backdrop on a soft cream studio paper backdrop (#FAFAF7). Display is 8 feet wide by 8 feet tall with a slight curved profile, mounted on an aluminum pop-up frame. The fabric panel displays fictional brand 'WESTBROOK CONSULTING' in elegant serif headline at top, tagline 'STRATEGIC GROWTH PARTNERS' below in clean sans-serif, simple geometric monogram in warm crimson (#B8142B), website 'westbrookconsulting.com' as a small footer. Wrinkle-free taut fabric texture visible. Soft natural window lighting from upper-left, gentle shadow at the base. All printed text real legible English. No real trademarks. Catalog product photography."
     }
   ]
 }

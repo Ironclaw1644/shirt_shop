@@ -954,6 +954,288 @@ const seedProducts: SampleProduct[] = [
     ],
     heroPromptKey: "product:holiday-cards",
   },
+  {
+    slug: "mesh-banners",
+    categorySlug: "custom-printing",
+    subcategorySlug: "banners",
+    title: "Mesh Banners",
+    shortDescription: "Perforated mesh vinyl banners — wind-resistant outdoor displays for fences and storefronts.",
+    description:
+      "**Wind-friendly mesh** — Perforated 8 oz vinyl with thousands of small holes that let wind pass through. No more billowing or tearing in gusty conditions.\n\n" +
+      "**Built for outdoor longevity** — Fade-resistant inks plus weather-rated vinyl rated for years of outdoor exposure. Color stays vivid through sun, rain, and seasonal cycles.\n\n" +
+      "**Hardware-ready hemming** — Choose hem & grommets, hem only, no-hem grommets only, or pole pockets (top & bottom or top only) to match your mounting setup.\n\n" +
+      "**Built for big visibility** — Construction site fences, sporting event fences, scaffolding wraps, parking-lot displays, large storefront windows. Anywhere you need maximum visibility without wind drag.",
+    basePriceCents: 4500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["Custom Size"],
+      Material: ["8 oz Perforated Vinyl"],
+      Finishing: [
+        "Hem & Grommets",
+        "Hem Only",
+        "No Hem / Grommets Only",
+        "No Hem & No Grommets",
+        "Pole Pockets (Top & Bottom)",
+        "Pole Pockets (Top Only)",
+      ],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 4500 },
+      { minQty: 5, unitCents: 3500 },
+      { minQty: 10, unitCents: 3000 },
+    ],
+    heroPromptKey: "product:mesh-banners",
+  },
+  {
+    slug: "tabletop-banner-stand",
+    categorySlug: "custom-printing",
+    subcategorySlug: "banner-stands",
+    title: "Tabletop Banner Stand",
+    shortDescription: "Compact tabletop banner stand — perfect for trade show counters and conference reception desks.",
+    description:
+      "**Counter-height display** — Compact tabletop stand sized to sit on a trade-show table, conference reception desk, or retail counter. Pulls focus without towering over conversation.\n\n" +
+      "**Two display sizes** — Compact 8\"×11\" for tight counter spaces, or larger 11\"×17\" when you need a fuller graphic.\n\n" +
+      "**Banner only or with stand** — Order banner-only for graphic refreshes on an existing stand, or get the full kit with sturdy aluminum tabletop hardware.\n\n" +
+      "**Travel ready** — Lightweight, collapsible base. Banner rolls into the stand for transport. Setup takes 30 seconds at the venue.",
+    basePriceCents: 4500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ['11" x 17"', '8" x 11"'],
+      Type: ["Banner Only", "Banner & Tabletop Stand"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 4500 },
+      { minQty: 5, unitCents: 3800 },
+    ],
+    heroPromptKey: "product:tabletop-banner-stand",
+  },
+  {
+    slug: "x-frame-banner-stand",
+    categorySlug: "custom-printing",
+    subcategorySlug: "banner-stands",
+    title: "X-Frame Banner Stand",
+    shortDescription: "Lightweight collapsible X-frame banner stand — travel-friendly trade-show display.",
+    description:
+      "**X-shaped support** — Collapsible X-frame mounts the banner taut with corner grommets. No wrinkles, no sagging, even after multiple setups.\n\n" +
+      "**Two standard sizes** — 24\"×63\" for compact venues, 32\"×71\" for high-visibility booth backdrops.\n\n" +
+      "**Banner only or full kit** — Replacement graphic for an existing stand, or the complete X-frame package with carry bag.\n\n" +
+      "**Built for the road** — Lightweight aluminum frame folds flat. Sets up in under a minute. Perfect for trade shows, retail pop-ups, conference booths, lobby displays.",
+    basePriceCents: 8500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ['24" x 63"', '32" x 71"'],
+      Type: ["Banner Only", "Banner & X-Frame Stand"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 8500 },
+      { minQty: 3, unitCents: 7500 },
+    ],
+    heroPromptKey: "product:x-frame-banner-stand",
+  },
+  {
+    slug: "real-estate-yard-signs",
+    categorySlug: "custom-printing",
+    subcategorySlug: "yard-signs",
+    title: "Real Estate Yard Signs",
+    shortDescription: "Standard 24×18 real estate yard signs — durable corrugated plastic for property listings.",
+    description:
+      "**Industry-standard 24×18** — Sized to the real-estate market standard. Fits all common stake hardware, sign-rider attachments, and brokerage branding requirements.\n\n" +
+      "**Heavy coroplast plastic** — White corrugated plastic with UV-resistant inks. Rated for years of outdoor exposure across seasons.\n\n" +
+      "**Single or double-sided** — Print one side for budget runs, both sides to be visible to traffic from both directions on residential streets.\n\n" +
+      "**Portrait or landscape** — Pick the orientation that matches your brokerage template and sign-rider conventions.",
+    basePriceCents: 1199,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 3,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ['24" x 18"'],
+      Sides: ["Single Side", "Double Side"],
+      Orientation: ["Portrait", "Landscape"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1199 },
+      { minQty: 5, unitCents: 999 },
+      { minQty: 10, unitCents: 849 },
+      { minQty: 25, unitCents: 749 },
+    ],
+    heroPromptKey: "product:real-estate-yard-signs",
+  },
+  {
+    slug: "a-frame-sidewalk-signs",
+    categorySlug: "custom-printing",
+    subcategorySlug: "a-frames",
+    title: "A-Frame Sidewalk Signs",
+    shortDescription: "Foldable A-frame sidewalk signs with printed or chalkboard faces — storefront ready.",
+    description:
+      "**Storefront staple** — A-frame design folds flat for indoor storage, opens to a sturdy two-sided display on the sidewalk in front of your shop.\n\n" +
+      "**Printed or chalkboard faces** — Print both sides with permanent graphics, or order with chalkboard faces for daily-changeable specials and event listings.\n\n" +
+      "**Sized for visibility** — 24×36 standard size for restaurants and retail, or compact 20×30 for tight sidewalks and shop entryways.\n\n" +
+      "**Plastic or aluminum frame** — Plastic frame for budget-friendly daily use, or aluminum for premium long-term durability and a heavier wind-resistant base.",
+    basePriceCents: 6500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ['24" x 36"', '20" x 30"'],
+      Material: ["Plastic", "Aluminum"],
+      Faces: ["Both Sides Printed", "Chalkboard"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 6500 },
+      { minQty: 3, unitCents: 5500 },
+    ],
+    heroPromptKey: "product:a-frame-sidewalk-signs",
+  },
+  {
+    slug: "adhesive-window-decals",
+    categorySlug: "custom-printing",
+    subcategorySlug: "window-decals",
+    title: "Adhesive Window Decals",
+    shortDescription: "Adhesive vinyl window decals — bright color, removable adhesive backing.",
+    description:
+      "**Premium 6 mil vinyl** — Heavy-duty 6 mil adhesive vinyl in white or clear. White vinyl shows full-color graphics; clear vinyl lets background show through for layered effects.\n\n" +
+      "**Removable adhesive** — Strong-tack adhesive holds securely but lifts cleanly from glass when you want to swap displays. No goo, no residue.\n\n" +
+      "**Front or back adhesive** — Front adhesive sticks to the outside of the glass (visible from outside, reverse from inside). Back adhesive sticks to the inside of the glass (visible from outside through the glass).\n\n" +
+      "**Built for storefronts** — Hours-of-operation, sale promotions, brand graphics, contact info, social media handles, holiday displays. Custom shapes cut to your spec.",
+    basePriceCents: 1500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["Custom Size"],
+      Material: ["6 mil White Vinyl", "6 mil Clear Vinyl"],
+      "Adhesive Side": ["Front Adhesive", "Back Adhesive"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1500 },
+      { minQty: 10, unitCents: 1100 },
+      { minQty: 25, unitCents: 900 },
+    ],
+    heroPromptKey: "product:adhesive-window-decals",
+  },
+  {
+    slug: "see-through-window-decals",
+    categorySlug: "custom-printing",
+    subcategorySlug: "window-decals",
+    title: "See-Through Window Decals",
+    shortDescription: "One-way perforated window decals — see out from inside, full-color graphics outside.",
+    description:
+      "**One-way visibility** — Perforated 65/35 vinyl appears as a solid graphic from outside but lets you see out clearly from inside. Maintains daylight in your space without sacrificing display real estate.\n\n" +
+      "**Full-color exterior print** — High-resolution graphics on the outward-facing side. Photos, brand graphics, and bold typography all reproduce sharply.\n\n" +
+      "**Optional gloss lamination** — Add a clear gloss laminate to extend outdoor life and resist sun fade and minor scuffs.\n\n" +
+      "**Built for retail and offices** — Storefront windows, conference room glass, vehicle rear windows, restaurant front windows. Anywhere you want exterior brand presence without blocking interior light.",
+    basePriceCents: 2500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["Custom Size"],
+      Material: ["Perforated 65/35 Vinyl"],
+      Lamination: ["None", "Gloss"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 2500 },
+      { minQty: 5, unitCents: 2000 },
+      { minQty: 10, unitCents: 1700 },
+    ],
+    heroPromptKey: "product:see-through-window-decals",
+  },
+  {
+    slug: "vinyl-lettering",
+    categorySlug: "custom-printing",
+    subcategorySlug: "vinyl-lettering",
+    title: "Vinyl Decals & Lettering",
+    shortDescription: "Custom vinyl decals and lettering — die-cut for windows, walls, and vehicles.",
+    description:
+      "**Weatherproof vinyl** — Premium adhesive vinyl with fade-resistant inks and UV protection. Built for outdoor exposure on windows, walls, and vehicle surfaces.\n\n" +
+      "**Multiple finishes** — Choose gloss for shine, matte for subtle elegance, clear for ghost-text effects, or metallic for premium signage applications.\n\n" +
+      "**Die cut or transfer mask** — Die-cut shapes for logo decals and graphics; transfer mask delivery for multi-character lettering that installs as one piece on the destination surface.\n\n" +
+      "**Built to apply anywhere** — Storefront windows, vehicle wraps, wall murals, equipment branding, custom signage. Custom-shaped, custom-sized, install in minutes.",
+    basePriceCents: 800,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "die-cut"],
+    options: {
+      Size: ["Custom Size"],
+      "Cut Type": ["Die Cut", "Transfer Mask for Lettering"],
+      Finish: ["Gloss", "Matte", "Clear", "Metallic"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 800 },
+      { minQty: 10, unitCents: 600 },
+      { minQty: 25, unitCents: 450 },
+    ],
+    heroPromptKey: "product:vinyl-lettering",
+  },
+  {
+    slug: "feather-flags",
+    categorySlug: "custom-printing",
+    subcategorySlug: "feather-flags",
+    title: "Feather Flags",
+    shortDescription: "Tall feather flags with full-color print — eye-catching outdoor advertising.",
+    description:
+      "**Eye-level outdoor visibility** — Tall feather-shaped flags wave gently in the breeze, catching attention from blocks away. Tested in real outdoor conditions to resist fraying and color fade.\n\n" +
+      "**Three height options** — 8' tall for compact storefronts, 11' for standard outdoor placement, or 15' for high-impact roadside visibility.\n\n" +
+      "**Single or double-sided** — Single-sided is budget-friendly and shows through to the back; double-sided uses an opaque liner so each side reads cleanly.\n\n" +
+      "**Pick your stand** — Flag-only for graphic replacement, ground stake for grass installation, or cross base for hardscape and indoor use.",
+    basePriceCents: 5500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "dye-sublimation"],
+    options: {
+      Size: ["8' Tall", "11' Tall", "15' Tall"],
+      Sides: ["One Side", "Two Side"],
+      Stand: ["Flag Only", "Flag & Ground Stake", "Flag & Cross Base"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 5500 },
+      { minQty: 3, unitCents: 4800 },
+      { minQty: 5, unitCents: 4200 },
+    ],
+    heroPromptKey: "product:feather-flags",
+  },
+  {
+    slug: "fabric-popup-banners",
+    categorySlug: "custom-printing",
+    subcategorySlug: "exhibit-booths",
+    title: "Fabric Pop-Up Banners",
+    shortDescription: "Curved or straight fabric pop-up banner displays — full trade-show booth in a portable kit.",
+    description:
+      "**Trade-show booth in a bag** — Pop-up frame expands from a portable carry bag into a full backdrop in under 5 minutes. The fabric panel attaches via velcro for a seamless surface.\n\n" +
+      "**Curved or straight** — Curved profile gives a softer enveloping booth feel; straight profile maximizes flat graphic real estate for messaging-heavy designs.\n\n" +
+      "**Two standard sizes** — 8' wide × 8' tall for single-booth setups, 10' × 8' for double-booth widths and headlining displays.\n\n" +
+      "**Wrinkle-resistant tension fabric** — Premium polyester fabric that arrives wrinkle-free and stays taut on the frame. Re-deployable across hundreds of events.",
+    basePriceCents: 35000,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: ["digital-print", "dye-sublimation"],
+    options: {
+      Size: ["8' x 8'", "10' x 8'"],
+      Type: ["Curved", "Straight"],
+      Material: ["Tension Fabric"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 35000 },
+      { minQty: 3, unitCents: 31000 },
+    ],
+    heroPromptKey: "product:fabric-popup-banners",
+  },
 ];
 
 export const sampleProducts: SampleProduct[] = seedProducts;
