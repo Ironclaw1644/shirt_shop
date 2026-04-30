@@ -405,13 +405,13 @@
       "slug": "product-carbonless-2part",
       "title": "2-Part Carbonless Forms hero",
       "aspect": "4:3",
-      "prompt": "Photograph of \"2-Part Carbonless Forms\" — White/canary 2-part NCR forms — padded or booked. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+      "prompt": "Photorealistic catalog product photo of a padded set of 2-part carbonless forms on a soft cream studio paper backdrop (#FAFAF7). Top sheet shows fictional service company 'NORTHRIDGE PLUMBING - SERVICE INVOICE' header in clean serif, sample line items (Service Call $85, Labor 2 hrs $180, Parts $42, Total $307), customer info section. White top sheet with canary yellow second sheet visible at the edge of the pad. Glue-bound padded edge at top. Heavy paper texture visible. Soft natural window lighting from upper-left, gentle shadow under the pad. All printed text real legible English. No real trademarks. Catalog product photography."
     },
     {
       "slug": "product-carbonless-3part",
       "title": "3-Part Carbonless Forms hero",
       "aspect": "4:3",
-      "prompt": "Photograph of \"3-Part Carbonless Forms\" — White/canary/pink 3-part — for invoices and POs. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+      "prompt": "Photorealistic catalog product photo of a padded set of 3-part carbonless forms on a soft cream studio paper backdrop (#FAFAF7). Top sheet shows fictional service company 'OAKWOOD HVAC - WORK ORDER' header in clean serif, sample line items (Diagnostic Call $95, Labor 1.5 hrs $135, Filter Replacement $48, Total $278), customer info section. White top sheet with canary yellow middle sheet and pink bottom sheet all visible at the edge of the pad — three colored layers clearly distinguishable. Glue-bound padded edge at top. Heavy paper texture. Soft natural window lighting from upper-left, gentle shadow. All printed text real legible English. No real trademarks. Catalog product photography."
     },
     {
       "slug": "product-feather-flag-single",
@@ -451,9 +451,10 @@
     },
     {
       "slug": "product-address-labels",
-      "title": "Address Label Rolls hero",
+      "title": "Custom Address Labels hero",
       "aspect": "4:3",
-      "prompt": "Photograph of \"Address Label Rolls\" — Self-adhesive address labels — printed on rolls or sheets. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Address-Label-Printing-Service_11044905202412.jpg",
+      "prompt": "Sheet of address labels. Keep the source photo's composition, label sheet layout (Avery #5160 30-up grid), paper texture, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no props; (2) the printed labels — fictional return-address label repeated across the sheet: 'Sarah Bennett · 1247 Peachtree St · Atlanta GA 30309', primary accent warm crimson (#B8142B). All printed text real legible English. No real trademarks, no garbled text."
     },
     {
       "slug": "product-vinyl-lettering",
@@ -2746,6 +2747,38 @@
       "title": "Fabric Pop-Up Banners hero",
       "aspect": "4:3",
       "prompt": "Photorealistic catalog product photo of a fabric pop-up trade-show banner backdrop on a soft cream studio paper backdrop (#FAFAF7). Display is 8 feet wide by 8 feet tall with a slight curved profile, mounted on an aluminum pop-up frame. The fabric panel displays fictional brand 'WESTBROOK CONSULTING' in elegant serif headline at top, tagline 'STRATEGIC GROWTH PARTNERS' below in clean sans-serif, simple geometric monogram in warm crimson (#B8142B), website 'westbrookconsulting.com' as a small footer. Wrinkle-free taut fabric texture visible. Soft natural window lighting from upper-left, gentle shadow at the base. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-full-color-booklets",
+      "title": "Full-Color Booklets hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a saddle-stitched full-color booklet on a soft cream studio paper backdrop (#FAFAF7). 8.5x11 booklet, ~24 pages, lying open at a slight angle to show the spine staples and the spread interior. Cover displays fictional brand 'OAKWOOD GALLERY · 2026 LOOKBOOK' in elegant serif. Visible interior spread shows a sample art piece on the left page and a short description on the right page in clean editorial layout. Primary accent warm crimson (#B8142B). Heavy 100lb gloss text paper visible at edges. Soft natural window lighting from upper-left, gentle shadow at the spine fold. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-acrylic-photo-prints",
+      "title": "Acrylic Photo Prints hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of an acrylic-mounted photo print on a soft cream studio paper backdrop (#FAFAF7). Print is approximately 16x24 inches with 0.25-inch clear acrylic face-mount visible at the edges (the acrylic gives a glossy depth to the photo underneath). The displayed photo shows a fictional landscape: warm sunset over a mountain range with deep amber and warm crimson tones. The acrylic surface catches a subtle highlight reflection demonstrating its premium glossy finish. Standoff mounting hardware visible at the corners. Soft natural window lighting from upper-left, gentle shadow under the print. No real trademarks, no copyrighted imagery. Catalog product photography."
+    },
+    {
+      "slug": "product-custom-size-posters",
+      "title": "Custom Size Posters hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a single rolled-out custom-size poster on a soft cream studio paper backdrop (#FAFAF7). Poster is approximately 18x24 inches, lying flat at a slight three-quarter angle. The poster displays fictional event 'PIEDMONT MUSIC FESTIVAL · OCTOBER 14-16 · ATLANTA' as the headline in bold serif, simple geometric musical note illustration, line-up text below with 5-6 fictional band names in clean sans-serif, fictional address footer. Primary accent warm crimson (#B8142B). Heavy 100lb satin poster paper visible. Soft natural window lighting from upper-left, gentle shadow under the lower edge. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-car-door-magnets",
+      "title": "Car Door Magnets hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/car-door-magnets_1.jpg",
+      "prompt": "Pair of car door magnets. Keep the source photo's composition, magnet shape, magnetic vinyl texture, lighting, and camera angle exactly as shown. Change only two things: (1) the surface/background — clean cream studio paper background (#FAFAF7), no vehicle/concrete/props; (2) the printed magnet design — fictional service business 'OAKWOOD PLUMBING' in bold sans-serif, phone '404-555-0145', simple wrench icon, primary accent warm crimson (#B8142B). All printed text real legible English. No real trademarks, no garbled text."
+    },
+    {
+      "slug": "product-foil-certificates",
+      "title": "Foil Certificates hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/04-gold-foil-on-black-certificate-1000x1000_09491205202412.jpg",
+      "prompt": "Single 8.5x11 certificate with metallic foil accents. Keep the source photo's composition, paper texture, foil sheen, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no props; (2) the printed certificate design — fictional 'CERTIFICATE OF ACHIEVEMENT' header in elegant serif, awarded to placeholder name 'JAMES MERCER' in calligraphic script, fictional issuer 'PIEDMONT BUSINESS ACADEMY', metallic gold foil treatment on the title and ornate border that reads as truly metallic and reflective (not flat ink), primary accent warm crimson (#B8142B) on the seal. All printed text real legible English. No real trademarks, no garbled text."
     }
   ]
 }

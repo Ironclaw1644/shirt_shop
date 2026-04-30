@@ -1236,6 +1236,247 @@ const seedProducts: SampleProduct[] = [
     ],
     heroPromptKey: "product:fabric-popup-banners",
   },
+  {
+    slug: "carbonless-2part",
+    categorySlug: "custom-printing",
+    subcategorySlug: "carbonless-forms",
+    title: "2-Part Carbonless Forms",
+    shortDescription: "White/canary 2-part NCR carbonless forms — padded sets for instant customer copies.",
+    description:
+      "**Two-color sets** — White top sheet for office files, canary yellow second sheet for the customer. Pressure transfer copies the writing automatically — no carbon paper, no smudging.\n\n" +
+      "**Padded sets** — Glue-bound at the top edge. Tear off a complete set after writing, hand the customer their copy, file the white original.\n\n" +
+      "**Three standard sizes** — Half-sheet 5.5×8.5 for receipts, letter 8.5×11 for service tickets, or legal 8.5×14 for full-detail invoices.\n\n" +
+      "**Built for the field** — Service businesses, contractors, mobile sales, restaurants, repair shops, delivery services. Anywhere you need an immediate carbon-free copy.",
+    basePriceCents: 250,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 6,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["5.5 x 8.5", "8.5 x 11", "8.5 x 14"],
+      "Sheets per Pad": ["25", "50", "100"],
+      "Printing Sides": ["One Side", "Two Side"],
+      Numbering: ["None", "Sequential Numbering"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 250 },
+      { minQty: 50, unitCents: 100 },
+      { minQty: 100, unitCents: 70 },
+      { minQty: 250, unitCents: 50 },
+      { minQty: 500, unitCents: 35 },
+      { minQty: 1000, unitCents: 25 },
+    ],
+    heroPromptKey: "product:carbonless-2part",
+  },
+  {
+    slug: "carbonless-3part",
+    categorySlug: "custom-printing",
+    subcategorySlug: "carbonless-forms",
+    title: "3-Part Carbonless Forms",
+    shortDescription: "White/canary/pink 3-part NCR forms — built for invoices, work orders, and POs.",
+    description:
+      "**Three-color sets** — White top sheet (office), canary yellow middle (customer), pink bottom (field). Pressure transfer copies the writing through all three sheets cleanly.\n\n" +
+      "**Padded sets** — Glue-bound at the top edge. Tear off a complete 3-part set after writing — distribute copies in seconds.\n\n" +
+      "**Three standard sizes** — Half-sheet 5.5×8.5 for compact receipts, letter 8.5×11 for service work orders, or legal 8.5×14 for invoices and POs with full line-item detail.\n\n" +
+      "**Built for service operations** — Plumbing, HVAC, auto repair, contractors, delivery dispatch, retail returns. Anywhere multiple parties need a real-time copy of the same record.",
+    basePriceCents: 350,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 6,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["5.5 x 8.5", "8.5 x 11", "8.5 x 14"],
+      "Sheets per Pad": ["25", "50", "100"],
+      "Printing Sides": ["One Side", "Two Side"],
+      Numbering: ["None", "Sequential Numbering"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 350 },
+      { minQty: 50, unitCents: 140 },
+      { minQty: 100, unitCents: 95 },
+      { minQty: 250, unitCents: 70 },
+      { minQty: 500, unitCents: 50 },
+      { minQty: 1000, unitCents: 35 },
+    ],
+    heroPromptKey: "product:carbonless-3part",
+  },
+  {
+    slug: "full-color-booklets",
+    categorySlug: "custom-printing",
+    subcategorySlug: "booklets",
+    title: "Full-Color Booklets",
+    shortDescription: "Saddle-stitched full-color booklets on premium paper — catalogs, programs, lookbooks.",
+    description:
+      "**Saddle-stitched binding** — Two-staple binding on the spine fold. Pages turn cleanly and lay flat enough for spread reading. Suitable for booklets up to 64 pages.\n\n" +
+      "**Premium paper choices** — 100lb gloss text for vivid color, 80lb matte for a soft refined feel, or 14pt cover for a substantial perfect-bound feel.\n\n" +
+      "**Three standard sizes** — Compact 5.5×8.5 for pocket guides, classic 8.5×11 for catalogs and programs, or oversized 11×17 for lookbooks and presentation pieces.\n\n" +
+      "**Built for storytelling** — Product catalogs, event programs, real estate brochures, gallery lookbooks, fundraising appeals, conference handouts. Multi-page presentations that need to feel substantial.",
+    basePriceCents: 350,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["5.5 x 8.5", "8.5 x 11", "11 x 17"],
+      Pages: ["8", "16", "24", "32", "48", "64"],
+      "Paper Type": ["100lb Gloss Text", "80lb Matte Text", "14pt Cover"],
+      Binding: ["Saddle Stitch"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 350 },
+      { minQty: 25, unitCents: 200 },
+      { minQty: 100, unitCents: 130 },
+      { minQty: 250, unitCents: 90 },
+      { minQty: 500, unitCents: 65 },
+      { minQty: 1000, unitCents: 48 },
+    ],
+    heroPromptKey: "product:full-color-booklets",
+  },
+  {
+    slug: "acrylic-photo-prints",
+    categorySlug: "custom-printing",
+    subcategorySlug: "posters-large-prints",
+    title: "Acrylic Photo Prints",
+    shortDescription: "Premium acrylic-mounted photo prints — gallery-quality wall art with a glossy finish.",
+    description:
+      "**Acrylic face-mount** — Photo printed on premium photo paper, mounted face-down on a 0.25-inch clear acrylic panel. The glossy acrylic acts like a built-in finish coat — colors deepen, blacks get glossy, photos look gallery-grade.\n\n" +
+      "**Custom sizes** — Order to your exact dimensions in inches. Common sizes: 12×18, 16×24, 24×36, or larger up to 48×72 for gallery installations.\n\n" +
+      "**Hardware included** — Standoff hardware ships with each print for clean wall-floating installation. Optional French-cleat hangers available for flush wall mount.\n\n" +
+      "**Built for premium display** — Photographer portfolios, real-estate listing offices, restaurant feature walls, corporate art installations, gallery shows, executive office decor.",
+    basePriceCents: 8500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: ["digital-print", "mounting"],
+    options: {
+      Size: ["Custom Size"],
+      Thickness: ['1/4" Acrylic', '3/8" Acrylic'],
+      Hardware: ["Standoff Mounts", "French Cleat", "None"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 8500 },
+      { minQty: 5, unitCents: 7000 },
+      { minQty: 10, unitCents: 6000 },
+    ],
+    heroPromptKey: "product:acrylic-photo-prints",
+  },
+  {
+    slug: "custom-size-posters",
+    categorySlug: "custom-printing",
+    subcategorySlug: "posters-large-prints",
+    title: "Custom Size Posters",
+    shortDescription: "Custom-size posters on premium poster paper — gallery, event, and indoor display ready.",
+    description:
+      "**Premium poster paper** — Heavy 100lb satin or matte poster paper for sharp full-color printing and a substantial in-hand feel.\n\n" +
+      "**Custom dimensions** — Order any size in inches up to 36×48 standard, or larger by request. Trim cut clean to your spec.\n\n" +
+      "**Choose your finish** — Satin for vibrant color with low glare, matte for soft museum-style display in high-light environments.\n\n" +
+      "**Built for short-term display** — Event posters, gallery announcements, retail signage, classroom decor, conference rooms, dorm walls. For long-term outdoor use, see foam-mounted or coroplast options.",
+    basePriceCents: 1500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["Custom Size"],
+      "Paper Type": ["100lb Satin", "100lb Matte"],
+      Lamination: ["None", "Gloss", "Matte"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1500 },
+      { minQty: 5, unitCents: 1200 },
+      { minQty: 10, unitCents: 1000 },
+      { minQty: 25, unitCents: 800 },
+    ],
+    heroPromptKey: "product:custom-size-posters",
+  },
+  {
+    slug: "car-door-magnets",
+    categorySlug: "custom-printing",
+    subcategorySlug: "car-door-magnets",
+    title: "Car Door Magnets",
+    shortDescription: "Heavy 30 mil magnetic vehicle signs — removable mobile branding for service vehicles.",
+    description:
+      "**Heavy 30 mil magnetic stock** — Premium 30 mil magnetic vinyl with strong hold on steel vehicle doors. Won't slide or flap at highway speeds.\n\n" +
+      "**Three standard sizes** — Compact 12×18 for sedans and small trucks, standard 24×18 for service vans, or oversized 24×36 for box trucks and large fleet vehicles.\n\n" +
+      "**Removable branding** — Lifts cleanly off without damaging the paint. Perfect for businesses where the vehicle doubles as a personal car off-hours.\n\n" +
+      "**Built for service fleets** — Plumbing, HVAC, landscaping, electrical, mobile mechanics, real estate agents, food trucks. Mobile billboards for hyper-local marketing.",
+    basePriceCents: 3900,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ['12" x 18"', '24" x 18"', '24" x 36"'],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 3900 },
+      { minQty: 10, unitCents: 1900 },
+      { minQty: 25, unitCents: 1500 },
+      { minQty: 50, unitCents: 1200 },
+    ],
+    heroPromptKey: "product:car-door-magnets",
+  },
+  {
+    slug: "address-labels",
+    categorySlug: "custom-printing",
+    subcategorySlug: "address-labels",
+    title: "Custom Address Labels",
+    shortDescription: "Self-adhesive address labels on premium paper or waterproof vinyl — sheet or roll format.",
+    description:
+      "**Premium label stock** — Choose paper for indoor mailing or waterproof vinyl for outdoor and shipping use. Both have strong-tack adhesive that won't peel during transit.\n\n" +
+      "**Standard Avery #5160 size** — Compatible with all standard label software templates and laser printer feeds. 30 labels per sheet.\n\n" +
+      "**Mail-merge supported** — Upload your address list and we'll merge each unique address onto its own label. Or order generic return-address labels at flat repeat.\n\n" +
+      "**Built for mailings** — Holiday card runs, package labels, business return-address labels, event invitation envelopes, fundraising mailings, monthly statement runs.",
+    basePriceCents: 350,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["Standard Avery #5160 (1\" x 2.625\")"],
+      "Label Stock": ["Premium Paper", "Waterproof Vinyl"],
+      "Mail Merge": ["No (repeat label)", "Yes (unique addresses)"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 350 },
+      { minQty: 5, unitCents: 250 },
+      { minQty: 10, unitCents: 200 },
+      { minQty: 25, unitCents: 150 },
+      { minQty: 50, unitCents: 120 },
+    ],
+    heroPromptKey: "product:address-labels",
+  },
+  {
+    slug: "foil-certificates",
+    categorySlug: "custom-printing",
+    subcategorySlug: "certificates",
+    title: "Foil Certificates",
+    shortDescription: "Premium 70lb certificates with metallic foil accents — recognition awards and credentials.",
+    description:
+      "**Premium 70lb bright-white text stock** — Heavy text-weight paper with a smooth surface that holds full-color print and foil accents cleanly.\n\n" +
+      "**Metallic foil accents** — Gold, silver, copper, holographic, pink metallic, bright blue, or red foil applied to titles, borders, and seals for an unmistakable award-grade finish.\n\n" +
+      "**Standard 8.5×11 letter size** — Fits all standard certificate frames. Sized for laser printer overprinting if you want to add personalized recipient names yourself.\n\n" +
+      "**Built for recognition** — Years-of-service awards, training completion certificates, academic recognition, sales achievement, sports achievement, board appointments, corporate honors.",
+    basePriceCents: 500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: ["digital-print", "foil"],
+    options: {
+      Size: ['8.5" x 11"'],
+      "Paper Type": ["70lb Bright White Text"],
+      "Foil Color": ["Gold", "Silver", "Copper", "Holographic", "Pink Metallic", "Bright Blue", "Red"],
+      "Printing Sides": ["One Side"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 500 },
+      { minQty: 25, unitCents: 500 },
+      { minQty: 100, unitCents: 350 },
+      { minQty: 250, unitCents: 250 },
+      { minQty: 500, unitCents: 180 },
+    ],
+    heroPromptKey: "product:foil-certificates",
+  },
 ];
 
 export const sampleProducts: SampleProduct[] = seedProducts;
