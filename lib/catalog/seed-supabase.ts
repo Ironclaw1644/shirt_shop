@@ -129,8 +129,48 @@ export async function seedSupabase() {
     productCount += 1;
   }
 
+  // ── hard-delete orphans (printtales-mirror cleanup) ────────────────────
+  // Any product row in Supabase whose slug isn't in the current static catalog
+  // gets purged. Runs every seed so the DB stays in lockstep with the code.
+  // FK safety: postgres aborts the DELETE atomically if order_items references
+  // any orphan; we surface that as a clear error so the operator can resolve.
+  const liveSlugs = sampleProducts.map((p) => p.slug);
+  const inList = `(${liveSlugs.map((s) => `"${s}"`).join(",")})`;
+  const { data: orphans, error: orphErr } = await supabase
+    .from("products")
+    .select("id, slug")
+    .not("slug", "in", inList);
+  if (orphErr) throw orphErr;
+  const orphanIds = (orphans ?? []).map((r) => r.id);
+
+  let deletedCount = 0;
+  if (orphanIds.length > 0) {
+    // Clear price_tiers for orphans first so the products DELETE doesn't trip
+    // on the FK from price_tiers.product_id.
+    const { error: tErr } = await supabase
+      .from("price_tiers")
+      .delete()
+      .in("product_id", orphanIds);
+    if (tErr) throw tErr;
+
+    const { error: delErr } = await supabase
+      .from("products")
+      .delete()
+      .in("id", orphanIds);
+    if (delErr) {
+      if (delErr.code === "23503") {
+        throw new Error(
+          `Hard-delete blocked by FK constraint — likely order_items references one of ${orphanIds.length} orphan products. Resolve order data before retrying. (${delErr.message})`,
+        );
+      }
+      throw delErr;
+    }
+    deletedCount = orphanIds.length;
+  }
+
   return {
     categories: Object.keys(topLevel).length,
     products: productCount,
+    deleted: deletedCount,
   };
 }

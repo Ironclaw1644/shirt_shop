@@ -122,7 +122,8 @@
       "slug": "product-standard-business-cards",
       "title": "Standard Business Cards hero",
       "aspect": "4:3",
-      "prompt": "A crisp fan of 14pt matte business cards in black and crimson, held together with a brass clip, resting on a warm paper surface. Tight macro, 100mm lens, north-window light, shallow depth of field, subtle paper texture. Palette of paper, crimson, ink-black. Product-focused, premium, clean."
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/business-card_1.jpg",
+      "prompt": "Stack of business cards. Keep the source photo's composition, lighting, paper texture, and camera angle exactly as shown. Change only two things: (1) the surface beneath the cards — replace with a clean cream studio paper background (#FAFAF7), no concrete/wood/props; (2) the printed card design — fictional brand 'NORTH RIDGE STUDIO' in clean classic serif, primary accent warm crimson (#B8142B). All printed copy must be real, legible English (sample lines: 'Sarah Bennett', 'Creative Director', 'sarah@northridge.studio', '404-555-0182'). Do not invent garbled words, no real trademarks."
     },
     {
       "slug": "product-foil-business-cards",
@@ -134,13 +135,15 @@
       "slug": "product-tri-fold-brochures",
       "title": "Tri-Fold Brochures hero",
       "aspect": "4:3",
-      "prompt": "A tri-fold brochure photographed slightly opened so the three panels cast soft shadows on a warm paper surface, with a pair of brass binder clips beside it and a rolled kraft tube suggesting more in transit. 50mm lens. Palette of paper, warm charcoal, single crimson panel accent. Clean and informative."
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/catalogues-and-brouchers-printing-services_11595715202411.jpg",
+      "prompt": "Tri-fold brochure. Keep the source photo's composition, paper, fold lines, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — replace with a clean cream studio paper background (#FAFAF7), no concrete/wood/props; (2) the printed brochure design — fictional brand 'TRAILHEAD COFFEE', primary accent warm crimson (#B8142B). All printed copy must be real, legible English (sample headlines: 'TRAILHEAD COFFEE', 'OUR ORIGINS', 'SEASONAL MENU', 'VISIT US'). Do not invent garbled words, no real trademarks."
     },
     {
       "slug": "product-full-color-flyers",
       "title": "Full-Color Flyers hero",
       "aspect": "4:3",
-      "prompt": "An overhead stack of 8.5x11 gloss flyers with vibrant event artwork on top, mildly offset so color edges peek through. Paper grain visible at the edges. Natural daylight. Commercial, snappy, colorful."
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/ylp-flyers-1_05252716202411.jpg",
+      "prompt": "Stack of full-color flyers. Keep the source photo's composition, paper, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — replace with a clean cream studio paper background (#FAFAF7), no concrete/wood/props; (2) the printed flyer design — fictional event 'AUTUMN HARVEST FESTIVAL', primary accent warm crimson (#B8142B). All printed copy must be real, legible English (sample lines: 'AUTUMN HARVEST FESTIVAL', 'October 14, 2026', 'Live music · Local food · Family fun', 'Piedmont Park, Atlanta'). Do not invent garbled words, no real trademarks."
     },
     {
       "slug": "product-eddm-postcards",
@@ -156,15 +159,17 @@
     },
     {
       "slug": "product-yard-signs",
-      "title": "Real Estate Yard Signs hero",
+      "title": "Custom Yard Signs hero",
       "aspect": "4:3",
-      "prompt": "A 24x18 corrugated plastic yard sign staked in a fresh front lawn at golden hour, dew still on the grass blades in the foreground. 85mm, shallow depth of field. Palette warm green, paper, ink crimson, press-gold stake top."
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/YardSignsSC1B_05154906202412.jpg",
+      "prompt": "Coroplast yard sign with H-wire stand. Keep the source photo's composition, sign material, stand, lighting, and camera angle exactly as shown. Change only two things: (1) the surface/background — replace with a clean cream studio paper background (#FAFAF7), no grass/concrete/props; (2) the printed sign design — fictional message in bold serif, primary accent warm crimson (#B8142B). All printed copy must be real, legible English (sample: 'GRAND OPENING SATURDAY · 10AM-6PM · 1247 PEACHTREE ST'). Do not invent garbled words, no real trademarks."
     },
     {
       "slug": "product-kiss-cut-stickers",
       "title": "Kiss-Cut Stickers hero",
       "aspect": "4:3",
-      "prompt": "A kiss-cut sticker sheet on a warm paper surface with a couple of stickers peeled halfway to show the backing. Macro 100mm, shallow depth of field, vibrant colors, gentle shadows. Palette paper, crimson, cyan, press-gold."
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Custom-Adhesive-Cute-Diary-DIY-Stationery-Labels-Kiss-Cut-Sticker-Sheet_01331306202412.jpg",
+      "prompt": "Sheet of kiss-cut stickers. Keep the source photo's composition, vinyl texture, kiss-cut sheet layout, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — replace with a clean cream studio paper background (#FAFAF7), no concrete/wood/props; (2) the sticker designs — fictional brand 'WILDWOOD GOODS' plus simple geometric shapes (circles, leaves, mountains) in warm crimson (#B8142B), navy, and cream. Any text must be real, legible English (sample: 'WILDWOOD', 'EST 2024', 'TRAIL READY'). Do not invent garbled words, no real trademarks."
     },
     {
       "slug": "product-dtf-gangup",
