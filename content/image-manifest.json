@@ -149,7 +149,7 @@
       "slug": "product-eddm-postcards",
       "title": "EDDM Postcards hero",
       "aspect": "4:3",
-      "prompt": "An oversized 6.5x9 EDDM postcard mid-air with two others tumbling in a casual cascade, captured against a warm cream backdrop. Slight motion blur on the falling cards. 50mm. Palette: paper, ink crimson, single postal-route blue accent."
+      "prompt": "Photorealistic catalog product photo of an oversized EDDM postcard on a soft cream studio paper backdrop (#FAFAF7). Single 6.5x9 postcard centered in frame at slight three-quarter angle, with 2-3 additional cards stacked behind it. Front design displays fictional headline 'GRAND OPENING - NORTHSIDE BAKERY - OCT 18' in bold sans-serif, simple bakery storefront illustration, fictional address '1247 Peachtree St, Atlanta GA' at bottom, USPS EDDM indicia mark in small text in the corner. Primary accent warm crimson (#B8142B). Soft natural window lighting from upper-left, gentle shadow. All printed text real legible English. No real trademarks. Honest catalog product photography."
     },
     {
       "slug": "product-vinyl-banner",
@@ -371,15 +371,16 @@
     },
     {
       "slug": "product-heavy-business-cards",
-      "title": "Heavy 32pt Business Cards hero",
+      "title": "Heavy Business Cards hero",
       "aspect": "4:3",
-      "prompt": "Photograph of \"Heavy 32pt Business Cards\" — Premium 32pt cardstock with painted edge options. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+      "prompt": "Photorealistic catalog product photo of a stack of premium 32pt heavy business cards on a soft cream studio paper backdrop (#FAFAF7). Side angle showing the substantial 32pt thickness at the card edge, slight fan at the corner revealing 4-5 cards in the stack. Top card displays fictional brand 'NORTHRIDGE STUDIO' in clean classic serif typography, primary accent in warm crimson (#B8142B), name 'Sarah Chen - Creative Director' below in charcoal. Sample contact line: 'sarah@northridge.studio - 404-555-0182'. Soft natural window lighting from upper-left, gentle shadow under the stack edge, no props, no scenery. Sharp focus across the card stack, paper texture visible. Real legible English on all printed text. Honest catalog product photography."
     },
     {
       "slug": "product-linen-business-cards",
-      "title": "Linen-Finish Business Cards hero",
+      "title": "Linen Business Cards hero",
       "aspect": "4:3",
-      "prompt": "Photograph of \"Linen-Finish Business Cards\" — Subtle linen texture — 100lb cover, full color. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/bc-linen-business-cards_10544315202411.png",
+      "prompt": "Stack of business cards with linen-textured surface. Keep the source photo's composition, linen texture detail, paper edge, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no concrete/wood/props; (2) the printed card design — fictional brand 'MERIDIAN STUDIO' in clean classic serif, primary accent warm crimson (#B8142B). All printed copy must be real, legible English (sample: 'Lena Park - Creative Director - lena@meridianstudio.co - 404-555-0167'). No real trademarks, no garbled text."
     },
     {
       "slug": "product-silk-laminated-business-cards",
@@ -440,13 +441,13 @@
       "slug": "product-door-hangers",
       "title": "Door Hangers hero",
       "aspect": "4:3",
-      "prompt": "Photograph of \"Door Hangers\" — Die-cut door hangers — perfect for canvassing routes. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+      "prompt": "Photorealistic catalog product photo of a stack of die-cut door hangers on a soft cream studio paper backdrop (#FAFAF7). Standard 4.25x11 inch tall narrow rectangles with the characteristic die-cut hanging hole at the top sized for a door knob. 3-4 cards stacked with a slight fan. Top card displays fictional message 'NORTHSIDE CLEANING SERVICES - BOOK YOUR FREE QUOTE TODAY - 404-555-0145' in clean sans-serif headline. Primary accent warm crimson (#B8142B). Heavy 14pt cardstock visible at the edge. Soft natural window lighting from upper-left, gentle shadow. All printed text real legible English. No real trademarks. Catalog product photography."
     },
     {
       "slug": "product-holiday-cards",
-      "title": "Holiday Greeting Cards hero",
+      "title": "Holiday Cards hero",
       "aspect": "4:3",
-      "prompt": "Photograph of \"Holiday Greeting Cards\" — Folded 5×7 holiday cards with envelopes — foil optional. Editorial flat-lay or three-quarter product shot on a warm paper-grain backdrop, soft north-window light, gentle shadows, paper / kraft / charcoal palette with one ink-crimson accent. Print-shop craft mood. Final image must show no real trademarks, brand logos, or readable text on the product itself."
+      "prompt": "Photorealistic catalog product photo of a folded 5x7 holiday greeting card on a soft cream studio paper backdrop (#FAFAF7). Card is shown standing upright at a slight three-quarter angle so both the cover design and the slight depth of the fold are visible. Cover displays elegant serif headline 'WARM WISHES FOR THE HOLIDAYS' in dark forest green or warm charcoal, simple winter pine-branch illustration in evergreen and crimson, fictional brand 'PIEDMONT REALTY' in small text at bottom. Primary accent warm crimson (#B8142B). Premium 14pt gloss cardstock visible. Soft natural window lighting from upper-left. All printed text real legible English. No real trademarks. Catalog product photography."
     },
     {
       "slug": "product-address-labels",
@@ -2645,6 +2646,49 @@
       "aspect": "4:3",
       "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Table_Tents_Marketing_Materials_A_10492605202412.jpg",
       "prompt": "Table tent standing freely on a flat surface. Keep the source photo's composition, fold structure, paper texture, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no table props/silverware/dishes; (2) the printed design — fictional restaurant 'BISTRO ON MAIN', primary accent warm crimson (#B8142B), specials promo headline. All printed text real legible English (sample: 'BISTRO ON MAIN · TODAY\\'S SPECIAL · CHEF\\'S SHORT RIB · $24'). Do not invent garbled words, no real trademarks."
+    },
+    {
+      "slug": "product-high-gloss-business-cards",
+      "title": "High Gloss Laminated Business Cards hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Gloss_Laminate_Business_Cards_L_10592315202411.jpg",
+      "prompt": "Stack of high-gloss laminated business cards with mirror-bright finish. Keep the source photo's composition, glossy reflective sheen, paper edge, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no concrete/wood/props; (2) the printed card design — fictional brand 'AURELIA & CO.', primary accent warm crimson (#B8142B), gloss reflection stays vivid and metallic. All printed copy must be real, legible English (sample: 'James Mercer - Brand Director - james@aurelia.co - 404-555-0142'). No real trademarks, no garbled text."
+    },
+    {
+      "slug": "product-standard-postcards",
+      "title": "Standard Postcards hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a stack of full-color standard postcards on a soft cream studio paper backdrop (#FAFAF7). Cards are 5x7 inches, slightly fanned showing 5-6 cards. Top card displays a clean modern design: fictional message 'GREETINGS FROM PIEDMONT' in bold sans-serif at top, simple geometric coastline illustration in muted tones below, fictional sender 'Piedmont Outfitters - est 2024' as a small footer line. Primary accent warm crimson (#B8142B). Soft natural window lighting from upper-left, gentle shadow under the stack edge, no props. Sharp focus across the stack, 14pt cardstock paper texture visible. All printed text real legible English. No real trademarks. Honest catalog product photography."
+    },
+    {
+      "slug": "product-foil-postcards",
+      "title": "Foil Postcards hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a stack of premium 5x7 postcards with metallic gold foil accents on a soft cream studio paper backdrop (#FAFAF7). Top card displays fictional message 'YOU ARE INVITED - GALLERY OPENING - NOVEMBER 14' in elegant serif typography. The fictional gallery name 'WESTBROOK GALLERY' appears in metallic gold foil that catches the light realistically — treat the foil as truly metallic, reflective, and shimmering, not flat ink. Primary accent warm crimson (#B8142B) used sparingly. Soft natural window lighting from upper-left, slight angle to show foil reflection, gentle shadow under stack. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-bi-fold-menus",
+      "title": "Bi-Fold Menus hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a bi-fold restaurant menu, partially open at a 90-degree angle, displayed on a soft cream studio paper backdrop (#FAFAF7). Standard 8.5x11 sheet folded into a 4-panel bi-fold. The visible panels display: fictional restaurant 'BISTRO ON MAIN' header in elegant serif, sample menu sections (APPETIZERS, ENTREES, DESSERTS) with sample dish names and prices ('Bruschetta $9', 'Spaghetti Bolognese $16', 'Tiramisu $8'). Primary accent warm crimson (#B8142B). Premium gloss paper texture visible. Soft natural window lighting from upper-left, gentle shadow at the fold crease. All printed text real legible English. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-tri-fold-menus",
+      "title": "Tri-Fold Menus hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a tri-fold restaurant menu, opened to display all three panels, lying flat on a soft cream studio paper backdrop (#FAFAF7). Standard 8.5x11 sheet tri-folded into 6 panels (3 visible). Panels display fictional restaurant 'OAKWOOD KITCHEN' header in clean serif, organized menu sections (APPETIZERS, MAINS, SIDES, DRINKS, DESSERTS, OUR STORY) with sample dishes and prices in real legible English (e.g. 'Bruschetta $9', 'Spaghetti $16', 'Tiramisu $8'). Primary accent warm crimson (#B8142B). Premium gloss paper, fold lines visible. Soft natural window lighting from upper-left, gentle shadows at fold creases. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-flat-table-menus",
+      "title": "Flat Table Menus hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a single flat unfolded table menu sheet on a soft cream studio paper backdrop (#FAFAF7). Standard 8.5x11 sheet, flat and centered in frame at a slight three-quarter angle. Shows fictional restaurant 'PIEDMONT TAVERN' header in elegant serif at top, organized menu sections below (APPETIZERS, ENTREES, DRINKS, DESSERTS) with sample dish names and prices in real legible English (e.g. 'Bruschetta $9', 'Steak Frites $24', 'Wine Flight $15'). Primary accent warm crimson (#B8142B). Premium 100lb gloss text paper, smooth surface. Soft natural window lighting from upper-left, gentle shadow under lower edge. No real trademarks. Catalog product photography."
+    },
+    {
+      "slug": "product-coasters",
+      "title": "Custom Paper Coasters hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a stack of round paper coasters on a soft cream studio paper backdrop (#FAFAF7). 4-inch round shapes, 5-6 stacked with slight fan showing thick absorbent paperboard edges. Top coaster displays fictional brewery 'TWIN OAKS BREWING CO.' in clean sans-serif logotype at center, with a simple hop or barley illustration in warm crimson (#B8142B). Heavy pulpboard texture visible at the stack edge. Soft natural window lighting from upper-left, gentle shadow under stack. All printed text real legible English. No real trademarks. Catalog product photography."
     }
   ]
 }

@@ -586,6 +586,374 @@ const seedProducts: SampleProduct[] = [
     ],
     heroPromptKey: "product:table-tents",
   },
+  {
+    slug: "heavy-business-cards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "business-cards",
+    title: "Heavy Business Cards",
+    shortDescription: "Premium 32pt heavy business cards — substantial weight and luxurious feel.",
+    description:
+      "**Substantial 32pt cardstock** — Printed on heavyweight 32pt premium cardstock. Twice as thick as standard cards, with a noticeable heft that signals quality the moment they're handed over.\n\n" +
+      "**Choose your finish** — Matte for soft elegance, gloss for vivid color punch, or uncoated for natural paper texture. Pick the finish that matches your brand's tone.\n\n" +
+      "**Square or rounded corners** — Square for a classic editorial look, or rounded corners for a softer modern profile that wears in better in pockets.\n\n" +
+      "**Built to last** — Heavyweight construction resists bending, dog-earing, and wear. These cards keep their crisp edges through months of wallet life.",
+    basePriceCents: 200,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["3.5 x 2"],
+      "Paper Type": ["Heavy 32pt"],
+      Finish: ["Matte", "Gloss", "Uncoated"],
+      "Printing Sides": ["One Side", "Two Side"],
+      Corners: ["Square Corners", "Round Corners"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 200 },
+      { minQty: 100, unitCents: 30 },
+      { minQty: 500, unitCents: 20 },
+      { minQty: 1000, unitCents: 13 },
+      { minQty: 2500, unitCents: 9 },
+    ],
+    heroPromptKey: "product:heavy-business-cards",
+  },
+  {
+    slug: "linen-business-cards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "business-cards",
+    title: "Linen Business Cards",
+    shortDescription: "Premium 100lb cards with a refined linen-textured finish.",
+    description:
+      "**Linen texture, refined feel** — Subtle woven texture across the surface gives these cards a tactile presence that stands out from smooth-coated alternatives.\n\n" +
+      "**100lb premium cardstock** — Substantial weight on a quality stock. The linen texture is embossed into the paper itself, not a coating — won't smudge or wear off.\n\n" +
+      "**Square or rounded corners** — Classic squared edges for a traditional look, or rounded corners for modern softness.\n\n" +
+      "**Built for design pros** — Architects, designers, fine-art studios, premium real estate, luxury hospitality — anywhere a tactile first impression matters.",
+    basePriceCents: 1500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["3.5 x 2"],
+      "Paper Type": ["100lb White Card"],
+      "Printing Sides": ["Single Sided", "Double Sided"],
+      Corners: ["Square Corners", "Round Corners"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1500 },
+      { minQty: 500, unitCents: 9 },
+      { minQty: 1000, unitCents: 7 },
+      { minQty: 2500, unitCents: 5 },
+    ],
+    heroPromptKey: "product:linen-business-cards",
+  },
+  {
+    slug: "high-gloss-business-cards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "business-cards",
+    title: "High Gloss Laminated Business Cards",
+    shortDescription: "Premium 100lb cards with high-gloss lamination — vibrant color, water and smudge resistant.",
+    description:
+      "**High-gloss lamination** — Mirror-bright finish enhances every color in your design. Photos pop, gradients sing, and dark backgrounds get serious depth.\n\n" +
+      "**Built to survive wallets** — The protective laminate layer resists smudges, water, and wear through repeat handling — your cards look fresh after months in a wallet.\n\n" +
+      "**Heavy 100lb stock** — Premium 100lb cardstock underneath for substantial heft and a quality feel.\n\n" +
+      "**Best for vivid designs** — Photo-heavy designs, bold gradients, deep colors, brand-forward layouts — the high-gloss finish delivers the most visual punch.",
+    basePriceCents: 1800,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 6,
+    decorationMethods: ["digital-print", "lamination"],
+    options: {
+      Size: ["3.5 x 2"],
+      "Paper Type": ["Sturdy 100lb"],
+      "Printing Sides": ["Single Sided", "Double Sided"],
+      Corners: ["Square Corners", "Round Corners"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1800 },
+      { minQty: 500, unitCents: 11 },
+      { minQty: 1000, unitCents: 8 },
+      { minQty: 2500, unitCents: 6 },
+    ],
+    heroPromptKey: "product:high-gloss-business-cards",
+  },
+  {
+    slug: "standard-postcards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "postcards",
+    title: "Standard Postcards",
+    shortDescription: "Full-color postcards on premium 14pt cardstock — direct mail and handout ready.",
+    description:
+      "**Premium 14pt cardstock** — Heavy 14pt paper feels substantial in hand and won't curl or warp through the mail.\n\n" +
+      "**Common postal sizes** — Pick from 4×6, 5×7, or 6×9 inches. Standard postal-rated sizes that qualify for First-Class postcard rates.\n\n" +
+      "**Single or double-sided** — Print one side for budget runs, both sides to maximize messaging — image on the front, message and address area on the back.\n\n" +
+      "**Built for marketing** — Direct mail campaigns, in-store handouts, save-the-dates, real estate listings, restaurant promos, event reminders.",
+    basePriceCents: 100,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 3,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["4 x 6", "5 x 7", "6 x 9"],
+      "Paper Type": ["14pt Gloss", "14pt Matte", "16pt Premium"],
+      "Printing Sides": ["One Side", "Two Side"],
+      Coating: ["Gloss UV", "Matte", "Uncoated"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 100 },
+      { minQty: 100, unitCents: 20 },
+      { minQty: 500, unitCents: 10 },
+      { minQty: 1000, unitCents: 6 },
+      { minQty: 2500, unitCents: 4 },
+    ],
+    heroPromptKey: "product:standard-postcards",
+  },
+  {
+    slug: "eddm-postcards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "postcards",
+    title: "EDDM Postcards",
+    shortDescription: "USPS Every Door Direct Mail postcards on 14pt cardstock — mailing-ready bundles.",
+    description:
+      "**EDDM-compliant sizes** — Oversized 6.5×9, 8.5×11, or 9×12 sizes that qualify for USPS Every Door Direct Mail at the lowest mailing rates. Skip the mailing list.\n\n" +
+      "**Premium 14pt cardstock** — Heavy 14pt gloss or matte cardstock for a quality feel and crisp full-color print that won't fade through processing.\n\n" +
+      "**We handle the mailing prep** — Pre-printed indicia, bundle-ready cuts, and mail-facing instructions handled in-house. Drop the bundles at any post office.\n\n" +
+      "**Hyper-local marketing** — Saturate every address in a route, neighborhood, or zip code. Restaurant openings, real estate, dental practices, contractors, retail launches.",
+    basePriceCents: 200,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["6.5 x 9", "8.5 x 11", "9 x 12"],
+      "Paper Type": ["14pt Gloss", "14pt Matte"],
+      "Printing Sides": ["One Side", "Two Side"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 200 },
+      { minQty: 500, unitCents: 50 },
+      { minQty: 1000, unitCents: 35 },
+      { minQty: 2500, unitCents: 22 },
+      { minQty: 5000, unitCents: 18 },
+    ],
+    heroPromptKey: "product:eddm-postcards",
+  },
+  {
+    slug: "foil-postcards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "postcards",
+    title: "Foil Postcards",
+    shortDescription: "Premium postcards with metallic foil accents — gold, silver, copper, holographic.",
+    description:
+      "**Metallic foil accents** — Gold, silver, copper, rose gold, or holographic foil applied as a spot accent. Catches light beautifully and makes your design pop.\n\n" +
+      "**Heavy premium cardstock** — Printed on substantial cardstock that holds the foil treatment cleanly. Won't crack or peel through mail handling.\n\n" +
+      "**5×7 standard size** — Sized for standard postal rates while maximizing visual impact. Slim form factor fits standard mailers cleanly.\n\n" +
+      "**Built for premium campaigns** — Wedding save-the-dates, product launches, luxury real estate, gallery openings, premium events.",
+    basePriceCents: 300,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 6,
+    decorationMethods: ["digital-print", "foil"],
+    options: {
+      Size: ["5 x 7"],
+      "Foil Color": ["Gold", "Silver", "Copper", "Rose Gold", "Holographic"],
+      "Printing Sides": ["One Side", "Two Side"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 300 },
+      { minQty: 250, unitCents: 50 },
+      { minQty: 500, unitCents: 32 },
+      { minQty: 1000, unitCents: 20 },
+      { minQty: 2500, unitCents: 14 },
+    ],
+    heroPromptKey: "product:foil-postcards",
+  },
+  {
+    slug: "bi-fold-menus",
+    categorySlug: "custom-printing",
+    subcategorySlug: "menus",
+    title: "Bi-Fold Menus",
+    shortDescription: "Bi-fold restaurant menus on premium gloss or matte text — scored and folded.",
+    description:
+      "**Four-panel layout** — Bi-fold menus fold once for a clean four-panel layout — perfect for showcasing categories, highlighting specials, and keeping the menu scannable.\n\n" +
+      "**Premium paper choices** — 100lb gloss text for vibrant color, 80lb matte for a soft refined feel, or 14pt cover for a substantial dining-table presence.\n\n" +
+      "**Sized for the table** — Standard 8.5×11, 8.5×14, or 11×17 sheet sizes, each scored and folded in-house for clean creases.\n\n" +
+      "**Built for repeat use** — Optional gloss or matte lamination resists food stains, drink spills, and oil from busy service.",
+    basePriceCents: 200,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["8.5x11", "8.5x14", "11x17"],
+      "Paper Type": ["100lb Gloss Text", "80lb Matte Text", "14pt Cover"],
+      Lamination: ["None", "Gloss", "Matte"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 200 },
+      { minQty: 100, unitCents: 50 },
+      { minQty: 250, unitCents: 35 },
+      { minQty: 500, unitCents: 22 },
+      { minQty: 1000, unitCents: 16 },
+    ],
+    heroPromptKey: "product:bi-fold-menus",
+  },
+  {
+    slug: "tri-fold-menus",
+    categorySlug: "custom-printing",
+    subcategorySlug: "menus",
+    title: "Tri-Fold Menus",
+    shortDescription: "Tri-fold restaurant menus — six panels for full menu storytelling.",
+    description:
+      "**Six-panel storytelling** — Tri-fold layout opens to reveal six panels — appetizers, mains, sides, drinks, desserts, and your story all in one piece.\n\n" +
+      "**Premium menu paper** — 100lb gloss text for full-color punch, 80lb matte for a quiet sophisticated feel, or 14pt cover for table-side weight.\n\n" +
+      "**Sized to fit** — 8.5×11 or 11×17 sheets scored and tri-folded for clean creases that flatten without curling.\n\n" +
+      "**Optional lamination** — Add gloss or matte lamination to extend menu life through the rigors of service: spills, smudges, and repeat handling.",
+    basePriceCents: 250,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["8.5x11", "11x17"],
+      "Paper Type": ["100lb Gloss Text", "80lb Matte Text", "14pt Cover"],
+      Lamination: ["None", "Gloss", "Matte"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 250 },
+      { minQty: 100, unitCents: 55 },
+      { minQty: 250, unitCents: 40 },
+      { minQty: 500, unitCents: 25 },
+      { minQty: 1000, unitCents: 18 },
+    ],
+    heroPromptKey: "product:tri-fold-menus",
+  },
+  {
+    slug: "flat-table-menus",
+    categorySlug: "custom-printing",
+    subcategorySlug: "menus",
+    title: "Flat Table Menus",
+    shortDescription: "Single-sheet flat table menus — premium paper for dining-table service.",
+    description:
+      "**Single-sheet layout** — Flat unfolded menu sized to sit on a dining table or counter. Clean top-to-bottom layout that's easy to scan.\n\n" +
+      "**Premium paper choices** — 100lb gloss text, 80lb matte, or 14pt cover for table-side substance.\n\n" +
+      "**Multiple sizes** — Standard letter (8.5×11), legal (8.5×14), or oversized (11×17) for fuller menus and signage-style layouts.\n\n" +
+      "**Lamination options** — Add gloss or matte lamination to make the menu spill-proof and reusable across hundreds of services.",
+    basePriceCents: 150,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 3,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["8.5x11", "8.5x14", "11x17"],
+      "Paper Type": ["100lb Gloss Text", "80lb Matte Text", "14pt Cover"],
+      Lamination: ["None", "Gloss", "Matte"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 150 },
+      { minQty: 100, unitCents: 40 },
+      { minQty: 250, unitCents: 28 },
+      { minQty: 500, unitCents: 18 },
+      { minQty: 1000, unitCents: 12 },
+    ],
+    heroPromptKey: "product:flat-table-menus",
+  },
+  {
+    slug: "door-hangers",
+    categorySlug: "custom-printing",
+    subcategorySlug: "door-hangers",
+    title: "Door Hangers",
+    shortDescription: "Premium die-cut door hangers — perforated hang hole, full-color print.",
+    description:
+      "**Pre-cut hang hole** — Die-cut hanging hole sized for standard interior door knobs. No cutting or assembly needed.\n\n" +
+      "**Heavy 14pt cardstock** — Premium gloss or matte cardstock that won't bend or curl when hung. Survives wind, rain, and door-to-door delivery.\n\n" +
+      "**Standard 4.25 × 11 size** — Hospitality-industry standard size that fits door-knob hooks at hotels, apartments, and residential neighborhoods.\n\n" +
+      "**Built for promotions** — Real estate \"we have buyers\" drops, restaurant takeout menus, neighborhood services, hotel housekeeping cards, political canvassing.",
+    basePriceCents: 100,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ['4.25" x 11"'],
+      "Paper Type": ["14pt Gloss", "14pt Matte", "16pt Premium"],
+      "Printing Sides": ["One Side", "Two Side"],
+      Perforation: ["Standard Hang Hole", "Tear-off Coupon"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 100 },
+      { minQty: 100, unitCents: 30 },
+      { minQty: 250, unitCents: 20 },
+      { minQty: 500, unitCents: 13 },
+      { minQty: 1000, unitCents: 9 },
+      { minQty: 2500, unitCents: 7 },
+    ],
+    heroPromptKey: "product:door-hangers",
+  },
+  {
+    slug: "coasters",
+    categorySlug: "drinkware",
+    subcategorySlug: "coasters",
+    title: "Custom Paper Coasters",
+    shortDescription: "Premium absorbent paperboard coasters — branded bar service essentials.",
+    description:
+      "**Heavy absorbent paperboard** — Pulpboard coasters absorb condensation cleanly without sticking to glasses or staining tables. Industry-standard 60-80pt thickness.\n\n" +
+      "**Round or square shapes** — Pick the classic 4-inch round, modern 3.5×3.5 square, or compact 3.5-inch round to match your bar's aesthetic.\n\n" +
+      "**Full-color print** — Custom artwork, logos, drink specials, or social handles printed in full color on the top side.\n\n" +
+      "**Built for hospitality** — Bars, restaurants, breweries, cafés, weddings, branded promotional events. Coasters live on the table — daily impressions for your brand.",
+    basePriceCents: 50,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Shape: ['4" Round', '3.5" Square', '3.5" Round'],
+      "Paper Type": ["Heavy Pulpboard"],
+      "Printing Sides": ["One Side", "Two Side"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 50 },
+      { minQty: 250, unitCents: 20 },
+      { minQty: 500, unitCents: 13 },
+      { minQty: 1000, unitCents: 9 },
+      { minQty: 2500, unitCents: 6 },
+      { minQty: 5000, unitCents: 4 },
+    ],
+    heroPromptKey: "product:coasters",
+  },
+  {
+    slug: "holiday-cards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "holiday-cards",
+    title: "Holiday Cards",
+    shortDescription: "Custom holiday greeting cards — full-color print, optional foil accents.",
+    description:
+      "**Premium 14pt cardstock** — Substantial cardstock that makes holiday cards feel important. Won't bend in mailers or curl with humidity.\n\n" +
+      "**5×7 folded greeting size** — Industry-standard greeting card size that fits all standard envelope formats. Folds cleanly to a 5×7 finished card.\n\n" +
+      "**Optional foil accents** — Add gold, silver, copper, or holographic foil to titles for a luxe seasonal look. Catches the candlelight beautifully.\n\n" +
+      "**Branded year-end** — Corporate holiday greetings, family photo cards, year-end thank-yous to clients, save-the-dates for January events.",
+    basePriceCents: 200,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "foil"],
+    options: {
+      Size: ["5 x 7"],
+      "Paper Type": ["14pt Gloss", "14pt Matte"],
+      "Printing Sides": ["One Side", "Two Side"],
+      "Foil Accent": ["None", "Gold", "Silver", "Copper", "Holographic"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 200 },
+      { minQty: 50, unitCents: 80 },
+      { minQty: 100, unitCents: 50 },
+      { minQty: 250, unitCents: 32 },
+      { minQty: 500, unitCents: 20 },
+      { minQty: 1000, unitCents: 14 },
+    ],
+    heroPromptKey: "product:holiday-cards",
+  },
 ];
 
 export const sampleProducts: SampleProduct[] = seedProducts;
