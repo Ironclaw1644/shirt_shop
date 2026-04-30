@@ -8,7 +8,6 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { ProductOptions } from "@/components/shop/product-options";
-import { DecorationPicker } from "@/components/shop/decoration-picker";
 import { PricingTable } from "@/components/shop/pricing-table";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
@@ -28,8 +27,8 @@ export function PDPClient({
   const [options, setOptions] = React.useState<Record<string, string>>(() =>
     pickDefaultOptions(product),
   );
-  const [decoration, setDecoration] = React.useState<string | null>(null);
-  const [mode, setMode] = React.useState<"blank" | "decorated">("blank");
+  const [designFileName, setDesignFileName] = React.useState<string | null>(null);
+  const designInputRef = React.useRef<HTMLInputElement | null>(null);
 
   const unitPriceCents = React.useMemo(() => {
     if (!product.basePriceCents) return 0;
@@ -43,21 +42,20 @@ export function PDPClient({
   const isQuotePriced = product.priceStatus === "quote" || !product.basePriceCents;
 
   function addToCart() {
-    const id = `${product.slug}-${Object.values(options).join("-")}-${decoration ?? "blank"}-${Date.now()}`;
+    const baseVariant = Object.entries(options)
+      .map(([k, v]) => `${k}: ${v}`)
+      .join(" · ");
+    const variant = designFileName ? `${baseVariant} · Design: ${designFileName}` : baseVariant;
+    const id = `${product.slug}-${Object.values(options).join("-")}-${designFileName ?? "blank"}-${Date.now()}`;
     addItem({
       id,
       productSlug: product.slug,
       title: product.title,
-      variant: Object.entries(options)
-        .map(([k, v]) => `${k}: ${v}`)
-        .join(" · "),
+      variant,
       unitPriceCents,
       quantity,
       image: `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`,
       leadTimeDays: product.leadTimeDays,
-      decorations: decoration
-        ? [{ method: decoration }]
-        : undefined,
     });
     toast.success("Added to cart", {
       description: `${formatQuantity(quantity)} × ${product.title}`,
@@ -65,27 +63,17 @@ export function PDPClient({
     });
   }
 
-  function goDesigner() {
-    const params = new URLSearchParams({
-      product: product.slug,
-      method: decoration ?? product.decorationMethods[0] ?? "",
-      qty: String(quantity),
-    });
-    for (const [k, v] of Object.entries(options)) params.set(k.toLowerCase(), v);
-    router.push(`/designer?${params.toString()}`);
-  }
-
   return (
     <div className="container py-10 lg:py-14">
       <div className="grid lg:grid-cols-2 gap-12">
         {/* Gallery */}
         <div>
-          <div className="relative aspect-square overflow-hidden rounded-lg border border-ink/10 bg-paper-warm shadow-press">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-ink/10 bg-paper-warm shadow-press">
             <Image
               src={`/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`}
               alt={product.title}
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(min-width: 1024px) 50vw, 100vw"
               priority
             />
@@ -113,58 +101,10 @@ export function PDPClient({
                 : formatMoneyCents(unitPriceCents)}
             </span>
             <span className="text-sm text-ink-mute">per unit</span>
-            {unitPriceCents > 0 && product.basePriceCents && unitPriceCents < product.basePriceCents && (
-              <Badge variant="gold">Tier discount active</Badge>
-            )}
-          </div>
-          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-mute">
-            <span className="inline-flex items-center gap-1.5">
-              <Icon icon="boxes-stacked" className="text-primary" /> Min {formatQuantity(product.minQty)}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Icon icon="clock" className="text-primary" /> 1-7 day lead
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Icon icon="truck-fast" className="text-primary" /> Ships from Georgia
-            </span>
-          </div>
-
-          {/* Mode selector */}
-          <div className="mt-8 grid grid-cols-2 gap-2 rounded-lg bg-paper-warm p-1">
-            <button
-              type="button"
-              onClick={() => setMode("blank")}
-              className={`rounded px-4 py-3 text-sm font-display font-semibold transition-all ${
-                mode === "blank"
-                  ? "bg-ink text-paper shadow-press"
-                  : "text-ink-soft hover:bg-surface"
-              }`}
-            >
-              Order blank / as-is
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode("decorated")}
-              className={`rounded px-4 py-3 text-sm font-display font-semibold transition-all ${
-                mode === "decorated"
-                  ? "bg-primary text-white shadow-press"
-                  : "text-ink-soft hover:bg-surface"
-              }`}
-            >
-              Customize & decorate
-            </button>
           </div>
 
           <div className="mt-8 space-y-6">
             <ProductOptions options={product.options} value={options} onChange={setOptions} />
-
-            {mode === "decorated" && (
-              <DecorationPicker
-                methods={product.decorationMethods}
-                value={decoration}
-                onChange={setDecoration}
-              />
-            )}
 
             <div>
               <label className="block font-display font-semibold text-ink mb-2">Quantity</label>
@@ -194,8 +134,10 @@ export function PDPClient({
                 </button>
               </div>
               <div className="mt-2 flex flex-wrap gap-1.5">
-                {[product.minQty, 50, 100, 250, 500, 1000].map((n) =>
-                  n >= product.minQty ? (
+                {Array.from(new Set([product.minQty, 50, 100, 250, 500, 1000]))
+                  .filter((n) => n >= product.minQty)
+                  .sort((a, b) => a - b)
+                  .map((n) => (
                     <button
                       key={n}
                       type="button"
@@ -204,62 +146,80 @@ export function PDPClient({
                     >
                       {formatQuantity(n)}
                     </button>
-                  ) : null,
-                )}
+                  ))}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Button size="lg" onClick={addToCart}>
-                <Icon icon="bag-shopping" /> Add to cart
-                {!isQuotePriced && (
+            {isQuotePriced ? (
+              <Button asChild size="lg" className="w-full">
+                <Link href="/quote">
+                  <Icon icon="bolt" /> Request a quote
+                </Link>
+              </Button>
+            ) : (
+              <div className="space-y-3">
+                <input
+                  ref={designInputRef}
+                  type="file"
+                  accept=".pdf,.png,.jpg,.jpeg,.ai,.eps,.svg"
+                  className="hidden"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    setDesignFileName(f ? f.name : null);
+                  }}
+                />
+                {designFileName ? (
+                  <div className="flex items-center justify-between rounded-lg border border-ink/15 bg-paper-warm px-4 py-3">
+                    <span className="flex items-center gap-2 text-sm text-ink truncate min-w-0">
+                      <Icon icon="file-circle-check" className="text-primary shrink-0" />
+                      <span className="truncate">{designFileName}</span>
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setDesignFileName(null);
+                        if (designInputRef.current) designInputRef.current.value = "";
+                      }}
+                      className="ml-3 shrink-0 text-xs font-mono uppercase tracking-wide text-ink-mute hover:text-primary"
+                    >
+                      Change
+                    </button>
+                  </div>
+                ) : (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="lg"
+                    className="w-full"
+                    onClick={() => designInputRef.current?.click()}
+                  >
+                    <Icon icon="cloud-arrow-up" /> Upload Design
+                  </Button>
+                )}
+                <Button size="lg" className="w-full" onClick={addToCart}>
+                  <Icon icon="bag-shopping" /> Add to cart
                   <span className="ml-1 font-mono text-sm opacity-80">
                     {formatMoneyCents(unitPriceCents * quantity)}
                   </span>
-                )}
-              </Button>
-              {mode === "decorated" ? (
-                <Button size="lg" variant="secondary" onClick={goDesigner}>
-                  <Icon icon="magic-wand-sparkles" /> Open Designer
                 </Button>
-              ) : (
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/quote">
-                    <Icon icon="bolt" /> Request a volume quote
-                  </Link>
-                </Button>
-              )}
-            </div>
+              </div>
+            )}
 
             <PricingTable tiers={product.tierBreaks} minQty={product.minQty} />
 
-            <Accordion type="multiple" className="rounded-lg border border-ink/10 bg-white">
-              <AccordionItem value="specs" className="px-4 border-b-0">
-                <AccordionTrigger>Specifications & materials</AccordionTrigger>
+            <Accordion
+              type="multiple"
+              defaultValue={["overview"]}
+              className="rounded-lg border border-ink/10 bg-white"
+            >
+              <AccordionItem value="overview" className="px-4 border-b-0">
+                <AccordionTrigger>Overview</AccordionTrigger>
                 <AccordionContent>
-                  <p className="text-ink-soft">{product.description}</p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="decorate" className="px-4 border-b-0">
-                <AccordionTrigger>Decoration methods</AccordionTrigger>
-                <AccordionContent>
-                  <p className="text-ink-soft">
-                    This item supports{" "}
-                    {product.decorationMethods
-                      .map((m) => m.replace(/-/g, " "))
-                      .join(", ")}
-                    . Our team will proof every job before the press runs.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="turnaround" className="px-4 border-b-0">
-                <AccordionTrigger>Turnaround & shipping</AccordionTrigger>
-                <AccordionContent>
-                  <p className="text-ink-soft">
-                    Standard lead time 1-7 business days after proof approval. Local
-                    pickup across metro Atlanta or flat-rate shipping nationwide. Need
-                    rush? Many jobs ship same-day or in a few hours — just call.
-                  </p>
+                  <div className="space-y-3 text-ink-soft">
+                    {product.description.split(/\n+/).map((para, i) => (
+                      <p key={i}>{para}</p>
+                    ))}
+                  </div>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

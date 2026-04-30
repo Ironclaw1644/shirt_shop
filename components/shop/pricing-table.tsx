@@ -13,7 +13,7 @@ export function PricingTable({
     <div className="rounded-lg border border-ink/10 bg-paper-warm overflow-hidden">
       <div className="flex items-center justify-between bg-ink text-paper px-4 py-3">
         <span className="font-display font-semibold text-sm tracking-wide uppercase">
-          Tier pricing
+          Pricing
         </span>
         <Icon icon="boxes-stacked" className="text-accent" />
       </div>
@@ -54,8 +54,7 @@ export function PricingTable({
         </table>
       </div>
       <p className="px-4 py-3 text-xs text-ink-mute bg-white/50 border-t border-ink/10">
-        Minimum order {formatQuantity(minQty)}. Volume past 10,000 units? Request a direct quote for
-        maxed-out discount.
+        Larger run? Request a direct quote for the best price.
       </p>
     </div>
   );

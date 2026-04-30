@@ -26,10 +26,14 @@ type ManifestEntry = {
   title: string;
   aspect: string;
   prompt: string;
+  /** Optional source photo. When set, the script alters this image instead of
+   *  hallucinating from text. Use this for product entries that should mirror
+   *  a real catalog photo (e.g. supplier-site product shots). */
+  referenceImageUrl?: string;
 };
 
 type Manifest = {
-  imageDefaults: { style: string; brandPalette: string; composition: string };
+  imageDefaults: { style: string; brandPalette: string };
   images: ManifestEntry[];
 };
 
@@ -76,22 +80,31 @@ async function generateOne(entry: ManifestEntry) {
     return;
   }
 
-  console.log(`→ generating ${entry.slug} (${entry.aspect})${referenceUrl ? " [ref]" : ""}…`);
+  // CLI --reference overrides the manifest's referenceImageUrl when both are present
+  // for the explicit regen target. Otherwise the manifest's value (if any) wins.
+  const refUrl =
+    referenceUrl && regenerateSlug === entry.slug ? referenceUrl : entry.referenceImageUrl;
+
+  // Product entries skip the global brandPalette + style injection. That injection
+  // (crimson/charcoal/gold + "commercial product photography") was producing the
+  // AI-templated editorial look on every product. Marketing entries (hero-, category-,
+  // og-, how-, city-) keep it so their on-brand styling is preserved.
+  const isProduct = entry.slug.startsWith("product-");
+  const baseInput = {
+    prompt: entry.prompt,
+    aspect: entry.aspect,
+    ...(isProduct
+      ? {}
+      : { brandPalette: m.imageDefaults.brandPalette, style: m.imageDefaults.style }),
+  };
+
+  console.log(
+    `→ generating ${entry.slug} (${entry.aspect})${refUrl ? " [ref]" : ""}${isProduct ? " [no-defaults]" : ""}…`,
+  );
   try {
-    const { base64, mimeType } = referenceUrl && regenerateSlug === entry.slug
-      ? await generateImageFromReference({
-          referenceImageUrl: referenceUrl,
-          prompt: entry.prompt,
-          aspect: entry.aspect,
-          brandPalette: m.imageDefaults.brandPalette,
-          style: m.imageDefaults.style,
-        })
-      : await generateImage({
-          prompt: entry.prompt,
-          aspect: entry.aspect,
-          brandPalette: m.imageDefaults.brandPalette,
-          style: m.imageDefaults.style,
-        });
+    const { base64, mimeType } = refUrl
+      ? await generateImageFromReference({ ...baseInput, referenceImageUrl: refUrl })
+      : await generateImage(baseInput);
     const buf = Buffer.from(base64, "base64");
     const pipeline = sharp(buf);
 

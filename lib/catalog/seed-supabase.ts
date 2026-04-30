@@ -1,4 +1,6 @@
-import "server-only";
+// NOTE: not using `import "server-only"` here because this module is also imported
+// by scripts/seed.ts (tsx CLI), where `server-only` throws unconditionally. The
+// service-role key requirement below provides effective server-only enforcement.
 import { createClient } from "@supabase/supabase-js";
 import { categories } from "./categories";
 import { sampleProducts } from "./sample-products";

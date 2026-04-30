@@ -70,7 +70,7 @@ export type GenerateImageFromReferenceInput = GenerateImageInput & {
 export async function generateImageFromReference(
   input: GenerateImageFromReferenceInput,
 ): Promise<GeneratedImage> {
-  const promptWithGuidance = `${input.prompt.trim()}\n\nUse the attached reference photo as the visual basis for the product. Alter materials, lighting, background, and any branding/text per the description. Do not reproduce visible logos or trademark text from the reference — produce a brand-safe variant.`;
+  const promptWithGuidance = `${input.prompt.trim()}\n\nUse the attached reference photo as the visual basis. Preserve composition, camera angle, lighting, paper/material texture, and product silhouette. Alter only the elements named in the description (typically text content, branding name, accent color). Do not reproduce real trademarks or readable real-brand text from the reference — produce a brand-safe variant.`;
   const expandedPrompt = composePrompt({ ...input, prompt: promptWithGuidance });
 
   const res = await fetch(input.referenceImageUrl);
