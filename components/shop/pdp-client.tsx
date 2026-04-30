@@ -68,12 +68,12 @@ export function PDPClient({
       <div className="grid lg:grid-cols-2 gap-12">
         {/* Gallery */}
         <div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-ink/10 bg-paper-warm shadow-press">
+          <div className="relative aspect-square overflow-hidden rounded-lg border border-ink/10 bg-paper-warm shadow-press">
             <Image
               src={`/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`}
               alt={product.title}
               fill
-              className="object-contain"
+              className="object-cover"
               sizes="(min-width: 1024px) 50vw, 100vw"
               priority
             />
