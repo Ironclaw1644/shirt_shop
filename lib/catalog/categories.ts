@@ -59,6 +59,7 @@ export const categories: Category[] = [
       { slug: "holiday-cards", name: "Holiday Cards" },
       { slug: "certificates", name: "Certificates" },
       { slug: "address-labels", name: "Address Labels" },
+      { slug: "envelopes", name: "Printed Envelopes" },
       { slug: "vinyl-lettering", name: "Vinyl Decals & Lettering" },
       { slug: "fat-heads", name: "Fat Heads" },
       { slug: "graduation-yard-signs", name: "Graduation Yard Signs" },

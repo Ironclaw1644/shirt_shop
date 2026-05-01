@@ -1796,6 +1796,211 @@ const seedProducts: SampleProduct[] = [
     ],
     heroPromptKey: "product:circle-stickers",
   },
+  {
+    slug: "directional-yard-signs",
+    categorySlug: "custom-printing",
+    subcategorySlug: "yard-signs",
+    title: "Directional Yard Signs",
+    shortDescription: "24×18 coroplast arrows — For Sale, For Rent, Open House in six colors.",
+    description:
+      "**Pre-built for the open-house route** — 24 × 18 corrugated plastic yard signs with built-in directional arrows for guiding traffic to listings, model homes, garage sales, and event locations.\n\n" +
+      "**Three message types** — 'For Rent', 'For Sale', or 'Open House' headlines printed bold so they read from a passing car.\n\n" +
+      "**Pick the arrow direction** — Order left-pointing or right-pointing variants depending on which corner you need to mark.\n\n" +
+      "**Six bold colors** — Navy, sky blue, violet, orange, red, or yellow — pick the color that matches your branding or stands out against the local landscape.",
+    basePriceCents: 2400,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Type: ["For Rent", "For Sale", "Open House"],
+      Direction: ["Left", "Right"],
+      Color: ["Navy Blue", "Sky Blue", "Violet", "Orange", "Red", "Yellow"],
+      Sides: ["Single Side", "Double Side"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 2400 },
+      { minQty: 5, unitCents: 2200 },
+      { minQty: 10, unitCents: 2000 },
+      { minQty: 25, unitCents: 1800 },
+      { minQty: 50, unitCents: 1600 },
+    ],
+    heroPromptKey: "product:directional-yard-signs",
+  },
+  {
+    slug: "real-estate-signs",
+    categorySlug: "custom-printing",
+    subcategorySlug: "yard-signs",
+    title: "Real Estate Yard Signs with Frame",
+    shortDescription: "Coroplast or aluminum signs with steel H-frame — agent branding ready.",
+    description:
+      "**Sign + frame as a kit** — Bundles the printed sign panel with a powder-coated steel H-frame so you arrive at the listing ready to install. Choose from Banjo Frame, H-Frame Slide-In, H-Frames Vertical, or H-Frame Double Rider configurations.\n\n" +
+      "**Two trim sizes** — 18 × 42 vertical for traditional agent signs, or 24 × 30 horizontal for branded property panels.\n\n" +
+      "**Coroplast or aluminum** — Coroplast for cost-efficient short-term listings, brushed aluminum for premium portfolios and long-term marketing properties.\n\n" +
+      "**Double-sided UV print** — Full-color print on both faces with UV-resistant inks rated for outdoor exposure. Agent photo, brokerage logo, and contact info hold color through season changes.",
+    basePriceCents: 9000,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 6,
+    decorationMethods: ["digital-print", "uv-print"],
+    options: {
+      Size: ['18" x 42"', '24" x 30"'],
+      Material: ["Coroplast", "Aluminum"],
+      Frame: [
+        "Banjo Frame Sign Holders",
+        "H-Frame Double Rider Sign Holders (Slide-In)",
+        "H-Frames Vertical",
+        "H-Frame Sign Holders (Slide-In)",
+      ],
+      Sides: ["Single Side", "Double Side"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 9000 },
+      { minQty: 5, unitCents: 8000 },
+      { minQty: 10, unitCents: 7000 },
+      { minQty: 25, unitCents: 6000 },
+    ],
+    heroPromptKey: "product:real-estate-signs",
+  },
+  {
+    slug: "vinyl-single-arm-sign",
+    categorySlug: "custom-printing",
+    subcategorySlug: "yard-signs",
+    title: "Vinyl Single-Arm Sign Panel",
+    shortDescription: "24×18 vinyl panel for single-arm post — six color options.",
+    description:
+      "**Sign panel only — pairs with the post** — A 24 × 18 vinyl sign panel cut and grommeted to hang from a single-arm sign post. Order the post separately if you don't already have one.\n\n" +
+      "**Pre-set message types** — 'For Rent', 'For Sale', or 'Open House' headlines printed bold and large for street legibility.\n\n" +
+      "**Six color choices** — Navy, sky blue, violet, orange, red, or yellow. Pick to match your brokerage colors or for high-contrast curb appeal.\n\n" +
+      "**Outdoor-rated vinyl** — UV-resistant ink and weatherproof vinyl substrate hold through sun and rain through a typical 90-day listing window.",
+    basePriceCents: 2400,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Type: ["For Rent", "For Sale", "Open House"],
+      Color: ["Navy Blue", "Sky Blue", "Violet", "Orange", "Red", "Yellow"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 2400 },
+      { minQty: 5, unitCents: 2200 },
+      { minQty: 10, unitCents: 2000 },
+      { minQty: 25, unitCents: 1800 },
+    ],
+    heroPromptKey: "product:vinyl-single-arm-sign",
+  },
+  {
+    slug: "vinyl-single-arm-sign-post",
+    categorySlug: "custom-printing",
+    subcategorySlug: "yard-signs",
+    title: "Vinyl Single-Arm Sign Post",
+    shortDescription: "Powder-coated steel single-arm sign post — pairs with 24×18 panels.",
+    description:
+      "**Steel post hardware** — Powder-coated steel single-arm sign post designed to hang a 24 × 18 vinyl sign panel out at street view. Reusable across listings.\n\n" +
+      "**Double-sided panel ready** — Hangs the sign so both sides face traffic. Order with the matching vinyl single-arm sign panel for a complete kit.\n\n" +
+      "**Built for the lawn** — Sharp ground stake at the base for quick install in soil. Hardware accommodates the 24 × 36 panel size when you need a larger sign.\n\n" +
+      "**Reusable through multiple listings** — Designed to outlast individual signs — swap the panel between properties as listings turn over.",
+    basePriceCents: 22500,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: [],
+    options: {
+      Size: ["24x36"],
+      Sides: ["Double Sided"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 22500 },
+      { minQty: 3, unitCents: 21000 },
+      { minQty: 5, unitCents: 19500 },
+    ],
+    heroPromptKey: "product:vinyl-single-arm-sign-post",
+  },
+  {
+    slug: "high-school-graduation-yard-signs",
+    categorySlug: "custom-printing",
+    subcategorySlug: "graduation-yard-signs",
+    title: "High School Graduation Yard Signs",
+    shortDescription: "24×18 coroplast grad signs with H-stakes — student name, school, year.",
+    description:
+      "**Senior-year tradition** — Personalized 24 × 18 yard signs to mark the graduating senior's home. Standard layout includes student name, school, mascot, and graduation year on a school-color background.\n\n" +
+      "**Sturdy corrugated plastic** — Weather-resistant fluted plastic that holds up through the senior-year photo season — fade-resistant inks survive sun, sprinklers, and the occasional thunderstorm.\n\n" +
+      "**H-stakes included** — Ships with the wire H-stake so the sign goes up minutes after it arrives. No additional hardware needed.\n\n" +
+      "**Custom or template** — Upload your school's mascot and colors, or pick from our template gallery for a turnkey design with placeholders for the student's name and year.",
+    basePriceCents: 1999,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ['24" X 18"'],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1999 },
+      { minQty: 5, unitCents: 1800 },
+      { minQty: 10, unitCents: 1600 },
+      { minQty: 25, unitCents: 1400 },
+      { minQty: 50, unitCents: 1200 },
+    ],
+    heroPromptKey: "product:high-school-graduation-yard-signs",
+  },
+  {
+    slug: "standard-posters",
+    categorySlug: "custom-printing",
+    subcategorySlug: "posters-large-prints",
+    title: "Standard Posters",
+    shortDescription: "Pre-set 18×24, 24×36, 36×48 posters — matte or gloss finish.",
+    description:
+      "**Three working sizes** — 18 × 24 for desk walls and small storefronts, 24 × 36 standard movie-poster size, 36 × 48 for retail windows and trade-show backdrops.\n\n" +
+      "**Matte or gloss finish** — Matte for editorial layouts, archival-feeling prints, and reduced glare under retail lighting; gloss for vibrant photography, retail signage, and event promotion.\n\n" +
+      "**Premium poster paper** — Heavy-weight poster stock with a smooth surface that holds full-color print sharply, no banding or color drift in large flat-color areas.\n\n" +
+      "**Indoor or short-term outdoor** — Built primarily for indoor display; UV inks hold up to short outdoor windows when laminated or framed behind glass.",
+    basePriceCents: 1800,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ['18" X 24"', '24" X 36"', '36" X 48"'],
+      Finishing: ["Matte Finish", "Gloss Finish"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1800 },
+      { minQty: 5, unitCents: 1500 },
+      { minQty: 10, unitCents: 1200 },
+      { minQty: 25, unitCents: 1000 },
+      { minQty: 50, unitCents: 800 },
+    ],
+    heroPromptKey: "product:standard-posters",
+  },
+  {
+    slug: "printed-envelopes",
+    categorySlug: "custom-printing",
+    subcategorySlug: "envelopes",
+    title: "Printed Envelopes",
+    shortDescription: "#10 envelopes printed with your return address and logo — regular or window.",
+    description:
+      "**Standard #10 business envelopes** — Standard 4⅛ × 9½ business envelope sized to fit a standard letter-size sheet folded in thirds. Pick regular for everyday correspondence or window-front for invoices and statements where the recipient address shows through.\n\n" +
+      "**Branded return address** — Print your company name, return address, and logo on the upper-left front corner — a professional touch for everything outbound.\n\n" +
+      "**One- or two-color print** — Single-color black for budget runs, two-color print to add a brand accent in crimson, navy, or your house color.\n\n" +
+      "**Heavy 24lb stock** — Premium 24 lb white wove paper that feels substantive in the recipient's hand and holds ink without bleed-through.",
+    basePriceCents: 8299,
+    priceStatus: "confirmed",
+    minQty: 250,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["#10 Regular", "#10 Window"],
+    },
+    tierBreaks: [
+      { minQty: 250, unitCents: 33 },
+      { minQty: 500, unitCents: 22 },
+      { minQty: 1000, unitCents: 16 },
+      { minQty: 2000, unitCents: 12 },
+    ],
+    heroPromptKey: "product:printed-envelopes",
+  },
 ];
 
 export const sampleProducts: SampleProduct[] = seedProducts;

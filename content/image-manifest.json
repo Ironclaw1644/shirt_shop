@@ -2847,6 +2847,54 @@
       "aspect": "4:3",
       "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/ScreenShot2021-12-13at9_49_42AM_3902b0c8-2296-44eb-ab46-ac767c4730f7_03145206202412.jpg",
       "prompt": "Sheet of round die-cut circle stickers in mixed sizes (2-4 inch diameter), several individual stickers peeled off and arranged around the sheet. Keep the source photo's composition, sticker shapes, vinyl gloss, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no wood/concrete/props; (2) the printed sticker designs — fictional craft brewery 'IRONHORSE BREWING' logo on the largest sticker (mountain icon + bold serif wordmark), small 'EST. 2018' badge on a smaller sticker, 'DRINK LOCAL' on another, primary accent warm crimson (#B8142B) and dark forest green. The vinyl surface must read as glossy with subtle highlights. All printed text real legible English. No real trademarks, no garbled text."
+    },
+    {
+      "slug": "product-directional-yard-signs",
+      "title": "Directional Yard Signs hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Open_House_Yard_Signs_06063712202509.png",
+      "prompt": "Single 24x18 corrugated plastic directional yard sign with H-stake, displayed standing slightly angled. Keep the source photo's sign shape, coroplast texture, stake hardware, lighting, and camera angle exactly as shown. Replace only: (1) the surface/background — clean cream studio paper background (#FAFAF7), no grass/concrete/props; (2) the printed sign design — solid red background, bold white sans-serif text reading 'OPEN HOUSE' on top line, large white right-pointing arrow below. Nothing else printed. Spell every word exactly. NO 'Lorem ipsum', NO source watermarks."
+    },
+    {
+      "slug": "product-real-estate-signs",
+      "title": "Real Estate Signs with Frame hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/TV-RealEstateRider-05_12280829202505.png",
+      "prompt": "Real estate yard sign panel mounted in a black powder-coated steel H-frame, standing upright. Keep the source photo's frame hardware, sign shape, lighting, and camera angle exactly as shown. Replace only: (1) the surface/background — clean cream studio paper background (#FAFAF7), no grass/concrete/props; (2) the printed sign design — top section in crimson (#B8142B) reads 'COMING SOON' (bold white sans-serif), middle section in white reads 'CEDAR & PINE REALTY' (large dark serif headline), bottom section reads '404 555 0188' (dark sans-serif phone). Nothing else printed. Spell every word exactly. No agent photos, no other text."
+    },
+    {
+      "slug": "product-vinyl-single-arm-sign",
+      "title": "Vinyl Single-Arm Sign hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/24x18_For_Rent-01_05110815202509.jpg",
+      "prompt": "Single 24x18 vinyl sign panel hanging from a single-arm steel post, slight motion implying outdoor mounting. Keep the source photo's panel shape, hardware, vinyl finish, lighting, and camera angle exactly as shown. Replace only: (1) the surface/background — clean cream studio paper background (#FAFAF7), no grass/concrete/props; (2) the printed sign design — solid navy blue background, large bold white sans-serif text reading 'FOR RENT' centered. Nothing else printed. Spell every word exactly. NO source watermarks, NO other text."
+    },
+    {
+      "slug": "product-vinyl-single-arm-sign-post",
+      "title": "Vinyl Single-Arm Sign Post hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/single-arm-sign-post_06535515202509.jpg",
+      "prompt": "Powder-coated black steel single-arm sign post with sharp ground stake, shown leaning against a clean backdrop. The post has a horizontal arm extending out the top with two hanging hooks for a sign panel — no panel attached in this product photo (post hardware sold separately). Keep the source photo's post hardware shape, finish, lighting, and camera angle exactly as shown. Replace only the surface/background — clean cream studio paper background (#FAFAF7), no grass/wood/concrete/props. NO sign panel attached. NO printed text anywhere."
+    },
+    {
+      "slug": "product-high-school-graduation-yard-signs",
+      "title": "High School Graduation Yard Signs hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Graduation_Yard_Signs_-_2026_04483110202602.png",
+      "prompt": "Single 24x18 corrugated plastic graduation yard sign with H-stake, standing upright at slight angle. Keep the source photo's sign shape, coroplast texture, stake, lighting, and camera angle exactly as shown. Replace only: (1) the surface/background — clean cream studio paper background (#FAFAF7), no grass/concrete/props; (2) the printed sign design — solid crimson (#B8142B) background with bold white sans-serif text in this exact layout: 'CONGRATS' (top, large), 'EMMA WALKER' (middle, larger), 'CLASS OF 2026' (bottom). A small white graduation cap icon between CONGRATS and the name. Nothing else printed. Spell every word exactly. No school logos, no other text."
+    },
+    {
+      "slug": "product-standard-posters",
+      "title": "Standard Posters hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Posters_01081804202412.png",
+      "prompt": "Two rolled-and-flat 18x24 posters: one shown rolled with a slight unfurl, another laid flat behind it. Keep the source photo's poster shape, paper texture, lighting, and camera angle exactly as shown. Replace only: (1) the surface/background — clean cream studio paper background (#FAFAF7), no wood/concrete/props; (2) the printed poster design — bold concert/event poster style with 'AUTUMN HARVEST' (very large bold serif headline at top in crimson #B8142B), large illustration of a single autumn maple leaf in crimson centered below, 'OCTOBER 17' (large dark sans-serif date below the illustration), 'PIEDMONT PARK' (smaller dark sans-serif location). Nothing else printed. Spell every word exactly."
+    },
+    {
+      "slug": "product-printed-envelopes",
+      "title": "Printed Envelopes hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of three #10 business envelopes (long horizontal envelopes, approximately 4.125 x 9.5 inches each) fanned out slightly on a clean cream studio paper background (#FAFAF7). Pure plain white wove paper envelopes with NO blue stripes, NO color accents, NO decorative borders — just plain white. Each envelope shows a printed return address in the upper-left corner: two lines of small dark charcoal sans-serif text reading 'CEDAR PINE' on the first line and 'ATLANTA' on the second line. Nothing else printed. NO street addresses, NO numbers, NO recipient address, NO logos, NO postage. Soft natural studio lighting from upper-left, gentle drop shadow. Real legible English in Latin alphabet only, no Cyrillic. Spell every word exactly as written above."
     }
   ]
 }
