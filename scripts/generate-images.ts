@@ -113,13 +113,14 @@ async function generateOne(entry: ManifestEntry) {
     // the page bg-paper-warm. Non-product entries use the legacy resize logic.
     const isProduct = entry.slug.startsWith("product-");
     if (isProduct) {
+      const fit = (entry as { fit?: "contain" | "cover" }).fit ?? "contain";
       await pipeline
         .resize({
           width: 1400,
           height: 1050,
-          fit: "contain",
-          background: { r: 250, g: 250, b: 247 },
+          fit,
           kernel: "lanczos3",
+          ...(fit === "contain" ? { background: { r: 250, g: 250, b: 247 } } : {}),
         })
         .webp({ quality: 95, effort: 6 })
         .toFile(outPath);
