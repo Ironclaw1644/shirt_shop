@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HeroSearch } from "@/components/home/hero-search";
 import { InkPressHero } from "@/components/home/ink-press-hero";
 import { CapabilitiesMarquee } from "@/components/home/capabilities-marquee";
 import { TrustStrip } from "@/components/home/trust-strip";
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <HeroSearch />
       <InkPressHero />
       <CapabilitiesMarquee />
       <TrustStrip />

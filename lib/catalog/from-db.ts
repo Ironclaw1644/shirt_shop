@@ -74,7 +74,7 @@ export function dbToSampleProduct(row: DbProductRow): SampleProduct {
     slug: row.slug,
     categorySlug: (category?.slug ?? "custom-printing") as SampleProduct["categorySlug"],
     subcategorySlug: subcategory?.slug
-      ? subcategory.slug.replace(/^[^-]+--/, "")
+      ? subcategory.slug.replace(/^.*--/, "")
       : undefined,
     title: row.title,
     shortDescription: normalizeLeadTimeCopy(row.short_description ?? ""),

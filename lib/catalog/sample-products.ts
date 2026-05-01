@@ -1711,7 +1711,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "carbonless-2part-legal",
     categorySlug: "custom-printing",
-    subcategorySlug: "carbonless-forms",
+    subcategorySlug: "forms-certificates",
     title: '2-Part 8.5" x 14" Carbonless Forms',
     shortDescription: "Legal-size 2-part NCR forms — duplicate records for invoices, work orders, contracts.",
     description:
@@ -2514,24 +2514,6 @@ const seedProducts: SampleProduct[] = [
       { minQty: 250, unitCents: 650 },
     ],
     heroPromptKey: "product:photo-mug",
-  },
-  {
-    slug: "special-or-custom-orders",
-    categorySlug: "custom-printing",
-    subcategorySlug: "promo-office",
-    title: "Custom Quote Request",
-    shortDescription: "Don't see what you need? Request a quote for any custom print job.",
-    description:
-      "**Anything not in the catalog** — Bring us specialty product orders that don't fit a standard SKU: oversized banners, custom substrates, complex multi-piece kits, low-volume specialty runs, prototype builds.\n\n" +
-      "**Tell us what you need** — Send a sketch, sample, or detailed brief. Our production team scopes the job, suggests stocks/methods, and quotes turnaround.\n\n" +
-      "**No minimum, no maximum** — Quote-only listings cover everything from a single bespoke piece to a 50,000-unit specialty run.\n\n" +
-      "**Quote within one business day** — We respond within one business day with a price, lead-time estimate, and proof workflow recommendation.",
-    basePriceCents: null,
-    priceStatus: "quote",
-    minQty: 1,
-    leadTimeDays: 7,
-    decorationMethods: [],
-    heroPromptKey: "product:special-or-custom-orders",
   },
 ];
 

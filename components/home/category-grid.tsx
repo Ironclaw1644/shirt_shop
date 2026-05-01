@@ -4,8 +4,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { categories } from "@/lib/catalog/categories";
+import { sampleProducts } from "@/lib/catalog/sample-products";
 import { Icon } from "@/components/ui/icon";
 import { Eyebrow } from "@/components/ui/eyebrow";
+
+function populatedSubcategoryCount(catSlug: string): number {
+  const subs = new Set<string>();
+  for (const p of sampleProducts) {
+    if (p.categorySlug === catSlug && p.subcategorySlug) {
+      subs.add(p.subcategorySlug);
+    }
+  }
+  return subs.size;
+}
 
 const accentMap: Record<"crimson" | "gold" | "charcoal", string> = {
   crimson: "text-primary",
@@ -70,7 +81,11 @@ export function CategoryGrid() {
                   </p>
                   <div className="mt-4 flex items-center justify-between text-sm">
                     <span className="text-ink-mute font-mono">
-                      {c.subcategories.length} collections
+                      {(() => {
+                        const n = populatedSubcategoryCount(c.slug);
+                        if (n === 0) return "Coming soon";
+                        return `${n} ${n === 1 ? "collection" : "collections"}`;
+                      })()}
                     </span>
                     <span className="inline-flex items-center gap-1.5 font-semibold text-ink group-hover:text-primary transition-colors">
                       Browse <Icon icon="arrow-right" />

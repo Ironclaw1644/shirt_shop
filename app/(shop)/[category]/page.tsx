@@ -7,8 +7,7 @@ import { dbToSampleProduct, PRODUCT_SELECT, type DbProductRow } from "@/lib/cata
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { cityLandings, getCityLanding } from "@/lib/seo/cities";
 import { CategoryHero } from "@/components/shop/category-hero";
-import { CategoryClient } from "@/components/shop/category-client";
-import { PerforatedDivider } from "@/components/ui/perforated-divider";
+import { QuoteCallout } from "@/components/shop/quote-callout";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -74,6 +73,8 @@ export default async function CategoryOrCityPage({
   const cat = getCategory(category);
   if (!cat) return notFound();
 
+  // Pull every active product in this category once, then bucket into
+  // populated subcategories (matches what shows in the nav dropdown).
   const supa = await getSupabaseServerClient();
   const { data: catRow } = await supa
     .from("categories")
@@ -92,6 +93,18 @@ export default async function CategoryOrCityPage({
     products = (rows ?? []).map((r) => dbToSampleProduct(r as unknown as DbProductRow));
   }
 
+  const productCountBySub = new Map<string, number>();
+  for (const p of products) {
+    if (!p.subcategorySlug) continue;
+    productCountBySub.set(
+      p.subcategorySlug,
+      (productCountBySub.get(p.subcategorySlug) ?? 0) + 1,
+    );
+  }
+  const populatedSubs = cat.subcategories.filter((s) =>
+    productCountBySub.has(s.slug),
+  );
+
   return (
     <>
       <JsonLd
@@ -103,50 +116,76 @@ export default async function CategoryOrCityPage({
       <CategoryHero category={cat} />
 
       <section className="container py-14">
-        <CategoryClient category={cat} products={products} />
-      </section>
-
-      <PerforatedDivider className="text-primary/40" />
-
-      <section className="container py-16 bg-paper">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <h2 className="heading-display text-3xl sm:text-4xl text-ink">
-              Don&rsquo;t see the size run you need?
-            </h2>
-            <p className="mt-4 text-ink-soft leading-relaxed">
-              High-volume runs are our everyday work. Tell us
-              what you need and we&rsquo;ll quote tier pricing, lead time, and shipping —
-              usually within one business day.
+        {populatedSubs.length === 0 ? (
+          <div className="rounded-lg border border-dashed border-ink/20 bg-paper-warm p-12 text-center">
+            <p className="font-display text-xl font-semibold text-ink">
+              We&rsquo;re building this catalog out.
             </p>
-            <div className="mt-6 flex gap-3">
+            <p className="mt-3 max-w-lg mx-auto text-ink-soft">
+              {cat.name} is on the way. In the meantime, if you have a project,
+              just send us the spec — we can quote it today.
+            </p>
+            <div className="mt-6 flex justify-center gap-3">
               <Button asChild size="lg">
                 <Link href="/quote">
                   <Icon icon="bolt" /> Request a quote
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild variant="outline" size="lg">
                 <Link href="/contact">Talk to an expert</Link>
               </Button>
             </div>
           </div>
-
-          <div className="grid sm:grid-cols-2 gap-3">
-            {cat.subcategories.slice(0, 8).map((s) => (
-              <Link
-                key={s.slug}
-                href={`/${cat.slug}/${s.slug}`}
-                className="group flex items-center justify-between rounded border border-ink/10 bg-card px-4 py-3 hover:border-primary hover:-translate-y-0.5 transition-all shadow-press"
-              >
-                <span className="font-display font-semibold text-ink group-hover:text-primary">
-                  {s.name}
-                </span>
-                <Icon icon="arrow-right" className="text-ink-mute group-hover:text-primary" />
-              </Link>
-            ))}
-          </div>
-        </div>
+        ) : (
+          <>
+            <div className="mb-8 flex items-baseline justify-between gap-4">
+              <Eyebrow tone="crimson">Browse {cat.name}</Eyebrow>
+              <p className="hidden sm:block text-sm text-ink-mute font-mono">
+                {populatedSubs.length}{" "}
+                {populatedSubs.length === 1 ? "collection" : "collections"} ·{" "}
+                {products.length} products
+              </p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {populatedSubs.map((s) => {
+                const count = productCountBySub.get(s.slug) ?? 0;
+                return (
+                  <Link
+                    key={s.slug}
+                    href={`/${cat.slug}/${s.slug}`}
+                    className="group flex h-full flex-col rounded-lg border border-ink/10 bg-card p-6 shadow-press transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-press-lg"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="font-display text-xl font-bold text-ink group-hover:text-primary leading-tight">
+                        {s.name}
+                      </h3>
+                      <Icon
+                        icon="arrow-right"
+                        className="mt-1 text-ink-mute group-hover:text-primary"
+                      />
+                    </div>
+                    {s.blurb && (
+                      <p className="mt-2 text-sm text-ink-soft leading-relaxed line-clamp-3">
+                        {s.blurb}
+                      </p>
+                    )}
+                    <div className="mt-4 flex items-center justify-between text-xs font-mono text-ink-mute">
+                      <span>
+                        {count} {count === 1 ? "product" : "products"}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-ink-soft group-hover:text-primary">
+                        View
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </>
+        )}
       </section>
+
+      <QuoteCallout />
     </>
   );
 }

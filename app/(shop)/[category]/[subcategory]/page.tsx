@@ -8,7 +8,8 @@ import {
 } from "@/lib/catalog/categories";
 import { productsInSubcategory } from "@/lib/catalog/sample-products";
 import { Breadcrumbs } from "@/components/shop/breadcrumbs";
-import { ProductCard } from "@/components/shop/product-card";
+import { SubcategoryProducts } from "@/components/shop/subcategory-products";
+import { QuoteCallout } from "@/components/shop/quote-callout";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { siteConfig } from "@/lib/site-config";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -106,13 +107,11 @@ export default async function SubcategoryPage({
             </div>
           </div>
         ) : (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((p) => (
-              <ProductCard key={p.slug} product={p} />
-            ))}
-          </div>
+          <SubcategoryProducts products={products} subcategoryName={sub.name} />
         )}
       </section>
+
+      <QuoteCallout />
     </>
   );
 }
