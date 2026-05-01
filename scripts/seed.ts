@@ -17,7 +17,7 @@ async function main() {
   console.log("Seeding…");
   const result = await seedSupabase();
   console.log(
-    `✓ Seed complete: ${result.categories} top-level categories, ${result.products} products.`,
+    `✓ Seed complete: ${result.categories} top-level categories, ${result.products} products. Deleted: ${result.deleted} orphan products, ${result.deletedSubcategories} orphan subcategories.`,
   );
 }
 

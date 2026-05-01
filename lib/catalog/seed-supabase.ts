@@ -168,9 +168,37 @@ export async function seedSupabase() {
     deletedCount = orphanIds.length;
   }
 
+  // ── hard-delete orphan subcategories ──────────────────────────────────
+  // Any subcategory row whose slug isn't in the current static catalog gets
+  // purged. Top-level cats are never deleted (parent_id IS NULL filter).
+  const liveSubSlugs: string[] = [];
+  for (const c of categories) {
+    for (const s of c.subcategories) liveSubSlugs.push(`${c.slug}--${s.slug}`);
+  }
+  const liveSubList = `(${liveSubSlugs.map((s) => `"${s}"`).join(",")})`;
+  const { data: subOrphans, error: subOrphErr } = await supabase
+    .from("categories")
+    .select("id, slug")
+    .not("parent_id", "is", null)
+    .not("slug", "in", liveSubList);
+  if (subOrphErr) throw subOrphErr;
+  let deletedSubcategories = 0;
+  if (subOrphans && subOrphans.length > 0) {
+    const { error: subDelErr } = await supabase
+      .from("categories")
+      .delete()
+      .in(
+        "id",
+        subOrphans.map((r) => r.id),
+      );
+    if (subDelErr) throw subDelErr;
+    deletedSubcategories = subOrphans.length;
+  }
+
   return {
     categories: Object.keys(topLevel).length,
     products: productCount,
     deleted: deletedCount,
+    deletedSubcategories,
   };
 }

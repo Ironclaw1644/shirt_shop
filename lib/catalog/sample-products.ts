@@ -109,7 +109,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "take-out-menus",
     categorySlug: "custom-printing",
-    subcategorySlug: "menus",
+    subcategorySlug: "restaurant-print",
     title: "Take-Out Menus",
     shortDescription: "Take-out menus printed on premium paper — smudge- and crease-resistant for repeat handling.",
     description:
@@ -172,7 +172,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "tri-fold-brochures",
     categorySlug: "custom-printing",
-    subcategorySlug: "brochures",
+    subcategorySlug: "flyers-brochures-booklets",
     title: "Tri-Fold Brochures",
     shortDescription: "Full-color tri-fold brochures on premium gloss or matte text — scored and folded.",
     description:
@@ -205,7 +205,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "full-color-flyers",
     categorySlug: "custom-printing",
-    subcategorySlug: "flyers",
+    subcategorySlug: "flyers-brochures-booklets",
     title: "Full-Color Flyers",
     shortDescription: "High-definition full-color flyers on premium 28 lb matte paper.",
     description:
@@ -238,7 +238,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "kiss-cut-stickers",
     categorySlug: "custom-printing",
-    subcategorySlug: "stickers",
+    subcategorySlug: "stickers-decals",
     title: "Kiss-Cut Stickers",
     shortDescription: "Premium adhesive vinyl with backing intact — peel-on-demand for batch handouts.",
     description:
@@ -376,7 +376,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "vinyl-banners",
     categorySlug: "custom-printing",
-    subcategorySlug: "banners",
+    subcategorySlug: "banners-stands-flags",
     title: "Custom Vinyl Banners",
     shortDescription: "Heavy 13oz vinyl banners — fade-resistant outdoor-rated for up to 5 years.",
     description:
@@ -408,7 +408,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "fabric-banners",
     categorySlug: "custom-printing",
-    subcategorySlug: "banners",
+    subcategorySlug: "banners-stands-flags",
     title: "Fabric Banners",
     shortDescription: "Wrinkle-resistant tension-cloth banners — washable and travel-friendly.",
     description:
@@ -441,7 +441,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "retractable-banner-stand",
     categorySlug: "custom-printing",
-    subcategorySlug: "banner-stands",
+    subcategorySlug: "banners-stands-flags",
     title: "Retractable Banner Stand",
     shortDescription: "33×78 retractable banner stand with portable aluminum base — sets up in seconds.",
     description:
@@ -473,7 +473,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "foam-board-posters",
     categorySlug: "custom-printing",
-    subcategorySlug: "foam-board-posters",
+    subcategorySlug: "posters-large-format",
     title: "Foam Board Posters",
     shortDescription: "High-resolution posters mounted on rigid foam core — lightweight and warp-resistant.",
     description:
@@ -501,7 +501,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "full-color-notepads",
     categorySlug: "custom-printing",
-    subcategorySlug: "note-pads",
+    subcategorySlug: "flyers-brochures-booklets",
     title: "Full-Color Notepads",
     shortDescription: "Padded full-color notepads on 70lb paper with chipboard back.",
     description:
@@ -530,7 +530,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "magnet-calendars",
     categorySlug: "custom-printing",
-    subcategorySlug: "magnet-calendars",
+    subcategorySlug: "magnets",
     title: "Magnet Calendars",
     shortDescription: "Branded magnet calendars sized for refrigerators and office boards — daily-visibility marketing.",
     description:
@@ -559,7 +559,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "table-tents",
     categorySlug: "custom-printing",
-    subcategorySlug: "table-tents",
+    subcategorySlug: "restaurant-print",
     title: "Table Tents",
     shortDescription: "Freestanding 5×7 table tents — premium cardstock with double-sided printing.",
     description:
@@ -681,7 +681,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "standard-postcards",
     categorySlug: "custom-printing",
-    subcategorySlug: "postcards",
+    subcategorySlug: "postcards-mailing",
     title: "Standard Postcards",
     shortDescription: "Full-color postcards on premium 14pt cardstock — direct mail and handout ready.",
     description:
@@ -712,7 +712,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "eddm-postcards",
     categorySlug: "custom-printing",
-    subcategorySlug: "postcards",
+    subcategorySlug: "postcards-mailing",
     title: "EDDM Postcards",
     shortDescription: "USPS Every Door Direct Mail postcards on 14pt cardstock — mailing-ready bundles.",
     description:
@@ -742,7 +742,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "foil-postcards",
     categorySlug: "custom-printing",
-    subcategorySlug: "postcards",
+    subcategorySlug: "postcards-mailing",
     title: "Foil Postcards",
     shortDescription: "Premium postcards with metallic foil accents — gold, silver, copper, holographic.",
     description:
@@ -772,7 +772,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "bi-fold-menus",
     categorySlug: "custom-printing",
-    subcategorySlug: "menus",
+    subcategorySlug: "restaurant-print",
     title: "Bi-Fold Menus",
     shortDescription: "Bi-fold restaurant menus on premium gloss or matte text — scored and folded.",
     description:
@@ -802,7 +802,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "tri-fold-menus",
     categorySlug: "custom-printing",
-    subcategorySlug: "menus",
+    subcategorySlug: "restaurant-print",
     title: "Tri-Fold Menus",
     shortDescription: "Tri-fold restaurant menus — six panels for full menu storytelling.",
     description:
@@ -832,7 +832,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "flat-table-menus",
     categorySlug: "custom-printing",
-    subcategorySlug: "menus",
+    subcategorySlug: "restaurant-print",
     title: "Flat Table Menus",
     shortDescription: "Single-sheet flat table menus — premium paper for dining-table service.",
     description:
@@ -862,7 +862,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "door-hangers",
     categorySlug: "custom-printing",
-    subcategorySlug: "door-hangers",
+    subcategorySlug: "promo-office",
     title: "Door Hangers",
     shortDescription: "Premium die-cut door hangers — perforated hang hole, full-color print.",
     description:
@@ -893,8 +893,8 @@ const seedProducts: SampleProduct[] = [
   },
   {
     slug: "coasters",
-    categorySlug: "drinkware",
-    subcategorySlug: "coasters",
+    categorySlug: "custom-printing",
+    subcategorySlug: "restaurant-print",
     title: "Custom Paper Coasters",
     shortDescription: "Premium absorbent paperboard coasters — branded bar service essentials.",
     description:
@@ -925,7 +925,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "holiday-cards",
     categorySlug: "custom-printing",
-    subcategorySlug: "holiday-cards",
+    subcategorySlug: "postcards-mailing",
     title: "Holiday Cards",
     shortDescription: "Custom holiday greeting cards — full-color print, optional foil accents.",
     description:
@@ -957,7 +957,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "mesh-banners",
     categorySlug: "custom-printing",
-    subcategorySlug: "banners",
+    subcategorySlug: "banners-stands-flags",
     title: "Mesh Banners",
     shortDescription: "Perforated mesh vinyl banners — wind-resistant outdoor displays for fences and storefronts.",
     description:
@@ -992,7 +992,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "tabletop-banner-stand",
     categorySlug: "custom-printing",
-    subcategorySlug: "banner-stands",
+    subcategorySlug: "banners-stands-flags",
     title: "Tabletop Banner Stand",
     shortDescription: "Compact tabletop banner stand — perfect for trade show counters and conference reception desks.",
     description:
@@ -1018,7 +1018,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "x-frame-banner-stand",
     categorySlug: "custom-printing",
-    subcategorySlug: "banner-stands",
+    subcategorySlug: "banners-stands-flags",
     title: "X-Frame Banner Stand",
     shortDescription: "Lightweight collapsible X-frame banner stand — travel-friendly trade-show display.",
     description:
@@ -1073,7 +1073,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "a-frame-sidewalk-signs",
     categorySlug: "custom-printing",
-    subcategorySlug: "a-frames",
+    subcategorySlug: "yard-signs",
     title: "A-Frame Sidewalk Signs",
     shortDescription: "Foldable A-frame sidewalk signs with printed or chalkboard faces — storefront ready.",
     description:
@@ -1100,7 +1100,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "adhesive-window-decals",
     categorySlug: "custom-printing",
-    subcategorySlug: "window-decals",
+    subcategorySlug: "stickers-decals",
     title: "Adhesive Window Decals",
     shortDescription: "Adhesive vinyl window decals — bright color, removable adhesive backing.",
     description:
@@ -1128,7 +1128,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "see-through-window-decals",
     categorySlug: "custom-printing",
-    subcategorySlug: "window-decals",
+    subcategorySlug: "stickers-decals",
     title: "See-Through Window Decals",
     shortDescription: "One-way perforated window decals — see out from inside, full-color graphics outside.",
     description:
@@ -1156,7 +1156,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "vinyl-lettering",
     categorySlug: "custom-printing",
-    subcategorySlug: "vinyl-lettering",
+    subcategorySlug: "stickers-decals",
     title: "Vinyl Decals & Lettering",
     shortDescription: "Custom vinyl decals and lettering — die-cut for windows, walls, and vehicles.",
     description:
@@ -1184,7 +1184,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "feather-flags",
     categorySlug: "custom-printing",
-    subcategorySlug: "feather-flags",
+    subcategorySlug: "banners-stands-flags",
     title: "Feather Flags",
     shortDescription: "Tall feather flags with full-color print — eye-catching outdoor advertising.",
     description:
@@ -1212,7 +1212,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "fabric-popup-banners",
     categorySlug: "custom-printing",
-    subcategorySlug: "exhibit-booths",
+    subcategorySlug: "banners-stands-flags",
     title: "Fabric Pop-Up Banners",
     shortDescription: "Curved or straight fabric pop-up banner displays — full trade-show booth in a portable kit.",
     description:
@@ -1239,7 +1239,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "carbonless-2part",
     categorySlug: "custom-printing",
-    subcategorySlug: "carbonless-forms",
+    subcategorySlug: "forms-certificates",
     title: "2-Part Carbonless Forms",
     shortDescription: "White/canary 2-part NCR carbonless forms — padded sets for instant customer copies.",
     description:
@@ -1271,7 +1271,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "carbonless-3part",
     categorySlug: "custom-printing",
-    subcategorySlug: "carbonless-forms",
+    subcategorySlug: "forms-certificates",
     title: "3-Part Carbonless Forms",
     shortDescription: "White/canary/pink 3-part NCR forms — built for invoices, work orders, and POs.",
     description:
@@ -1303,7 +1303,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "full-color-booklets",
     categorySlug: "custom-printing",
-    subcategorySlug: "booklets",
+    subcategorySlug: "flyers-brochures-booklets",
     title: "Full-Color Booklets",
     shortDescription: "Saddle-stitched full-color booklets on premium paper — catalogs, programs, lookbooks.",
     description:
@@ -1335,7 +1335,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "acrylic-photo-prints",
     categorySlug: "custom-printing",
-    subcategorySlug: "posters-large-prints",
+    subcategorySlug: "posters-large-format",
     title: "Acrylic Photo Prints",
     shortDescription: "Premium acrylic-mounted photo prints — gallery-quality wall art with a glossy finish.",
     description:
@@ -1363,7 +1363,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "custom-size-posters",
     categorySlug: "custom-printing",
-    subcategorySlug: "posters-large-prints",
+    subcategorySlug: "posters-large-format",
     title: "Custom Size Posters",
     shortDescription: "Custom-size posters on premium poster paper — gallery, event, and indoor display ready.",
     description:
@@ -1392,7 +1392,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "car-door-magnets",
     categorySlug: "custom-printing",
-    subcategorySlug: "car-door-magnets",
+    subcategorySlug: "magnets",
     title: "Car Door Magnets",
     shortDescription: "Heavy 30 mil magnetic vehicle signs — removable mobile branding for service vehicles.",
     description:
@@ -1419,7 +1419,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "address-labels",
     categorySlug: "custom-printing",
-    subcategorySlug: "address-labels",
+    subcategorySlug: "postcards-mailing",
     title: "Custom Address Labels",
     shortDescription: "Self-adhesive address labels on premium paper or waterproof vinyl — sheet or roll format.",
     description:
@@ -1449,7 +1449,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "foil-certificates",
     categorySlug: "custom-printing",
-    subcategorySlug: "certificates",
+    subcategorySlug: "forms-certificates",
     title: "Foil Certificates",
     shortDescription: "Premium 70lb certificates with metallic foil accents — recognition awards and credentials.",
     description:
@@ -1575,7 +1575,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "black-white-flyers",
     categorySlug: "custom-printing",
-    subcategorySlug: "flyers",
+    subcategorySlug: "flyers-brochures-booklets",
     title: "Black & White Flyers",
     shortDescription: "20lb copy stock with sharp black-on-white print — bulk handouts at minimum cost.",
     description:
@@ -1607,7 +1607,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "gloss-color-flyers",
     categorySlug: "custom-printing",
-    subcategorySlug: "flyers",
+    subcategorySlug: "flyers-brochures-booklets",
     title: "Gloss Color Flyers",
     shortDescription: "80lb gloss text — vibrant full-color flyers with a polished, smudge-resistant finish.",
     description:
@@ -1639,7 +1639,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "black-white-booklets",
     categorySlug: "custom-printing",
-    subcategorySlug: "booklets",
+    subcategorySlug: "flyers-brochures-booklets",
     title: "Black & White Booklets",
     shortDescription: "Saddle-stitched B&W booklets — manuals, programs, training packets at low cost.",
     description:
@@ -1680,7 +1680,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "flat-table-special-menus",
     categorySlug: "custom-printing",
-    subcategorySlug: "menus",
+    subcategorySlug: "restaurant-print",
     title: "Flat Table Special Menus",
     shortDescription: "Insert-size daily-special menus — laminate-friendly and built for table-top use.",
     description:
@@ -1739,7 +1739,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "black-white-notepads",
     categorySlug: "custom-printing",
-    subcategorySlug: "note-pads",
+    subcategorySlug: "flyers-brochures-booklets",
     title: "Black & White Note Pads",
     shortDescription: "20lb pads with chipboard backing — single-color print for office and giveaway pads.",
     description:
@@ -1766,7 +1766,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "circle-stickers",
     categorySlug: "custom-printing",
-    subcategorySlug: "stickers",
+    subcategorySlug: "stickers-decals",
     title: "Circle Stickers",
     shortDescription: "Round die-cut stickers — gloss/matte/waterproof, 2-5 inch diameters.",
     description:
@@ -1920,7 +1920,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "high-school-graduation-yard-signs",
     categorySlug: "custom-printing",
-    subcategorySlug: "graduation-yard-signs",
+    subcategorySlug: "yard-signs",
     title: "High School Graduation Yard Signs",
     shortDescription: "24×18 coroplast grad signs with H-stakes — student name, school, year.",
     description:
@@ -1948,7 +1948,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "standard-posters",
     categorySlug: "custom-printing",
-    subcategorySlug: "posters-large-prints",
+    subcategorySlug: "posters-large-format",
     title: "Standard Posters",
     shortDescription: "Pre-set 18×24, 24×36, 36×48 posters — matte or gloss finish.",
     description:
@@ -1977,7 +1977,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "printed-envelopes",
     categorySlug: "custom-printing",
-    subcategorySlug: "envelopes",
+    subcategorySlug: "postcards-mailing",
     title: "Printed Envelopes",
     shortDescription: "#10 envelopes printed with your return address and logo — regular or window.",
     description:
@@ -2095,7 +2095,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "custom-uv-dtf-transfers",
     categorySlug: "custom-printing",
-    subcategorySlug: "uv-dtf-transfers",
+    subcategorySlug: "dtf-transfers",
     title: "Custom UV DTF Transfers",
     shortDescription: "Clear-film UV transfers for hard surfaces — mugs, glass, metal, acrylic.",
     description:
@@ -2123,7 +2123,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "uv-dtf-fall-collection",
     categorySlug: "custom-printing",
-    subcategorySlug: "uv-dtf-transfers",
+    subcategorySlug: "dtf-transfers",
     title: "UV DTF Fall Collection",
     shortDescription: "25 pre-designed fall sticker designs — pumpkins, leaves, harvest themes.",
     description:
@@ -2152,7 +2152,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "uv-dtf-halloween-collection",
     categorySlug: "custom-printing",
-    subcategorySlug: "uv-dtf-transfers",
+    subcategorySlug: "dtf-transfers",
     title: "UV DTF Halloween Collection",
     shortDescription: "25 pre-designed Halloween sticker designs — bats, ghosts, jack-o-lanterns.",
     description:
@@ -2181,7 +2181,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "uv-dtf-holiday-collection",
     categorySlug: "custom-printing",
-    subcategorySlug: "uv-dtf-transfers",
+    subcategorySlug: "dtf-transfers",
     title: "UV DTF Holiday Collection",
     shortDescription: "25 pre-designed winter holiday sticker designs — trees, snowflakes, wreaths.",
     description:
@@ -2210,7 +2210,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "graduation-fat-heads",
     categorySlug: "custom-printing",
-    subcategorySlug: "fat-heads",
+    subcategorySlug: "posters-large-format",
     title: "Graduation Fat Heads",
     shortDescription: "Large 24×18 die-cut grad portraits — foam board or corrugated plastic.",
     description:
@@ -2296,7 +2296,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "synthetic-paper-flyers",
     categorySlug: "custom-printing",
-    subcategorySlug: "flyers",
+    subcategorySlug: "flyers-brochures-booklets",
     title: "Synthetic Paper Flyers",
     shortDescription: "Waterproof, tear-resistant flyers — for outdoor and high-handling use.",
     description:
@@ -2327,7 +2327,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "card-holders",
     categorySlug: "custom-printing",
-    subcategorySlug: "promotional-items",
+    subcategorySlug: "business-cards",
     title: "Branded Card Holders",
     shortDescription: "Black, blue, or red branded card holders — desk or pocket.",
     description:
@@ -2356,7 +2356,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "cd-labels",
     categorySlug: "custom-printing",
-    subcategorySlug: "promotional-items",
+    subcategorySlug: "promo-office",
     title: "Custom CD Labels",
     shortDescription: "4.625-inch round CD labels — promo discs, software, music releases.",
     description:
@@ -2382,7 +2382,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "desk-pal-clock",
     categorySlug: "custom-printing",
-    subcategorySlug: "promotional-items",
+    subcategorySlug: "promo-office",
     title: "Desk Pal & Clock Set",
     shortDescription: "Branded desk organizer with built-in analog clock and pen holder.",
     description:
@@ -2409,7 +2409,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "mouse-pads-rectangle",
     categorySlug: "custom-printing",
-    subcategorySlug: "promotional-items",
+    subcategorySlug: "promo-office",
     title: "Rectangle Mouse Pads",
     shortDescription: "8.75 × 7.75 photo-printed mouse pads — branded employee gifts or giveaways.",
     description:
@@ -2436,7 +2436,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "mouse-pads-round",
     categorySlug: "custom-printing",
-    subcategorySlug: "promotional-items",
+    subcategorySlug: "promo-office",
     title: "Round Mouse Pads",
     shortDescription: "8 × 8 round mouse pads — branded photo print, slip-resistant base.",
     description:
@@ -2463,7 +2463,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "sports-bag",
     categorySlug: "custom-printing",
-    subcategorySlug: "promotional-items",
+    subcategorySlug: "promo-office",
     title: "Branded Sports Bag",
     shortDescription: "Standard duffel or backpack with custom logo print — team and event swag.",
     description:
@@ -2518,7 +2518,7 @@ const seedProducts: SampleProduct[] = [
   {
     slug: "special-or-custom-orders",
     categorySlug: "custom-printing",
-    subcategorySlug: "promotional-items",
+    subcategorySlug: "promo-office",
     title: "Custom Quote Request",
     shortDescription: "Don't see what you need? Request a quote for any custom print job.",
     description:
