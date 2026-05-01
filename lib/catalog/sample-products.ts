@@ -2235,6 +2235,304 @@ const seedProducts: SampleProduct[] = [
     ],
     heroPromptKey: "product:graduation-fat-heads",
   },
+  {
+    slug: "square-magnets",
+    categorySlug: "custom-printing",
+    subcategorySlug: "magnets",
+    title: "Square Magnets",
+    shortDescription: "3×2 laminated card magnets — pin-board, fridge, or filing-cabinet branding.",
+    description:
+      "**Laminated card on magnetic sheet** — 3 × 2 inch laminated full-color print bonded to a flexible magnetic backing. Strong enough to hold through bumps and door slams.\n\n" +
+      "**310 or 410 gsm card** — Pick the heavier 410 gsm for a more substantial, glove-box-tough magnet, or the 310 gsm for a sleeker fridge-friendly profile.\n\n" +
+      "**Print like a business card, stick like a magnet** — Same trim shape and printable area as a standard business card, but stays where you put it on metal surfaces.\n\n" +
+      "**Brand reminder for the desk** — Real estate agents, contractors, plumbers, dentists — anyone whose customers need to find their phone number twelve months later.",
+    basePriceCents: 1018,
+    priceStatus: "confirmed",
+    minQty: 100,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["3 x 2"],
+      "Paper Type": ["310 gsm", "410 gsm"],
+      "Production Time": ["Same Day", "Next Day", "3 Business Days"],
+    },
+    tierBreaks: [
+      { minQty: 100, unitCents: 10 },
+      { minQty: 250, unitCents: 8 },
+      { minQty: 500, unitCents: 6 },
+      { minQty: 1000, unitCents: 5 },
+    ],
+    heroPromptKey: "product:square-magnets",
+  },
+  {
+    slug: "custom-shape-magnets",
+    categorySlug: "custom-printing",
+    subcategorySlug: "magnets",
+    title: "Custom Shape Magnets",
+    shortDescription: "Die-cut laminated card magnets — any shape, 2×2 base size.",
+    description:
+      "**Die-cut to your shape** — Print your logo, mascot, or graphic on laminated card and cut around the artwork outline. Round, oval, hexagonal, mascot silhouette — whatever shape your design needs.\n\n" +
+      "**310 or 410 gsm options** — Choose the lighter 310 gsm for a flexible refrigerator magnet or the heavier 410 gsm for a more substantial give-away.\n\n" +
+      "**2 × 2 base size** — Die-cut from a 2 × 2 base panel — perfect for logo magnets, mascot magnets, restaurant/menu fridge magnets.\n\n" +
+      "**Same-day, next-day, or 3-day production** — Pick your turnaround based on the event or campaign deadline.",
+    basePriceCents: 1011,
+    priceStatus: "confirmed",
+    minQty: 100,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["2 x 2"],
+      "Paper Type": ["310 gsm", "410 gsm"],
+      "Production Time": ["Same Day", "Next Day", "3 Business Days"],
+    },
+    tierBreaks: [
+      { minQty: 100, unitCents: 10 },
+      { minQty: 250, unitCents: 8 },
+      { minQty: 500, unitCents: 6 },
+      { minQty: 1000, unitCents: 5 },
+    ],
+    heroPromptKey: "product:custom-shape-magnets",
+  },
+  {
+    slug: "synthetic-paper-flyers",
+    categorySlug: "custom-printing",
+    subcategorySlug: "flyers",
+    title: "Synthetic Paper Flyers",
+    shortDescription: "Waterproof, tear-resistant flyers — for outdoor and high-handling use.",
+    description:
+      "**Stronger than paper, smoother than plastic** — Synthetic paper is a polypropylene-based stock that prints like premium card but takes water, mud, and tear without wrinkling, fading, or falling apart.\n\n" +
+      "**Three thicknesses** — 4 pt for lightweight handout flyers, 8 pt for menu inserts and reusable signage, 10 pt for the heaviest applications like outdoor maps and ID-card stock.\n\n" +
+      "**Print one or both sides** — Single-sided for cost-efficient bulk distribution, double-sided when you need a back-side schedule, map, or coupon panel.\n\n" +
+      "**For where regular paper fails** — Outdoor festivals, marina menus, pool-side signage, race-course maps, kayak rental waivers, vet office handouts.",
+    basePriceCents: 185,
+    priceStatus: "confirmed",
+    minQty: 25,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ['8.5" X 11"', '11" X 17"', '12" X 18"'],
+      "Paper Thickness": ["4 pt.", "8 pt.", "10 pt."],
+      Sides: ["One Side Printed", "Two Side Printed"],
+    },
+    tierBreaks: [
+      { minQty: 25, unitCents: 185 },
+      { minQty: 50, unitCents: 140 },
+      { minQty: 100, unitCents: 100 },
+      { minQty: 250, unitCents: 70 },
+      { minQty: 500, unitCents: 50 },
+      { minQty: 1000, unitCents: 35 },
+    ],
+    heroPromptKey: "product:synthetic-paper-flyers",
+  },
+  {
+    slug: "card-holders",
+    categorySlug: "custom-printing",
+    subcategorySlug: "promotional-items",
+    title: "Branded Card Holders",
+    shortDescription: "Black, blue, or red branded card holders — desk or pocket.",
+    description:
+      "**Compact branded card holder** — A pocket- or desk-friendly holder for your business cards, logo printed cleanly on the front face. Hands cards out professionally without the wallet rummage.\n\n" +
+      "**Three colors** — Black for a classic editorial finish, blue for fresh corporate identity, or red for high-visibility brand recognition.\n\n" +
+      "**Logo or text customization** — Add your logo, brand name, or single-line tagline to the front face. Optional engraving or printed treatment depending on color.\n\n" +
+      "**Quantity-friendly pricing** — Order one to test the look or order 100 for a sales-team rollout. Bulk pricing kicks in at 50 units.",
+    basePriceCents: 399,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: ["uv-print", "laser-engraving"],
+    options: {
+      Color: ["Black", "Blue", "Red"],
+      Customization: ["No", "Yes"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 399 },
+      { minQty: 10, unitCents: 360 },
+      { minQty: 20, unitCents: 320 },
+      { minQty: 50, unitCents: 280 },
+      { minQty: 100, unitCents: 240 },
+    ],
+    heroPromptKey: "product:card-holders",
+  },
+  {
+    slug: "cd-labels",
+    categorySlug: "custom-printing",
+    subcategorySlug: "promotional-items",
+    title: "Custom CD Labels",
+    shortDescription: "4.625-inch round CD labels — promo discs, software, music releases.",
+    description:
+      "**Round 4.625-inch adhesive labels** — Pre-cut to fit standard CD/DVD discs perfectly. Adhesive backing peels off and applies flat with no air bubbles.\n\n" +
+      "**Full-color photo-grade print** — High-resolution print with sharp text and vivid imagery — great for album covers, software releases, training disc series, and corporate promo CDs.\n\n" +
+      "**Three quantity tiers** — 100, 200, or 500 labels per order. Pick the run size that matches your edition.\n\n" +
+      "**Smudge-resistant once applied** — The print finish resists CD-player friction and disc cleaning, so labels stay legible through repeated use.",
+    basePriceCents: 499,
+    priceStatus: "confirmed",
+    minQty: 100,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["4.625 x 4.625"],
+    },
+    tierBreaks: [
+      { minQty: 100, unitCents: 5 },
+      { minQty: 200, unitCents: 4 },
+      { minQty: 500, unitCents: 3 },
+    ],
+    heroPromptKey: "product:cd-labels",
+  },
+  {
+    slug: "desk-pal-clock",
+    categorySlug: "custom-printing",
+    subcategorySlug: "promotional-items",
+    title: "Desk Pal & Clock Set",
+    shortDescription: "Branded desk organizer with built-in analog clock and pen holder.",
+    description:
+      "**Desk-top branded gift set** — Combination card holder + pen well + analog desk clock in a single branded unit. Lands as a thoughtful gift on a customer's desk that doesn't get tossed.\n\n" +
+      "**Logo placement on the face** — Your brand mark printed cleanly on the front face beside or beneath the clock dial. Personalized for the recipient or the company.\n\n" +
+      "**Card-holder slot built in** — Holds a stack of business cards behind the clock face — for the recipient's own cards or an integrated way to keep your company's card on their desk.\n\n" +
+      "**Standard analog quartz movement** — Reliable battery-powered quartz clock that runs for years without service. Replacement battery widely available.",
+    basePriceCents: 1899,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 10,
+    decorationMethods: ["uv-print", "laser-engraving"],
+    options: {
+      Customization: ["Logo Print", "Engraving", "None"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1899 },
+      { minQty: 10, unitCents: 1700 },
+      { minQty: 25, unitCents: 1500 },
+      { minQty: 50, unitCents: 1300 },
+    ],
+    heroPromptKey: "product:desk-pal-clock",
+  },
+  {
+    slug: "mouse-pads-rectangle",
+    categorySlug: "custom-printing",
+    subcategorySlug: "promotional-items",
+    title: "Rectangle Mouse Pads",
+    shortDescription: "8.75 × 7.75 photo-printed mouse pads — branded employee gifts or giveaways.",
+    description:
+      "**Standard 8.75 × 7.75 footprint** — Sized to fit any standard desk setup with comfortable mouse range. Slip-resistant rubber back stays put.\n\n" +
+      "**Full-color photo printing** — Print logos, photography, illustrations, or full-color brand graphics edge-to-edge on the surface. Great for branded employee gifts and customer giveaways.\n\n" +
+      "**Smooth tracking surface** — Polyester top surface tracks both optical and laser mice consistently. Edge-stitched borders keep the surface from fraying through years of use.\n\n" +
+      "**Bulk-friendly pricing** — Per-unit cost drops sharply at the 500 mark — built for trade-show giveaways, conference swag, and onboarding-kit gifts.",
+    basePriceCents: 1000,
+    priceStatus: "confirmed",
+    minQty: 100,
+    leadTimeDays: 7,
+    decorationMethods: ["sublimation", "uv-print"],
+    options: {
+      Size: ["8.75 x 7.75"],
+    },
+    tierBreaks: [
+      { minQty: 100, unitCents: 1000 },
+      { minQty: 250, unitCents: 800 },
+      { minQty: 500, unitCents: 600 },
+      { minQty: 1000, unitCents: 450 },
+    ],
+    heroPromptKey: "product:mouse-pads-rectangle",
+  },
+  {
+    slug: "mouse-pads-round",
+    categorySlug: "custom-printing",
+    subcategorySlug: "promotional-items",
+    title: "Round Mouse Pads",
+    shortDescription: "8 × 8 round mouse pads — branded photo print, slip-resistant base.",
+    description:
+      "**Compact 8 × 8 round footprint** — A modern round mouse pad that takes less desk space than a rectangle but still gives plenty of mouse travel.\n\n" +
+      "**Full-color photo print** — Edge-to-edge print of logos, photos, or brand graphics. The round format gives a different visual impact than standard rectangles — great for circular logos and centered designs.\n\n" +
+      "**Slip-resistant rubber backing** — Stays in place through fast scrolling and gaming sessions. Polyester top tracks all standard mice cleanly.\n\n" +
+      "**Trade-show and gift-pack friendly** — Light and flat — ships easily as part of a swag pack, employee onboarding kit, or branded gift bundle.",
+    basePriceCents: 1000,
+    priceStatus: "confirmed",
+    minQty: 100,
+    leadTimeDays: 7,
+    decorationMethods: ["sublimation", "uv-print"],
+    options: {
+      Size: ["8 x 8"],
+    },
+    tierBreaks: [
+      { minQty: 100, unitCents: 1000 },
+      { minQty: 250, unitCents: 800 },
+      { minQty: 500, unitCents: 600 },
+      { minQty: 1000, unitCents: 450 },
+    ],
+    heroPromptKey: "product:mouse-pads-round",
+  },
+  {
+    slug: "sports-bag",
+    categorySlug: "custom-printing",
+    subcategorySlug: "promotional-items",
+    title: "Branded Sports Bag",
+    shortDescription: "Standard duffel or backpack with custom logo print — team and event swag.",
+    description:
+      "**Two formats** — Standard duffel for sports teams, weekend trips, and event giveaways; Backpack for school programs, conference swag, and corporate gift bags.\n\n" +
+      "**Branded with your logo** — Full-color logo print or single-color screen print on the main panel. Lasts through machine wash without cracking or fading.\n\n" +
+      "**Built for the field** — Reinforced bottom seam, padded shoulder strap, water-resistant outer fabric. Carries gear, branded merch, kit, or laptop.\n\n" +
+      "**Bulk-priced for teams** — Single-unit pricing for samples; tier discounts kick in at 25, 50, and 100 units for team rollouts and event giveaways.",
+    basePriceCents: 1200,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 10,
+    decorationMethods: ["screen-print", "embroidery", "heat-transfer"],
+    options: {
+      Size: ["Standard", "Backpack"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1200 },
+      { minQty: 25, unitCents: 1100 },
+      { minQty: 50, unitCents: 1000 },
+      { minQty: 100, unitCents: 900 },
+    ],
+    heroPromptKey: "product:sports-bag",
+  },
+  {
+    slug: "photo-mug",
+    categorySlug: "drinkware",
+    subcategorySlug: "mugs",
+    title: "Photo Mug",
+    shortDescription: "11oz ceramic mug with full-color wraparound photo print.",
+    description:
+      "**Standard 11oz ceramic mug** — Classic 11-ounce ceramic mug shape — fits in a standard cupholder, mid-size for the everyday morning coffee habit.\n\n" +
+      "**Full-color wraparound print** — Sublimation-printed full-color photo wraps from handle to handle. Great for family portraits, pet photos, vacation shots, anniversary keepsakes, and team photos.\n\n" +
+      "**Dishwasher- and microwave-safe** — The sublimation print bonds into the ceramic glaze itself — won't peel, scratch, or fade through years of dishwasher cycles.\n\n" +
+      "**Quantity-flexible** — Order one as a personal gift or 100 for a team rollout, customer thank-you batch, or wedding-favor program.",
+    basePriceCents: 1099,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: ["sublimation"],
+    options: {
+      Size: ["11oz"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1099 },
+      { minQty: 25, unitCents: 950 },
+      { minQty: 50, unitCents: 850 },
+      { minQty: 100, unitCents: 750 },
+      { minQty: 250, unitCents: 650 },
+    ],
+    heroPromptKey: "product:photo-mug",
+  },
+  {
+    slug: "special-or-custom-orders",
+    categorySlug: "custom-printing",
+    subcategorySlug: "promotional-items",
+    title: "Custom Quote Request",
+    shortDescription: "Don't see what you need? Request a quote for any custom print job.",
+    description:
+      "**Anything not in the catalog** — Bring us specialty product orders that don't fit a standard SKU: oversized banners, custom substrates, complex multi-piece kits, low-volume specialty runs, prototype builds.\n\n" +
+      "**Tell us what you need** — Send a sketch, sample, or detailed brief. Our production team scopes the job, suggests stocks/methods, and quotes turnaround.\n\n" +
+      "**No minimum, no maximum** — Quote-only listings cover everything from a single bespoke piece to a 50,000-unit specialty run.\n\n" +
+      "**Quote within one business day** — We respond within one business day with a price, lead-time estimate, and proof workflow recommendation.",
+    basePriceCents: null,
+    priceStatus: "quote",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: [],
+    heroPromptKey: "product:special-or-custom-orders",
+  },
 ];
 
 export const sampleProducts: SampleProduct[] = seedProducts;

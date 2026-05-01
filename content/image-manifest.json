@@ -2945,6 +2945,79 @@
       "aspect": "4:3",
       "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Fat_Heads_04375510202602.png",
       "prompt": "Large 24x18 die-cut foam board graduation portrait standing upright at slight angle. Keep the source photo's foam board shape, die-cut edges, lighting, and camera angle exactly as shown. Replace only: (1) the surface/background — clean cream studio paper background (#FAFAF7), no event/party/props; (2) the printed graduate portrait design — large stylized illustration of a young female graduate in cap and gown smiling, with a banner across the bottom of the die-cut reading 'EMMA WALKER · 2026' in bold sans-serif white text on a crimson (#B8142B) banner. Spell every word exactly. NO real photographs of real people, NO source watermarks, NO additional text."
+    },
+    {
+      "slug": "product-square-magnets",
+      "title": "Square Magnets hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/square-magnets_1.jpg",
+      "prompt": "Stack of three rectangular 3x2 inch laminated card magnets fanned out at slight angle. Keep the source photo's card shape, laminated finish, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream-colored studio paper background, nothing else; (2) the printed magnet design — top magnet shows large bold sans-serif 'OAKWOOD' wordmark in deep crimson, second line reads 'PLUMBING' below in dark gray, third line reads '404 555 0145' in smaller dark gray. Nothing else printed. Real legible English. Spell every word exactly. NO 'Companyname', NO placeholder text."
+    },
+    {
+      "slug": "product-custom-shape-magnets",
+      "title": "Custom Shape Magnets hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/custom-shape-magnet_1.jpg",
+      "prompt": "Three custom-shape die-cut magnets arranged on a flat surface — one shaped like a stylized house outline, one shaped like a coffee cup, one shaped like a wrench. Keep the source photo's laminated finish, magnetic backing edge visibility, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream-colored studio paper background, nothing else; (2) the printed designs — house magnet in deep crimson with white text 'OAKWOOD REALTY', coffee cup magnet in brown with white text 'TRAILHEAD', wrench magnet in dark navy with white text 'KEYSTONE'. Nothing else printed. Real legible English. Spell every word exactly."
+    },
+    {
+      "slug": "product-synthetic-paper-flyers",
+      "title": "Synthetic Paper Flyers hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of three identical waterproof synthetic-paper flyers (8.5 x 11 inch portrait orientation) fanned out on a clean cream-colored studio paper background. The synthetic paper has a subtle plastic-like sheen — slightly glossier than regular paper. NO spiral notebooks, NO wood-textured menus, NO other items — just the three identical flyers. Each flyer shows the same simple design: 'PIEDMONT KAYAK' (large bold dark sans-serif headline at the top with crimson 'KAYAK' word), simple line-drawing illustration of a kayak with paddler in the middle, two lines at the bottom: 'Tours daily 9am-6pm' and 'Atlanta, Georgia'. Nothing else printed. Real legible English. Spell every word exactly — Piedmont, Kayak, Atlanta. NO 'Chattahochee' or other rivers, NO phone numbers."
+    },
+    {
+      "slug": "product-card-holders",
+      "title": "Card Holders hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/products_gallery_images/card_holder.jpg",
+      "prompt": "Single black metal business-card holder on a clean cream-colored studio paper background, partially fanned with a small stack of business cards visible inside. Keep the source photo's card-holder shape, metal finish, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream-colored studio paper background; (2) the engraved logo on the front face of the card holder — small 'CEDAR & PINE' wordmark in elegant serif lettering, laser-engraved into the metal. Spell every word exactly. NO additional text."
+    },
+    {
+      "slug": "product-cd-labels",
+      "title": "CD Labels hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of two round CD labels (4.625 inch diameter circular adhesive labels) on a clean cream-colored studio paper background. One label is applied to a standard CD/DVD with the label fully visible on the disc face; the second label is shown fresh on its white adhesive backing sheet to the side. Both labels show the SAME identical design: a simple white background, with bold dark serif text reading 'AUTUMN HARVEST' arched following the top curve of the circle, a small crimson maple leaf icon centered around the spindle hole, and 'OCTOBER 2026' in smaller dark text arched along the bottom curve. NO city skyline, NO wood texture, NO 'Special Holidays' text, NO 'Special Airfares' text — only the AUTUMN HARVEST design I described. Real legible English. Spell every word exactly. NO source watermarks. Soft studio lighting, gentle shadow."
+    },
+    {
+      "slug": "product-desk-pal-clock",
+      "title": "Desk Pal & Clock Set hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a single branded desk organizer that combines a small analog clock with a pen-holder well and a slot for business cards, on a clean cream-colored studio paper background. The unit is a compact rectangular dark wood and chrome desk piece — analog clock face with simple hour markers (no logo on the dial itself, no numbers other than 12/3/6/9), small pen-holder well at the side, business-card slot in the front. The body of the piece has a small brass nameplate engraved with 'CEDAR & PINE' in serif lettering. Soft natural lighting. Spell every word exactly. NO digital displays, NO additional logos, NO Lorem ipsum."
+    },
+    {
+      "slug": "product-mouse-pads-rectangle",
+      "title": "Rectangle Mouse Pads hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/mouse-pad_1.jpg",
+      "prompt": "Single 8.75 x 7.75 inch rectangular branded mouse pad laid flat. Keep the source photo's pad shape, surface finish, edge stitching, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream-colored studio paper background, nothing else; (2) the printed mouse pad design — bold 'IRONHORSE BREWING' wordmark centered in deep crimson serif lettering, with a small mountain icon below in dark green, 'EST. 2018' in small text underneath. Nothing else printed. Real legible English. Spell every word exactly. NO source watermarks."
+    },
+    {
+      "slug": "product-mouse-pads-round",
+      "title": "Round Mouse Pads hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/mouse-pad-round_1.jpg",
+      "prompt": "Single 8 x 8 inch round branded mouse pad laid flat. Keep the source photo's circular shape, surface finish, edge stitching, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream-colored studio paper background, nothing else; (2) the printed mouse pad design — circular logo composition with 'TRAILHEAD COFFEE' wordmark arched along the top of the circle in dark brown serif, simple coffee-cup-with-steam icon in the center, 'ATLANTA · GA' arched along the bottom. Nothing else printed. Real legible English. Spell every word exactly. NO source watermarks."
+    },
+    {
+      "slug": "product-sports-bag",
+      "title": "Branded Sports Bag hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/products_gallery_images/bag.jpg",
+      "prompt": "Single branded duffel sports bag in dark navy with black trim and padded shoulder strap, three-quarter view. Keep the source photo's bag shape, fabric texture, hardware, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream-colored studio paper background, nothing else; (2) the printed logo on the side panel — 'OAKWOOD ATHLETICS' in bold white sans-serif with a small basketball icon between the words. Nothing else printed. Real legible English. Spell every word exactly. NO source watermarks."
+    },
+    {
+      "slug": "product-photo-mug",
+      "title": "Photo Mug hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/mug_1.jpg",
+      "prompt": "Single 11oz white ceramic mug shown in three-quarter view with handle to the right side. Keep the source photo's mug shape, ceramic surface, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream-colored studio paper background, nothing else; (2) the printed wraparound design on the mug body — large 'BEST DAD' wordmark in bold dark serif lettering across the front of the mug, small simple illustration of a fishing hook below, 'EST. 2010' in smaller text below the icon. Crimson accent on the wordmark. Nothing else printed. Real legible English. Spell every word exactly."
+    },
+    {
+      "slug": "product-special-or-custom-orders",
+      "title": "Custom Quote Request hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog still-life of a flat-lay collection of varied print materials arranged on a clean cream-colored studio paper background, conveying 'anything we can print': a folded brochure, a stack of business cards, a small swatch of vinyl banner, a sample sticker sheet, a printed envelope, a postcard. Each item is muted neutral white or cream with subtle crimson accents. The composition reads as a sample tray for custom-quote inquiries. Soft natural studio lighting. NO bold headlines, NO 'CUSTOM QUOTE' labels, NO bright graphics — keep the items as neutral product samples. Real legible English on any small text. Pleasing balanced flat-lay composition."
     }
   ]
 }
