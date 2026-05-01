@@ -2779,6 +2779,74 @@
       "aspect": "4:3",
       "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/04-gold-foil-on-black-certificate-1000x1000_09491205202412.jpg",
       "prompt": "Single 8.5x11 certificate with metallic foil accents. Keep the source photo's composition, paper texture, foil sheen, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no props; (2) the printed certificate design — fictional 'CERTIFICATE OF ACHIEVEMENT' header in elegant serif, awarded to placeholder name 'JAMES MERCER' in calligraphic script, fictional issuer 'PIEDMONT BUSINESS ACADEMY', metallic gold foil treatment on the title and ornate border that reads as truly metallic and reflective (not flat ink), primary accent warm crimson (#B8142B) on the seal. All printed text real legible English. No real trademarks, no garbled text."
+    },
+    {
+      "slug": "product-economy-business-cards",
+      "title": "Economy Business Cards hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/skinny-business-card_1.jpg",
+      "prompt": "Stack of slim 3x2.5 economy business cards on a lightweight 110lb stock. Keep the source photo's composition, card stack arrangement, paper texture, lighting, and camera angle exactly as shown. Replace only: (1) the surface beneath the cards — clean cream studio paper background (#FAFAF7), nothing else; (2) the printed card design — minimal layout with just three lines of text on each card: 'WAVERLY' (large bold sans-serif, crimson #B8142B), 'Marcus Wei' (small black serif), '404 555 0247' (small black serif). Nothing else printed. CRITICAL: No placeholder text. No 'Designation', no 'Companyname.com', no 'www.', no Lorem ipsum, no source-photo watermarks. Only the three lines I specified. Spell every word exactly. If you can't render a line cleanly, leave it off rather than guessing."
+    },
+    {
+      "slug": "product-ultra-gloss-business-cards",
+      "title": "Ultra Gloss Business Cards hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/ZOO-PRINT-BUSINESS-CARD-Gloss-Laminated-mockup_card34_10023515202411.png",
+      "prompt": "Single ultra-gloss laminated business card with strong specular reflection on the surface, second card offset behind. Keep the source photo's composition, lamination shine, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream studio paper background (#FAFAF7), nothing else; (2) the printed card design — minimal layout with two lines on each card centered: 'ATLAS & MOORE' (large bold sans-serif, white text on solid black background), 'Eliza Moore' (smaller white text below). Nothing else printed. The ultra-gloss finish must read as truly reflective with mirror-like specular highlights on the laminated surface. CRITICAL: No placeholder text. No emails, no URLs, no phone numbers, no 'Designation', no 'Companyname'. Only the two lines I specified, no more. Spell every word exactly."
+    },
+    {
+      "slug": "product-standard-gloss-business-cards",
+      "title": "Standard Gloss Business Cards hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/business-card_1.jpg",
+      "prompt": "Stack of 14pt gloss-coated business cards in a clean three-quarter view. Keep the source photo's composition, paper edge, lighting, and camera angle exactly as shown. The card stock is white paper with a subtle aqueous gloss coating — NOT metallic, NOT silver, NOT chrome. Replace only: (1) the surface — clean cream studio paper background (#FAFAF7), nothing else; (2) the printed card design — minimal layout with three lines on each card: 'CEDAR & PINE' (large modern serif, crimson #B8142B), 'Amelia Park' (smaller dark gray serif), 'Senior Consultant' (small dark gray serif). Nothing else printed. CRITICAL: No emails, no URLs, no phone numbers — keep it spare and editorial. No placeholder text. No 'Designation', no 'Companyname'. The card stock must look like ordinary white gloss paper, not metallic foil."
+    },
+    {
+      "slug": "product-black-white-flyers",
+      "title": "Black & White Flyers hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/black-and-white_11370402202412.jpg",
+      "prompt": "Stack of black-and-white flyers printed on lightweight 20lb copy paper. Keep the source photo's composition, paper texture, slight uneven stack edges, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no concrete/wood/props; (2) the printed flyer design — fictional community event 'FALL FARMERS MARKET' in bold black sans-serif headline with halftone illustration of vegetables, no color (pure black ink only), date 'Saturday October 17, 2026', location 'Decatur Square'. The whole flyer is single-color black on white. All printed text real legible English. No color other than black ink and the cream backdrop. No real trademarks, no garbled text."
+    },
+    {
+      "slug": "product-gloss-color-flyers",
+      "title": "Gloss Color Flyers hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/ylp-flyers-1_05252716202411.jpg",
+      "prompt": "Stack of full-color flyers (8.5x11) on glossy paper, showing visible specular highlight that catches the light to clearly indicate gloss coating. Keep the source photo's composition, paper, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream studio paper background (#FAFAF7), nothing else; (2) the printed flyer design — top flyer shows 'WILDFIRE GRILL' (large bold sans-serif headline at top), large appetizing photograph of a roasted chicken dish below the headline filling the middle of the flyer, then three menu lines: 'STARTER  Smoked Duck', 'MAIN  Pan-Seared Halibut', 'DESSERT  Maple Tart', then 'OCTOBER 22, 2026' in small text at the bottom. Nothing else. Primary accent warm crimson (#B8142B). CRITICAL: No 'ZooPrint', no 'lorem ipsum', no website URLs, no placeholder text from any source watermark. No real trademarks. The gloss finish must be visibly reflective with a clear specular highlight."
+    },
+    {
+      "slug": "product-black-white-booklets",
+      "title": "Black & White Booklets hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/388-Edit-Square_11364606202412.jpg",
+      "prompt": "Two saddle-stitched booklets — one closed showing the cover, one closed showing the back, slightly overlapping. Keep the source photo's composition, paper texture, fold, lighting, and camera angle exactly as shown. Both booklets are simple white covers, no open pages visible. Replace only: (1) the surface — clean cream studio paper background (#FAFAF7), nothing else; (2) the printed cover design — front cover shows just 'EMPLOYEE HANDBOOK' (large bold black sans-serif, centered) and 'Vanguard Logistics' (smaller, below). Nothing else on the cover. Single-color black ink only on white paper — no color, no other text, no body paragraphs visible (booklets are closed). CRITICAL: Do NOT show any open pages. Do NOT add any body text, numbered lists, or paragraphs. Just two closed booklets with the simple cover I described."
+    },
+    {
+      "slug": "product-flat-table-special-menus",
+      "title": "Flat Table Special Menus hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a single rectangular table-top special-menu card laid flat on a clean cream studio paper background (#FAFAF7). The menu card is a portrait-oriented 4.25 x 11 inch insert printed on white matte stock with a subtle drop shadow underneath. NO plate, NO cutlery, NO place setting, NO restaurant table — just the card on the cream backdrop. The menu prints in dark charcoal ink with crimson (#B8142B) accents. Top: 'SAGE AND STONE' (elegant serif headline). Below in smaller all-caps: 'TONIGHT SPECIALS'. A thin crimson divider rule. Three menu lines stacked exactly: 'Roasted Carrots — 12', 'Seared Halibut — 28', 'Maple Tart — 9'. Nothing else printed. Spell every word exactly. Soft natural studio lighting from upper-left, gentle shadow under the card. Real legible English. No watermarks, no Lorem ipsum."
+    },
+    {
+      "slug": "product-carbonless-2part-legal",
+      "title": "2-Part Legal Carbonless Forms hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a 2-part carbonless NCR pad on a clean cream studio paper background (#FAFAF7). The pad is legal-size 8.5x14 (taller than letter), shown three-quarter view with the white top sheet partly curled back to reveal the yellow second sheet underneath — making it obvious it's 2-part NCR. Glued binding at the top. The white top sheet shows a simple work-order layout: 'KEYSTONE CONTRACTING' (bold sans-serif header at the top in crimson #B8142B), 'WORK ORDER' (large serif title), then horizontal black ruled lines for handwritten entries (no field labels, no detailed grid — just simple ruled lines), and a sequential number '001247' in the top-right corner. The yellow second sheet underneath shows the same layout in lighter ink. NO desk, NO pen, NO props — just the pad on cream backdrop. Soft studio lighting. Spell every word exactly. NO Lorem ipsum, NO field labels other than what I specified, NO 'Companyname'."
+    },
+    {
+      "slug": "product-black-white-notepads",
+      "title": "Black & White Note Pads hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/3-SNP_05091702202412.jpg",
+      "prompt": "Single branded note pad with chipboard backing visible at edges, top sheet showing single-color black header design. Keep the source photo's composition, pad shape, paper texture, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream studio paper background (#FAFAF7), nothing else (no pen, no desk, no props); (2) the printed pad design — just two lines of bold black sans-serif text at the top of the pad: 'NORTH ATLANTA' (line 1), 'REALTY' (line 2). Below that, faint horizontal black rule lines for note-taking. Nothing else. NO phone numbers, NO websites, NO URL — just the two-word brand and the rule lines. Single-color black ink only. Spell every word exactly."
+    },
+    {
+      "slug": "product-circle-stickers",
+      "title": "Circle Stickers hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/ScreenShot2021-12-13at9_49_42AM_3902b0c8-2296-44eb-ab46-ac767c4730f7_03145206202412.jpg",
+      "prompt": "Sheet of round die-cut circle stickers in mixed sizes (2-4 inch diameter), several individual stickers peeled off and arranged around the sheet. Keep the source photo's composition, sticker shapes, vinyl gloss, lighting, and camera angle exactly as shown. Change only two things: (1) the surface — clean cream studio paper background (#FAFAF7), no wood/concrete/props; (2) the printed sticker designs — fictional craft brewery 'IRONHORSE BREWING' logo on the largest sticker (mountain icon + bold serif wordmark), small 'EST. 2018' badge on a smaller sticker, 'DRINK LOCAL' on another, primary accent warm crimson (#B8142B) and dark forest green. The vinyl surface must read as glossy with subtle highlights. All printed text real legible English. No real trademarks, no garbled text."
     }
   ]
 }

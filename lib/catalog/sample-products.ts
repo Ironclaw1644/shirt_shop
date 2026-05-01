@@ -1477,6 +1477,325 @@ const seedProducts: SampleProduct[] = [
     ],
     heroPromptKey: "product:foil-certificates",
   },
+  {
+    slug: "economy-business-cards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "business-cards",
+    title: "Economy Business Cards",
+    shortDescription: "Lightweight 110lb cards — bulk-friendly pricing for high-volume handouts.",
+    description:
+      "**Light weight, big runs** — Printed on 110 lb cover stock — light enough to keep per-card cost down on big orders, sturdy enough to feel like a real business card.\n\n" +
+      "**Slim 3 × 2.5 trim** — Slightly trimmer than the 3.5 × 2 standard so they slot neatly into wallets, badge pouches, and lanyard sleeves without overflow.\n\n" +
+      "**Single or double-sided, square or rounded** — Print one side for cost-efficiency or both for a fuller message; pick square for the classic look or round corners for a softer, modern profile.\n\n" +
+      "**Built for the giveaway pile** — Trade shows, networking events, drop-the-card promotions, freelancer starter packs, retail counters — wherever volume matters more than premium feel.",
+    basePriceCents: 1499,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 3,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["3 x 2.5"],
+      "Paper Type": ["110 lb"],
+      "Printing Sides": ["Single Sided", "Double Sided"],
+      Corners: ["Square Corners", "Round Corners"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1499 },
+      { minQty: 100, unitCents: 15 },
+      { minQty: 250, unitCents: 9 },
+      { minQty: 500, unitCents: 6 },
+      { minQty: 1000, unitCents: 4 },
+      { minQty: 2500, unitCents: 3 },
+    ],
+    heroPromptKey: "product:economy-business-cards",
+  },
+  {
+    slug: "ultra-gloss-business-cards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "business-cards",
+    title: "Ultra Gloss Business Cards",
+    shortDescription: "Heavy 12pt with high-shine ultra-gloss lamination — premium presentation cards.",
+    description:
+      "**Mirror-shine ultra gloss** — A heavy ultra-gloss lamination over 12pt cover stock makes printed colors pop and photography look richer. Reflects light at every angle to draw the eye.\n\n" +
+      "**Smudge-resistant finish** — The lamination layer protects ink from oils, fingerprints, and event-bag friction. Cards stay pristine through a long networking night and a rough commute home.\n\n" +
+      "**Built for first impressions** — Designed for creative professionals, photographers, salons, agencies, and brand-driven shops where the card itself is part of the pitch.\n\n" +
+      "**Ordered by the box, not the dozen** — Minimum 500 with bulk tiers at 1000 and 2500. Single- or double-sided printing, square or round corners — the lamination wraps everything cleanly.",
+    basePriceCents: 4699,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "offset-print", "uv-gloss"],
+    options: {
+      Size: ["3.5 x 2"],
+      "Paper Type": ["Medium 12pt"],
+      "Printing Sides": ["One Side", "Two Side"],
+      Corners: ["Square Corners", "Round Corners"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 4699 },
+      { minQty: 500, unitCents: 9 },
+      { minQty: 1000, unitCents: 6 },
+      { minQty: 2500, unitCents: 4 },
+    ],
+    badges: ["Premium"],
+    heroPromptKey: "product:ultra-gloss-business-cards",
+  },
+  {
+    slug: "standard-gloss-business-cards",
+    categorySlug: "custom-printing",
+    subcategorySlug: "business-cards",
+    title: "Standard Gloss Business Cards",
+    shortDescription: "14pt gloss cover stock — polished finish, full-color, smudge-resistant.",
+    description:
+      "**Polished 14pt gloss cover** — Sturdy 14pt cover stock with a glossy aqueous coating that brings color to life and resists smudging through repeated handling.\n\n" +
+      "**Sharper color than matte** — The gloss surface holds ink without bleed, so logos stay crisp, photos hold detail, and brand colors print closer to the swatch than uncoated stock.\n\n" +
+      "**Single or double-sided, your call** — One side for a clean signature card, both sides to fit your full pitch — contact info on the front, services or social on the back.\n\n" +
+      "**Square or round corners** — Square corners for a classic editorial card; round corners for a modern, pocket-friendly profile that travels without dog-earing.",
+    basePriceCents: 1499,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 3,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["3.5 x 2"],
+      "Paper Type": ["14 pt. Gloss Cover"],
+      "Printing Sides": ["Single Sided", "Double Sided"],
+      Corners: ["Square Corners", "Round Corners"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 1499 },
+      { minQty: 100, unitCents: 16 },
+      { minQty: 250, unitCents: 11 },
+      { minQty: 500, unitCents: 7 },
+      { minQty: 1000, unitCents: 5 },
+      { minQty: 2500, unitCents: 4 },
+    ],
+    heroPromptKey: "product:standard-gloss-business-cards",
+  },
+  {
+    slug: "black-white-flyers",
+    categorySlug: "custom-printing",
+    subcategorySlug: "flyers",
+    title: "Black & White Flyers",
+    shortDescription: "20lb copy stock with sharp black-on-white print — bulk handouts at minimum cost.",
+    description:
+      "**Cost-engineered for volume** — Printed on 20 lb standard copy paper in single-color black ink, this is the lowest-cost way to put a flyer in a thousand hands. Best when message clarity matters more than glossy presentation.\n\n" +
+      "**Crisp blacks, sharp contrast** — Even on lightweight stock, our digital press lays down deep blacks and clean halftones for legible body text and recognizable photography.\n\n" +
+      "**Three sheet sizes** — Half-sheet 5.5 × 8.5 for handbills, full-letter 8.5 × 11 for community boards and clipboard handouts, oversized 11 × 17 for storefront posters and event boards.\n\n" +
+      "**One or two sides, with bleed if you need it** — Single side for low-cost runs; double-sided to add a back-side schedule, map, or coupon. Full-bleed ready when your design pushes to the edge.",
+    basePriceCents: 300,
+    priceStatus: "confirmed",
+    minQty: 50,
+    leadTimeDays: 2,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ["5.5 x 8.5", "8.5 x 11", "11 x 17"],
+      "Printing Sides": ["One Side", "Two Side"],
+      "Paper Type": ["20 lb Standard Copy Paper"],
+      "Bleed Options": ["No Bleed", "Full Bleed"],
+    },
+    tierBreaks: [
+      { minQty: 50, unitCents: 6 },
+      { minQty: 100, unitCents: 5 },
+      { minQty: 250, unitCents: 4 },
+      { minQty: 500, unitCents: 3 },
+      { minQty: 1000, unitCents: 2 },
+      { minQty: 2500, unitCents: 2 },
+    ],
+    heroPromptKey: "product:black-white-flyers",
+  },
+  {
+    slug: "gloss-color-flyers",
+    categorySlug: "custom-printing",
+    subcategorySlug: "flyers",
+    title: "Gloss Color Flyers",
+    shortDescription: "80lb gloss text — vibrant full-color flyers with a polished, smudge-resistant finish.",
+    description:
+      "**Premium gloss text** — Printed on 80 lb gloss paper with a protective coating that resists smudges, fingerprints, and fading through stack-and-distribute use.\n\n" +
+      "**Photo-grade color** — The gloss surface produces richer reds, deeper blacks, and tighter color saturation than matte stocks. Food photography, lifestyle imagery, and brand-color logos all hold cleanly.\n\n" +
+      "**Three working sizes** — 5.5 × 8.5 handbills, 8.5 × 11 letter, 11 × 17 oversized — pick the size that matches the distribution channel and the volume of content per piece.\n\n" +
+      "**One or two sides, full or no bleed** — Single side for a clean front-only promo, double-sided when you need to fit a schedule, map, or pricing back panel. Full-bleed ready for edge-to-edge designs.",
+    basePriceCents: 1410,
+    priceStatus: "confirmed",
+    minQty: 50,
+    leadTimeDays: 2,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["5.5 x 8.5", "8.5 x 11", "11 x 17"],
+      "Printing Sides": ["One Side", "Two Side"],
+      "Paper Type": ["80 lb Gloss Paper"],
+      "Bleed Options": ["No Bleed", "Full Bleed"],
+    },
+    tierBreaks: [
+      { minQty: 50, unitCents: 28 },
+      { minQty: 100, unitCents: 19 },
+      { minQty: 250, unitCents: 13 },
+      { minQty: 500, unitCents: 9 },
+      { minQty: 1000, unitCents: 6 },
+      { minQty: 2500, unitCents: 4 },
+    ],
+    heroPromptKey: "product:gloss-color-flyers",
+  },
+  {
+    slug: "black-white-booklets",
+    categorySlug: "custom-printing",
+    subcategorySlug: "booklets",
+    title: "Black & White Booklets",
+    shortDescription: "Saddle-stitched B&W booklets — manuals, programs, training packets at low cost.",
+    description:
+      "**Volume-priced documentation** — Single-color black-on-white printing keeps per-page cost low for manuals, training packets, event programs, catalogs, and report binders that need to ship in quantity.\n\n" +
+      "**Saddle-stitch binding** — Folded and saddle-stitched at the spine for a clean, lay-flat read. Available in 4 to 24 pages — sized to fit a quick reference guide, a full instruction manual, or a multi-section program.\n\n" +
+      "**Pick your text stock** — 20 lb paper for an everyday in-house feel, or 80 lb gloss text when the imagery and tables need to read sharper and the booklet needs to hold up to repeat handling.\n\n" +
+      "**Cover finish to match** — Normal, matte, or gloss cover lamination — gives you the option to dress up an otherwise utilitarian booklet for client-facing use.",
+    basePriceCents: 1700,
+    priceStatus: "confirmed",
+    minQty: 25,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ['11" X 17"', '8.5" X 11"'],
+      "Folded To": ['8.5" x 11"'],
+      Pages: [
+        "4 Page Half Fold",
+        "8 Page Saddle Stitch",
+        "12 Page Saddle Stitch",
+        "16 Page Saddle Stitch",
+        "20 Page Saddle Stitch",
+        "24 Page Saddle Stitch",
+      ],
+      "Paper Type": ["20 lb. Paper", "80 lb. Gloss Text Paper"],
+      Bleed: ["No Bleed", "Full Bleed"],
+      "Card Stock Cover": ["Normal", "Matte", "Gloss"],
+    },
+    tierBreaks: [
+      { minQty: 25, unitCents: 700 },
+      { minQty: 50, unitCents: 500 },
+      { minQty: 100, unitCents: 350 },
+      { minQty: 250, unitCents: 250 },
+      { minQty: 500, unitCents: 180 },
+      { minQty: 1000, unitCents: 130 },
+    ],
+    heroPromptKey: "product:black-white-booklets",
+  },
+  {
+    slug: "flat-table-special-menus",
+    categorySlug: "custom-printing",
+    subcategorySlug: "menus",
+    title: "Flat Table Special Menus",
+    shortDescription: "Insert-size daily-special menus — laminate-friendly and built for table-top use.",
+    description:
+      "**Sized for the table-top** — Five compact sizes from 4.25 × 11 long-strip inserts up to 6 × 5 card-style — fits cocktail tables, bar tops, holder slots, and table-tent displays.\n\n" +
+      "**Glossy, matte, or synthetic** — Glossy for the photo-friendly food shot, matte for clean editorial layouts, or synthetic stock when you need a wipe-clean, water-resistant menu that survives spills.\n\n" +
+      "**Print specials, not just menus** — Built specifically for daily-feature menus, drink specials, seasonal offerings, prix-fixe inserts, and tasting-menu cards — anything that updates more often than the main menu.\n\n" +
+      "**Front-and-back when you need it** — Configure single- or double-sided to fit a wine list on the back, or pair photo on the front with description copy on the reverse.",
+    basePriceCents: 3400,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["6x5", "5.5x8.5", "4.25x11", "4.25x14", "5x7"],
+      "Paper Type": ["Glossy", "Matte", "Synthetic"],
+      "Printing Sides": ["One Side", "Two Side"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 3400 },
+      { minQty: 50, unitCents: 80 },
+      { minQty: 100, unitCents: 50 },
+      { minQty: 250, unitCents: 30 },
+      { minQty: 500, unitCents: 22 },
+      { minQty: 1000, unitCents: 16 },
+    ],
+    heroPromptKey: "product:flat-table-special-menus",
+  },
+  {
+    slug: "carbonless-2part-legal",
+    categorySlug: "custom-printing",
+    subcategorySlug: "carbonless-forms",
+    title: '2-Part 8.5" x 14" Carbonless Forms',
+    shortDescription: "Legal-size 2-part NCR forms — duplicate records for invoices, work orders, contracts.",
+    description:
+      "**Legal-size 2-part NCR** — White over canary 2-part carbonless paper sized at 8.5 × 14 — extra length for line-item invoices, service work orders, contracts, and any form that runs past letter size.\n\n" +
+      "**Pen-pressure copies, no carbon mess** — Write on the top sheet and the impression transfers cleanly to the second part. No carbon paper to align, no mess on hands or originals.\n\n" +
+      "**Black & white or full color** — Print line-rules and form fields in plain black for a working invoice or upgrade to full color for branded contracts and customer-facing service tickets.\n\n" +
+      "**Padded, perforated, sequence-numbered on request** — Standard option to glue-pad the top of the stack and add tear-off perforation. Sequential numbering available for audit-friendly invoice runs.",
+    basePriceCents: 9000,
+    priceStatus: "confirmed",
+    minQty: 250,
+    leadTimeDays: 6,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["8.5x14"],
+      "Printing Type": ["Black & White", "Color"],
+      "Printing Sides": ["One Side Printed", "Two Side Printed"],
+    },
+    tierBreaks: [
+      { minQty: 250, unitCents: 36 },
+      { minQty: 500, unitCents: 22 },
+      { minQty: 1000, unitCents: 14 },
+    ],
+    heroPromptKey: "product:carbonless-2part-legal",
+  },
+  {
+    slug: "black-white-notepads",
+    categorySlug: "custom-printing",
+    subcategorySlug: "note-pads",
+    title: "Black & White Note Pads",
+    shortDescription: "20lb pads with chipboard backing — single-color print for office and giveaway pads.",
+    description:
+      "**Classic 20lb pads** — Premium 20 lb writing paper, 50 sheets per pad, glued at the top with a chipboard backing for desk-stable writing.\n\n" +
+      "**Three pad sizes** — 4.25 × 5.5 mini-pad for desk and to-go, 5.5 × 8.5 half-letter for everyday note-taking, full 8.5 × 11 letter when you need real margin space.\n\n" +
+      "**Single-color black** — Cost-efficient single-color printing for logos, line rules, headers, and footers — keeps per-pad cost down for office stocking and bulk giveaway runs.\n\n" +
+      "**Built for repeat use** — Tear-off sheets glide off cleanly without fraying. Ideal for office stock, conference giveaways, real estate closings, healthcare reception, and corporate gift bags.",
+    basePriceCents: 774,
+    priceStatus: "confirmed",
+    minQty: 4,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print", "offset-print"],
+    options: {
+      Size: ["4.25 x 5.5", "5.5 x 8.5", "8.5 x 11"],
+    },
+    tierBreaks: [
+      { minQty: 4, unitCents: 194 },
+      { minQty: 8, unitCents: 150 },
+      { minQty: 16, unitCents: 110 },
+      { minQty: 32, unitCents: 80 },
+    ],
+    heroPromptKey: "product:black-white-notepads",
+  },
+  {
+    slug: "circle-stickers",
+    categorySlug: "custom-printing",
+    subcategorySlug: "stickers",
+    title: "Circle Stickers",
+    shortDescription: "Round die-cut stickers — gloss/matte/waterproof, 2-5 inch diameters.",
+    description:
+      "**Round die-cut stickers** — Cleanly die-cut circles in 2, 3, 4, and 5-inch diameters — sized for everything from product seals to laptop decals to shipping-box labels.\n\n" +
+      "**Indoor or outdoor finish** — Standard gloss for branded packaging and merch, matte for an editorial look, or waterproof outdoor-rated vinyl for water bottles, vehicle windows, and exterior signage.\n\n" +
+      "**Premium adhesive** — Strong tack on smooth surfaces — glass, plastic, painted metal, polished wood — without leaving residue when peeled.\n\n" +
+      "**Fade- and water-resistant ink** — Outdoor-rated UV inks that hold color through sun, rain, and dishwasher cycles on the waterproof material.",
+    basePriceCents: 3600,
+    priceStatus: "confirmed",
+    minQty: 25,
+    leadTimeDays: 4,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ['2" Dia', '3" Dia', '4" Dia', '5" Dia'],
+      Material: ["Gloss", "Matte", "Waterproof"],
+    },
+    tierBreaks: [
+      { minQty: 25, unitCents: 144 },
+      { minQty: 50, unitCents: 90 },
+      { minQty: 100, unitCents: 60 },
+      { minQty: 250, unitCents: 38 },
+      { minQty: 500, unitCents: 25 },
+      { minQty: 1000, unitCents: 17 },
+      { minQty: 2000, unitCents: 12 },
+      { minQty: 5000, unitCents: 8 },
+      { minQty: 10000, unitCents: 6 },
+    ],
+    heroPromptKey: "product:circle-stickers",
+  },
 ];
 
 export const sampleProducts: SampleProduct[] = seedProducts;
