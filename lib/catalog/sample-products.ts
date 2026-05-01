@@ -2001,6 +2001,240 @@ const seedProducts: SampleProduct[] = [
     ],
     heroPromptKey: "product:printed-envelopes",
   },
+  {
+    slug: "dtf-gangup-sheets",
+    categorySlug: "custom-printing",
+    subcategorySlug: "dtf-transfers",
+    title: "DTF Gangup Sheets",
+    shortDescription: "Multi-design 22-inch DTF transfer sheets — gang up logos, names, graphics on one sheet.",
+    description:
+      "**Squeeze every inch of the sheet** — Gang up multiple designs on one 22-inch-wide DTF transfer sheet. Mix logos, player numbers, names, and small graphics on the same sheet for maximum yield per dollar.\n\n" +
+      "**Length to fit the run** — Order in 2-foot increments from 24-inch up to a 20-foot full roll. Pack a small order onto a 2-foot sheet, or run a season's worth of team uniforms on a 10-footer.\n\n" +
+      "**Premium DTF film + white underbase** — Heat-press onto cotton, polyester, blends, and dark fabrics with a vibrant, opaque white underbase that keeps colors true.\n\n" +
+      "**Wash-tested for the long haul** — Holds detail and color through repeated industrial washes — built for screen-print shops, embroidery houses, and anyone running team or merch programs.",
+    basePriceCents: 2499,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["dtf"],
+    options: {
+      "Sheet Size": [
+        '22" x 24" (2ft)',
+        '22" x 36" (3ft)',
+        '22" x 48" (4ft)',
+        '22" x 60" (5ft)',
+        '22" x 72" (6ft)',
+        '22" x 120" (10ft)',
+        '22" x 240" (20ft)',
+      ],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 2499 },
+      { minQty: 5, unitCents: 2200 },
+      { minQty: 10, unitCents: 1900 },
+      { minQty: 25, unitCents: 1600 },
+    ],
+    heroPromptKey: "product:dtf-gangup-sheets",
+  },
+  {
+    slug: "dtf-prints",
+    categorySlug: "custom-printing",
+    subcategorySlug: "dtf-transfers",
+    title: "DTF Prints",
+    shortDescription: "Single-design DTF transfers — heat-press to cotton, polyester, blends.",
+    description:
+      "**Single-design transfers** — One design per sheet, sized exactly to your artwork. Best for one-off prints, sample runs, and when you don't need to gang multiple designs onto a single sheet.\n\n" +
+      "**Print to your dimensions** — Specify width and height inch-by-inch. Print at the exact size you'll heat-press onto the garment, no trimming or cropping needed.\n\n" +
+      "**Works on dark and light alike** — A solid white underbase under the color print lets bright graphics pop on dark cotton, polyester, blends, and tri-blends without losing saturation.\n\n" +
+      "**Soft hand, stretch-tested** — DTF transfers maintain a soft hand-feel after heat-press and stretch with the garment without cracking — great for athletic apparel and tagless tees.",
+    basePriceCents: 3600,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 4,
+    decorationMethods: ["dtf"],
+    options: {
+      Width: ["Custom (inches)"],
+      Height: ["Custom (inches)"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 3600 },
+      { minQty: 10, unitCents: 2800 },
+      { minQty: 25, unitCents: 2200 },
+      { minQty: 50, unitCents: 1700 },
+      { minQty: 100, unitCents: 1300 },
+    ],
+    heroPromptKey: "product:dtf-prints",
+  },
+  {
+    slug: "monogram-acacia-cutting-board",
+    categorySlug: "personalized-gifts",
+    subcategorySlug: "cutting-boards",
+    title: "Monogram Acacia Round Board",
+    shortDescription: "Round acacia wood serving board with custom monogram engraving.",
+    description:
+      "**Premium acacia hardwood** — Hand-finished round acacia serving board with a smooth food-safe finish. Acacia's natural grain pattern means every board is a one-of-one.\n\n" +
+      "**Personalized monogram** — Laser-engraved single-letter or three-letter monogram in the center. Pick from classic serif, elegant script, or clean modern sans-serif lettering.\n\n" +
+      "**Charcuterie- or wedding-ready** — Built for serving — cheese boards, bread plates, charcuterie spreads, hostess gifts, wedding gifts, anniversary keepsakes.\n\n" +
+      "**Care for years** — Hand wash and oil periodically with a food-safe board oil to keep the wood from drying. Engraved monogram is permanent — won't wash out or fade.",
+    basePriceCents: 4900,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 7,
+    decorationMethods: ["laser-engraving"],
+    options: {
+      Size: ["12 inch round"],
+      "Monogram Style": ["Classic Serif", "Elegant Script", "Modern Sans"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 4900 },
+      { minQty: 5, unitCents: 4400 },
+      { minQty: 10, unitCents: 4000 },
+    ],
+    heroPromptKey: "product:monogram-acacia-cutting-board",
+  },
+  {
+    slug: "custom-uv-dtf-transfers",
+    categorySlug: "custom-printing",
+    subcategorySlug: "uv-dtf-transfers",
+    title: "Custom UV DTF Transfers",
+    shortDescription: "Clear-film UV transfers for hard surfaces — mugs, glass, metal, acrylic.",
+    description:
+      "**For hard surfaces, not fabric** — UV DTF transfers are clear adhesive films designed for glass, acrylic, ceramic, metal, sealed wood, and other hard surfaces. NOT for clothing — use standard DTF for fabric.\n\n" +
+      "**Apply like a sticker, looks like print** — Peel the carrier, smooth the film onto your surface, peel the top liner. The print stays — no clear film border, just clean printed graphic on the surface.\n\n" +
+      "**Print up to 12 × 12 per sheet** — Maximum 12 × 12 inch artwork per transfer sheet. Upload your design or work with our design team for setup.\n\n" +
+      "**Perfect for branded drinkware, custom gifts, and retail packaging** — Wrap mugs, water bottles, candles, jars, glass containers, acrylic awards, and metal tins with full-color custom graphics.",
+    basePriceCents: 499,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["uv-print"],
+    options: {
+      Size: ['Up to 12" x 12"'],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 499 },
+      { minQty: 25, unitCents: 380 },
+      { minQty: 50, unitCents: 300 },
+      { minQty: 100, unitCents: 240 },
+      { minQty: 250, unitCents: 180 },
+    ],
+    heroPromptKey: "product:custom-uv-dtf-transfers",
+  },
+  {
+    slug: "uv-dtf-fall-collection",
+    categorySlug: "custom-printing",
+    subcategorySlug: "uv-dtf-transfers",
+    title: "UV DTF Fall Collection",
+    shortDescription: "25 pre-designed fall sticker designs — pumpkins, leaves, harvest themes.",
+    description:
+      "**Twenty-five fall designs, pick your favorites** — Pre-designed UV DTF transfer pack with 25 fall-themed graphics: maple leaves, pumpkins, acorns, sunflowers, harvest bundles, scarecrows, and seasonal sayings.\n\n" +
+      "**Apply to any hard surface** — Mugs, glasses, candles, mason jars, picture frames, ceramic plates, metal flasks. The clear film disappears against the surface for a printed-on look.\n\n" +
+      "**Ready to ship — no design step** — Skip the design phase entirely. Pick the designs you want by number, and they ship ready to apply.\n\n" +
+      "**Great for craft fair stock and seasonal merch** — Build a fall product line for craft markets, holiday pop-ups, and Etsy storefronts without setting up custom artwork.",
+    basePriceCents: 349,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 3,
+    decorationMethods: ["uv-print"],
+    options: {
+      Design: Array.from({ length: 25 }, (_, i) => `Design ${String(i + 1).padStart(2, "0")}`),
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 349 },
+      { minQty: 10, unitCents: 280 },
+      { minQty: 25, unitCents: 220 },
+      { minQty: 50, unitCents: 170 },
+      { minQty: 100, unitCents: 130 },
+    ],
+    badges: ["Seasonal"],
+    heroPromptKey: "product:uv-dtf-fall-collection",
+  },
+  {
+    slug: "uv-dtf-halloween-collection",
+    categorySlug: "custom-printing",
+    subcategorySlug: "uv-dtf-transfers",
+    title: "UV DTF Halloween Collection",
+    shortDescription: "25 pre-designed Halloween sticker designs — bats, ghosts, jack-o-lanterns.",
+    description:
+      "**Twenty-five Halloween designs** — Pre-designed UV DTF transfer pack with 25 Halloween graphics: bats, ghosts, jack-o-lanterns, spooky cats, witch hats, candy corn, spider webs, and seasonal sayings.\n\n" +
+      "**Apply to glass, ceramic, metal, acrylic** — Clear-film UV transfers vanish into hard surfaces — perfect for Halloween mugs, candy bowls, candle jars, and metal flasks.\n\n" +
+      "**Pick by design number** — Each of the 25 designs is identified by a number — order any combination of designs and quantities you need.\n\n" +
+      "**Ships fast, applies in seconds** — Pre-printed and stocked — no setup time, no proof cycle. Peel, apply, peel — the design transfers in under 30 seconds per piece.",
+    basePriceCents: 349,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 3,
+    decorationMethods: ["uv-print"],
+    options: {
+      Design: Array.from({ length: 25 }, (_, i) => `Design ${String(i + 1).padStart(2, "0")}`),
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 349 },
+      { minQty: 10, unitCents: 280 },
+      { minQty: 25, unitCents: 220 },
+      { minQty: 50, unitCents: 170 },
+      { minQty: 100, unitCents: 130 },
+    ],
+    badges: ["Seasonal"],
+    heroPromptKey: "product:uv-dtf-halloween-collection",
+  },
+  {
+    slug: "uv-dtf-holiday-collection",
+    categorySlug: "custom-printing",
+    subcategorySlug: "uv-dtf-transfers",
+    title: "UV DTF Holiday Collection",
+    shortDescription: "25 pre-designed winter holiday sticker designs — trees, snowflakes, wreaths.",
+    description:
+      "**Twenty-five winter holiday designs** — Pre-designed UV DTF transfer pack with 25 winter graphics: Christmas trees, snowflakes, ornaments, holly wreaths, gingerbread, snowmen, mistletoe, and seasonal sayings.\n\n" +
+      "**For mugs, ornaments, and gift packaging** — Clear UV transfers stick to ceramic mugs, metal ornaments, glass jars, acrylic gift tags, and candle holders. The film disappears into the surface.\n\n" +
+      "**Order by design number** — Each design has a unique number — pick the ones you want and the quantities by design.\n\n" +
+      "**Pre-printed and ready to ship** — No setup, no proof cycle, no design fee — pre-printed designs ship within 3 business days.",
+    basePriceCents: 349,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 3,
+    decorationMethods: ["uv-print"],
+    options: {
+      Design: Array.from({ length: 25 }, (_, i) => `Design ${String(i + 1).padStart(2, "0")}`),
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 349 },
+      { minQty: 10, unitCents: 280 },
+      { minQty: 25, unitCents: 220 },
+      { minQty: 50, unitCents: 170 },
+      { minQty: 100, unitCents: 130 },
+    ],
+    badges: ["Seasonal"],
+    heroPromptKey: "product:uv-dtf-holiday-collection",
+  },
+  {
+    slug: "graduation-fat-heads",
+    categorySlug: "custom-printing",
+    subcategorySlug: "fat-heads",
+    title: "Graduation Fat Heads",
+    shortDescription: "Large 24×18 die-cut grad portraits — foam board or corrugated plastic.",
+    description:
+      "**Larger-than-life grad portrait** — 24 × 18 die-cut vinyl wall portrait of the graduate's face — printed at high resolution from your photo. Built for ceremonies, after-parties, and group photo backdrops.\n\n" +
+      "**Foam board or corrugated plastic** — Foam board for indoor display (ceremony stages, party decor), corrugated plastic for outdoor use (yard signs, photo-op props at the school entrance).\n\n" +
+      "**Personalize with name and year** — Add the graduate's name and class year underneath the cutout. School colors and mascot can be incorporated for spirit-week themes.\n\n" +
+      "**Lightweight and easy to transport** — At 24 × 18 it's large enough to read from across the room but light enough to bring to the ceremony, the restaurant, and the group photo.",
+    basePriceCents: 2199,
+    priceStatus: "confirmed",
+    minQty: 1,
+    leadTimeDays: 5,
+    decorationMethods: ["digital-print"],
+    options: {
+      Size: ['24" x 18"'],
+      Material: ["Foam Board", "Corrugated Plastic"],
+    },
+    tierBreaks: [
+      { minQty: 1, unitCents: 2199 },
+      { minQty: 5, unitCents: 1900 },
+      { minQty: 10, unitCents: 1700 },
+      { minQty: 25, unitCents: 1500 },
+    ],
+    heroPromptKey: "product:graduation-fat-heads",
+  },
 ];
 
 export const sampleProducts: SampleProduct[] = seedProducts;

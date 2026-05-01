@@ -2895,6 +2895,56 @@
       "title": "Printed Envelopes hero",
       "aspect": "4:3",
       "prompt": "Photorealistic catalog product photo of three #10 business envelopes (long horizontal envelopes, approximately 4.125 x 9.5 inches each) fanned out slightly on a clean cream studio paper background (#FAFAF7). Pure plain white wove paper envelopes with NO blue stripes, NO color accents, NO decorative borders — just plain white. Each envelope shows a printed return address in the upper-left corner: two lines of small dark charcoal sans-serif text reading 'CEDAR PINE' on the first line and 'ATLANTA' on the second line. Nothing else printed. NO street addresses, NO numbers, NO recipient address, NO logos, NO postage. Soft natural studio lighting from upper-left, gentle drop shadow. Real legible English in Latin alphabet only, no Cyrillic. Spell every word exactly as written above."
+    },
+    {
+      "slug": "product-dtf-gangup-sheets",
+      "title": "DTF Gangup Sheets hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a 22-inch wide DTF (direct-to-film) transfer sheet laid flat on a clean cream studio paper background (#FAFAF7). The sheet is a sheet of clear/translucent transfer film printed with multiple gang-up designs spread across it: a small bold 'IRONHORSE BREWING' wordmark in red, a baseball-jersey-style number '24' in dark navy, a small mountain icon in dark green, a circular 'EST 2018' badge in red, and three or four other small varied logos and graphics scattered across the sheet — each printed in full color with a visible thin white underbase outline showing the DTF process. The film itself is translucent, the printed designs sit on top. Soft drop shadow under the sheet. NO garments, NO heat press equipment, NO fabric — just the printed DTF film sheet on cream backdrop. Real legible English text in the visible designs. NO Lorem ipsum, NO source watermarks."
+    },
+    {
+      "slug": "product-dtf-prints",
+      "title": "DTF Prints hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a single DTF (direct-to-film) printed transfer on clear/translucent film, laid flat on a clean cream studio paper background (#FAFAF7). The transfer shows a single full-color design centered on the film: a bold vintage-style athletics-team wordmark reading 'OAKWOOD' in arched bold serif over a smaller 'ATHLETICS' subline, with a small basketball icon between them, all in deep crimson and dark navy with a visible white underbase. The film around the printed area is slightly translucent and visible. Trimmed close to the design with a small clear margin. Soft drop shadow. NO garment, NO heat press, NO fabric. Real legible English. NO source watermarks."
+    },
+    {
+      "slug": "product-monogram-acacia-cutting-board",
+      "title": "Monogram Acacia Cutting Board hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/il_570xN_6679701666_h45u_09263714202508.jpg",
+      "prompt": "Round acacia wood serving board with a custom laser-engraved monogram in the center. Keep the source photo's wood grain, board shape, lighting, and camera angle exactly as shown. Replace only: (1) the surface — clean cream studio paper background (#FAFAF7), no marble/wood/props; (2) the engraved monogram — three elegant interlocking serif letters reading 'A M K' (centered laser-engraved monogram, dark burned-in wood color). Nothing else engraved. Spell the letters exactly. Acacia wood grain stays visible and natural. NO recipe text, NO measurements, NO other engraving."
+    },
+    {
+      "slug": "product-custom-uv-dtf-transfers",
+      "title": "Custom UV DTF Transfers hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a single UV DTF transfer sheet (clear adhesive film, approximately 6 x 6 inches) laid flat on a clean cream studio paper background (#FAFAF7), partially peeled back at one corner to show the clear film and adhesive backing. The transfer shows a single full-color custom design printed on the clear film: a bold 'IRONHORSE' wordmark in deep crimson serif over a small mountain peak icon in forest green. The clear film around the design is transparent — the cream backdrop shows through the unprinted areas of the film. Soft natural studio lighting, gentle drop shadow. NO mug, NO glass, NO hard surface — just the transfer sheet on cream. Real legible English. NO source watermarks, NO Lorem ipsum."
+    },
+    {
+      "slug": "product-uv-dtf-fall-collection",
+      "title": "UV DTF Fall Collection hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a sheet of pre-designed UV DTF fall-themed transfer stickers laid flat on a clean cream studio paper background (#FAFAF7). The clear adhesive sheet contains 6-8 small transfer designs arranged in a grid: an orange pumpkin, a maple leaf in red, a sunflower in yellow, an acorn in brown, a small wreath of autumn leaves, a tiny scarecrow figure, and a 'HARVEST' wordmark in serif. Each design is full color printed on clear film — the cream backdrop shows through the unprinted gaps between stickers. Soft drop shadow. NO mug or hard surface — just the sticker sheet. NO Halloween elements (no bats, no ghosts). Real legible English where text appears."
+    },
+    {
+      "slug": "product-uv-dtf-halloween-collection",
+      "title": "UV DTF Halloween Collection hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a sheet of pre-designed UV DTF Halloween-themed transfer stickers laid flat on a clean cream-colored studio paper background. The clear adhesive sheet contains 6-8 small transfer designs arranged in a grid: an orange jack-o-lantern with carved face, a small black bat with spread wings, a white ghost figure, a black witch hat with purple band, a black cat silhouette, a candy corn (orange yellow white triangle), a small spider on web, and a 'BOO' wordmark in spooky font. Each design printed full color on clear film — cream backdrop visible through gaps. Soft drop shadow. NO mug or hard surface — just the sticker sheet. NO fall harvest elements (no maple leaves, no sunflowers). Real legible English where text appears. NO hex codes, NO color codes, NO technical text anywhere in the image — just the Halloween designs and BOO wordmark."
+    },
+    {
+      "slug": "product-uv-dtf-holiday-collection",
+      "title": "UV DTF Holiday Collection hero",
+      "aspect": "4:3",
+      "prompt": "Photorealistic catalog product photo of a sheet of pre-designed UV DTF winter-holiday transfer stickers laid flat on a clean cream studio paper background (#FAFAF7). The clear adhesive sheet contains 6-8 small transfer designs arranged in a grid: a small Christmas tree in dark green with red ornaments, a snowflake in white-blue, a holly wreath with red berries, a red and white candy cane, a snowman figure with carrot nose, a wrapped gift box with bow, a gingerbread person, and a 'JOY' wordmark in elegant serif. Each design printed full color on clear film — cream backdrop visible through gaps between stickers. Soft drop shadow. NO mug or hard surface — just the sticker sheet. Real legible English where text appears. NO Halloween or fall elements."
+    },
+    {
+      "slug": "product-graduation-fat-heads",
+      "title": "Graduation Fat Heads hero",
+      "aspect": "4:3",
+      "referenceImageUrl": "https://d2tl9ctlpnidkn.cloudfront.net/brandkraf/images/product/Fat_Heads_04375510202602.png",
+      "prompt": "Large 24x18 die-cut foam board graduation portrait standing upright at slight angle. Keep the source photo's foam board shape, die-cut edges, lighting, and camera angle exactly as shown. Replace only: (1) the surface/background — clean cream studio paper background (#FAFAF7), no event/party/props; (2) the printed graduate portrait design — large stylized illustration of a young female graduate in cap and gown smiling, with a banner across the bottom of the die-cut reading 'EMMA WALKER · 2026' in bold sans-serif white text on a crimson (#B8142B) banner. Spell every word exactly. NO real photographs of real people, NO source watermarks, NO additional text."
     }
   ]
 }
