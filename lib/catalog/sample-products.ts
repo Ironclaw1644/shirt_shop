@@ -97,6 +97,19 @@ export type SampleProduct = {
   model3D?: Product3DModel;
   /** Optional 2D photo-mockup bundle — when set, the designer uses photoreal 2D wrap. */
   mockup2D?: Product2DMockup;
+  /** Provenance of the currently-displayed product image. Defaults to "ai" for
+   *  legacy entries that use the Gemini-generated `/images/generated/...` path. */
+  imageSource?: "ai" | "supplier-cdn" | "manager-upload" | "manager-url";
+  /** When set, product card and PDP render this URL via <Image> instead of the
+   *  generated path derived from heroPromptKey. Required for supplier-cdn and
+   *  manager-* image sources. */
+  imageUrl?: string;
+  /** Auto-imported source URL — preserved so the manager's "Revert to original"
+   *  action has something to fall back to. */
+  originalImageUrl?: string;
+  /** Link back to the supplier's product page; manager-only reference, not
+   *  shown in the storefront. */
+  supplierUrl?: string;
 };
 
 /**
@@ -2517,7 +2530,9 @@ const seedProducts: SampleProduct[] = [
   },
 ];
 
-export const sampleProducts: SampleProduct[] = seedProducts;
+import { importedBlanks } from "./imported-blanks";
+
+export const sampleProducts: SampleProduct[] = [...seedProducts, ...importedBlanks];
 
 export function productBySlug(slug: string): SampleProduct | undefined {
   return sampleProducts.find((p) => p.slug === slug);

@@ -70,7 +70,8 @@ export function PDPClient({
         <div>
           <div className="relative aspect-square overflow-hidden rounded-lg border border-ink/10 bg-paper-warm shadow-press">
             <Image
-              src={`/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`}
+              src={product.imageUrl
+                ?? `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`}
               alt={product.title}
               fill
               className="object-cover"
@@ -151,7 +152,7 @@ export function PDPClient({
 
             {isQuotePriced ? (
               <Button asChild size="lg" className="w-full">
-                <Link href="/quote">
+                <Link href={`/quote?product=${product.slug}`}>
                   <Icon icon="bolt" /> Request a quote
                 </Link>
               </Button>
@@ -247,7 +248,8 @@ export function PDPClient({
               >
                 <div className="relative aspect-square bg-paper-warm">
                   <Image
-                    src={`/images/generated/${u.heroPromptKey.replace(":", "-")}.webp`}
+                    src={u.imageUrl
+                      ?? `/images/generated/${u.heroPromptKey.replace(":", "-")}.webp`}
                     alt={u.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"

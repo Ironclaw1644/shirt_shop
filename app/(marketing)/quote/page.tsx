@@ -3,6 +3,7 @@ import { QuoteForm } from "@/components/shop/quote-form";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { PerforatedDivider } from "@/components/ui/perforated-divider";
 import { Icon } from "@/components/ui/icon";
+import { productBySlug } from "@/lib/catalog/sample-products";
 
 export const metadata: Metadata = {
   title: "Request a volume quote",
@@ -10,7 +11,14 @@ export const metadata: Metadata = {
     "Get tier pricing, lead time, and shipping on runs from small batches to high-volume orders. Response within one business day.",
 };
 
-export default function QuotePage() {
+export default async function QuotePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ product?: string }>;
+}) {
+  const sp = await searchParams;
+  const product = sp.product ? productBySlug(sp.product) : undefined;
+  const defaultProductSummary = product ? product.title : undefined;
   return (
     <>
       <section className="relative overflow-hidden bg-paper-warm">
@@ -35,7 +43,7 @@ export default function QuotePage() {
       <PerforatedDivider tone="gold" />
 
       <section className="container py-14 grid lg:grid-cols-[1fr,360px] gap-12">
-        <QuoteForm />
+        <QuoteForm defaultProductSummary={defaultProductSummary} />
         <aside className="space-y-6">
           <div className="rounded-lg border border-ink/10 bg-paper-warm p-6 shadow-press">
             <h3 className="font-display text-lg font-bold">What to include</h3>

@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Icon } from "@/components/ui/icon";
 
-export function QuoteForm() {
+export function QuoteForm({ defaultProductSummary }: { defaultProductSummary?: string } = {}) {
   const [submitted, setSubmitted] = React.useState(false);
   const form = useForm<QuoteRequestInput>({
     resolver: zodResolver(quoteRequestSchema),
@@ -20,7 +20,7 @@ export function QuoteForm() {
       email: "",
       phone: "",
       company: "",
-      productSummary: "",
+      productSummary: defaultProductSummary ?? "",
       estQuantity: 500,
       inHandsDate: "",
       decoration: "",

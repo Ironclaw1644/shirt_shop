@@ -103,7 +103,13 @@ export async function seedSupabase() {
           options: (p.options ?? {}) as never,
           badges: p.badges ?? [],
           status: "active",
-          seo_meta: { heroPromptKey: p.heroPromptKey } as never,
+          seo_meta: {
+            heroPromptKey: p.heroPromptKey,
+            ...(p.imageSource ? { imageSource: p.imageSource } : {}),
+            ...(p.imageUrl ? { imageUrl: p.imageUrl } : {}),
+            ...(p.originalImageUrl ? { originalImageUrl: p.originalImageUrl } : {}),
+            ...(p.supplierUrl ? { supplierUrl: p.supplierUrl } : {}),
+          } as never,
         },
         { onConflict: "slug" },
       )

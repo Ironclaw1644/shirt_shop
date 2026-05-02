@@ -6,7 +6,8 @@ import { formatMoneyCents } from "@/lib/utils/money";
 import type { SampleProduct } from "@/lib/catalog/sample-products";
 
 export function ProductCard({ product }: { product: SampleProduct }) {
-  const img = `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`;
+  const img = product.imageUrl
+    ?? `/images/generated/${product.heroPromptKey.replace(":", "-")}.webp`;
   return (
     <Link
       href={`/product/${product.slug}`}

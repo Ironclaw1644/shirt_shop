@@ -70,6 +70,18 @@ export function dbToSampleProduct(row: DbProductRow): SampleProduct {
   const subcategory = pickOne(row.subcategory);
   const tiers = (row.price_tiers ?? []).slice().sort((a, b) => a.min_qty - b.min_qty);
 
+  // Image-override fields stash in seo_meta (Phase 1 — pre-migration).
+  // Phase 4 will move these to dedicated columns once the admin tool ships.
+  const meta = (row.seo_meta ?? {}) as Record<string, unknown>;
+  const imageSource = typeof meta.imageSource === "string"
+    ? (meta.imageSource as SampleProduct["imageSource"])
+    : undefined;
+  const imageUrl = typeof meta.imageUrl === "string" ? meta.imageUrl : undefined;
+  const originalImageUrl = typeof meta.originalImageUrl === "string"
+    ? meta.originalImageUrl
+    : undefined;
+  const supplierUrl = typeof meta.supplierUrl === "string" ? meta.supplierUrl : undefined;
+
   return {
     slug: row.slug,
     categorySlug: (category?.slug ?? "custom-printing") as SampleProduct["categorySlug"],
@@ -96,6 +108,10 @@ export function dbToSampleProduct(row: DbProductRow): SampleProduct {
       ? tiers.map((t) => ({ minQty: t.min_qty, unitCents: t.unit_price_cents }))
       : undefined,
     badges: row.badges ?? undefined,
+    imageSource,
+    imageUrl,
+    originalImageUrl,
+    supplierUrl,
   };
 }
 
