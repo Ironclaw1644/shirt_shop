@@ -13,6 +13,10 @@ export type Subcategory = {
 export type Category = {
   slug: string;
   name: string;
+  /** Optional shorter label used by the desktop nav so long display names
+   *  don't overflow the horizontal nav at narrow desktop widths. Falls back
+   *  to `name` if omitted. */
+  navLabel?: string;
   eyebrow: string;
   tagline: string;
   intro: string;
@@ -51,6 +55,7 @@ export const categories: Category[] = [
   {
     slug: "apparel-headwear",
     name: "Apparel & Headwear",
+    navLabel: "Apparel",
     eyebrow: "Blank or decorated, any quantity",
     tagline: "T-shirts, polos, fleece, caps, outerwear, workwear — blank bulk or fully decorated.",
     intro:
@@ -135,6 +140,7 @@ export const categories: Category[] = [
   {
     slug: "photo-gifts",
     name: "Custom Color Photo Gifts",
+    navLabel: "Photo Gifts",
     eyebrow: "Full-color personalization",
     tagline: "Coolers, keychains, phone cases, patches, pet items, novelty.",
     intro:
@@ -178,6 +184,7 @@ export const categories: Category[] = [
   {
     slug: "sports-academic-awards",
     name: "Sports & Academic Awards",
+    navLabel: "Sports Awards",
     eyebrow: "Every team, every subject",
     tagline: "Resin trophies, medals, ribbons, chenille, rings — for every sport and subject.",
     intro:

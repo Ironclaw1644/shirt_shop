@@ -107,7 +107,7 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
                       isOpen ? "text-primary" : "text-ink-soft hover:text-primary",
                     )}
                   >
-                    {c.name}
+                    {c.navLabel}
                     <Icon
                       icon="chevron-down"
                       className={cn(

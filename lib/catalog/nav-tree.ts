@@ -11,6 +11,7 @@ export type NavSubcategory = {
 export type NavCategory = {
   slug: string;
   name: string;
+  navLabel: string;
   tagline: string;
   subcategories: NavSubcategory[];
 };
@@ -25,6 +26,7 @@ export function buildNavTree(): NavCategory[] {
   return categories.map((c) => ({
     slug: c.slug,
     name: c.name,
+    navLabel: c.navLabel ?? c.name,
     tagline: c.tagline,
     subcategories: c.subcategories
       .map((s) => ({

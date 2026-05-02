@@ -17,7 +17,7 @@ export function InkPressHero() {
         className="absolute inset-0 pointer-events-none cmyk-halftone opacity-[0.6]"
         aria-hidden
       />
-      <div className="container relative z-10 grid lg:grid-cols-12 gap-10 pt-16 pb-24 lg:pt-24 lg:pb-32">
+      <div className="container relative z-10 grid lg:grid-cols-12 gap-10 pt-10 pb-24 lg:pt-14 lg:pb-32">
         <div className="lg:col-span-7 flex flex-col justify-center">
           <Eyebrow tone="crimson">Locally printed in Georgia · Est. 2005</Eyebrow>
 
