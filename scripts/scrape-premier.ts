@@ -43,12 +43,17 @@ type SiteConfig = {
   subcategoryMap: Record<string, string>;
   /** Used when the supplier's category isn't in subcategoryMap. */
   defaultSubcategory: string;
+  /** Parser flavor — drives both how to enumerate category URLs and how to
+   *  parse a category page's product cards. The four "premier-line" sites
+   *  share the legacy backend; sport-awards is on a newer framework. */
+  flavor: "premier-legacy" | "sport-awards";
 };
 
 const SITES: Record<SiteId, SiteConfig> = {
   drinkware: {
     id: "drinkware",
     baseUrl: "https://premierdrinkware.com",
+    flavor: "premier-legacy",
     ourCategory: "drinkware",
     subcategoryMap: {
       // Order matters: more specific keys first (the matcher iterates and
@@ -87,6 +92,7 @@ const SITES: Record<SiteId, SiteConfig> = {
   corporateawards: {
     id: "corporateawards",
     baseUrl: "https://premiercorporateawards.com",
+    flavor: "premier-legacy",
     ourCategory: "corporate-awards",
     subcategoryMap: {
       "Wood Plaques": "plaques",
@@ -110,6 +116,7 @@ const SITES: Record<SiteId, SiteConfig> = {
   customcolor: {
     id: "customcolor",
     baseUrl: "https://premiercustomcolor.com",
+    flavor: "premier-legacy",
     ourCategory: "photo-gifts",
     subcategoryMap: {
       "Mugs": "novelty",
@@ -131,6 +138,7 @@ const SITES: Record<SiteId, SiteConfig> = {
   personalizedgifts: {
     id: "personalizedgifts",
     baseUrl: "https://premierpersonalizedgifts.com",
+    flavor: "premier-legacy",
     ourCategory: "personalized-gifts",
     subcategoryMap: {
       "Luggage Tags": "leatherette",
@@ -156,26 +164,59 @@ const SITES: Record<SiteId, SiteConfig> = {
   sportawards: {
     id: "sportawards",
     baseUrl: "https://premiersportawards.com",
+    flavor: "sport-awards",
     ourCategory: "sports-academic-awards",
     subcategoryMap: {
-      "Resins": "resin-trophies",
-      "Resin": "resin-trophies",
-      "Resin Trophies": "resin-trophies",
-      "Medals": "medals",
-      "Cup Trophies": "cup-trophies",
-      "Cups": "cup-trophies",
-      "Crystal": "crystal-sport-awards",
+      // Specific award types first (so e.g. "Insert Holder Medals" beats
+      // the bare "Medals" alias, and "Crystal Sport" beats "Crystal").
+      "Insert Holder Medals": "custom-insert-medals",
+      "Custom Insert Medals": "custom-insert-medals",
       "Crystal Sport Awards": "crystal-sport-awards",
-      "Ribbons": "ribbons",
       "Award Ribbons": "ribbons",
       "Championship Rings": "championship-rings",
-      "Rings": "championship-rings",
-      "Chenille": "chenille-pins",
       "Chenille Pins": "chenille-pins",
-      "Dog Tags": "dog-tags",
+      "Completed Plastic Cups": "cup-trophies",
+      "Completed Metal Cups": "cup-trophies",
+      "Cup Trophies": "cup-trophies",
+      // Academic-award topics (categories 36-47 on sport-awards)
+      "Victory": "academic-awards",
+      "Torch": "academic-awards",
+      "Achievement": "academic-awards",
+      "Place": "academic-awards",
+      "Participant": "academic-awards",
+      "Sportsmanship": "academic-awards",
+      "Lamp of Knowledge": "academic-awards",
+      "Graduate": "academic-awards",
+      "Attendance": "academic-awards",
+      "Honor Roll": "academic-awards",
+      "Star Performer": "academic-awards",
+      "Spelling": "academic-awards",
+      "Reading": "academic-awards",
+      "Science": "academic-awards",
+      "Math": "academic-awards",
+      "Computer": "academic-awards",
+      "Art": "academic-awards",
+      "Drama": "academic-awards",
+      "Debate": "academic-awards",
+      "Chess": "academic-awards",
+      "Pinewood Derby": "academic-awards",
+      "Music": "academic-awards",
+      "Band": "academic-awards",
+      "Orchestra": "academic-awards",
       "Academic Awards": "academic-awards",
       "Academic": "academic-awards",
-      "Custom Insert Medals": "custom-insert-medals",
+      // Generic medal / cup keys come AFTER the specific ones above.
+      "Medals": "medals",
+      "Resins": "resin-trophies",
+      "Resin Trophies": "resin-trophies",
+      "Resin": "resin-trophies",
+      "Cups": "cup-trophies",
+      "Crystal": "crystal-sport-awards",
+      "Ribbons": "ribbons",
+      "Rings": "championship-rings",
+      "Chenille": "chenille-pins",
+      "Dog Tags": "dog-tags",
+      "Golf Awards": "resin-trophies",
     },
     defaultSubcategory: "resin-trophies",
   },
@@ -243,24 +284,75 @@ async function fetchPolite(url: string, retries = 3): Promise<string> {
 }
 
 async function getCategoryUrls(cfg: SiteConfig): Promise<string[]> {
+  if (cfg.flavor === "sport-awards") {
+    // No sitemap — enumerate /categories/N/products from the homepage navigation.
+    const home = await fetchPolite(`${cfg.baseUrl}/`);
+    const $ = cheerio.load(home);
+    const urls = new Set<string>();
+    $("a[href^='/categories/'][href$='/products']").each((_, el) => {
+      const href = $(el).attr("href");
+      if (href) urls.add(`${cfg.baseUrl}${href}`);
+    });
+    return Array.from(urls);
+  }
+  // premier-legacy: try sitemap.xml first; fall back to homepage scrape if
+  // the sitemap is empty or only redirects to a sister domain (pgifts case).
   const sitemapUrl = `${cfg.baseUrl}/sitemap.xml`;
-  let xml: string;
+  const fromSitemap: string[] = [];
   try {
-    xml = await fetchPolite(sitemapUrl);
+    const xml = await fetchPolite(sitemapUrl);
+    const $ = cheerio.load(xml, { xmlMode: true });
+    $("url loc").each((_, el) => {
+      const u = $(el).text().trim();
+      if (u && /[?&]desc=/.test(u) && u.startsWith(cfg.baseUrl)) fromSitemap.push(u);
+    });
   } catch (err) {
     console.warn(`! sitemap.xml unavailable for ${cfg.id}: ${(err as Error).message}`);
-    return [];
   }
-  const $ = cheerio.load(xml, { xmlMode: true });
-  const urls: string[] = [];
-  $("url loc").each((_, el) => {
-    const u = $(el).text().trim();
-    if (u && /[?&]desc=/.test(u) && u.startsWith(cfg.baseUrl)) urls.push(u);
+  if (fromSitemap.length > 0) return Array.from(new Set(fromSitemap));
+
+  // Sitemap empty or unusable → enumerate from homepage navigation.
+  console.log(`  (sitemap empty for ${cfg.id}; enumerating from homepage)`);
+  const home = await fetchPolite(`${cfg.baseUrl}/`);
+  const $ = cheerio.load(home);
+  const urls = new Set<string>();
+  $('a[href*="desc="]').each((_, el) => {
+    let href = $(el).attr("href");
+    if (!href) return;
+    if (href.startsWith("index.php")) href = `${cfg.baseUrl}/${href}`;
+    if (href.startsWith("/")) href = `${cfg.baseUrl}${href}`;
+    if (href.startsWith(cfg.baseUrl)) urls.add(href);
   });
-  return Array.from(new Set(urls));
+  return Array.from(urls);
+}
+
+function normalizeCloudinaryUrl(url: string): string {
+  // Both site flavors use the same Cloudinary CDN. Strip the small thumbnail
+  // crop params and ask for a width-800 auto-format image so the storefront
+  // gets crisp images (Next/Image will downscale per breakpoint).
+  return url
+    .replace(
+      /upload\/q_auto,c_pad,b_transparent,w_\d+,h_\d+\/?/,
+      "upload/q_auto,f_auto,w_800/",
+    )
+    .replace(
+      /upload\/f_auto,q_auto,c_pad,b_transparent,w_\d+,h_\d+\/?/,
+      "upload/q_auto,f_auto,w_800/",
+    );
 }
 
 function parseCategoryHtml(
+  cfg: SiteConfig,
+  catUrl: string,
+  html: string,
+): ScrapedProduct[] {
+  if (cfg.flavor === "sport-awards") {
+    return parseSportAwardsCategory(cfg, catUrl, html);
+  }
+  return parsePremierLegacyCategory(cfg, catUrl, html);
+}
+
+function parsePremierLegacyCategory(
   cfg: SiteConfig,
   catUrl: string,
   html: string,
@@ -278,20 +370,15 @@ function parseCategoryHtml(
   }
   const targetSubcategory = pickSubcategory(cfg, rawDesc);
 
+  // Variant A: drinkware + personalizedgifts use `.card.product_card`.
   $(".card.product_card").each((_, card) => {
     const $card = $(card);
     const title = $card.find(".product_title").first().text().trim();
     const partText = $card.find(".card-text").first().text().trim();
     const partMatch = partText.match(/Part\s*#?:?\s*([A-Z0-9-]+)/i);
     const supplierPartNumber = partMatch ? partMatch[1] : "";
-    let imageUrl = $card.find("img").first().attr("src") ?? "";
-    // Drop the cropping params from the URL so we get the original-resolution
-    // image (Cloudinary lets us swap c_pad,b_transparent,w_300,h_300 for a
-    // larger preset). Keep q_auto,f_auto.
-    imageUrl = imageUrl.replace(
-      /upload\/q_auto,c_pad,b_transparent,w_\d+,h_\d+\/?/,
-      "upload/q_auto,f_auto,w_800/",
-    );
+    const rawImg = $card.find("img").first().attr("src") ?? "";
+    const imageUrl = normalizeCloudinaryUrl(rawImg);
     if (!title || !supplierPartNumber || !imageUrl) return;
     out.push({
       slug: `${cfg.id}-${slugify(supplierPartNumber + "-" + title).slice(0, 70)}`,
@@ -305,6 +392,110 @@ function parseCategoryHtml(
       sourceSite: cfg.id,
     });
   });
+
+  // Variant B: corporateawards + customcolor use `.prodDeetsInWrap` with
+  // a different inner layout. Inside each block:
+  //   <img src="...cloudinary.../large/PARTNUMBER--HASH.png">
+  //   <span class="subTitles">Part #:&nbsp;</span><strong>PARTNUMBER</strong>
+  //   <br/>Title text<br/>...
+  $(".prodDeetsInWrap").each((_, card) => {
+    const $card = $(card);
+    const rawImg = $card.find("img").first().attr("src") ?? "";
+    const imageUrl = normalizeCloudinaryUrl(rawImg);
+    const supplierPartNumber = $card.find("strong").first().text().trim();
+    // Extract the title by walking the HTML directly: it's the text node that
+    // follows <strong>PARTNUMBER</strong><br/> and stops at the next <span>
+    // (which begins "Size:", "Material:", etc.) OR end of wrapper.
+    let title = "";
+    if (supplierPartNumber) {
+      const wrapHtml = $card.html() ?? "";
+      const idx = wrapHtml.indexOf(`<strong>${supplierPartNumber}</strong>`);
+      if (idx >= 0) {
+        const afterPart = wrapHtml.slice(idx + `<strong>${supplierPartNumber}</strong>`.length);
+        // Drop any leading <br/> tags + whitespace, then read until next tag
+        const m = afterPart.match(/^(?:<br\s*\/?>|\s)*([^<]+)/);
+        if (m) {
+          title = m[1]
+            .replace(/&nbsp;/g, " ")
+            .replace(/&amp;/g, "&")
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'")
+            .replace(/&apos;/g, "'")
+            .replace(/\s+/g, " ")
+            .trim();
+        }
+      }
+    }
+    if (!title || !supplierPartNumber || !imageUrl) return;
+    out.push({
+      slug: `${cfg.id}-${slugify(supplierPartNumber + "-" + title).slice(0, 70)}`,
+      title,
+      supplierPartNumber,
+      imageUrl,
+      supplierUrl: catUrl,
+      targetCategory: cfg.ourCategory,
+      targetSubcategory,
+      rawCategoryDesc: rawDesc,
+      sourceSite: cfg.id,
+    });
+  });
+  return out;
+}
+
+function parseSportAwardsCategory(
+  cfg: SiteConfig,
+  catUrl: string,
+  html: string,
+): ScrapedProduct[] {
+  // Sport-awards delivers products via a JS framework but the HTML still
+  // embeds: an <h*> page heading (the category name) followed by N pairs of
+  // (heading=product title, modal-toggle id=part number). All headings come
+  // first in document order, then all part numbers. Pair them by index.
+  const $ = cheerio.load(html);
+  const headings: string[] = [];
+  const parts: string[] = [];
+  // Walk the whole HTML in document order so we know which group came first.
+  $("h1, h2, h3, h4, h5, input.modal-toggle").each((_, el) => {
+    if (el.tagName === "input") {
+      const id = $(el).attr("id");
+      if (id) parts.push(id);
+    } else {
+      const text = $(el).text().trim();
+      if (text) headings.push(text.replace(/&quot;/g, '"'));
+    }
+  });
+  if (parts.length === 0) return [];
+  // First heading is the category page name; the next N are product titles.
+  const rawDesc = headings[0] ?? "";
+  const titles = headings.slice(1, 1 + parts.length);
+  const targetSubcategory = pickSubcategory(cfg, rawDesc);
+  const out: ScrapedProduct[] = [];
+  // Find all cloudinary product images on the page and index by part number.
+  const imageByPart = new Map<string, string>();
+  $('img, a[href*="cloudinary.com"]').each((_, el) => {
+    const url = $(el).attr("src") ?? $(el).attr("href") ?? "";
+    const m = url.match(/large\/([A-Z0-9-]+)--[a-f0-9]+\.(?:png|jpe?g|webp)/i);
+    if (m && !imageByPart.has(m[1])) {
+      imageByPart.set(m[1], normalizeCloudinaryUrl(url));
+    }
+  });
+  for (let i = 0; i < parts.length; i++) {
+    const supplierPartNumber = parts[i];
+    const title = titles[i] ?? "";
+    const imageUrl = imageByPart.get(supplierPartNumber) ?? "";
+    if (!title || !imageUrl) continue;
+    out.push({
+      slug: `${cfg.id}-${slugify(supplierPartNumber + "-" + title).slice(0, 70)}`,
+      title,
+      supplierPartNumber,
+      imageUrl,
+      supplierUrl: catUrl,
+      targetCategory: cfg.ourCategory,
+      targetSubcategory,
+      rawCategoryDesc: rawDesc,
+      sourceSite: cfg.id,
+    });
+  }
   return out;
 }
 
@@ -349,19 +540,27 @@ async function main() {
   const siteIdx = args.indexOf("--site");
   const limitIdx = args.indexOf("--limit");
   const perCatIdx = args.indexOf("--per-cat");
-  const siteId = (siteIdx >= 0 ? args[siteIdx + 1] : "drinkware") as SiteId;
+  const siteArg = (siteIdx >= 0 ? args[siteIdx + 1] : "drinkware");
   const limit = limitIdx >= 0 ? Number(args[limitIdx + 1]) : undefined;
   const perCat = perCatIdx >= 0 ? Number(args[perCatIdx + 1]) : undefined;
-  if (!SITES[siteId]) {
-    console.error(`Unknown site: ${siteId}. Choose: ${Object.keys(SITES).join(", ")}`);
-    process.exit(1);
-  }
-  const out = await scrapeSite(siteId, { limit, perCat });
+
   const dir = path.join(process.cwd(), "tmp");
   await fs.mkdir(dir, { recursive: true });
-  const file = path.join(dir, `scraped-blanks-${siteId}${limit ? `-pilot${limit}` : ""}.json`);
-  await fs.writeFile(file, JSON.stringify(out, null, 2));
-  console.log(`✓ wrote ${out.length} products → ${file}`);
+
+  const targets: SiteId[] = siteArg === "all"
+    ? (Object.keys(SITES) as SiteId[])
+    : [siteArg as SiteId];
+
+  for (const siteId of targets) {
+    if (!SITES[siteId]) {
+      console.error(`Unknown site: ${siteId}. Choose: all, ${Object.keys(SITES).join(", ")}`);
+      process.exit(1);
+    }
+    const out = await scrapeSite(siteId, { limit, perCat });
+    const file = path.join(dir, `scraped-blanks-${siteId}${limit ? `-pilot${limit}` : ""}.json`);
+    await fs.writeFile(file, JSON.stringify(out, null, 2));
+    console.log(`✓ wrote ${out.length} products → ${file}\n`);
+  }
 }
 
 main().catch((err) => {

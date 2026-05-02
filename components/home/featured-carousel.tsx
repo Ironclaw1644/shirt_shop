@@ -7,12 +7,15 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Badge } from "@/components/ui/badge";
-import { sampleProducts } from "@/lib/catalog/sample-products";
+// Use seedProducts (the curated 80) instead of sampleProducts so the imported
+// blanks (~7600 SKUs, 13MB) don't bloat the client bundle. Imported blanks
+// don't carry badges anyway, so they'd never appear in this carousel.
+import { seedProducts } from "@/lib/catalog/sample-products";
 import { formatMoneyCents } from "@/lib/utils/money";
 
 export function FeaturedCarousel() {
   const scrollerRef = React.useRef<HTMLDivElement | null>(null);
-  const featured = sampleProducts
+  const featured = seedProducts
     .filter((p) => p.badges?.length)
     .slice(0, 8);
 

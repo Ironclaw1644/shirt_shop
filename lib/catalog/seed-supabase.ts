@@ -66,6 +66,23 @@ export async function seedSupabase() {
     }
   }
 
+  // ── pre-fetch every subcategory id once so the products loop doesn't fire
+  //    a per-product Supabase query (saves ~7600 round-trips at scale) ─────
+  const subIdBySlug = new Map<string, string>();
+  for (let from = 0; ; from += 1000) {
+    const { data: subs, error: subsErr } = await supabase
+      .from("categories")
+      .select("id, slug")
+      .not("parent_id", "is", null)
+      .range(from, from + 999);
+    if (subsErr) throw subsErr;
+    if (!subs || subs.length === 0) break;
+    for (const r of subs as { id: string; slug: string }[]) {
+      subIdBySlug.set(r.slug, r.id);
+    }
+    if (subs.length < 1000) break;
+  }
+
   // ── products + price_tiers ──────────────────────────────────────────────
   let productCount = 0;
   for (const p of sampleProducts) {
@@ -73,15 +90,9 @@ export async function seedSupabase() {
     if (!categoryId) {
       throw new Error(`Unknown categorySlug "${p.categorySlug}" on "${p.slug}"`);
     }
-    let subcategoryId: string | null = null;
-    if (p.subcategorySlug) {
-      const sub = await supabase
-        .from("categories")
-        .select("id")
-        .eq("slug", `${p.categorySlug}--${p.subcategorySlug}`)
-        .maybeSingle();
-      if (sub.data) subcategoryId = sub.data.id;
-    }
+    const subcategoryId = p.subcategorySlug
+      ? subIdBySlug.get(`${p.categorySlug}--${p.subcategorySlug}`) ?? null
+      : null;
     const { data: prod, error } = await supabase
       .from("products")
       .upsert(
@@ -140,38 +151,55 @@ export async function seedSupabase() {
   // gets purged. Runs every seed so the DB stays in lockstep with the code.
   // FK safety: postgres aborts the DELETE atomically if order_items references
   // any orphan; we surface that as a clear error so the operator can resolve.
-  const liveSlugs = sampleProducts.map((p) => p.slug);
-  const inList = `(${liveSlugs.map((s) => `"${s}"`).join(",")})`;
-  const { data: orphans, error: orphErr } = await supabase
-    .from("products")
-    .select("id, slug")
-    .not("slug", "in", inList);
-  if (orphErr) throw orphErr;
-  const orphanIds = (orphans ?? []).map((r) => r.id);
+  //
+  // For 7000+ live slugs we can't put the whole list in a NOT IN URL filter
+  // (Cloudflare rejects with 414 Request-URI Too Large). Instead, pull every
+  // DB slug in pages, compute the set difference client-side, then DELETE by
+  // id in batches.
+  const liveSlugSet = new Set(sampleProducts.map((p) => p.slug));
+  const allDbRows: { id: string; slug: string }[] = [];
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data: page, error } = await supabase
+      .from("products")
+      .select("id, slug")
+      .range(from, from + PAGE - 1);
+    if (error) throw error;
+    if (!page || page.length === 0) break;
+    allDbRows.push(...(page as { id: string; slug: string }[]));
+    if (page.length < PAGE) break;
+  }
+  const orphans = allDbRows.filter((r) => !liveSlugSet.has(r.slug));
+  const orphanIds = orphans.map((r) => r.id);
 
   let deletedCount = 0;
   if (orphanIds.length > 0) {
-    // Clear price_tiers for orphans first so the products DELETE doesn't trip
-    // on the FK from price_tiers.product_id.
-    const { error: tErr } = await supabase
-      .from("price_tiers")
-      .delete()
-      .in("product_id", orphanIds);
-    if (tErr) throw tErr;
+    // Batch the DELETE to keep URL filter sizes small (Cloudflare caps at
+    // ~16KB; UUIDs are 36 chars so 200 ids per batch is well under).
+    const BATCH = 200;
+    for (let i = 0; i < orphanIds.length; i += BATCH) {
+      const chunk = orphanIds.slice(i, i + BATCH);
+      // Clear price_tiers for this chunk first so the FK doesn't block.
+      const { error: tErr } = await supabase
+        .from("price_tiers")
+        .delete()
+        .in("product_id", chunk);
+      if (tErr) throw tErr;
 
-    const { error: delErr } = await supabase
-      .from("products")
-      .delete()
-      .in("id", orphanIds);
-    if (delErr) {
-      if (delErr.code === "23503") {
-        throw new Error(
-          `Hard-delete blocked by FK constraint — likely order_items references one of ${orphanIds.length} orphan products. Resolve order data before retrying. (${delErr.message})`,
-        );
+      const { error: delErr } = await supabase
+        .from("products")
+        .delete()
+        .in("id", chunk);
+      if (delErr) {
+        if (delErr.code === "23503") {
+          throw new Error(
+            `Hard-delete blocked by FK constraint — likely order_items references one of the ${chunk.length} orphan products in this batch. Resolve order data before retrying. (${delErr.message})`,
+          );
+        }
+        throw delErr;
       }
-      throw delErr;
+      deletedCount += chunk.length;
     }
-    deletedCount = orphanIds.length;
   }
 
   // ── hard-delete orphan subcategories ──────────────────────────────────

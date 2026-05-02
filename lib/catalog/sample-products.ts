@@ -2532,6 +2532,20 @@ const seedProducts: SampleProduct[] = [
 
 import { importedBlanks } from "./imported-blanks";
 
+/**
+ * Re-export seedProducts so client components that only need the original
+ * curated catalog (e.g. FeaturedCarousel, which filters by badges) can import
+ * just this small array without pulling 13MB of imported blanks into the
+ * client bundle.
+ */
+export { seedProducts };
+
+/**
+ * Full catalog: 80 curated seed products + thousands of imported supplier
+ * blanks. Server-only — do NOT import this from client components.
+ * Client components should use `seedProducts` or accept catalog data via props
+ * computed in a server wrapper.
+ */
 export const sampleProducts: SampleProduct[] = [...seedProducts, ...importedBlanks];
 
 export function productBySlug(slug: string): SampleProduct | undefined {

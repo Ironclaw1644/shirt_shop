@@ -36,31 +36,47 @@ function escapeQuotes(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 }
 
+function cleanTitle(raw: string): string {
+  return raw
+    // Variant-B parse artifact: corporateawards titles came in as "Description:Foo"
+    .replace(/^Description\s*:?\s*/i, "")
+    // HTML entities that may have slipped through
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    // Collapse whitespace
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function buildEntry(p: ScrapedProduct): string {
+  const title = cleanTitle(p.title);
   // Brief shopper-facing copy. Quote-priced products don't need the rich
   // 4-paragraph description that custom-printing items have.
-  const shortDescription = `${p.title} — supplier blank, quote on request. Decorate with print, embroidery, engraving, or sublimation depending on the substrate.`;
+  const shortDescription = `${title} — supplier blank, quote on request. Decorate with print, embroidery, engraving, or sublimation depending on the substrate.`;
   const description =
-    `**Supplier blank** — ${p.title} (Part #${p.supplierPartNumber}). Stocked from our wholesale partner network.\n\n` +
+    `**Supplier blank** — ${title} (Part #${p.supplierPartNumber}). Stocked from our wholesale partner network.\n\n` +
     `**Quote-priced** — Pricing for blanks varies by quantity, decoration method, and lead time. Click "Request a quote" and we'll respond within one business day with tier pricing and shipping.\n\n` +
     `**Decoration options** — Add screen print, embroidery, DTF, sublimation, laser engraving, or UV print depending on the substrate. We'll match the right method to your art.\n\n` +
     `**Lead time** — Most decorated blanks ship in 1-7 business days from approval. Larger orders quoted on request.`;
 
   return `  {
     slug: "${escapeQuotes(p.slug)}",
-    categorySlug: "${escapeQuotes(p.targetCategory)}" as const,
+    categorySlug: "${escapeQuotes(p.targetCategory)}",
     subcategorySlug: "${escapeQuotes(p.targetSubcategory)}",
-    title: "${escapeQuotes(p.title)}",
+    title: "${escapeQuotes(title)}",
     shortDescription: "${escapeQuotes(shortDescription)}",
     description: ${JSON.stringify(description)},
     basePriceCents: null,
-    priceStatus: "quote" as const,
+    priceStatus: "quote",
     minQty: 1,
     leadTimeDays: 7,
     decorationMethods: [],
     brand: "Premier",
     heroPromptKey: "${escapeQuotes(p.slug)}",
-    imageSource: "supplier-cdn" as const,
+    imageSource: "supplier-cdn",
     imageUrl: "${escapeQuotes(p.imageUrl)}",
     originalImageUrl: "${escapeQuotes(p.imageUrl)}",
     supplierUrl: "${escapeQuotes(p.supplierUrl)}",
