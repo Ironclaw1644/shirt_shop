@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "generativelanguage.googleapis.com" },
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "d2tl9ctlpnidkn.cloudfront.net" },
+      { protocol: "https", hostname: "cdnp.sanmar.com" },
     ],
     formats: ["image/avif", "image/webp"],
   },

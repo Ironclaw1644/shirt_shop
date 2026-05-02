@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DesignerClient } from "@/components/designer/designer-client";
+import { productBySlug } from "@/lib/catalog/sample-products";
 
 export const metadata: Metadata = {
   title: "Designer",
@@ -19,5 +20,6 @@ export default async function DesignerPage({
   searchParams: Promise<Search>;
 }) {
   const sp = await searchParams;
-  return <DesignerClient initial={sp} />;
+  const product = sp.product ? productBySlug(sp.product) : undefined;
+  return <DesignerClient initial={sp} product={product} />;
 }

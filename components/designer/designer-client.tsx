@@ -8,7 +8,6 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { productBySlug } from "@/lib/catalog/sample-products";
 import type { SampleProduct } from "@/lib/catalog/sample-products";
 import { useCart } from "@/lib/store/cart";
 import { DesignerToolbar } from "./designer-toolbar";
@@ -75,18 +74,18 @@ function unitPriceFor(product: SampleProduct, qty: number): number {
 
 export function DesignerClient({
   initial,
+  product,
 }: {
   initial: { product?: string; method?: string; qty?: string };
+  product: SampleProduct | undefined;
 }) {
-  const product = initial.product ? productBySlug(initial.product) : undefined;
-
   if (product?.mockup2D) {
     return <DesignerClient2DMockup product={product} initial={initial} />;
   }
   if (product?.model3D) {
     return <DesignerClient3D product={product} initial={initial} />;
   }
-  return <DesignerClient2D initial={initial} />;
+  return <DesignerClient2D initial={initial} product={product} />;
 }
 
 // ─── 2D photoreal mockup variant ───────────────────────────────────────────
@@ -515,11 +514,12 @@ function DesignerClient3D({
 
 function DesignerClient2D({
   initial,
+  product,
 }: {
   initial: { product?: string; method?: string; qty?: string };
+  product: SampleProduct | undefined;
 }) {
   const router = useRouter();
-  const product = initial.product ? productBySlug(initial.product) : undefined;
   const addCartItem = useCart((s) => s.add);
 
   const [settings, setSettings] = React.useState<DesignerSettings>({

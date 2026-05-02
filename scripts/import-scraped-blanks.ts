@@ -17,6 +17,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
+/**
+ * Normalized shape consumed by buildEntry. Both premier-style and
+ * companycasuals-style scrape outputs are mapped into this before emission.
+ */
 type ScrapedProduct = {
   slug: string;
   title: string;
@@ -25,9 +29,66 @@ type ScrapedProduct = {
   supplierUrl: string;
   targetCategory: string;
   targetSubcategory: string;
-  rawCategoryDesc: string;
-  sourceSite: string;
+  /** Optional richer fields available from JSON-API supplier (e.g. companycasuals). */
+  description?: string;
+  brand?: string;
 };
+
+/** Premier scraper output. */
+type PremierRaw = {
+  slug: string;
+  title: string;
+  supplierPartNumber: string;
+  imageUrl: string;
+  supplierUrl: string;
+  targetCategory: string;
+  targetSubcategory: string;
+  rawCategoryDesc?: string;
+  sourceSite?: string;
+};
+
+/** Companycasuals scraper output (lib/scripts/scrape-companycasuals.ts). */
+type CompanyCasualsRaw = {
+  slug: string;
+  supplierCode: string;
+  styleNumber: string | null;
+  title: string;
+  brand: string | null;
+  description: string;
+  imageUrl: string | null;
+  supplierUrl: string;
+  ourCategory: string;
+  ourSubcategory: string;
+  sourceCategoryKey: string;
+};
+
+function normalize(raw: PremierRaw | CompanyCasualsRaw): ScrapedProduct | null {
+  // CompanyCasuals: discriminate on presence of `ourCategory`.
+  if ("ourCategory" in raw) {
+    if (!raw.imageUrl) return null; // skip products with no image
+    return {
+      slug: raw.slug,
+      title: raw.title,
+      supplierPartNumber: raw.supplierCode,
+      imageUrl: raw.imageUrl,
+      supplierUrl: raw.supplierUrl,
+      targetCategory: raw.ourCategory,
+      targetSubcategory: raw.ourSubcategory,
+      description: raw.description,
+      brand: raw.brand ?? undefined,
+    };
+  }
+  // Premier
+  return {
+    slug: raw.slug,
+    title: raw.title,
+    supplierPartNumber: raw.supplierPartNumber,
+    imageUrl: raw.imageUrl,
+    supplierUrl: raw.supplierUrl,
+    targetCategory: raw.targetCategory,
+    targetSubcategory: raw.targetSubcategory,
+  };
+}
 
 const TMP = path.join(process.cwd(), "tmp");
 const OUT = path.join(process.cwd(), "lib", "catalog", "imported-blanks.ts");
@@ -53,14 +114,25 @@ function cleanTitle(raw: string): string {
 
 function buildEntry(p: ScrapedProduct): string {
   const title = cleanTitle(p.title);
-  // Brief shopper-facing copy. Quote-priced products don't need the rich
-  // 4-paragraph description that custom-printing items have.
-  const shortDescription = `${title} — supplier blank, quote on request. Decorate with print, embroidery, engraving, or sublimation depending on the substrate.`;
-  const description =
-    `**Supplier blank** — ${title} (Part #${p.supplierPartNumber}). Stocked from our wholesale partner network.\n\n` +
-    `**Quote-priced** — Pricing for blanks varies by quantity, decoration method, and lead time. Click "Request a quote" and we'll respond within one business day with tier pricing and shipping.\n\n` +
-    `**Decoration options** — Add screen print, embroidery, DTF, sublimation, laser engraving, or UV print depending on the substrate. We'll match the right method to your art.\n\n` +
-    `**Lead time** — Most decorated blanks ship in 1-7 business days from approval. Larger orders quoted on request.`;
+  const supplierDesc = p.description ? cleanTitle(p.description).slice(0, 600) : null;
+  // Brief shopper-facing copy. If the supplier provided a description, use the
+  // first ~150 chars; otherwise fall back to the title-only blurb.
+  const shortDescription = supplierDesc
+    ? supplierDesc.length > 200
+      ? supplierDesc.slice(0, 199).replace(/\s+\S*$/, "") + "…"
+      : supplierDesc
+    : `${title} — supplier blank, quote on request. Decorate with print, embroidery, engraving, or sublimation depending on the substrate.`;
+  const description = supplierDesc
+    ? `**Supplier blank** — ${title} (Part #${p.supplierPartNumber}).\n\n` +
+      `${supplierDesc}\n\n` +
+      `**Quote-priced** — Pricing for blanks varies by quantity, decoration method, and lead time. Click "Request a quote" and we'll respond within one business day with tier pricing and shipping.\n\n` +
+      `**Decoration options** — Add screen print, embroidery, DTF, sublimation, laser engraving, or UV print depending on the substrate. We'll match the right method to your art.`
+    : `**Supplier blank** — ${title} (Part #${p.supplierPartNumber}). Stocked from our wholesale partner network.\n\n` +
+      `**Quote-priced** — Pricing for blanks varies by quantity, decoration method, and lead time. Click "Request a quote" and we'll respond within one business day with tier pricing and shipping.\n\n` +
+      `**Decoration options** — Add screen print, embroidery, DTF, sublimation, laser engraving, or UV print depending on the substrate. We'll match the right method to your art.\n\n` +
+      `**Lead time** — Most decorated blanks ship in 1-7 business days from approval. Larger orders quoted on request.`;
+
+  const brand = p.brand ? p.brand : "Premier";
 
   return `  {
     slug: "${escapeQuotes(p.slug)}",
@@ -74,7 +146,7 @@ function buildEntry(p: ScrapedProduct): string {
     minQty: 1,
     leadTimeDays: 7,
     decorationMethods: [],
-    brand: "Premier",
+    brand: "${escapeQuotes(brand)}",
     heroPromptKey: "${escapeQuotes(p.slug)}",
     imageSource: "supplier-cdn",
     imageUrl: "${escapeQuotes(p.imageUrl)}",
@@ -94,12 +166,23 @@ async function main() {
   }
   console.log(`Reading ${files.length} scrape file(s):`);
   const all: ScrapedProduct[] = [];
+  let droppedNoImage = 0;
   for (const f of files) {
     const raw = await fs.readFile(path.join(TMP, f), "utf8");
-    const items = JSON.parse(raw) as ScrapedProduct[];
-    console.log(`  ${f}: ${items.length} products`);
-    all.push(...items);
+    const items = JSON.parse(raw) as Array<PremierRaw | CompanyCasualsRaw>;
+    let kept = 0;
+    for (const item of items) {
+      const norm = normalize(item);
+      if (norm) {
+        all.push(norm);
+        kept += 1;
+      } else {
+        droppedNoImage += 1;
+      }
+    }
+    console.log(`  ${f}: ${items.length} products (kept ${kept})`);
   }
+  if (droppedNoImage > 0) console.log(`  Dropped ${droppedNoImage} products with no image`);
   // De-duplicate by slug.
   const seen = new Set<string>();
   const unique = all.filter((p) => {

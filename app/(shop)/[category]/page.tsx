@@ -3,8 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { categories, getCategory } from "@/lib/catalog/categories";
-import { dbToSampleProduct, PRODUCT_SELECT, type DbProductRow } from "@/lib/catalog/from-db";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { productsInCategory } from "@/lib/catalog/sample-products";
 import { cityLandings, getCityLanding } from "@/lib/seo/cities";
 import { CategoryHero } from "@/components/shop/category-hero";
 import { QuoteCallout } from "@/components/shop/quote-callout";
@@ -73,25 +72,7 @@ export default async function CategoryOrCityPage({
   const cat = getCategory(category);
   if (!cat) return notFound();
 
-  // Pull every active product in this category once, then bucket into
-  // populated subcategories (matches what shows in the nav dropdown).
-  const supa = await getSupabaseServerClient();
-  const { data: catRow } = await supa
-    .from("categories")
-    .select("id")
-    .eq("slug", cat.slug)
-    .maybeSingle();
-
-  let products: ReturnType<typeof dbToSampleProduct>[] = [];
-  if (catRow?.id) {
-    const { data: rows } = await supa
-      .from("products")
-      .select(PRODUCT_SELECT)
-      .eq("category_id", catRow.id)
-      .eq("status", "active")
-      .order("title", { ascending: true });
-    products = (rows ?? []).map((r) => dbToSampleProduct(r as unknown as DbProductRow));
-  }
+  const products = productsInCategory(cat.slug);
 
   const productCountBySub = new Map<string, number>();
   for (const p of products) {

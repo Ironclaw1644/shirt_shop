@@ -21,10 +21,14 @@
       "Bash(vercel inspect *)",
       "Bash(vercel domains ls)",
       "Bash(vercel env ls *)",
+      "Bash(vercel project ls)",
+      "Bash(vercel whoami)",
+      "Bash(curl -sIL *)",
       "Bash(gh pr *)",
       "Bash(gh issue *)",
       "Bash(gh run *)",
-      "Bash(gh repo view *)"
+      "Bash(gh repo view *)",
+      "mcp__ccd_session__mark_chapter"
     ]
   }
 }
