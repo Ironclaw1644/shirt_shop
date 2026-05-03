@@ -4,7 +4,7 @@ import { getCategory } from "@/lib/catalog/categories";
 import {
   productBySlug,
   productsInCategory,
-  sampleProducts,
+  seedProducts,
 } from "@/lib/catalog/sample-products";
 import { Breadcrumbs } from "@/components/shop/breadcrumbs";
 import { PDPClient } from "@/components/shop/pdp-client";
@@ -14,8 +14,15 @@ import { siteConfig } from "@/lib/site-config";
 
 type Params = { slug: string };
 
+// Prerender only the ~80 seed products (legacy AI-image catalog) at build.
+// The 10K+ supplier-imported products render on-demand and cache via ISR —
+// statically prerendering all of them blew out the build container disk
+// (ENOSPC at ~5K pages).
+export const dynamicParams = true;
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
-  return sampleProducts.map((p) => ({ slug: p.slug }));
+  return seedProducts.map((p) => ({ slug: p.slug }));
 }
 
 async function fetchProduct(slug: string) {
