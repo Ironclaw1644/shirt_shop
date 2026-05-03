@@ -151,9 +151,44 @@ function upgradeImageUrl(url: string): string {
   return url.replace(m[0], `/upload/${cleaned.join(",")}/${m[2]}`);
 }
 
+/**
+ * Sport detection for resin-trophies products. Order matters — earlier patterns
+ * win, so put more-specific terms before more-generic ones (e.g. "softball"
+ * must be checked before "ball" — though we don't include "ball" alone).
+ * The output slug must match a subsubcategory slug under
+ * sports-academic-awards/resin-trophies in lib/catalog/categories.ts.
+ */
+const SPORT_PATTERNS: Array<[string, RegExp]> = [
+  // Baseball before softball — many trophies are dual-use "Baseball/Softball",
+  // and the same resin figure ships for both. Default to baseball; softball-pure
+  // items (no "baseball" in title) still bucket correctly.
+  ["baseball", /\bbaseball\b/i],
+  ["softball", /\bsoftball\b/i],
+  ["football", /\bfootball\b/i],
+  ["basketball", /\bbasketball\b/i],
+  ["soccer", /\bsoccer\b/i],
+  ["volleyball", /\bvolleyball\b/i],
+  ["hockey", /\bhockey\b/i],
+  ["golf", /\bgolf\b/i],
+  ["track", /\b(track|cross\s*country|running|runner)\b/i],
+  ["cheer", /\b(cheer|dance|dancer|pom)\b/i],
+];
+
+function detectSport(title: string): string {
+  for (const [slug, re] of SPORT_PATTERNS) {
+    if (re.test(title)) return slug;
+  }
+  return "other";
+}
+
 function buildEntry(p: ScrapedProduct): string {
   const title = cleanTitle(p.title);
   const upgradedImageUrl = upgradeImageUrl(p.imageUrl);
+  const subsubcategorySlug =
+    p.targetCategory === "sports-academic-awards" &&
+    p.targetSubcategory === "resin-trophies"
+      ? detectSport(title)
+      : null;
   const supplierDesc = p.description ? cleanTitle(p.description).slice(0, 600) : null;
   // Brief shopper-facing copy. If the supplier provided a description, use the
   // first ~150 chars; otherwise fall back to the title-only blurb.
@@ -174,10 +209,14 @@ function buildEntry(p: ScrapedProduct): string {
 
   const brand = p.brand ? p.brand : "Premier";
 
+  const subsubLine = subsubcategorySlug
+    ? `\n    subsubcategorySlug: "${escapeQuotes(subsubcategorySlug)}",`
+    : "";
+
   return `  {
     slug: "${escapeQuotes(p.slug)}",
     categorySlug: "${escapeQuotes(p.targetCategory)}",
-    subcategorySlug: "${escapeQuotes(p.targetSubcategory)}",
+    subcategorySlug: "${escapeQuotes(p.targetSubcategory)}",${subsubLine}
     title: "${escapeQuotes(title)}",
     shortDescription: "${escapeQuotes(shortDescription)}",
     description: ${JSON.stringify(description)},
@@ -192,7 +231,7 @@ function buildEntry(p: ScrapedProduct): string {
     imageUrl: "${escapeQuotes(upgradedImageUrl)}",
     originalImageUrl: "${escapeQuotes(upgradedImageUrl)}",
     supplierUrl: "${escapeQuotes(p.supplierUrl)}",
-  },`;
+  } as SampleProduct,`;
 }
 
 async function main() {
@@ -244,6 +283,9 @@ async function main() {
  */
 import type { SampleProduct } from "./sample-products";
 
+// Each entry is cast individually with "as SampleProduct" inside buildEntry()
+// to prevent a TS2590 "union type too complex to represent" error: with 10K+
+// entries TS would otherwise infer a literal-type union over every field value.
 export const importedBlanks: SampleProduct[] = [
 ${unique.map(buildEntry).join("\n")}
 ];

@@ -79,6 +79,8 @@ export type SampleProduct = {
   slug: string;
   categorySlug: Category["slug"];
   subcategorySlug?: string;
+  /** Optional third-level grouping (e.g. resin trophies split by sport). */
+  subsubcategorySlug?: string;
   title: string;
   shortDescription: string;
   description: string;
@@ -2562,5 +2564,18 @@ export function productsInSubcategory(
 ): SampleProduct[] {
   return sampleProducts.filter(
     (p) => p.categorySlug === categorySlug && p.subcategorySlug === subcategorySlug,
+  );
+}
+
+export function productsInSubsubcategory(
+  categorySlug: string,
+  subcategorySlug: string,
+  subsubcategorySlug: string,
+): SampleProduct[] {
+  return sampleProducts.filter(
+    (p) =>
+      p.categorySlug === categorySlug &&
+      p.subcategorySlug === subcategorySlug &&
+      p.subsubcategorySlug === subsubcategorySlug,
   );
 }

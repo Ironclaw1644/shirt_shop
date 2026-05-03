@@ -6,16 +6,23 @@ import {
   getCategory,
   getSubcategory,
 } from "@/lib/catalog/categories";
-import { productsInSubcategory } from "@/lib/catalog/sample-products";
+import {
+  productsInSubcategory,
+  productsInSubsubcategory,
+} from "@/lib/catalog/sample-products";
 import { Breadcrumbs } from "@/components/shop/breadcrumbs";
 import { SubcategoryProducts } from "@/components/shop/subcategory-products";
 import { QuoteCallout } from "@/components/shop/quote-callout";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { Icon } from "@/components/ui/icon";
 import { siteConfig } from "@/lib/site-config";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
 type Params = { category: string; subcategory: string };
+type SearchParams = { page?: string };
+
+const PAGE_SIZE = 24;
 
 export async function generateStaticParams() {
   return categories.flatMap((c) =>
@@ -42,15 +49,33 @@ export async function generateMetadata({
 
 export default async function SubcategoryPage({
   params,
+  searchParams,
 }: {
   params: Promise<Params>;
+  searchParams: Promise<SearchParams>;
 }) {
   const { category, subcategory } = await params;
+  const { page: pageParam } = await searchParams;
   const cat = getCategory(category);
   const sub = getSubcategory(category, subcategory);
   if (!cat || !sub) return notFound();
 
-  const products = productsInSubcategory(cat.slug, sub.slug);
+  // If this subcategory has third-level groupings (e.g. resin trophies split
+  // by sport), render a grid of those tiles instead of a flat product list.
+  // Filter to populated subsubs only.
+  const populatedSubsubs = (sub.subcategories ?? [])
+    .map((ss) => ({
+      ss,
+      count: productsInSubsubcategory(cat.slug, sub.slug, ss.slug).length,
+    }))
+    .filter((x) => x.count > 0);
+
+  const allProducts = productsInSubcategory(cat.slug, sub.slug);
+  const totalPages = Math.max(1, Math.ceil(allProducts.length / PAGE_SIZE));
+  const requestedPage = Math.max(1, Number(pageParam) || 1);
+  const currentPage = Math.min(requestedPage, totalPages);
+  const offset = (currentPage - 1) * PAGE_SIZE;
+  const products = allProducts.slice(offset, offset + PAGE_SIZE);
   return (
     <>
       <JsonLd
@@ -83,7 +108,40 @@ export default async function SubcategoryPage({
       </section>
 
       <section className="container pb-20">
-        {products.length === 0 ? (
+        {populatedSubsubs.length > 0 ? (
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {populatedSubsubs.map(({ ss, count }) => (
+              <Link
+                key={ss.slug}
+                href={`/${cat.slug}/${sub.slug}/${ss.slug}`}
+                className="group flex h-full flex-col rounded-lg border border-ink/10 bg-card p-6 shadow-press transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-press-lg"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-display text-xl font-bold text-ink group-hover:text-primary leading-tight">
+                    {ss.name}
+                  </h3>
+                  <Icon
+                    icon="arrow-right"
+                    className="mt-1 text-ink-mute group-hover:text-primary"
+                  />
+                </div>
+                {ss.blurb && (
+                  <p className="mt-2 text-sm text-ink-soft leading-relaxed line-clamp-3">
+                    {ss.blurb}
+                  </p>
+                )}
+                <div className="mt-4 flex items-center justify-between text-xs font-mono text-ink-mute">
+                  <span>
+                    {count} {count === 1 ? "product" : "products"}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-ink-soft group-hover:text-primary">
+                    Browse
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : allProducts.length === 0 ? (
           <div className="rounded-lg border border-dashed border-ink/20 bg-paper-warm p-12 text-center">
             <p className="font-display text-lg font-semibold">
               Catalog updating — check back or request a quote.
@@ -107,7 +165,14 @@ export default async function SubcategoryPage({
             </div>
           </div>
         ) : (
-          <SubcategoryProducts products={products} subcategoryName={sub.name} />
+          <SubcategoryProducts
+            products={products}
+            subcategoryName={sub.name}
+            totalCount={allProducts.length}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            basePath={`/${cat.slug}/${sub.slug}`}
+          />
         )}
       </section>
 

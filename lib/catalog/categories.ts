@@ -3,11 +3,21 @@
  * and copy used across storefront, navigation, and SEO.
  */
 
+export type Subsubcategory = {
+  slug: string;
+  name: string;
+  blurb?: string;
+};
+
 export type Subcategory = {
   slug: string;
   name: string;
   /** Short copy for menus + grid tiles (~90 chars) */
   blurb?: string;
+  /** Optional third-level grouping (e.g. resin trophies split by sport).
+   *  When present, the subcategory page renders a tile grid of these instead
+   *  of the flat product list. */
+  subcategories?: Subsubcategory[];
 };
 
 export type Category = {
@@ -163,12 +173,8 @@ export const categories: Category[] = [
       { slug: "cutting-boards", name: "Cutting Boards" },
       { slug: "frames", name: "Frames" },
       { slug: "ornaments", name: "Ornaments" },
-      { slug: "acrylic-pieces", name: "Acrylic Pieces" },
       { slug: "glass-pieces", name: "Glass Pieces" },
-      { slug: "journals-portfolios", name: "Journals & Portfolios" },
       { slug: "money-clips", name: "Money Clips" },
-      { slug: "pet-tags", name: "Pet ID Tags" },
-      { slug: "jewelry-stamping", name: "Jewelry Box Engraving & Stamping" },
     ],
   },
   {
@@ -183,10 +189,24 @@ export const categories: Category[] = [
     accentColor: "crimson",
     decorationMethods: ["laser-engraving", "uv-print", "sublimation"],
     subcategories: [
-      { slug: "resin-trophies", name: "Resin Trophies" },
-      { slug: "medals", name: "Medals" },
+      {
+        slug: "resin-trophies",
+        name: "Resin Trophies",
+        subcategories: [
+          { slug: "football", name: "Football" },
+          { slug: "soccer", name: "Soccer" },
+          { slug: "basketball", name: "Basketball" },
+          { slug: "baseball", name: "Baseball" },
+          { slug: "softball", name: "Softball" },
+          { slug: "golf", name: "Golf" },
+          { slug: "track", name: "Track & Field" },
+          { slug: "volleyball", name: "Volleyball" },
+          { slug: "cheer", name: "Cheer & Dance" },
+          { slug: "hockey", name: "Hockey" },
+          { slug: "other", name: "Other Sports" },
+        ],
+      },
       { slug: "cup-trophies", name: "Cup Trophies" },
-      { slug: "crystal-sport-awards", name: "Crystal Sport Awards" },
       { slug: "ribbons", name: "Award Ribbons" },
       { slug: "championship-rings", name: "Championship Rings" },
       { slug: "chenille-pins", name: "Chenille Pins" },
@@ -203,4 +223,14 @@ export function getCategory(slug: string) {
 
 export function getSubcategory(catSlug: string, subSlug: string) {
   return getCategory(catSlug)?.subcategories.find((s) => s.slug === subSlug);
+}
+
+export function getSubsubcategory(
+  catSlug: string,
+  subSlug: string,
+  subsubSlug: string,
+) {
+  return getSubcategory(catSlug, subSlug)?.subcategories?.find(
+    (s) => s.slug === subsubSlug,
+  );
 }
