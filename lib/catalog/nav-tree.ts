@@ -2,7 +2,12 @@ import { categories } from "./categories";
 import { sampleProducts } from "./sample-products";
 
 export type NavProduct = { slug: string; title: string };
-export type NavSubsubcategory = { slug: string; name: string; count: number };
+export type NavSubsubcategory = {
+  slug: string;
+  name: string;
+  count: number;
+  products: NavProduct[];
+};
 export type NavSubcategory = {
   slug: string;
   name: string;
@@ -39,12 +44,19 @@ export function buildNavTree(): NavCategory[] {
         );
         const subsubs = s.subcategories
           ? s.subcategories
-              .map((ss) => ({
-                slug: ss.slug,
-                name: ss.name,
-                count: products.filter((p) => p.subsubcategorySlug === ss.slug)
-                  .length,
-              }))
+              .map((ss) => {
+                const ssProducts = products.filter(
+                  (p) => p.subsubcategorySlug === ss.slug,
+                );
+                return {
+                  slug: ss.slug,
+                  name: ss.name,
+                  count: ssProducts.length,
+                  products: ssProducts
+                    .map((p) => ({ slug: p.slug, title: p.title }))
+                    .sort((a, b) => a.title.localeCompare(b.title)),
+                };
+              })
               .filter((ss) => ss.count > 0)
           : undefined;
         return {

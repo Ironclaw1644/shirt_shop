@@ -15,8 +15,10 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
   const [scrolled, setScrolled] = React.useState(false);
   const [openCat, setOpenCat] = React.useState<string | null>(null);
   const [openSub, setOpenSub] = React.useState<string | null>(null);
+  const [openSubsub, setOpenSubsub] = React.useState<string | null>(null);
   const [mobileOpenCat, setMobileOpenCat] = React.useState<string | null>(null);
   const [mobileOpenSub, setMobileOpenSub] = React.useState<string | null>(null);
+  const [mobileOpenSubsub, setMobileOpenSubsub] = React.useState<string | null>(null);
   const navRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
@@ -32,12 +34,14 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpenCat(null);
         setOpenSub(null);
+        setOpenSubsub(null);
       }
     };
     const onEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpenCat(null);
         setOpenSub(null);
+        setOpenSubsub(null);
       }
     };
     document.addEventListener("mousedown", onClick);
@@ -51,9 +55,11 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
   const closeAll = () => {
     setOpenCat(null);
     setOpenSub(null);
+    setOpenSubsub(null);
     setMenuOpen(false);
     setMobileOpenCat(null);
     setMobileOpenSub(null);
+    setMobileOpenSubsub(null);
   };
 
   return (
@@ -101,6 +107,7 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
                     onClick={() => {
                       setOpenCat(isOpen ? null : c.slug);
                       setOpenSub(null);
+                      setOpenSubsub(null);
                     }}
                     className={cn(
                       "inline-flex items-center gap-1 px-3 py-2 rounded text-sm font-medium transition-colors",
@@ -126,6 +133,8 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
               category={navTree.find((c) => c.slug === openCat)!}
               openSub={openSub}
               setOpenSub={setOpenSub}
+              openSubsub={openSubsub}
+              setOpenSubsub={setOpenSubsub}
               onNavigate={closeAll}
             />
           )}
@@ -151,7 +160,7 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
               name="q"
               placeholder="What are you looking for?"
               autoComplete="off"
-              className="h-10 w-full rounded-full border border-ink/15 bg-white pl-10 pr-4 text-sm placeholder:text-ink-mute transition-colors hover:border-ink/30 focus-visible:outline-none focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary/30"
+              className="h-10 w-full rounded-full border border-ink/15 bg-white pl-10 pr-4 text-sm placeholder:text-ink-mute transition-colors focus-visible:outline-none focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary/30"
             />
           </div>
         </form>
@@ -284,18 +293,62 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
                             {subOpen && (
                               s.subcategories && s.subcategories.length > 0 ? (
                                 <ul className="ml-3 border-l border-ink/10 pl-3 py-1 grid gap-0.5">
-                                  {s.subcategories.map((ss) => (
-                                    <li key={ss.slug}>
-                                      <Link
-                                        href={`/${c.slug}/${s.slug}/${ss.slug}`}
-                                        onClick={closeAll}
-                                        className="flex items-center justify-between py-1.5 text-sm text-ink-mute hover:text-primary"
-                                      >
-                                        <span>{ss.name}</span>
-                                        <span className="text-xs text-ink-mute font-mono ml-2">{ss.count}</span>
-                                      </Link>
-                                    </li>
-                                  ))}
+                                  {s.subcategories.map((ss) => {
+                                    const ssKey = `${s.slug}/${ss.slug}`;
+                                    const ssOpen = mobileOpenSubsub === ssKey;
+                                    return (
+                                      <li key={ss.slug}>
+                                        <div className="flex items-stretch">
+                                          <Link
+                                            href={`/${c.slug}/${s.slug}/${ss.slug}`}
+                                            onClick={closeAll}
+                                            className="flex-1 flex items-center py-1.5 text-sm text-ink-mute hover:text-primary"
+                                          >
+                                            <span>{ss.name}</span>
+                                            <span className="ml-2 text-xs text-ink-mute font-mono">({ss.count})</span>
+                                          </Link>
+                                          <button
+                                            type="button"
+                                            aria-label={ssOpen ? `Hide ${ss.name} products` : `Show ${ss.name} products`}
+                                            aria-expanded={ssOpen}
+                                            onClick={() => setMobileOpenSubsub(ssOpen ? null : ssKey)}
+                                            className="px-3 flex items-center text-ink-mute hover:text-primary"
+                                          >
+                                            <Icon
+                                              icon="chevron-down"
+                                              className={cn("text-xs transition-transform", ssOpen && "rotate-180")}
+                                            />
+                                          </button>
+                                        </div>
+                                        {ssOpen && (
+                                          <ul className="ml-3 border-l border-ink/10 pl-3 py-1 grid gap-0.5">
+                                            {ss.products.slice(0, 24).map((p) => (
+                                              <li key={p.slug}>
+                                                <Link
+                                                  href={`/product/${p.slug}`}
+                                                  onClick={closeAll}
+                                                  className="block py-1.5 text-sm text-ink-mute hover:text-primary truncate"
+                                                >
+                                                  {p.title}
+                                                </Link>
+                                              </li>
+                                            ))}
+                                            {ss.products.length > 24 && (
+                                              <li>
+                                                <Link
+                                                  href={`/${c.slug}/${s.slug}/${ss.slug}`}
+                                                  onClick={closeAll}
+                                                  className="block py-1.5 text-xs font-medium text-primary hover:underline"
+                                                >
+                                                  View all {ss.count} {ss.name} →
+                                                </Link>
+                                              </li>
+                                            )}
+                                          </ul>
+                                        )}
+                                      </li>
+                                    );
+                                  })}
                                 </ul>
                               ) : (
                                 <ul className="ml-3 border-l border-ink/10 pl-3 py-1 grid gap-0.5">
@@ -344,11 +397,15 @@ function DesktopDropdown({
   category,
   openSub,
   setOpenSub,
+  openSubsub,
+  setOpenSubsub,
   onNavigate,
 }: {
   category: NavCategory;
   openSub: string | null;
   setOpenSub: (slug: string | null) => void;
+  openSubsub: string | null;
+  setOpenSubsub: (slug: string | null) => void;
   onNavigate: () => void;
 }) {
   return (
@@ -400,19 +457,63 @@ function DesktopDropdown({
                 </div>
                 {isOpen && (
                   s.subcategories && s.subcategories.length > 0 ? (
-                    <ul className="ml-3 mt-1 mb-2 border-l border-ink/10 pl-3 grid grid-cols-2 gap-x-3 gap-y-0.5">
-                      {s.subcategories.map((ss) => (
-                        <li key={ss.slug}>
-                          <Link
-                            href={`/${category.slug}/${s.slug}/${ss.slug}`}
-                            onClick={onNavigate}
-                            className="flex items-center justify-between py-1 text-sm text-ink-soft hover:text-primary"
-                          >
-                            <span>{ss.name}</span>
-                            <span className="text-xs text-ink-mute font-mono ml-2">{ss.count}</span>
-                          </Link>
-                        </li>
-                      ))}
+                    <ul className="ml-3 mt-1 mb-2 border-l border-ink/10 pl-3 grid gap-0.5">
+                      {s.subcategories.map((ss) => {
+                        const ssKey = `${s.slug}/${ss.slug}`;
+                        const ssIsOpen = openSubsub === ssKey;
+                        return (
+                          <li key={ss.slug}>
+                            <div className="flex items-stretch rounded hover:bg-surface">
+                              <Link
+                                href={`/${category.slug}/${s.slug}/${ss.slug}`}
+                                onClick={onNavigate}
+                                className="flex-1 flex items-center justify-between px-2 py-1.5"
+                              >
+                                <span className="text-sm text-ink-soft">{ss.name}</span>
+                                <span className="text-xs text-ink-mute font-mono ml-2">{ss.count}</span>
+                              </Link>
+                              <button
+                                type="button"
+                                aria-label={ssIsOpen ? `Hide ${ss.name} products` : `Show ${ss.name} products`}
+                                aria-expanded={ssIsOpen}
+                                onClick={() => setOpenSubsub(ssIsOpen ? null : ssKey)}
+                                className="px-2 flex items-center text-ink-mute hover:text-primary"
+                              >
+                                <Icon
+                                  icon="chevron-down"
+                                  className={cn("text-xs transition-transform", ssIsOpen && "rotate-180")}
+                                />
+                              </button>
+                            </div>
+                            {ssIsOpen && (
+                              <ul className="ml-3 mt-0.5 mb-1 border-l border-ink/10 pl-3 grid grid-cols-2 gap-x-3 gap-y-0.5">
+                                {ss.products.slice(0, 24).map((p) => (
+                                  <li key={p.slug}>
+                                    <Link
+                                      href={`/product/${p.slug}`}
+                                      onClick={onNavigate}
+                                      className="block py-1 text-sm text-ink-soft hover:text-primary truncate"
+                                    >
+                                      {p.title}
+                                    </Link>
+                                  </li>
+                                ))}
+                                {ss.products.length > 24 && (
+                                  <li className="col-span-2 mt-1">
+                                    <Link
+                                      href={`/${category.slug}/${s.slug}/${ss.slug}`}
+                                      onClick={onNavigate}
+                                      className="block py-1 text-xs font-medium text-primary hover:underline"
+                                    >
+                                      View all {ss.count} {ss.name} →
+                                    </Link>
+                                  </li>
+                                )}
+                              </ul>
+                            )}
+                          </li>
+                        );
+                      })}
                     </ul>
                   ) : (
                     <ul className="ml-3 mt-1 mb-2 border-l border-ink/10 pl-3 grid grid-cols-2 gap-x-3 gap-y-0.5">
