@@ -112,8 +112,20 @@ function cleanTitle(raw: string): string {
     .trim();
 }
 
+/**
+ * Upgrade Cloudinary image URLs to a higher source resolution (w_800 → w_1600).
+ * Cloudinary's q_auto/f_auto handle bandwidth, so the larger source gives
+ * Next/Image enough pixels to slice retina-sharp variants without upscaling.
+ * Sanmar URLs are upgraded out-of-band by scripts/enrich-companycasuals-images.ts.
+ */
+function upgradeImageUrl(url: string): string {
+  if (!url.includes("res.cloudinary.com")) return url;
+  return url.replace(/(\/|,)w_\d+/, "$1w_1600");
+}
+
 function buildEntry(p: ScrapedProduct): string {
   const title = cleanTitle(p.title);
+  const upgradedImageUrl = upgradeImageUrl(p.imageUrl);
   const supplierDesc = p.description ? cleanTitle(p.description).slice(0, 600) : null;
   // Brief shopper-facing copy. If the supplier provided a description, use the
   // first ~150 chars; otherwise fall back to the title-only blurb.
@@ -149,8 +161,8 @@ function buildEntry(p: ScrapedProduct): string {
     brand: "${escapeQuotes(brand)}",
     heroPromptKey: "${escapeQuotes(p.slug)}",
     imageSource: "supplier-cdn",
-    imageUrl: "${escapeQuotes(p.imageUrl)}",
-    originalImageUrl: "${escapeQuotes(p.imageUrl)}",
+    imageUrl: "${escapeQuotes(upgradedImageUrl)}",
+    originalImageUrl: "${escapeQuotes(upgradedImageUrl)}",
     supplierUrl: "${escapeQuotes(p.supplierUrl)}",
   },`;
 }
