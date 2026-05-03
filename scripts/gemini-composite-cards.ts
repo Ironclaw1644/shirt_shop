@@ -159,8 +159,21 @@ async function resolveImage(p: SampleProduct): Promise<Buffer | null> {
   }
 }
 
-function buildPrompt(catName: string, items: { subName: string }[]): string {
+/** Per-category extra guidance appended to the base prompt. Used to enforce
+ *  category-specific layout rules (e.g. custom-printing items must lie flat,
+ *  not stand upright). */
+const CATEGORY_GUIDANCE: Record<string, string> = {
+  "custom-printing":
+    "FLAT-LAY ENFORCEMENT (critical for this category): EVERY item must lie FLAT on the cream paper backdrop as if photographed from directly above. NO standing items. NO wall-mounted items. NO upright orientation. Roll-up banner stands must be lying flat on their side with the banner partially unrolled across the surface. Business cards fanned out flat. Brochures and booklets lying flat (closed, half-open, or fully open spread). Stickers lying flat. Magnets lying flat. Posters rolled and lying flat OR unrolled flat. Yard signs lying flat with the stake disconnected to the side. All items respect gravity — they sit on the tabletop, nothing floats or stands vertical.",
+};
+
+function buildPrompt(
+  catSlug: string,
+  catName: string,
+  items: { subName: string }[],
+): string {
   const itemList = items.map((i, n) => `${n + 1}. ${i.subName}`).join("\n");
+  const extra = CATEGORY_GUIDANCE[catSlug];
   return [
     `Combine the ${items.length} attached reference photos into a SINGLE overhead 4:3 e-commerce category hero image for the "${catName}" category.`,
     ``,
@@ -181,6 +194,7 @@ function buildPrompt(catName: string, items: { subName: string }[]): string {
     `- Photoreal commercial product photography, magazine-quality but understated (no glamour staging, no models, no lifestyle scene).`,
     `- 4:3 aspect ratio, designed for an e-commerce category card.`,
     `- No text overlays. No invented logos. No real trademarks.`,
+    ...(extra ? [``, extra] : []),
   ].join("\n");
 }
 
@@ -223,7 +237,7 @@ async function buildCard(catSlug: string) {
     return;
   }
 
-  const prompt = buildPrompt(cat.name, usedItems);
+  const prompt = buildPrompt(cat.slug, cat.name, usedItems);
   console.log(`  → asking Gemini (${refs.length} refs, ~${prompt.length} char prompt)…`);
 
   let base64: string | null = null;
