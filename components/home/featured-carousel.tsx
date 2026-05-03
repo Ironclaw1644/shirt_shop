@@ -27,7 +27,7 @@ export function FeaturedCarousel() {
   };
 
   return (
-    <section className="py-20 lg:py-24 bg-paper">
+    <section className="py-20 lg:py-24 bg-paper overflow-x-hidden">
       <div className="container">
         <div className="flex items-end justify-between gap-6 mb-8">
           <div>
@@ -53,18 +53,32 @@ export function FeaturedCarousel() {
             </button>
           </div>
         </div>
+      </div>
 
-        <div
-          ref={scrollerRef}
-          className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none -mx-4 px-4"
-          style={{ scrollbarWidth: "none" }}
-        >
-          {featured.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/product/${p.slug}`}
-              className="group min-w-[260px] sm:min-w-[300px] max-w-[300px] shrink-0 snap-start rounded-lg border border-ink/10 bg-card overflow-hidden shadow-press hover:shadow-press-lg transition-shadow"
-            >
+      {/* Carousel scroller — sits OUTSIDE the .container so the peek pattern
+       * can scale to viewport width. On mobile the first/last card centers in
+       * the viewport (peek padding = (100vw - card_width)/2). On desktop the
+       * scroller's content is justified to start at the container edge via
+       * inline padding matching .container padding per breakpoint, and cards
+       * justify-center when they all fit. */}
+      <div
+        ref={scrollerRef}
+        className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none px-[max(1rem,calc((100vw-260px)/2))] sm:px-6 sm:justify-start lg:px-8 xl:px-12 2xl:justify-center"
+        style={{
+          scrollbarWidth: "none",
+          scrollPaddingInline: "1rem",
+          maskImage:
+            "linear-gradient(to right, transparent 0, black 1.5rem, black calc(100% - 1.5rem), transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0, black 1.5rem, black calc(100% - 1.5rem), transparent 100%)",
+        }}
+      >
+        {featured.map((p) => (
+          <Link
+            key={p.slug}
+            href={`/product/${p.slug}`}
+            className="group w-[260px] sm:w-[300px] shrink-0 snap-center sm:snap-start rounded-lg border border-ink/10 bg-card overflow-hidden shadow-press hover:shadow-press-lg transition-shadow"
+          >
               <div className="relative aspect-square bg-paper-warm overflow-hidden">
                 <Image
                   src={`/images/generated/${p.heroPromptKey.replace(":", "-")}.webp`}
@@ -93,10 +107,11 @@ export function FeaturedCarousel() {
                   <span className="text-xs font-mono text-ink-mute">MIN {p.minQty}</span>
                 </div>
               </div>
-            </Link>
-          ))}
-        </div>
+          </Link>
+        ))}
+      </div>
 
+      <div className="container">
         <div className="mt-10 flex justify-center">
           <Button asChild variant="outline" size="lg">
             <Link href="/custom-printing">
