@@ -164,7 +164,7 @@ async function resolveImage(p: SampleProduct): Promise<Buffer | null> {
  *  not stand upright). */
 const CATEGORY_GUIDANCE: Record<string, string> = {
   "custom-printing":
-    "FLAT-LAY ENFORCEMENT (critical for this category): EVERY item must lie FLAT on the cream paper backdrop as if photographed from directly above. NO standing items. NO wall-mounted items. NO upright orientation. Roll-up banner stands must be lying flat on their side with the banner partially unrolled across the surface. Business cards fanned out flat. Brochures and booklets lying flat (closed, half-open, or fully open spread). Stickers lying flat. Magnets lying flat. Posters rolled and lying flat OR unrolled flat. Yard signs lying flat with the stake disconnected to the side. All items respect gravity — they sit on the tabletop, nothing floats or stands vertical.",
+    "FLAT-LAY ENFORCEMENT (critical for this category): EVERY item must lie FLAT on the cream paper backdrop as if photographed from directly above. NO standing items. NO wall-mounted items. NO upright orientation. Roll-up banner stands must be lying flat on their side with the banner partially unrolled across the surface. Business cards fanned out flat. Brochures and booklets lying flat (closed, half-open, or fully open spread). Stickers lying flat. Magnets lying flat. Posters rolled and lying flat OR unrolled flat. Yard signs lying flat with the stake disconnected to the side. All items respect gravity — they sit on the tabletop, nothing floats or stands vertical.\n\nEDGE-TO-EDGE COMPOSITION (critical): The camera is so close to the table that items extend OFF the edges of the frame. Several items at the perimeter should be CROPPED by the frame edges — cut off at the top, bottom, left, and right. The frame is a tight crop INTO the spread of items, not a wide shot of an arrangement floating in the middle of cream paper. Think of it like the camera is zoomed in so the items overflow the frame on all four sides. Cream backdrop is visible ONLY in the small gaps between items, never as wide empty borders around the perimeter.",
 };
 
 function buildPrompt(
@@ -257,8 +257,12 @@ async function buildCard(catSlug: string) {
 
   const inputBuf = Buffer.from(base64, "base64");
   const outPath = path.join(OUT_DIR, `category-${catSlug}.webp`);
-  // Resize to a consistent 1600 wide (no upscale), 4:3 enforced via cover.
+  // Trim near-cream background pixels from the perimeter, then resize to
+  // 1600x1200 4:3. trim() removes any uniform border close to the dominant
+  // edge color, so cards where Gemini left wide cream margins get cropped
+  // back to the bounding box of the actual items.
   await sharp(inputBuf)
+    .trim({ threshold: 18, background: { r: 250, g: 250, b: 247 } })
     .resize({ width: 1600, height: 1200, fit: "cover", kernel: "lanczos3" })
     .webp({ quality: 88 })
     .toFile(outPath);

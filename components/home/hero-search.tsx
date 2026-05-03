@@ -33,7 +33,7 @@ export function HeroSearch() {
             <button
               type="submit"
               aria-label="Search"
-              className="absolute right-1.5 sm:right-2 top-1/2 -translate-y-1/2 inline-flex h-9 w-9 sm:h-12 sm:w-auto items-center justify-center sm:gap-2 rounded-full bg-primary sm:px-6 font-display font-semibold text-white text-base shadow-press hover:bg-primary-700 hover:-translate-y-[1px] transition-all"
+              className="absolute right-1.5 sm:right-2 top-1/2 -translate-y-1/2 inline-flex h-9 w-9 sm:h-12 sm:w-auto items-center justify-center sm:gap-2 rounded-full bg-primary sm:px-6 font-display font-semibold text-white text-base shadow-press hover:bg-primary-700 transition-colors"
             >
               <span className="hidden sm:inline">Search</span>
               <Icon icon="arrow-right" />
