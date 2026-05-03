@@ -1,1 +1,25 @@
-Photorealistic e-commerce category hero. Overhead 85mm shot on a soft cream studio paper backdrop. Sharp focus throughout, soft natural diffused window light from the upper-left, gentle shadows. Arranged in a tidy grid with even breathing room between each item, every piece clearly visible from above: a soft-side insulated cooler bag with a printed full-color landscape photograph on the side panel, an aluminum rectangular keychain with a printed family-style portrait photograph (use stock-style generic figures, not a real person), a smartphone case with a printed nature photograph wrapping around the back, an embroidered fabric morale patch with hook-and-loop backing showing a simple geometric design, a folded short-sleeve cotton t-shirt with a small printed photographic patch on the chest, a small pet collar tag with a printed photograph of a generic dog, and a novelty round mouse pad with a printed full-color illustration. Photography on the items uses generic landscape, nature, and stock-portrait imagery — no real people or trademarks. Real legible English captions. No models, no lifestyle staging, no props beyond the gifts themselves. No hex color codes anywhere in the image. No source watermarks. 4:3 aspect ratio. Catalog product photography.
+Combine the 7 attached reference photos into a SINGLE overhead 4:3 e-commerce category hero image for the "Custom Color Photo Gifts" category.
+
+THE ITEMS YOU MUST INCLUDE (one per reference photo, in any order):
+1. Coolers
+2. Keychains
+3. Phone Accessories
+4. Patches
+5. Photo Apparel
+6. Pet Items
+7. Novelty
+
+CRITICAL CONSTRAINTS — read carefully:
+- Each reference photo represents one product that MUST appear in the final image. Use the EXACT visual appearance from the reference: same colors, same shape, same proportions, same materials, same printed design, same labels.
+- Do NOT invent items. Do NOT add extra products that weren't in the references. Do NOT modify items to look "cooler."
+- Do NOT merge two items into one composite product. Each reference is a separate physical product.
+- Your job is purely COMPOSITION and LIGHTING — arrange the actual items into a clean overhead catalog collage and re-light to look unified.
+
+STYLE:
+- Soft cream paper studio backdrop, slightly textured.
+- 85mm-equivalent lens look, overhead camera angle, sharp focus throughout.
+- Soft natural diffused window daylight from upper-left, gentle realistic shadows.
+- Generous breathing room between items so each is clearly visible — not piled up, not overlapping heavily.
+- Photoreal commercial product photography, magazine-quality but understated (no glamour staging, no models, no lifestyle scene).
+- 4:3 aspect ratio, designed for an e-commerce category card.
+- No text overlays. No invented logos. No real trademarks.

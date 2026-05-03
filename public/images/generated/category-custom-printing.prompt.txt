@@ -1,14 +1,30 @@
-Editorial overhead flat-lay shot, 85mm equivalent macro lens, shallow depth of field, shot for a professional e-commerce category hero. Twelve real print products of a small Georgia print shop arranged in a tight, deliberate composition on a warm cream paper studio surface — each piece clearly visible and identifiable, slightly overlapping but not crowded:
-(1) a fanned stack of premium business cards with crisp paper edges,
-(2) a 5x7 postcard with bold typography,
-(3) a tri-fold brochure half-open showing inside spread,
-(4) a small bi-fold restaurant menu,
-(5) a 2-part carbonless invoice pad with the white top sheet partly torn back to reveal the canary-yellow duplicate underneath,
-(6) a sheet of die-cut circle stickers on glossy release liner,
-(7) a small square refrigerator magnet,
-(8) a clear DTF transfer film square with a colorful printed design and visible white underbase,
-(9) a tightly rolled vinyl banner peeking into one corner,
-(10) a small foam-board mounted yard sign on a stake,
-(11) a rolled poster tied with twine,
-(12) a printed envelope with a crimson return-address mark.
-All printed designs use fictional brand names in real legible English, with a unifying warm crimson and dark navy accent palette so the photo reads as one cohesive collection. Lighting: soft window daylight from camera left with a gentle shadow falling to the right, warm tungsten edge light kissing the business-card stack and the foil postcard so the paper edges shimmer. Surface: textured cream paper with a subtle grain. Mood: confident, editorial, professional product photography — not staged or kitschy. Camera angle: directly overhead with a slight 5-degree tilt for depth. The image must read instantly as 'every kind of custom print under one roof' to a shopper landing on the category card. No real trademarks. No source watermarks. Absolutely no hex color codes anywhere in the image.
+Combine the 12 attached reference photos into a SINGLE overhead 4:3 e-commerce category hero image for the "Custom Printing" category.
+
+THE ITEMS YOU MUST INCLUDE (one per reference photo, in any order):
+1. Business Cards
+2. Postcards, Holiday Cards & Mailing
+3. Flyers, Brochures & Booklets
+4. Restaurant Print
+5. Multi-Part Forms & Certificates
+6. Stickers, Decals & Vinyl Lettering
+7. Magnets
+8. DTF & UV-DTF Transfers
+9. Banners, Stands & Flags
+10. Yard & Sidewalk Signs
+11. Posters & Large Format
+12. Door Hangers, Promo & Office
+
+CRITICAL CONSTRAINTS — read carefully:
+- Each reference photo represents one product that MUST appear in the final image. Use the EXACT visual appearance from the reference: same colors, same shape, same proportions, same materials, same printed design, same labels.
+- Do NOT invent items. Do NOT add extra products that weren't in the references. Do NOT modify items to look "cooler."
+- Do NOT merge two items into one composite product. Each reference is a separate physical product.
+- Your job is purely COMPOSITION and LIGHTING — arrange the actual items into a clean overhead catalog collage and re-light to look unified.
+
+STYLE:
+- Soft cream paper studio backdrop, slightly textured.
+- 85mm-equivalent lens look, overhead camera angle, sharp focus throughout.
+- Soft natural diffused window daylight from upper-left, gentle realistic shadows.
+- Generous breathing room between items so each is clearly visible — not piled up, not overlapping heavily.
+- Photoreal commercial product photography, magazine-quality but understated (no glamour staging, no models, no lifestyle scene).
+- 4:3 aspect ratio, designed for an e-commerce category card.
+- No text overlays. No invented logos. No real trademarks.

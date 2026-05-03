@@ -2,11 +2,15 @@ import { categories } from "./categories";
 import { sampleProducts } from "./sample-products";
 
 export type NavProduct = { slug: string; title: string };
+export type NavSubsubcategory = { slug: string; name: string; count: number };
 export type NavSubcategory = {
   slug: string;
   name: string;
   blurb?: string;
   products: NavProduct[];
+  /** Optional third-level groupings — when present, the dropdown should show
+   *  these as the expand target instead of the products list. */
+  subcategories?: NavSubsubcategory[];
 };
 export type NavCategory = {
   slug: string;
@@ -29,17 +33,30 @@ export function buildNavTree(): NavCategory[] {
     navLabel: c.navLabel ?? c.name,
     tagline: c.tagline,
     subcategories: c.subcategories
-      .map((s) => ({
-        slug: s.slug,
-        name: s.name,
-        blurb: s.blurb,
-        products: sampleProducts
-          .filter(
-            (p) => p.categorySlug === c.slug && p.subcategorySlug === s.slug,
-          )
-          .map((p) => ({ slug: p.slug, title: p.title }))
-          .sort((a, b) => a.title.localeCompare(b.title)),
-      }))
+      .map((s) => {
+        const products = sampleProducts.filter(
+          (p) => p.categorySlug === c.slug && p.subcategorySlug === s.slug,
+        );
+        const subsubs = s.subcategories
+          ? s.subcategories
+              .map((ss) => ({
+                slug: ss.slug,
+                name: ss.name,
+                count: products.filter((p) => p.subsubcategorySlug === ss.slug)
+                  .length,
+              }))
+              .filter((ss) => ss.count > 0)
+          : undefined;
+        return {
+          slug: s.slug,
+          name: s.name,
+          blurb: s.blurb,
+          products: products
+            .map((p) => ({ slug: p.slug, title: p.title }))
+            .sort((a, b) => a.title.localeCompare(b.title)),
+          subcategories: subsubs && subsubs.length > 0 ? subsubs : undefined,
+        };
+      })
       .filter((s) => s.products.length > 0),
   }));
 }

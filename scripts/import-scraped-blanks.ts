@@ -181,14 +181,41 @@ function detectSport(title: string): string {
   return "other";
 }
 
+/**
+ * Subject/sport detection for academic-awards. Order matters — earlier
+ * patterns win. Mixed sport+subject pile, so we check specific sports first
+ * then subjects, with "general" as the catch-all (participant/place medals).
+ */
+const ACADEMIC_PATTERNS: Array<[string, RegExp]> = [
+  ["martial-arts", /\bmartial arts\b/i],
+  ["wrestling", /\bwrestling\b/i],
+  ["music", /\b(music|musical|band|choir|orchestra|musician)\b/i],
+  ["math", /\bmath\b/i],
+  ["science", /\bscience\b/i],
+  ["reading", /\b(reading|literacy|spelling)\b/i],
+  ["drama", /\b(drama|theater|theatre|speech|debate)\b/i],
+  ["art", /\b(art|chess|robotics)\b/i],
+  ["honors", /\b(honor roll|honor|perfect attendance|valedictor|principal|scholar|achievement)\b/i],
+];
+
+function detectAcademic(title: string): string {
+  for (const [slug, re] of ACADEMIC_PATTERNS) {
+    if (re.test(title)) return slug;
+  }
+  return "general";
+}
+
 function buildEntry(p: ScrapedProduct): string {
   const title = cleanTitle(p.title);
   const upgradedImageUrl = upgradeImageUrl(p.imageUrl);
-  const subsubcategorySlug =
-    p.targetCategory === "sports-academic-awards" &&
-    p.targetSubcategory === "resin-trophies"
-      ? detectSport(title)
-      : null;
+  let subsubcategorySlug: string | null = null;
+  if (p.targetCategory === "sports-academic-awards") {
+    if (p.targetSubcategory === "resin-trophies") {
+      subsubcategorySlug = detectSport(title);
+    } else if (p.targetSubcategory === "academic-awards") {
+      subsubcategorySlug = detectAcademic(title);
+    }
+  }
   const supplierDesc = p.description ? cleanTitle(p.description).slice(0, 600) : null;
   // Brief shopper-facing copy. If the supplier provided a description, use the
   // first ~150 chars; otherwise fall back to the title-only blurb.

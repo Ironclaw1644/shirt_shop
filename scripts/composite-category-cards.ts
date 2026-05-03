@@ -26,9 +26,11 @@ const CANVAS_W = 1600;
 const CANVAS_H = 1200;
 const CREAM = { r: 250, g: 250, b: 247, alpha: 1 };
 
-// 6 supplier-populated categories. Skip custom-printing (kept) and any future
-// dropped categories.
+// 7 categories. custom-printing uses local AI-generated product images
+// (heroPromptKey → /images/generated/<key>.webp); the others use supplier
+// CDN URLs.
 const TARGETS = [
+  "custom-printing",
   "apparel-headwear",
   "drinkware",
   "corporate-awards",
@@ -50,6 +52,25 @@ async function fetchImage(url: string): Promise<Buffer | null> {
     return Buffer.from(await res.arrayBuffer());
   } catch (err) {
     console.log(`  ✕ fetch error ${(err as Error).message} ${url.slice(0, 80)}…`);
+    return null;
+  }
+}
+
+/** Resolve a product's image to bytes. Prefer supplier imageUrl (remote);
+ *  fall back to the AI-generated local file derived from heroPromptKey. */
+async function resolveProductImage(p: SampleProduct): Promise<Buffer | null> {
+  if (p.imageUrl) return fetchImage(p.imageUrl);
+  const localPath = path.join(
+    process.cwd(),
+    "public",
+    "images",
+    "generated",
+    `${p.heroPromptKey.replace(":", "-")}.webp`,
+  );
+  try {
+    return await fs.readFile(localPath);
+  } catch {
+    console.log(`  ✕ no image for ${p.slug} (${localPath})`);
     return null;
   }
 }
@@ -131,7 +152,11 @@ function pickRepresentatives(catSlug: string): { subName: string; product: Sampl
   const out: { subName: string; product: SampleProduct }[] = [];
   for (const sub of cat.subcategories) {
     const all = productsInSubcategory(catSlug, sub.slug)
-      .filter((p) => p.imageUrl && !p.imageUrl.includes("128W-null"))
+      .filter((p) => {
+        // Has a remote image URL OR a local AI-generated fallback (heroPromptKey).
+        if (p.imageUrl) return !p.imageUrl.includes("128W-null");
+        return !!p.heroPromptKey;
+      })
       .sort((a, b) => a.slug.localeCompare(b.slug));
     if (all.length === 0) continue;
     const re = TITLE_KEYWORDS[sub.slug];
@@ -173,8 +198,7 @@ async function buildCard(catSlug: string) {
   const composites: sharp.OverlayOptions[] = [];
   for (let i = 0; i < items.length; i++) {
     const { product, subName } = items[i];
-    const url = product.imageUrl!;
-    const buf = await fetchImage(url);
+    const buf = await resolveProductImage(product);
     if (!buf) continue;
 
     let resized: Buffer;

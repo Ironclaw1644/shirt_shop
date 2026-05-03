@@ -151,7 +151,7 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
               name="q"
               placeholder="What are you looking for?"
               autoComplete="off"
-              className="h-10 w-full rounded-full border border-ink/15 bg-white pl-10 pr-4 text-sm placeholder:text-ink-mute focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1"
+              className="h-10 w-full rounded-full border border-ink/15 bg-white pl-10 pr-4 text-sm placeholder:text-ink-mute transition-colors hover:border-ink/30 focus-visible:outline-none focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary/30"
             />
           </div>
         </form>
@@ -282,19 +282,36 @@ export function SiteHeaderClient({ navTree }: { navTree: NavCategory[] }) {
                               </button>
                             </div>
                             {subOpen && (
-                              <ul className="ml-3 border-l border-ink/10 pl-3 py-1 grid gap-0.5">
-                                {s.products.map((p) => (
-                                  <li key={p.slug}>
-                                    <Link
-                                      href={`/product/${p.slug}`}
-                                      onClick={closeAll}
-                                      className="block py-1.5 text-sm text-ink-mute hover:text-primary"
-                                    >
-                                      {p.title}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
+                              s.subcategories && s.subcategories.length > 0 ? (
+                                <ul className="ml-3 border-l border-ink/10 pl-3 py-1 grid gap-0.5">
+                                  {s.subcategories.map((ss) => (
+                                    <li key={ss.slug}>
+                                      <Link
+                                        href={`/${c.slug}/${s.slug}/${ss.slug}`}
+                                        onClick={closeAll}
+                                        className="flex items-center justify-between py-1.5 text-sm text-ink-mute hover:text-primary"
+                                      >
+                                        <span>{ss.name}</span>
+                                        <span className="text-xs text-ink-mute font-mono ml-2">{ss.count}</span>
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              ) : (
+                                <ul className="ml-3 border-l border-ink/10 pl-3 py-1 grid gap-0.5">
+                                  {s.products.map((p) => (
+                                    <li key={p.slug}>
+                                      <Link
+                                        href={`/product/${p.slug}`}
+                                        onClick={closeAll}
+                                        className="block py-1.5 text-sm text-ink-mute hover:text-primary"
+                                      >
+                                        {p.title}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )
                             )}
                           </div>
                         );
@@ -382,19 +399,36 @@ function DesktopDropdown({
                   </button>
                 </div>
                 {isOpen && (
-                  <ul className="ml-3 mt-1 mb-2 border-l border-ink/10 pl-3 grid grid-cols-2 gap-x-3 gap-y-0.5">
-                    {s.products.map((p) => (
-                      <li key={p.slug}>
-                        <Link
-                          href={`/product/${p.slug}`}
-                          onClick={onNavigate}
-                          className="block py-1 text-sm text-ink-soft hover:text-primary"
-                        >
-                          {p.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  s.subcategories && s.subcategories.length > 0 ? (
+                    <ul className="ml-3 mt-1 mb-2 border-l border-ink/10 pl-3 grid grid-cols-2 gap-x-3 gap-y-0.5">
+                      {s.subcategories.map((ss) => (
+                        <li key={ss.slug}>
+                          <Link
+                            href={`/${category.slug}/${s.slug}/${ss.slug}`}
+                            onClick={onNavigate}
+                            className="flex items-center justify-between py-1 text-sm text-ink-soft hover:text-primary"
+                          >
+                            <span>{ss.name}</span>
+                            <span className="text-xs text-ink-mute font-mono ml-2">{ss.count}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <ul className="ml-3 mt-1 mb-2 border-l border-ink/10 pl-3 grid grid-cols-2 gap-x-3 gap-y-0.5">
+                      {s.products.map((p) => (
+                        <li key={p.slug}>
+                          <Link
+                            href={`/product/${p.slug}`}
+                            onClick={onNavigate}
+                            className="block py-1 text-sm text-ink-soft hover:text-primary"
+                          >
+                            {p.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )
                 )}
               </li>
             );

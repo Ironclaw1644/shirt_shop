@@ -98,6 +98,57 @@ export async function generateImageFromReference(
   return extractImageFromResponse(response, expandedPrompt);
 }
 
+export type ReferenceImageInput =
+  | { url: string }
+  | { data: Buffer; mimeType?: string };
+
+export type GenerateImageFromReferencesInput = GenerateImageInput & {
+  referenceImages: ReferenceImageInput[];
+};
+
+/**
+ * Multi-reference variant. Sends N reference images alongside the prompt so
+ * Nano Banana can compose them into a single output image while preserving
+ * each item's appearance. Useful for category-hero collages built from real
+ * product photos.
+ */
+export async function generateImageFromReferences(
+  input: GenerateImageFromReferencesInput,
+): Promise<GeneratedImage> {
+  const expandedPrompt = composePrompt(input);
+
+  const refParts: Array<{ inlineData: { mimeType: string; data: string } }> = [];
+  for (const ref of input.referenceImages) {
+    let mimeType: string;
+    let data: string;
+    if ("url" in ref) {
+      const res = await fetch(ref.url);
+      if (!res.ok) {
+        throw new Error(`Reference fetch ${res.status}: ${ref.url.slice(0, 80)}`);
+      }
+      mimeType = res.headers.get("content-type") ?? "image/jpeg";
+      data = Buffer.from(await res.arrayBuffer()).toString("base64");
+    } else {
+      mimeType = ref.mimeType ?? "image/jpeg";
+      data = ref.data.toString("base64");
+    }
+    refParts.push({ inlineData: { mimeType, data } });
+  }
+
+  const ai = getGeminiClient();
+  const response = await ai.models.generateContent({
+    model: NANO_BANANA_MODEL,
+    contents: [
+      {
+        role: "user",
+        parts: [...refParts, { text: expandedPrompt }],
+      },
+    ],
+  });
+
+  return extractImageFromResponse(response, expandedPrompt);
+}
+
 function extractImageFromResponse(
   response: { candidates?: Array<{ content?: { parts?: Array<unknown> } }> },
   expandedPrompt: string,
