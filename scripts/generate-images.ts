@@ -85,15 +85,18 @@ async function generateOne(entry: ManifestEntry) {
   const refUrl =
     referenceUrl && regenerateSlug === entry.slug ? referenceUrl : entry.referenceImageUrl;
 
-  // Product entries skip the global brandPalette + style injection. That injection
-  // (crimson/charcoal/gold + "commercial product photography") was producing the
-  // AI-templated editorial look on every product. Marketing entries (hero-, category-,
-  // og-, how-, city-) keep it so their on-brand styling is preserved.
+  // Skip the global brandPalette + style injection for product-* AND category-*
+  // entries. The brandPalette contains literal hex codes (#B8142B, etc.) which
+  // Gemini renders as visible watermark text — see memory feedback_secrets/
+  // feedback_product_photos. Category cards now author their own palette inline
+  // using color names. Marketing entries (hero-, og-, how-, city-) keep the
+  // global injection so their on-brand styling is preserved.
   const isProduct = entry.slug.startsWith("product-");
+  const isCategory = entry.slug.startsWith("category-");
   const baseInput = {
     prompt: entry.prompt,
     aspect: entry.aspect,
-    ...(isProduct
+    ...(isProduct || isCategory
       ? {}
       : { brandPalette: m.imageDefaults.brandPalette, style: m.imageDefaults.style }),
   };

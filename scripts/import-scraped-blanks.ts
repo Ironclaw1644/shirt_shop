@@ -66,6 +66,9 @@ function normalize(raw: PremierRaw | CompanyCasualsRaw): ScrapedProduct | null {
   // CompanyCasuals: discriminate on presence of `ourCategory`.
   if ("ourCategory" in raw) {
     if (!raw.imageUrl) return null; // skip products with no image
+    // Drop sanmar "no image available" placeholders — they render as broken tiles.
+    const fname = raw.imageUrl.split("/").pop() || "";
+    if (/^128W-null\./i.test(fname) || /^1200W-null\./i.test(fname)) return null;
     return {
       slug: raw.slug,
       title: raw.title,
@@ -113,14 +116,39 @@ function cleanTitle(raw: string): string {
 }
 
 /**
- * Upgrade Cloudinary image URLs to a higher source resolution (w_800 → w_1600).
- * Cloudinary's q_auto/f_auto handle bandwidth, so the larger source gives
- * Next/Image enough pixels to slice retina-sharp variants without upscaling.
+ * Upgrade Cloudinary image URLs to better-served variants:
+ *   1. w_800 → w_1600 (retina-sharp source for Next/Image to slice)
+ *   2. f_png → f_auto (lets Cloudinary pick AVIF/WebP — 84% smaller for sportawards)
+ *   3. drop fl_attachment (forces Content-Disposition: attachment, breaks inline rendering)
+ *   4. ensure w_1600,c_limit is present so width-less URLs (sportawards) get capped too
  * Sanmar URLs are upgraded out-of-band by scripts/enrich-companycasuals-images.ts.
  */
 function upgradeImageUrl(url: string): string {
   if (!url.includes("res.cloudinary.com")) return url;
-  return url.replace(/(\/|,)w_\d+/, "$1w_1600");
+  // Pick out the transform segment (between /upload/ and the next /v\d+).
+  const m = url.match(/\/upload\/([^/]+)\/(v\d+\/.+)$/);
+  if (!m) return url;
+  const transforms = m[1].split(",").filter(Boolean);
+  const cleaned: string[] = [];
+  let hasWidth = false;
+  let hasCrop = false;
+  for (const t of transforms) {
+    if (t === "fl_attachment") continue; // strip — forces download
+    if (t === "f_png") {
+      cleaned.push("f_auto");
+      continue;
+    }
+    if (/^w_\d+$/.test(t)) {
+      cleaned.push("w_1600");
+      hasWidth = true;
+      continue;
+    }
+    if (/^c_/.test(t)) hasCrop = true;
+    cleaned.push(t);
+  }
+  if (!hasWidth) cleaned.push("w_1600");
+  if (!hasCrop) cleaned.push("c_limit");
+  return url.replace(m[0], `/upload/${cleaned.join(",")}/${m[2]}`);
 }
 
 function buildEntry(p: ScrapedProduct): string {
