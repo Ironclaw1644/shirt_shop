@@ -8,7 +8,7 @@ export function getSupabaseBrowserClient() {
   if (!client) {
     client = createBrowserClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL ?? "http://localhost",
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "anon-key",
+      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "publishable-key",
       { db: { schema: "gaph" } },
     );
   }

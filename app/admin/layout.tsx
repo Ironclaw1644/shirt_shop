@@ -25,14 +25,14 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   const {
     data: { user },
   } = await supa.auth.getUser();
-  if (!user) redirect("/auth/sign-in?next=/admin");
+  if (!user) redirect("/admin-login?next=/admin");
   const { data: profile } = await supa
     .from("profiles")
     .select("role, full_name, email")
     .eq("id", user.id)
     .maybeSingle();
   if (!profile || (profile.role !== "admin" && profile.role !== "staff")) {
-    redirect("/?error=forbidden");
+    redirect("/admin-login");
   }
 
   return (

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/page-header";
 import { ProductForm } from "@/components/admin/product-form";
+import { DeleteProductButton } from "@/components/admin/delete-product-button";
 import { Badge } from "@/components/ui/badge";
 
 export default async function AdminProductEdit({ params }: { params: Promise<{ id: string }> }) {
@@ -25,9 +26,12 @@ export default async function AdminProductEdit({ params }: { params: Promise<{ i
       <AdminPageHeader
         title={product.title}
         actions={
-          <Badge variant={product.status === "active" ? "success" : "paper"}>
-            {product.status}
-          </Badge>
+          <div className="flex items-center gap-2">
+            <Badge variant={product.status === "active" ? "success" : "paper"}>
+              {product.status}
+            </Badge>
+            <DeleteProductButton productId={product.id} productTitle={product.title} />
+          </div>
         }
       />
       <div className="p-4 sm:p-6 lg:p-8 max-w-4xl">

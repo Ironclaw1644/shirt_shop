@@ -3,9 +3,9 @@
  * Run with:
  *   npm run db:seed
  *
- * Requires SUPABASE_SERVICE_ROLE_KEY and NEXT_PUBLIC_SUPABASE_URL in env.
+ * Requires SUPABASE_SECRET_KEY and NEXT_PUBLIC_SUPABASE_URL in env.
  *
- * If SUPABASE_SERVICE_ROLE_KEY is marked Sensitive in Vercel and can't be
+ * If SUPABASE_SECRET_KEY is marked Sensitive in Vercel and can't be
  * pulled locally, use the deployed `/api/admin/seed-catalog` endpoint instead.
  */
 import dotenv from "dotenv";

@@ -6,7 +6,7 @@ export async function updateSession(req: NextRequest) {
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL ?? "http://localhost",
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "anon-key",
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "publishable-key",
     {
       db: { schema: "gaph" },
       cookies: {
@@ -32,7 +32,7 @@ export async function updateSession(req: NextRequest) {
 
   if (pathname.startsWith("/admin") && !user) {
     const url = req.nextUrl.clone();
-    url.pathname = "/auth/sign-in";
+    url.pathname = "/admin-login";
     url.searchParams.set("next", pathname);
     return NextResponse.redirect(url);
   }

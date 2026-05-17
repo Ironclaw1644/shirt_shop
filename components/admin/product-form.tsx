@@ -344,7 +344,7 @@ function ImagesSection({
   return (
     <Section title="Images">
       <p className="text-xs text-ink-mute">
-        First image is used as the hero + Open Graph preview. Drag uploads not supported yet — use the picker.
+        First image is used as the hero + Open Graph preview. Click below to upload PNG, JPG, or WEBP (up to 8MB). Use the arrows under each image to reorder.
       </p>
 
       <label className="block">
@@ -383,10 +383,10 @@ function ImagesSection({
                 )}
               </div>
               <div className="flex items-center justify-between gap-1 p-1.5 border-t border-ink/10 bg-white">
-                <Button type="button" variant="ghost" size="sm" disabled={i === 0} onClick={() => moveAt(setImages, i, -1)} aria-label="Move up">
+                <Button type="button" variant="ghost" size="sm" disabled={i === 0} onClick={() => moveAt(setImages, i, -1)} aria-label="Move left">
                   <Icon icon="arrow-left" />
                 </Button>
-                <Button type="button" variant="ghost" size="sm" disabled={i === images.length - 1} onClick={() => moveAt(setImages, i, 1)} aria-label="Move down">
+                <Button type="button" variant="ghost" size="sm" disabled={i === images.length - 1} onClick={() => moveAt(setImages, i, 1)} aria-label="Move right">
                   <Icon icon="arrow-right" />
                 </Button>
                 <RemoveBtn onClick={() => removeAt(setImages, i)} />
