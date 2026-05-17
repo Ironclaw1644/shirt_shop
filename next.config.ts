@@ -11,14 +11,6 @@ const nextConfig: NextConfig = {
     ],
   },
   images: {
-    // Vercel's /_next/image optimization service was returning HTTP 402 in
-    // production (free-tier monthly transformation quota exhausted), which
-    // broke EVERY <Image> component on the site — homepage how-it-works,
-    // category heroes, product cards, the lot. Disable optimization so images
-    // are served straight from /public/ (and from supplier CDNs for external
-    // sources). Trade-off: no responsive srcSet, no on-the-fly resizing —
-    // but our generated WebPs are already sized appropriately.
-    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "*.supabase.co" },
       { protocol: "https", hostname: "*.supabase.in" },
