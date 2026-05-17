@@ -114,22 +114,19 @@ export default async function AdminProductsList({
 }
 
 /**
- * Renders products grouped exactly like the public site: the top-level order
- * comes from `lib/catalog/categories` (the same source of truth the storefront
- * uses), with subcategories and (where defined) third-level subsubcategories
- * underneath. Any DB-only product whose slug isn't in the static catalog falls
- * into the "Custom (not in public catalog)" bucket so admins can still find +
- * edit it.
+ * Renders products grouped exactly like the public site: top-level order comes
+ * from `lib/catalog/categories` (same source of truth the storefront uses),
+ * with subcategories and (where defined) third-level subsubcategories
+ * underneath. DB products are mapped in by slug. DB-only products whose slug
+ * isn't in the static catalog are not displayed here — they're invisible to
+ * the public site anyway. To surface them, add their slugs to
+ * `lib/catalog/sample-products.ts`.
  */
 function CatalogHierarchy({ products }: { products: ProductRow[] }) {
   // Index DB products by slug so each public-catalog entry can resolve to its
   // editable row (or show "not in DB" if the seed missed it).
   const dbBySlug = new Map<string, ProductRow>();
   for (const p of products) dbBySlug.set(p.slug, p);
-
-  // Track which DB products got placed under a public category — leftovers go
-  // into the "Custom" bucket at the bottom.
-  const placedSlugs = new Set<string>();
 
   // Pre-bucket sampleProducts by category → subcategory → subsubcategory so we
   // can render in one pass without re-scanning the 10k-row array per group.
@@ -239,7 +236,6 @@ function CatalogHierarchy({ products }: { products: ProductRow[] }) {
                                     label={subsub.name}
                                     productSlugs={slugs}
                                     dbBySlug={dbBySlug}
-                                    placed={placedSlugs}
                                     depth={2}
                                   />
                                 );
@@ -249,7 +245,6 @@ function CatalogHierarchy({ products }: { products: ProductRow[] }) {
                                   label="(uncategorized in this section)"
                                   productSlugs={directSlugs}
                                   dbBySlug={dbBySlug}
-                                  placed={placedSlugs}
                                   depth={2}
                                 />
                               )}
@@ -259,7 +254,6 @@ function CatalogHierarchy({ products }: { products: ProductRow[] }) {
                               label={null}
                               productSlugs={directSlugs}
                               dbBySlug={dbBySlug}
-                              placed={placedSlugs}
                               depth={1}
                             />
                           )}
@@ -274,7 +268,6 @@ function CatalogHierarchy({ products }: { products: ProductRow[] }) {
         </Accordion>
       </div>
 
-      <CustomBucket products={products} placed={placedSlugs} />
     </div>
   );
 }
@@ -283,20 +276,17 @@ function LeafGroup({
   label,
   productSlugs,
   dbBySlug,
-  placed,
   depth,
 }: {
   label: string | null;
   productSlugs: string[];
   dbBySlug: Map<string, ProductRow>;
-  placed: Set<string>;
   depth: 1 | 2;
 }) {
   const rows: { slug: string; row?: ProductRow }[] = productSlugs.map((s) => ({
     slug: s,
     row: dbBySlug.get(s),
   }));
-  for (const r of rows) if (r.row) placed.add(r.slug);
 
   return (
     <div className={depth === 2 ? "py-2" : ""}>
@@ -333,40 +323,6 @@ function LeafGroup({
           </tbody>
         </table>
       </div>
-    </div>
-  );
-}
-
-function CustomBucket({
-  products,
-  placed,
-}: {
-  products: ProductRow[];
-  placed: Set<string>;
-}) {
-  const leftovers = products.filter((p) => !placed.has(p.slug));
-  if (leftovers.length === 0) return null;
-  return (
-    <div className="rounded-lg border border-ink/10 bg-white">
-      <details className="group" open={false}>
-        <summary className="cursor-pointer px-4 sm:px-6 py-3 flex items-center justify-between gap-3 hover:bg-paper-warm/50">
-          <span className="font-display font-bold">
-            Custom (admin-added, not in public catalog)
-          </span>
-          <span className="text-xs font-mono text-ink-mute">
-            {leftovers.length}
-          </span>
-        </summary>
-        <div className="overflow-x-auto border-t border-ink/10">
-          <table className="w-full min-w-[640px] text-sm">
-            <tbody>
-              {leftovers.map((p) => (
-                <Row key={p.id} p={p} indent />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </details>
     </div>
   );
 }
