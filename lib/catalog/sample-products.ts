@@ -2533,6 +2533,7 @@ const seedProducts: SampleProduct[] = [
 ];
 
 import { importedBlanks } from "./imported-blanks";
+import { recoveredOrphanBlanks } from "./recovered-orphan-blanks";
 
 /**
  * Re-export seedProducts so client components that only need the original
@@ -2548,7 +2549,11 @@ export { seedProducts };
  * Client components should use `seedProducts` or accept catalog data via props
  * computed in a server wrapper.
  */
-export const sampleProducts: SampleProduct[] = [...seedProducts, ...importedBlanks];
+export const sampleProducts: SampleProduct[] = [
+  ...seedProducts,
+  ...importedBlanks,
+  ...recoveredOrphanBlanks,
+];
 
 export function productBySlug(slug: string): SampleProduct | undefined {
   return sampleProducts.find((p) => p.slug === slug);
