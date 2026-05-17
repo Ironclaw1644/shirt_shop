@@ -30,7 +30,12 @@ export async function updateSession(req: NextRequest) {
 
   const pathname = req.nextUrl.pathname;
 
-  if (pathname.startsWith("/admin") && !user) {
+  // Gate the admin app, but NOT the /admin-login page itself (which lives
+  // outside the admin layout). startsWith("/admin") would also match
+  // "/admin-login" and cause an infinite redirect.
+  const isAdminApp =
+    pathname === "/admin" || pathname.startsWith("/admin/");
+  if (isAdminApp && !user) {
     const url = req.nextUrl.clone();
     url.pathname = "/admin-login";
     url.searchParams.set("next", pathname);
