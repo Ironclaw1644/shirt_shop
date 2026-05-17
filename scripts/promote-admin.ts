@@ -1,4 +1,6 @@
-import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
+dotenv.config();
 import { createClient } from "@supabase/supabase-js";
 
 const email = process.argv[2];
@@ -16,25 +18,32 @@ if (!url || !key) {
   process.exit(1);
 }
 
-const supa = createClient(url, key, {
-  auth: { persistSession: false },
-  db: { schema: "gaph" },
+async function main() {
+  const supa = createClient(url!, key!, {
+    auth: { persistSession: false },
+    db: { schema: "gaph" },
+  });
+
+  const { data, error } = await supa
+    .from("profiles")
+    .update({ role, updated_at: new Date().toISOString() })
+    .eq("email", email)
+    .select("id, email, role")
+    .maybeSingle();
+
+  if (error) {
+    console.error("update failed:", error.message);
+    process.exit(1);
+  }
+  if (!data) {
+    console.error(`no profile for ${email} — they need to sign up first at /auth/sign-up`);
+    process.exit(1);
+  }
+
+  console.log(`promoted ${data.email} → ${data.role}`);
+}
+
+main().catch((err) => {
+  console.error("Promote failed:", err);
+  process.exit(1);
 });
-
-const { data, error } = await supa
-  .from("profiles")
-  .update({ role, updated_at: new Date().toISOString() })
-  .eq("email", email)
-  .select("id, email, role")
-  .maybeSingle();
-
-if (error) {
-  console.error("update failed:", error.message);
-  process.exit(1);
-}
-if (!data) {
-  console.error(`no profile for ${email} — they need to sign up first at /auth/sign-up`);
-  process.exit(1);
-}
-
-console.log(`promoted ${data.email} → ${data.role}`);
