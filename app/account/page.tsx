@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Badge } from "@/components/ui/badge";
@@ -9,9 +10,7 @@ import { formatMoneyCents } from "@/lib/utils/money";
 
 export default async function AccountHome() {
   const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user } = await getSessionProfile();
   if (!user) return null;
 
   const { data: orders } = await supa

@@ -19,3 +19,4 @@ supabase/.temp/
 # any .env.* file (covers .env.production-seed and similar)
 .env.*
 !.env.example
+.claude/worktrees/

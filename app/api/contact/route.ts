@@ -21,7 +21,10 @@ export async function POST(req: Request) {
     metadata: parsed.data as never,
   });
 
-  if (RESEND_ENABLED) {
+  if (process.env.DEMO_MODE === "1") {
+    // demo: never send — the submission is still recorded above
+    console.log(`[demo] email suppressed: contact form from ${parsed.data.email}`);
+  } else if (RESEND_ENABLED) {
     try {
       const resend = getResend();
       await resend.emails.send({

@@ -2,12 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 
 export async function updateProfile(formData: FormData) {
   const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user } = await getSessionProfile();
   if (!user) throw new Error("Not signed in");
 
   const full_name = (formData.get("full_name") as string) ?? null;

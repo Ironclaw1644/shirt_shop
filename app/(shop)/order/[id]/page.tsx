@@ -5,10 +5,8 @@ import { Breadcrumbs } from "@/components/shop/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { ClearCartOnMount } from "@/components/shop/clear-cart-on-mount";
 import { OrderDetail, type OrderDetailData } from "@/components/shop/order-detail";
-import {
-  getSupabaseServerClient,
-  getSupabaseServiceRoleClient,
-} from "@/lib/supabase/server";
+import { getSupabaseServiceRoleClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import { verifyOrderToken } from "@/lib/orders/token";
 
 export const metadata: Metadata = {
@@ -27,10 +25,7 @@ export default async function PublicOrderPage({
   const { id } = await params;
   const { t: token, placed } = await searchParams;
 
-  const userClient = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await userClient.auth.getUser();
+  const { user } = await getSessionProfile();
 
   const tokenValid = verifyOrderToken(id, token);
 

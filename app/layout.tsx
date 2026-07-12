@@ -8,6 +8,7 @@ import {
   designerFontVariables,
 } from "./fonts";
 import { Providers } from "./providers";
+import { DemoTourguide } from "@/components/DemoTourguide";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils/cn";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -106,6 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <JsonLd data={localBusinessSchema()} />
         <Providers>{children}</Providers>
+        {process.env.DEMO_MODE === "1" && <DemoTourguide />}
         <Analytics />
       </body>
     </html>

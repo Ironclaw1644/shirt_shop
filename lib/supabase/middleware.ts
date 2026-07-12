@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
+import { SUPABASE_SCHEMA } from "./schema";
 
 export async function updateSession(req: NextRequest) {
   let response = NextResponse.next({ request: req });
@@ -8,7 +9,7 @@ export async function updateSession(req: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_URL ?? "http://localhost",
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "anon-key",
     {
-      db: { schema: "gaph" },
+      db: { schema: SUPABASE_SCHEMA },
       cookies: {
         getAll() {
           return req.cookies.getAll();
@@ -30,14 +31,18 @@ export async function updateSession(req: NextRequest) {
 
   const pathname = req.nextUrl.pathname;
 
-  if (pathname.startsWith("/admin") && !user) {
+  // DEMO_MODE: /admin is open — visitors get a synthetic admin identity
+  // downstream (lib/auth/getSessionProfile), so don't bounce them to sign-in.
+  const demoMode = process.env.DEMO_MODE === "1";
+
+  if (pathname.startsWith("/admin") && !user && !demoMode) {
     const url = req.nextUrl.clone();
     url.pathname = "/auth/sign-in";
     url.searchParams.set("next", pathname);
     return NextResponse.redirect(url);
   }
 
-  if (pathname.startsWith("/account") && !user) {
+  if (pathname.startsWith("/account") && !user && !demoMode) {
     const url = req.nextUrl.clone();
     url.pathname = "/auth/sign-in";
     url.searchParams.set("next", pathname);

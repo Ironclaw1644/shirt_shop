@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile, requireStaff } from "@/lib/auth/getSessionProfile";
 import { sendInvoiceForOrder } from "@/lib/orders/sendInvoice";
 import type { OrderStatus } from "@/types/supabase";
 
@@ -13,7 +14,7 @@ const statuses = [
 async function logActivity(eventType: string, metadata: Record<string, unknown>) {
   try {
     const supa = await getSupabaseServerClient();
-    const { data: { user } } = await supa.auth.getUser();
+    const { user } = await getSessionProfile();
     await supa
       .from("site_activity")
       .insert({
@@ -34,6 +35,7 @@ const updateSchema = z.object({
 });
 
 export async function updateOrderStatus(formData: FormData) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const parsed = updateSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) throw new Error("Invalid payload");
   const supa = await getSupabaseServerClient();
@@ -55,6 +57,7 @@ const invoiceSchema = z.object({
 });
 
 export async function emailInvoice(formData: FormData) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const parsed = invoiceSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) throw new Error("Invalid payload");
   await sendInvoiceForOrder(parsed.data.id, parsed.data.notes || undefined);
@@ -70,17 +73,10 @@ const messageSchema = z.object({
 export async function postOrderMessage(formData: FormData) {
   const parsed = messageSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) throw new Error("Invalid payload");
+  const session = await requireStaff();
+  if (!session) throw new Error("Forbidden");
+  const user = session.user!;
   const supa = await getSupabaseServerClient();
-  const { data: { user } } = await supa.auth.getUser();
-  if (!user) throw new Error("Unauthorized");
-  const { data: profile } = await supa
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .maybeSingle();
-  if (!profile || (profile.role !== "admin" && profile.role !== "staff")) {
-    throw new Error("Forbidden");
-  }
   const { error } = await supa.from("order_messages").insert({
     order_id: parsed.data.id,
     author_role: "admin" as never,

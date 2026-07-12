@@ -16,6 +16,14 @@ async function send(
   node: React.ReactElement,
   { replyTo }: { replyTo?: string } = {},
 ) {
+  // DEMO_MODE: outbound email is a hard no-op — log and report success so
+  // invoice/quote/newsletter flows behave normally without sending anything.
+  if (process.env.DEMO_MODE === "1") {
+    console.log(
+      `[demo] email suppressed: "${subject}" → ${Array.isArray(to) ? to.join(", ") : to}`,
+    );
+    return { skipped: true, demo: true };
+  }
   if (!RESEND_ENABLED) {
     console.warn(`[resend] skipped (no key): ${subject}`);
     return { skipped: true };

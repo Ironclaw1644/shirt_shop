@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile, requireStaff } from "@/lib/auth/getSessionProfile";
 import { sendInvoiceForOrder } from "@/lib/orders/sendInvoice";
 import type { OrderStatus } from "@/types/supabase";
 
@@ -13,7 +14,7 @@ const statuses = [
 async function logActivity(eventType: string, metadata: Record<string, unknown>) {
   try {
     const supa = await getSupabaseServerClient();
-    const { data: { user } } = await supa.auth.getUser();
+    const { user } = await getSessionProfile();
     await supa
       .from("site_activity")
       .insert({
@@ -34,6 +35,7 @@ const bulkStatusSchema = z.object({
 });
 
 export async function bulkUpdateStatus(input: { ids: string[]; status: string }) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const parsed = bulkStatusSchema.safeParse(input);
   if (!parsed.success) throw new Error("Invalid payload");
   const supa = await getSupabaseServerClient();
@@ -56,6 +58,7 @@ const bulkInvoiceSchema = z.object({
 });
 
 export async function bulkEmailInvoice(input: { ids: string[] }) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const parsed = bulkInvoiceSchema.safeParse(input);
   if (!parsed.success) throw new Error("Invalid payload");
   const results = await Promise.allSettled(

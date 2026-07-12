@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { requireStaff } from "@/lib/auth/getSessionProfile";
 import { uploadProductImage } from "@/lib/storage/upload";
 
 export const runtime = "nodejs";
@@ -8,19 +8,7 @@ export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
   // auth gate — admin / staff only
-  const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-  const { data: profile } = await supa
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .maybeSingle();
-  if (!profile || (profile.role !== "admin" && profile.role !== "staff")) {
+  if (!(await requireStaff())) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 

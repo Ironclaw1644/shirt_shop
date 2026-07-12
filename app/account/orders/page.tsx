@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import { Badge } from "@/components/ui/badge";
 import { formatMoneyCents } from "@/lib/utils/money";
 import { Eyebrow } from "@/components/ui/eyebrow";
 
 export default async function OrdersListPage() {
   const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user } = await getSessionProfile();
   if (!user) return null;
 
   const { data: orders } = await supa

@@ -1,13 +1,12 @@
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon } from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
 
 export default async function ProofsPage() {
   const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user } = await getSessionProfile();
   if (!user) return null;
 
   const { data: proofs } = await supa

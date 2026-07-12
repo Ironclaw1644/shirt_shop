@@ -1,12 +1,11 @@
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon } from "@/components/ui/icon";
 
 export default async function AddressesPage() {
   const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user } = await getSessionProfile();
   if (!user) return null;
 
   const { data: addrs } = await supa

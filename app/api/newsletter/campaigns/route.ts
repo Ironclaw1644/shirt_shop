@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { requireStaff } from "@/lib/auth/getSessionProfile";
 
 const schema = z.object({
   subject: z.string().min(3),
@@ -9,15 +10,10 @@ const schema = z.object({
 });
 
 export async function POST(req: Request) {
-  const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
-  if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  const { data: profile } = await supa.from("profiles").select("role").eq("id", user.id).maybeSingle();
-  if (!profile || (profile.role !== "admin" && profile.role !== "staff")) {
+  if (!(await requireStaff())) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
+  const supa = await getSupabaseServerClient();
   const fd = await req.formData();
   const parsed = schema.safeParse(Object.fromEntries(fd));
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });

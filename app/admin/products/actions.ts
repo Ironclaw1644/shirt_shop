@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { requireStaff } from "@/lib/auth/getSessionProfile";
 import { slugify } from "@/lib/utils/slug";
 
 const tierSchema = z.object({
@@ -63,6 +64,7 @@ export async function saveProduct(
   productId: string | null,
   payload: unknown,
 ) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const parsed = productPayload.parse(payload);
   const supa = await getSupabaseServerClient();
 
@@ -137,6 +139,7 @@ export async function saveProduct(
 }
 
 export async function deleteProduct(productId: string) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const supa = await getSupabaseServerClient();
   const { error } = await supa.from("products").delete().eq("id", productId);
   if (error) throw error;

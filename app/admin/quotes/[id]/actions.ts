@@ -2,9 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { requireStaff } from "@/lib/auth/getSessionProfile";
 import { sendQuoteReplyEmail } from "@/lib/resend/send";
 
 export async function replyToQuote(formData: FormData) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const id = formData.get("id") as string;
   const admin_reply = (formData.get("admin_reply") as string) ?? "";
   const quoted = formData.get("quoted_price") as string | null;
@@ -35,6 +37,7 @@ export async function replyToQuote(formData: FormData) {
 }
 
 export async function convertQuoteToOrder(formData: FormData) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const id = formData.get("id") as string;
   const quoted = formData.get("quoted_price") as string | null;
   const quoted_price_cents = quoted ? Math.round(parseFloat(quoted) * 100) : null;

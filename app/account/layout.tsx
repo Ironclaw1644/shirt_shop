@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import { redirect } from "next/navigation";
 import { Icon } from "@/components/ui/icon";
 import type { IconName } from "@/components/ui/icon";
@@ -16,17 +16,8 @@ const nav: { href: string; label: string; icon: string }[] = [
 ];
 
 export default async function AccountLayout({ children }: { children: React.ReactNode }) {
-  const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user, profile } = await getSessionProfile();
   if (!user) redirect("/auth/sign-in?next=/account");
-
-  const { data: profile } = await supa
-    .from("profiles")
-    .select("full_name, email")
-    .eq("id", user.id)
-    .maybeSingle();
 
   return (
     <>

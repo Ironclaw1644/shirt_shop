@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { createClient } from "@supabase/supabase-js";
+import { SUPABASE_SCHEMA } from "../lib/supabase/schema";
 
 const email = process.argv[2];
 const role = (process.argv[3] ?? "admin") as "admin" | "staff" | "customer";
@@ -18,7 +19,7 @@ if (!url || !key) {
 
 const supa = createClient(url, key, {
   auth: { persistSession: false },
-  db: { schema: "gaph" },
+  db: { schema: SUPABASE_SCHEMA },
 });
 
 const { data, error } = await supa

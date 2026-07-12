@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import { ClearCartOnMount } from "@/components/shop/clear-cart-on-mount";
 import { OrderDetail, type OrderDetailData } from "@/components/shop/order-detail";
 
@@ -13,9 +14,7 @@ export default async function OrderDetailPage({
   const { id } = await params;
   const { placed } = await searchParams;
   const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user } = await getSessionProfile();
   if (!user) return null;
 
   const { data: order } = await supa

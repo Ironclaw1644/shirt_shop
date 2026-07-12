@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { requireStaff } from "@/lib/auth/getSessionProfile";
 
 const schema = z.object({
   id: z.string().uuid(),
@@ -10,6 +11,7 @@ const schema = z.object({
 });
 
 export async function updateUserRole(formData: FormData) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const parsed = schema.parse(Object.fromEntries(formData));
   const supa = await getSupabaseServerClient();
   const { error } = await supa

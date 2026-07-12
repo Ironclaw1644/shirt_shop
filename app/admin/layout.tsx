@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import { Icon } from "@/components/ui/icon";
 import type { IconName } from "@/components/ui/icon";
 import { AdminKeyboardShortcuts } from "@/components/admin/keyboard-shortcuts";
@@ -21,16 +21,8 @@ const nav: { href: string; label: string; icon: string }[] = [
 ];
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user, profile } = await getSessionProfile();
   if (!user) redirect("/auth/sign-in?next=/admin");
-  const { data: profile } = await supa
-    .from("profiles")
-    .select("role, full_name, email")
-    .eq("id", user.id)
-    .maybeSingle();
   if (!profile || (profile.role !== "admin" && profile.role !== "staff")) {
     redirect("/?error=forbidden");
   }

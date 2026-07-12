@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getSupabaseServerClient, getSupabaseServiceRoleClient } from "@/lib/supabase/server";
+import { getSupabaseServiceRoleClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import { sendOrderReceivedEmail, sendAdminNewOrderEmail } from "@/lib/resend/send";
 import { signOrderToken } from "@/lib/orders/token";
 
@@ -40,10 +41,7 @@ export async function POST(req: Request) {
   const subtotal = items.reduce((s, i) => s + i.unitPriceCents * i.quantity, 0);
   const total = subtotal + shippingCents + taxCents;
 
-  const userClient = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await userClient.auth.getUser();
+  const { user } = await getSessionProfile();
 
   const service = getSupabaseServiceRoleClient();
   const { data: order, error } = await service

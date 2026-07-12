@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSupabaseServerClient, getSupabaseServiceRoleClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 
 const proofSchema = z.object({
   viewKey: z.string(),
@@ -43,11 +44,9 @@ async function uploadDataUrl(
 }
 
 export async function POST(req: Request) {
-  const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user } = await getSessionProfile();
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  const supa = await getSupabaseServerClient();
 
   const parsed = schema.safeParse(await req.json());
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });

@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { generateImage } from "@/lib/gemini/image";
-import { getSupabaseServerClient, getSupabaseServiceRoleClient } from "@/lib/supabase/server";
+import { getSupabaseServiceRoleClient } from "@/lib/supabase/server";
+import { requireStaff } from "@/lib/auth/getSessionProfile";
 import sharp from "sharp";
 
 const schema = z.object({
@@ -12,22 +13,11 @@ const schema = z.object({
 });
 
 export async function POST(req: Request) {
-  const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
-
-  if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-
-  const { data: profile } = await supa
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  if (!profile || (profile.role !== "admin" && profile.role !== "staff")) {
+  const session = await requireStaff();
+  if (!session) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
+  const user = session.user!;
 
   const body = await req.json();
   const parsed = schema.safeParse(body);

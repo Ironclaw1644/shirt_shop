@@ -3,7 +3,7 @@ import { CheckoutForm } from "@/components/shop/checkout-form";
 import { CheckoutSummary } from "@/components/shop/checkout-summary";
 import { CheckoutGate } from "@/components/shop/checkout-gate";
 import { CheckoutAuthBanner } from "@/components/shop/checkout-auth-banner";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { getSessionProfile } from "@/lib/auth/getSessionProfile";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,10 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CheckoutPage() {
-  const supa = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supa.auth.getUser();
+  const { user } = await getSessionProfile();
 
   return (
     <div className="container py-12 max-w-6xl">

@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
+import { requireStaff } from "@/lib/auth/getSessionProfile";
 
 function num(v: FormDataEntryValue | null): number | null {
   if (v == null || v === "") return null;
@@ -28,6 +29,7 @@ function lines(v: FormDataEntryValue | null): string[] {
 }
 
 export async function updateSettings(formData: FormData) {
+  if (!(await requireStaff())) throw new Error("Forbidden");
   const supa = await getSupabaseServerClient();
 
   const business = {

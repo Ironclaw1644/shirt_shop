@@ -4,6 +4,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { categories } from "./categories";
 import { sampleProducts } from "./sample-products";
+import { SUPABASE_SCHEMA } from "@/lib/supabase/schema";
 import type { Database } from "@/types/supabase";
 
 /**
@@ -23,7 +24,9 @@ export async function seedSupabase() {
   }
   const supabase = createClient<Database>(url, key, {
     auth: { persistSession: false },
-    db: { schema: "gaph" },
+    // demo deploys point this at demo_gaph (a structural clone), so the
+    // Database types keyed on "gaph" remain accurate.
+    db: { schema: SUPABASE_SCHEMA as "gaph" },
   });
 
   // ── categories + subcategories ──────────────────────────────────────────
