@@ -15,6 +15,10 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { localBusinessSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
+// Demo deployments must never be indexed — they'd compete with the real
+// gaprinthub for search + confuse Google with duplicate content.
+const IS_DEMO = process.env.DEMO_MODE === "1";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -67,11 +71,11 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   robots: {
-    index: true,
-    follow: true,
+    index: !IS_DEMO,
+    follow: !IS_DEMO,
     googleBot: {
-      index: true,
-      follow: true,
+      index: !IS_DEMO,
+      follow: !IS_DEMO,
       "max-image-preview": "large",
     },
   },
